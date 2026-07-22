@@ -21,6 +21,7 @@ export default function Monitoring() {
   const [dfrList, setDfrList] = useState([]);
   const [dfrStatus, setDfrStatus] = useState({});
   const [annunciatorList, setAnnunciatorList] = useState([]);
+  const [annunciatorStatus, setAnnunciatorStatus] = useState({});
   
   const [filterType, setFilterType] = useState('Semua');
   const [loading, setLoading] = useState(false);
@@ -106,7 +107,8 @@ export default function Monitoring() {
       const res = await fetch(`/api/annunciator`);
       if (!res.ok) throw new Error('Gagal memuat data Annunciator');
       const data = await res.json();
-      setAnnunciatorList(Array.isArray(data) ? data : []);
+      setAnnunciatorStatus(data);
+      setAnnunciatorList(data.devices || []);
     } catch (err) {
       console.error(err);
     }
@@ -149,7 +151,13 @@ export default function Monitoring() {
           setRefreshKey(prev => prev + 1); // Memaksa animasi garis untuk reset
         }
       } else if (activeTab === 'annunciator') {
-        await fetchAnnunciatorList();
+        const res = await fetch('/api/annunciator/refresh', { method: 'POST' });
+        if (res.ok) {
+          const data = await res.json();
+          setAnnunciatorStatus(data);
+          setAnnunciatorList(data.devices || []);
+          setRefreshKey(prev => prev + 1);
+        }
       }
       setError('');
     } catch (e) {
@@ -627,6 +635,14 @@ export default function Monitoring() {
                 <RefreshCw size={16} /> Refresh Data
               </button>
             </div>
+
+            {/* Auto Polling Timer Line */}
+            {annunciatorStatus?.auto_polling_active && (
+              <div key={refreshKey} style={{ width: '100%', height: '4px', backgroundColor: '#E2E8F0', borderRadius: '4px', marginBottom: '24px', overflow: 'hidden' }}>
+                <div style={{ height: '100%', backgroundColor: '#EF4444', animation: `timerLine ${annunciatorStatus?.poll_interval_seconds || 10}s linear infinite` }} />
+                <style>{`@keyframes timerLine { 0% { width: 0%; } 100% { width: 100%; } }`}</style>
+              </div>
+            )}
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
               {annunciatorList.length > 0 ? (
