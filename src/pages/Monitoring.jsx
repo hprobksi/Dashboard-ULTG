@@ -18,6 +18,7 @@ export default function Monitoring() {
   const [selectedPqmDevice, setSelectedPqmDevice] = useState(null);
   const [isPqmModalOpen, setIsPqmModalOpen] = useState(false);
   const [dfrList, setDfrList] = useState([]);
+  const [dfrStatus, setDfrStatus] = useState({});
   const [annunciatorList, setAnnunciatorList] = useState([]);
   
   const [filterType, setFilterType] = useState('Semua');
@@ -89,6 +90,7 @@ export default function Monitoring() {
       const res = await fetch(`/api/dfr`);
       if (!res.ok) throw new Error('Gagal memuat data DFR');
       const data = await res.json();
+      setDfrStatus(data);
       setDfrList(data.devices || []);
     } catch (err) {
       console.error(err);
@@ -497,10 +499,27 @@ export default function Monitoring() {
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h2 style={{ color: '#0F172A', fontSize: '1.4rem', fontWeight: 800, margin: 0 }}>Data Digital Fault Recorder (DFR)</h2>
-              <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
-                <RefreshCw size={16} /> Refresh Data
-              </button>
             </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', backgroundColor: '#F1F5F9', borderRadius: '12px', marginBottom: dfrStatus?.auto_polling_active ? '12px' : '24px', flexWrap: 'wrap', gap: '10px' }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <span style={{ fontSize: '0.85rem', color: '#64748B', fontWeight: 600 }}>
+                  Menampilkan {dfrList.length} DFR | Interval Polling: {dfrStatus?.poll_interval_seconds || '--'} detik
+                </span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <RefreshCw size={16} /> Refresh Data
+                </button>
+              </div>
+            </div>
+
+            {/* Auto Polling Timer Line */}
+            {dfrStatus?.auto_polling_active && (
+              <div style={{ width: '100%', height: '4px', backgroundColor: '#E2E8F0', borderRadius: '4px', marginBottom: '24px', overflow: 'hidden' }}>
+                <div style={{ height: '100%', backgroundColor: '#00A2E9', animation: `timerLine ${dfrStatus?.poll_interval_seconds || 10}s linear infinite` }} />
+              </div>
+            )}
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '20px' }}>
               {dfrList.length > 0 ? (
