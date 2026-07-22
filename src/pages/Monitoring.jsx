@@ -108,7 +108,7 @@ export default function Monitoring() {
       if (!res.ok) throw new Error('Gagal memuat data Annunciator');
       const data = await res.json();
       setAnnunciatorStatus(data);
-      setAnnunciatorList(data.devices || []);
+      setAnnunciatorList(Object.values(data.devices || {}));
     } catch (err) {
       console.error(err);
     }
@@ -155,7 +155,7 @@ export default function Monitoring() {
         if (res.ok) {
           const data = await res.json();
           setAnnunciatorStatus(data);
-          setAnnunciatorList(data.devices || []);
+          setAnnunciatorList(Object.values(data.devices || {}));
           setRefreshKey(prev => prev + 1);
         }
       }
