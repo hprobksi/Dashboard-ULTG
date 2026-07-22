@@ -5,6 +5,8 @@ import DcDatabase from '../components/DcDatabase';
 import DcAlarmLog from '../components/DcAlarmLog';
 import PqmDetailModal from '../components/PqmDetailModal';
 import DfrCleanModal from '../components/DfrCleanModal';
+import EditBayModal from '../components/EditBayModal';
+import { Edit2 } from 'lucide-react';
 
 export default function Monitoring() {
   const [activeTab, setActiveTab] = useState('dc');
@@ -22,6 +24,11 @@ export default function Monitoring() {
   const [dfrStatus, setDfrStatus] = useState({});
   const [annunciatorList, setAnnunciatorList] = useState([]);
   const [annunciatorStatus, setAnnunciatorStatus] = useState({});
+  const [flList, setFlList] = useState([]);
+  const [flStatus, setFlStatus] = useState({});
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editDevice, setEditDevice] = useState(null);
+  const [editType, setEditType] = useState('dfr');
   
   const [filterType, setFilterType] = useState('Semua');
   const [loading, setLoading] = useState(false);
@@ -550,7 +557,7 @@ export default function Monitoring() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                       <div>
                         <h3 style={{ margin: '0 0 4px 0', fontSize: '1.1rem', fontWeight: 800, color: '#0F172A' }}>{dev.nama_gi}</h3>
-                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748B', fontWeight: 700 }}>{dev.nama_bay}</p>
+                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748B', fontWeight: 700, display: 'flex', alignItems: 'center' }}>{dev.nama_bay} <button onClick={() => { setEditDevice(dev); setEditType('dfr'); setEditModalOpen(true); }} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px', marginLeft: '6px' }}><Edit2 size={14} color="#64748B" /></button></p>
                       </div>
                       <div style={{ padding: '4px 12px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', backgroundColor: dev.connected ? '#DCFCE7' : '#FEE2E2', color: dev.connected ? '#16A34A' : '#EF4444' }}>
                         {dev.connected ? 'ONLINE' : 'OFFLINE'}
@@ -625,6 +632,120 @@ export default function Monitoring() {
         )}
 
         {/* === TAMPILAN ANNUNCIATOR === */}
+
+        {activeTab === 'fl' && (
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <h2 style={{ color: '#0F172A', fontSize: '1.4rem', fontWeight: 800, margin: 0 }}>Data Digital Fault Recorder (FL)</h2>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', backgroundColor: '#F1F5F9', borderRadius: '12px', marginBottom: flStatus?.auto_polling_active ? '12px' : '24px', flexWrap: 'wrap', gap: '10px' }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <span style={{ fontSize: '0.85rem', color: '#64748B', fontWeight: 600 }}>
+                  Menampilkan {flList.length} FL | Interval Polling: {flStatus?.poll_interval_seconds || '--'} detik
+                </span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button onClick={() => setIsDfrCleanModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#EF4444', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <Trash2 size={16} /> Clean Memory
+                </button>
+                <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <RefreshCw size={16} /> Refresh Data
+                </button>
+              </div>
+            </div>
+
+            {/* Auto Polling Timer Line */}
+            {flStatus?.auto_polling_active && (
+              <div key={refreshKey} style={{ width: '100%', height: '4px', backgroundColor: '#E2E8F0', borderRadius: '4px', marginBottom: '24px', overflow: 'hidden' }}>
+                <div style={{ height: '100%', backgroundColor: '#00A2E9', animation: `timerLine ${flStatus?.poll_interval_seconds || 10}s linear infinite` }} />
+                <style>{`@keyframes timerLine { 0% { width: 0%; } 100% { width: 100%; } }`}</style>
+              </div>
+            )}
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '20px' }}>
+              {flList.length > 0 ? (
+                flList.map((dev, idx) => (
+                  <div key={idx} style={{ backgroundColor: '#FFFFFF', borderRadius: '16px', border: '2px solid #E2E8F0', padding: '20px', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+                      <div>
+                        <h3 style={{ margin: '0 0 4px 0', fontSize: '1.1rem', fontWeight: 800, color: '#0F172A' }}>{dev.nama_gi}</h3>
+                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748B', fontWeight: 700, display: 'flex', alignItems: 'center' }}>{dev.nama_bay} <button onClick={() => { setEditDevice(dev); setEditType('fl'); setEditModalOpen(true); }} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px', marginLeft: '6px' }}><Edit2 size={14} color="#64748B" /></button></p>
+                      </div>
+                      <div style={{ padding: '4px 12px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', backgroundColor: dev.connected ? '#DCFCE7' : '#FEE2E2', color: dev.connected ? '#16A34A' : '#EF4444' }}>
+                        {dev.connected ? 'ONLINE' : 'OFFLINE'}
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.8rem', color: '#64748B', marginBottom: '16px' }}>
+                      <span style={{ backgroundColor: '#F1F5F9', padding: '4px 8px', borderRadius: '4px', fontWeight: 600 }}>IP: {dev.ip}</span>
+                      <span style={{ backgroundColor: '#F0F9FF', color: '#0369A1', padding: '4px 8px', borderRadius: '4px', fontWeight: 700 }}>{dev.merk_tipe}</span>
+                    </div>
+
+                    {dev.connected && (dev.ram?.used_percent != null || (dev.storage && dev.storage.length > 0)) ? (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        {dev.ram?.used_percent != null && (
+                          <div style={{ backgroundColor: '#F8FAFC', padding: '12px', borderRadius: '8px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '0.8rem', fontWeight: 700, color: '#334155' }}>
+                              <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Server size={14} /> RAM Usage</span>
+                              <span style={{ color: dev.ram.used_percent >= 90 ? '#EF4444' : dev.ram.used_percent >= 75 ? '#F59E0B' : '#10B981' }}>{formatNumber(dev.ram.used_percent)}%</span>
+                            </div>
+                            <div style={{ width: '100%', backgroundColor: '#E2E8F0', height: '6px', borderRadius: '3px', overflow: 'hidden' }}>
+                              <div style={{ 
+                                width: `${Math.min(100, Math.max(0, dev.ram.used_percent))}%`, 
+                                backgroundColor: dev.ram.used_percent >= 90 ? '#EF4444' : dev.ram.used_percent >= 75 ? '#F59E0B' : '#10B981', 
+                                height: '100%' 
+                              }}></div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {dev.storage && dev.storage.length > 0 && (
+                          <div style={{ backgroundColor: '#F8FAFC', padding: '12px', borderRadius: '8px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px', fontSize: '0.8rem', fontWeight: 700, color: '#334155' }}>
+                              <HardDrive size={14} /> Storage Usage
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                              {dev.storage.map((disk, dIdx) => (
+                                <div key={dIdx}>
+                                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', fontSize: '0.75rem', fontWeight: 600, color: '#64748B' }}>
+                                    <span>{disk.mount}</span>
+                                    <span style={{ color: disk.used_percent >= 90 ? '#EF4444' : disk.used_percent >= 75 ? '#F59E0B' : '#10B981' }}>{formatNumber(disk.used_percent)}%</span>
+                                  </div>
+                                  <div style={{ width: '100%', backgroundColor: '#E2E8F0', height: '6px', borderRadius: '3px', overflow: 'hidden' }}>
+                                    <div style={{ 
+                                      width: `${Math.min(100, Math.max(0, disk.used_percent))}%`, 
+                                      backgroundColor: disk.used_percent >= 90 ? '#EF4444' : disk.used_percent >= 75 ? '#F59E0B' : '#10B981', 
+                                      height: '100%' 
+                                    }}></div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div style={{ display: 'flex', gap: '10px' }}>
+                        <div style={{ flex: 1, backgroundColor: '#F8FAFC', padding: '10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                           <HardDrive size={16} color="#64748B"/>
+                           <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#334155' }}>{dev.kondisi_peralatan || 'Normal'}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <div style={{ gridColumn: '1 / -1', padding: '60px', textAlign: 'center', backgroundColor: '#F8FAFC', borderRadius: '16px', border: '2px dashed #E2E8F0' }}>
+                  <Radio size={48} color="#94A3B8" style={{ marginBottom: '16px' }} />
+                  <h3 style={{ color: '#0F172A', fontSize: '1.2rem', margin: '0 0 8px 0' }}>Belum ada data FL</h3>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* === TAMPILAN ANNUNCIATOR === */}
+
         {activeTab === 'annunciator' && (
           <div>
              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -739,6 +860,12 @@ export default function Monitoring() {
         iticEvents={pqmIticEvents.filter(e => e.device_id === selectedPqmDevice?.id)}
         disturbanceEvents={pqmDisturbanceEvents.filter(e => e.device_id === selectedPqmDevice?.id)}
         onTogglePolling={togglePqmPolling}
+      />
+      <EditBayModal
+        isOpen={editModalOpen}
+        onClose={() => setEditModalOpen(false)}
+        device={editDevice}
+        onSave={handleSaveBayName}
       />
     </div>
   );

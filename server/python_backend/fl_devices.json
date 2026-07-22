@@ -1,0 +1,54 @@
+{
+  "devices": [
+    {
+      "id": "fl-gandamekar-172-20-20-30",
+      "ultg": "BEKASI",
+      "nama_gi": "GI GANDAMEKAR",
+      "nama_bay": "BAY GANDAMEKAR",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.20.30",
+      "enabled": true
+    },
+    {
+      "id": "fl-muaratawar-cbnog-172-20-17-2",
+      "ultg": "BEKASI",
+      "nama_gi": "GITET MUARATAWAR",
+      "nama_bay": "BAY -CBNOG -CWANG",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.17.2",
+      "enabled": true
+    },
+    {
+      "id": "fl-muaratawar-sktni12-172-20-17-20",
+      "ultg": "BEKASI",
+      "nama_gi": "GITET MUARATAWAR",
+      "nama_bay": "BAY -SKTNI12",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.17.20",
+      "enabled": true
+    },
+    {
+      "id": "fl-new-tambun-mrtwr-172-20-121-5",
+      "ultg": "BEKASI",
+      "nama_gi": "GITET NEW TAMBUN",
+      "nama_bay": "BAY -MRTWR -BKASI -CIBNG 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.121.5",
+      "enabled": true
+    },
+    {
+      "id": "fl-gis-new-tambun-172-20-122-3",
+      "ultg": "BEKASI",
+      "nama_gi": "GIS NEW TAMBUN",
+      "nama_bay": "BAY JATIWARINGIN - TAMBUN",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.122.3",
+      "enabled": true
+    }
+  ]
+}

@@ -1,0 +1,728 @@
+{
+  "result": [
+    {
+      "label": "I a",
+      "value": "4",
+      "units": "A"
+    },
+    {
+      "label": "I b",
+      "value": "4",
+      "units": "A"
+    },
+    {
+      "label": "I c",
+      "value": "4",
+      "units": "A"
+    },
+    {
+      "label": "I 4",
+      "value": "0",
+      "units": "kA"
+    },
+    {
+      "label": "I 5",
+      "value": "0",
+      "units": "kA"
+    },
+    {
+      "label": "I avg",
+      "value": "4",
+      "units": "A"
+    },
+    {
+      "label": "I avg mn",
+      "value": "0",
+      "units": "kA"
+    },
+    {
+      "label": "I avg mx",
+      "value": "9",
+      "units": "A"
+    },
+    {
+      "label": "I avg mean",
+      "value": "4",
+      "units": "A"
+    },
+    {
+      "label": "Freq",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "Freq mn",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "Freq mx",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "Freq mean",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V unbal",
+      "value": "200.00",
+      "units": "%"
+    },
+    {
+      "label": "I unbal",
+      "value": "5.98",
+      "units": "%"
+    },
+    {
+      "label": "Vln a",
+      "value": "0.00",
+      "units": "kV"
+    },
+    {
+      "label": "Vln b",
+      "value": "0.00",
+      "units": "kV"
+    },
+    {
+      "label": "Vln c",
+      "value": "1.02",
+      "units": "kV"
+    },
+    {
+      "label": "Vln avg",
+      "value": "0.34",
+      "units": "kV"
+    },
+    {
+      "label": "Vln avg mx",
+      "value": "0.45",
+      "units": "kV"
+    },
+    {
+      "label": "Vll ab",
+      "value": "0.00",
+      "units": "kV"
+    },
+    {
+      "label": "Vll bc",
+      "value": "1.80",
+      "units": "kV"
+    },
+    {
+      "label": "Vll ca",
+      "value": "1.60",
+      "units": "kV"
+    },
+    {
+      "label": "Vll avg",
+      "value": "1.13",
+      "units": "kV"
+    },
+    {
+      "label": "Vll avg mx",
+      "value": "1.16",
+      "units": "kV"
+    },
+    {
+      "label": "Vll avg mean",
+      "value": "1.13",
+      "units": "kV"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "label": "kW a",
+      "value": "0.00",
+      "units": "GW"
+    },
+    {
+      "label": "kW b",
+      "value": "0.00",
+      "units": "GW"
+    },
+    {
+      "label": "kW c",
+      "value": "-0.00",
+      "units": "GW"
+    },
+    {
+      "label": "kW tot",
+      "value": "-0.00",
+      "units": "GW"
+    },
+    {
+      "label": "kW tot mx",
+      "value": "0.00",
+      "units": "GW"
+    },
+    {
+      "label": "kVAR a",
+      "value": "0.00",
+      "units": "GVAR"
+    },
+    {
+      "label": "kVAR b",
+      "value": "0.00",
+      "units": "GVAR"
+    },
+    {
+      "label": "kVAR c",
+      "value": "-0.00",
+      "units": "GVAR"
+    },
+    {
+      "label": "kVAR tot",
+      "value": "-0.00",
+      "units": "GVAR"
+    },
+    {
+      "label": "kVAR tot mx",
+      "value": "0.00",
+      "units": "GVAR"
+    },
+    {
+      "label": "kVA a",
+      "value": "0.00",
+      "units": "GVA"
+    },
+    {
+      "label": "kVA b",
+      "value": "0.00",
+      "units": "GVA"
+    },
+    {
+      "label": "kVA c",
+      "value": "0.00",
+      "units": "GVA"
+    },
+    {
+      "label": "kVA tot",
+      "value": "0.00",
+      "units": "GVA"
+    },
+    {
+      "label": "kVA tot mx",
+      "value": "0.00",
+      "units": "GVA"
+    },
+    {
+      "label": "kWh del",
+      "value": "0.55",
+      "units": "kWh"
+    },
+    {
+      "label": "kWh rec",
+      "value": "1382.39",
+      "units": "kWh"
+    },
+    {
+      "label": "kVARh del",
+      "value": "253.63",
+      "units": "kVARh"
+    },
+    {
+      "label": "kVARh rec",
+      "value": "52.09",
+      "units": "kVARh"
+    },
+    {
+      "label": "kVAh del-rec",
+      "value": "-1440.60",
+      "units": "kVAh"
+    },
+    {
+      "label": "PF sign a",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "PF sign b",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "PF sign c",
+      "value": "0.6671",
+      "units": "LG"
+    },
+    {
+      "label": "PF sign tot",
+      "value": "0.9989",
+      "units": "LG"
+    },
+    {
+      "label": "V1 THD mx",
+      "value": "0.00",
+      "units": "%"
+    },
+    {
+      "label": "V2 THD mx",
+      "value": "0.00",
+      "units": "%"
+    },
+    {
+      "label": "V3 THD mx",
+      "value": "4.83",
+      "units": "%"
+    },
+    {
+      "label": "I1 THD mx",
+      "value": "1273.32",
+      "units": "%"
+    },
+    {
+      "label": "I2 THD mx",
+      "value": "859.52",
+      "units": "%"
+    },
+    {
+      "label": "I3 THD mx",
+      "value": "3024.69",
+      "units": "%"
+    },
+    {
+      "label": "I1 K Factor",
+      "value": "27.78",
+      "units": ""
+    },
+    {
+      "label": "I2 K Factor",
+      "value": "8.05",
+      "units": ""
+    },
+    {
+      "label": "I3 K Factor",
+      "value": "203.23",
+      "units": ""
+    },
+    {
+      "label": "I1 Crest Factor",
+      "value": "2.40",
+      "units": ""
+    },
+    {
+      "label": "I2 Crest Factor",
+      "value": "1.87",
+      "units": ""
+    },
+    {
+      "label": "I3 Crest Factor",
+      "value": "3.52",
+      "units": ""
+    },
+    {
+      "label": "Freq N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "Freq N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "Freq N2",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "Freq N invld",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "label": "V1-Flck N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V1-Flck N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V2-Flck N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V2-Flck N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V3-Flck N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V3-Flck N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V-Dip A1",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip B1",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip C1",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip D1",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip X1",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip A2",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip B2",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip C2",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip D2",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip X2",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip A3",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip B3",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip C3",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip D3",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip X3",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip A4",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip B4",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip C4",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip D4",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip X4",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip A5",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip B5",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip C5",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip D5",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Dip X5",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Swell S1",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Swell T1",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Swell S2",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Swell T2",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Swell S3",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Swell T3",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Swell S4",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Swell T4",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Intrpt N1",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Intrpt N2",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "V-Intrpt N3",
+      "value": "0",
+      "units": ""
+    },
+    {
+      "label": "Vunbal N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "Vunbal N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "label": "V1-MSignal N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "label": "V2-MSignal N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "label": "V3-MSignal N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "label": "V1-Hrm N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V1-Hrm N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V1-Hrm N2",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V2-Hrm N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V2-Hrm N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V2-Hrm N2",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "label": "V3-Hrm N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V3-Hrm N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V3-Hrm N2",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    },
+    {
+      "label": "V1-Inthrm N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V1-Inthrm N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V2-Inthrm N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V2-Inthrm N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V3-Inthrm N",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "label": "V3-Inthrm N1",
+      "value": "N/A",
+      "units": ""
+    },
+    {
+      "errorCode": -1,
+      "errorMessage": "Invalid tag"
+    }
+  ]
+}
