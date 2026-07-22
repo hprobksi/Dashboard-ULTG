@@ -108,7 +108,7 @@ export const domainsList = [
         label: 'HARPRO',
         desc: 'Pemeliharaan Proteksi',
         icon: ShieldCheck,
-        defaultTab: 'harpro-overview'
+        defaultTab: 'overview'
       },
       {
         id: 'harjar',

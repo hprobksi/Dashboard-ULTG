@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { X, Server, Lock, User, Terminal, Loader2, CheckCircle2, AlertCircle, HardDrive } from 'lucide-react';
 
-export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfrList }) {
-  const [selectedDfr, setSelectedDfr] = useState(selectedDfrInitial || '');
+export default function DfrCleanModal({ isOpen, onClose, selectedDeviceInitial, deviceList, deviceType = 'dfr' }) {
+  const [selectedDevice, setSelectedDevice] = useState(selectedDeviceInitial || '');
   const [username, setUsername] = useState('root');
   const [password, setPassword] = useState('');
   
@@ -16,10 +16,10 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
   const [totalSteps, setTotalSteps] = useState(1);
 
   useEffect(() => {
-    if (selectedDfrInitial) {
-      setSelectedDfr(selectedDfrInitial);
+    if (selectedDeviceInitial) {
+      setSelectedDevice(selectedDeviceInitial);
     }
-  }, [selectedDfrInitial]);
+  }, [selectedDeviceInitial]);
 
   // Polling status
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
     if (isCleaning && taskId) {
       interval = setInterval(async () => {
         try {
-          const res = await fetch(`/api/dfr/clean/status/${taskId}`);
+          const res = await fetch(`/api/${deviceType}/clean/status/${taskId}`);
           if (res.ok) {
             const data = await res.json();
             setStatusMessage(data.status);
@@ -46,16 +46,16 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isCleaning, taskId]);
+  }, [isCleaning, taskId, deviceType]);
 
   if (!isOpen) return null;
 
-  const activeDevice = dfrList.find(d => d.id === selectedDfr);
-  const homeStorage = activeDevice?.storage?.find(s => s.mount === '/home');
+  const activeDevice = deviceList?.find(d => d.id === selectedDevice);
+  const homeStorage = activeDevice?.storage?.find(s => s.mount === '/home' || s.mount === '/home/fl');
 
   const handleStartClean = async () => {
-    if (!selectedDfr || !username || !password) {
-      alert("Harap lengkapi pilihan DFR, Username, dan Password!");
+    if (!selectedDevice || !username || !password) {
+      alert(`Harap lengkapi pilihan ${deviceType.toUpperCase()}, Username, dan Password!`);
       return;
     }
     setIsCleaning(true);
@@ -64,7 +64,7 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
     setStatusMessage('Memulai perintah bersih-bersih...');
 
     try {
-      const res = await fetch('/api/dfr/clean', {
+      const res = await fetch(`/api/${deviceType}/clean`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -111,7 +111,7 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', borderBottom: '1px solid #E2E8F0', backgroundColor: '#F8FAFC' }}>
           <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 800, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Terminal size={20} color="#EF4444" /> DFR SSH Auto-Clean
+            <Terminal size={20} color="#EF4444" /> {deviceType.toUpperCase()} SSH Auto-Clean
           </h3>
           <button onClick={handleClose} disabled={isCleaning} style={{ background: 'none', border: 'none', cursor: isCleaning ? 'not-allowed' : 'pointer', color: '#64748B' }}>
             <X size={24} />
@@ -123,14 +123,14 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
           {!isCleaning && !isDone && (
             <>
               <div style={{ marginBottom: '16px' }}>
-                <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: 700, color: '#334155' }}>Pilih Perangkat DFR</label>
+                <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: 700, color: '#334155' }}>Pilih Perangkat {deviceType.toUpperCase()}</label>
                 <select 
-                  value={selectedDfr}
-                  onChange={(e) => setSelectedDfr(e.target.value)}
+                  value={selectedDevice}
+                  onChange={(e) => setSelectedDevice(e.target.value)}
                   style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', outline: 'none', fontSize: '0.9rem' }}
                 >
-                  <option value="">-- Pilih DFR --</option>
-                  {dfrList.map(dev => (
+                  <option value="">-- Pilih {deviceType.toUpperCase()} --</option>
+                  {deviceList?.map(dev => (
                     <option key={dev.id} value={dev.id}>{dev.nama_gi} - {dev.nama_bay} ({dev.ip})</option>
                   ))}
                 </select>
@@ -139,7 +139,7 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
               {activeDevice && homeStorage && (
                 <div style={{ backgroundColor: '#F8FAFC', padding: '12px', borderRadius: '8px', marginBottom: '16px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px', fontSize: '0.8rem', fontWeight: 700, color: '#334155' }}>
-                    <HardDrive size={14} /> Status Memori Induk (/home)
+                    <HardDrive size={14} /> Status Memori Induk ({homeStorage.mount})
                   </div>
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', fontSize: '0.75rem', fontWeight: 600, color: '#64748B' }}>
@@ -180,7 +180,7 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
                     type="password" 
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Masukkan password DFR"
+                    placeholder={`Masukkan password ${deviceType.toUpperCase()}`}
                     style={{ width: '100%', padding: '10px 12px 10px 36px', borderRadius: '8px', border: '1px solid #CBD5E1', outline: 'none', fontSize: '0.9rem' }}
                   />
                 </div>
@@ -188,8 +188,8 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
 
               <button 
                 onClick={handleStartClean}
-                disabled={!selectedDfr || !password}
-                style={{ width: '100%', padding: '12px', backgroundColor: (!selectedDfr || !password) ? '#94A3B8' : '#EF4444', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 800, fontSize: '1rem', cursor: (!selectedDfr || !password) ? 'not-allowed' : 'pointer' }}
+                disabled={!selectedDevice || !password}
+                style={{ width: '100%', padding: '12px', backgroundColor: (!selectedDevice || !password) ? '#94A3B8' : '#EF4444', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 800, fontSize: '1rem', cursor: (!selectedDevice || !password) ? 'not-allowed' : 'pointer' }}
               >
                 Mulai Pembersihan (rm -rf *)
               </button>

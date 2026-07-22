@@ -3737,6 +3737,7 @@ def build_empty_annunciator_state(source):
         "bay_name": source["bay_name"],
         "ip": source["ip"],
         "target_alarm_name": source.get("target_alarm"),
+        "qualitrol_mapping": source.get("qualitrol_mapping", {}),
     }
 
 def dfr_diag_url(ip):
@@ -11073,9 +11074,9 @@ def poll_fl_once():
 
     try:
         max_workers = max(1, min(DFR_POLL_WORKERS, len(devices)))
-        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_device = {executor.submit(poll_fl_device, d): d for d in devices}
-            for future in concurrent.futures.as_completed(future_to_device):
+            for future in as_completed(future_to_device):
                 device = future_to_device[future]
                 try:
                     result_dict[device["id"]] = future.result()
@@ -11091,11 +11092,11 @@ def poll_fl_once():
 
     return result_dict
 
-def fl_worker(shutdown_event: threading.Event):
+def fl_worker():
     # Tunggu sebentar agar tidak tabrakan start-nya dengan DFR
-    shutdown_event.wait(5.0)
+    time.sleep(5.0)
     
-    while not shutdown_event.is_set():
+    while True:
         waktu_sekarang = time.strftime("%Y-%m-%d %H:%M:%S")
         app_state["fl_devices"] = poll_fl_once()
         app_state["fl_metadata"] = {
@@ -11103,6 +11104,7 @@ def fl_worker(shutdown_event: threading.Event):
             "poll_interval_seconds": DFR_INTERVAL_DETIK,
             "timeout_seconds": DFR_TIMEOUT_DETIK,
             "poll_workers": DFR_POLL_WORKERS,
+            "auto_polling_active": True,
             "thresholds": {
                 "storage_warning_percent": DFR_STORAGE_WARNING_PERCENT,
                 "storage_critical_percent": DFR_STORAGE_CRITICAL_PERCENT,
@@ -11113,8 +11115,6 @@ def fl_worker(shutdown_event: threading.Event):
 
         try:
             for _ in range(int(DFR_INTERVAL_DETIK)):
-                if shutdown_event.is_set():
-                    break
                 time.sleep(1)
         except Exception:
             break
@@ -11175,6 +11175,7 @@ def get_background_thread_specs():
         ("pqm-polling", pqm_worker),
         ("pme-report-scan", pme_report_scan_worker),
         ("dfr-polling", dfr_worker),
+        ("fl-polling", fl_worker),
         ("daily-recap", daily_recap_worker),
     ]
 
@@ -11853,9 +11854,39 @@ def update_dfr_device(device_id: str, request: Request):
         return {"message": "Berhasil mengupdate DFR"}
     raise HTTPException(status_code=404, detail="Device not found")
 
+class DFRData(BaseModel):
+    nama_gi: str
+    nama_bay: str
+    ip: str
+
+@app.post("/api/dfr", dependencies=[Depends(require_admin_session)])
+def add_dfr_device(dfr: DFRData):
+    try:
+        with open(DFR_DEVICES_FILE, "r", encoding="utf-8") as file:
+            data = json.load(file)
+    except:
+        data = {"devices": []}
+        
+    new_device = {
+        "id": str(uuid.uuid4()),
+        "nama_gi": dfr.nama_gi.strip(),
+        "nama_bay": dfr.nama_bay.strip(),
+        "ip": dfr.ip.strip(),
+        "type": "dfr"
+    }
+    
+    data.setdefault("devices", []).append(new_device)
+    save_dfr_devices(data["devices"])
+    app_state["dfr_devices"] = [build_empty_dfr_state(dev) for dev in data["devices"]]
+    
+    return {"message": "DFR berhasil ditambahkan", **build_dfr_payload()}
+
 @app.get("/api/fl", dependencies=[Depends(require_admin_session)])
 def get_fl():
-    return app_state.get("fl_devices", {})
+    return {
+        "metadata": app_state.get("fl_metadata", {}),
+        "devices": app_state.get("fl_devices", {})
+    }
 
 @app.put("/api/fl/devices/{device_id}", dependencies=[Depends(require_admin_session)])
 def update_fl_device(device_id: str, request: Request):
@@ -11879,6 +11910,33 @@ def update_fl_device(device_id: str, request: Request):
         save_fl_devices(data.get("devices", []))
         return {"message": "Berhasil mengupdate FL"}
     raise HTTPException(status_code=404, detail="Device not found")
+
+class FLData(BaseModel):
+    nama_gi: str
+    nama_bay: str
+    ip: str
+
+@app.post("/api/fl", dependencies=[Depends(require_admin_session)])
+def add_fl_device(fl: FLData):
+    try:
+        with open(FL_DEVICES_FILE, "r", encoding="utf-8") as file:
+            data = json.load(file)
+    except:
+        data = {"devices": []}
+        
+    new_device = {
+        "id": str(uuid.uuid4()),
+        "nama_gi": fl.nama_gi.strip(),
+        "nama_bay": fl.nama_bay.strip(),
+        "ip": fl.ip.strip(),
+        "type": "fl"
+    }
+    
+    data.setdefault("devices", []).append(new_device)
+    save_fl_devices(data["devices"])
+    app_state["fl_devices"] = poll_fl_once()
+    
+    return {"message": "FL berhasil ditambahkan", "fl_devices": app_state["fl_devices"]}
 
 @app.post("/api/fl/clean/{device_id}", dependencies=[Depends(require_admin_session)])
 def clean_fl_device(device_id: str):
@@ -11964,6 +12022,64 @@ def start_dfr_clean(req: DfrCleanRequest, background_tasks: BackgroundTasks):
 @app.get("/api/dfr/clean/status/{task_id}", dependencies=[Depends(require_admin_session)])
 def get_dfr_clean_status(task_id: str):
     tasks = app_state.get("dfr_clean_tasks", {})
+    if task_id not in tasks:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return tasks[task_id]
+
+class FlCleanRequest(BaseModel):
+    device_id: str
+    ip: str
+    username: str
+    password: str
+
+def run_fl_clean_task(task_id: str, req: FlCleanRequest):
+    tasks = app_state["fl_clean_tasks"]
+    try:
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        
+        total_steps = 3
+        
+        tasks[task_id]["current_step"] = 1
+        tasks[task_id]["status"] = f"Menghubungkan SSH ke {req.ip}..."
+        ssh.connect(req.ip, username=req.username, password=req.password, timeout=15)
+        
+        tasks[task_id]["current_step"] = 2
+        tasks[task_id]["status"] = f"Sedang membersihkan /home/fl..."
+        _, stdout, stderr = ssh.exec_command("cd /home/fl && rm -rf *")
+        stdout.channel.recv_exit_status()
+            
+        tasks[task_id]["current_step"] = 3
+        tasks[task_id]["status"] = "Sedang proses rebooting..."
+        ssh.exec_command("reboot")
+        
+        ssh.close()
+        tasks[task_id]["status"] = "Selesai (Rebooting)."
+        tasks[task_id]["done"] = True
+    except Exception as e:
+        tasks[task_id]["status"] = f"Error: {str(e)}"
+        tasks[task_id]["error"] = True
+        tasks[task_id]["done"] = True
+
+@app.post("/api/fl/clean", dependencies=[Depends(require_admin_session)])
+def start_fl_clean(req: FlCleanRequest, background_tasks: BackgroundTasks):
+    task_id = str(uuid.uuid4())
+    if "fl_clean_tasks" not in app_state:
+        app_state["fl_clean_tasks"] = {}
+    
+    app_state["fl_clean_tasks"][task_id] = {
+        "status": "Memulai...",
+        "current_step": 0,
+        "total_steps": 3,
+        "done": False,
+        "error": False
+    }
+    background_tasks.add_task(run_fl_clean_task, task_id, req)
+    return {"task_id": task_id}
+
+@app.get("/api/fl/clean/status/{task_id}", dependencies=[Depends(require_admin_session)])
+def get_fl_clean_status(task_id: str):
+    tasks = app_state.get("fl_clean_tasks", {})
     if task_id not in tasks:
         raise HTTPException(status_code=404, detail="Task not found")
     return tasks[task_id]

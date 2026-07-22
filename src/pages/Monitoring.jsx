@@ -4,7 +4,10 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import DcDatabase from '../components/DcDatabase';
 import DcAlarmLog from '../components/DcAlarmLog';
 import PqmDetailModal from '../components/PqmDetailModal';
+import PqmAddModal from '../components/PqmAddModal';
 import DfrCleanModal from '../components/DfrCleanModal';
+import DfrAddModal from '../components/DfrAddModal';
+import FlAddModal from '../components/FlAddModal';
 import EditBayModal from '../components/EditBayModal';
 import { Edit2 } from 'lucide-react';
 
@@ -20,11 +23,16 @@ export default function Monitoring() {
   const [pqmIticEvents, setPqmIticEvents] = useState([]);
   const [selectedPqmDevice, setSelectedPqmDevice] = useState(null);
   const [isPqmModalOpen, setIsPqmModalOpen] = useState(false);
+  const [isPqmAddModalOpen, setIsPqmAddModalOpen] = useState(false);
   const [dfrList, setDfrList] = useState([]);
+  const [isDfrAddModalOpen, setIsDfrAddModalOpen] = useState(false);
   const [dfrStatus, setDfrStatus] = useState({});
   const [annunciatorList, setAnnunciatorList] = useState([]);
   const [annunciatorStatus, setAnnunciatorStatus] = useState({});
+  const [annGiFilter, setAnnGiFilter] = useState('');
+  const [annBayFilter, setAnnBayFilter] = useState('');
   const [flList, setFlList] = useState([]);
+  const [isFlAddModalOpen, setIsFlAddModalOpen] = useState(false);
   const [flStatus, setFlStatus] = useState({});
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editDevice, setEditDevice] = useState(null);
@@ -35,6 +43,8 @@ export default function Monitoring() {
   const [error, setError] = useState('');
   const [isDfrCleanModalOpen, setIsDfrCleanModalOpen] = useState(false);
   const [selectedDfrForClean, setSelectedDfrForClean] = useState(null);
+  const [isFlCleanModalOpen, setIsFlCleanModalOpen] = useState(false);
+  const [selectedFlForClean, setSelectedFlForClean] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
   const [trendModalOpen, setTrendModalOpen] = useState(false);
@@ -512,9 +522,14 @@ export default function Monitoring() {
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h2 style={{ color: '#0F172A', fontSize: '1.4rem', fontWeight: 800, margin: 0 }}>Data Power Quality Monitor (PQM)</h2>
-              <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
-                <RefreshCw size={16} /> Refresh Data
-              </button>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <button onClick={() => setIsPqmAddModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <Server size={16} /> Tambah Peralatan
+                </button>
+                <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <RefreshCw size={16} /> Refresh Data
+                </button>
+              </div>
             </div>
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
@@ -588,6 +603,17 @@ export default function Monitoring() {
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h2 style={{ color: '#0F172A', fontSize: '1.4rem', fontWeight: 800, margin: 0 }}>Data Digital Fault Recorder (DFR)</h2>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button onClick={() => setIsDfrAddModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <Server size={16} /> Tambah Peralatan
+                </button>
+                <button onClick={() => setIsDfrCleanModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#EF4444', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <Trash2 size={16} /> Clean Memory
+                </button>
+                <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <RefreshCw size={16} /> Refresh Data
+                </button>
+              </div>
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', backgroundColor: '#F1F5F9', borderRadius: '12px', marginBottom: dfrStatus?.auto_polling_active ? '12px' : '24px', flexWrap: 'wrap', gap: '10px' }}>
@@ -595,14 +621,6 @@ export default function Monitoring() {
                 <span style={{ fontSize: '0.85rem', color: '#64748B', fontWeight: 600 }}>
                   Menampilkan {dfrList.length} DFR | Interval Polling: {dfrStatus?.poll_interval_seconds || '--'} detik
                 </span>
-              </div>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <button onClick={() => setIsDfrCleanModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#EF4444', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
-                  <Trash2 size={16} /> Clean Memory
-                </button>
-                <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
-                  <RefreshCw size={16} /> Refresh Data
-                </button>
               </div>
             </div>
 
@@ -701,6 +719,17 @@ export default function Monitoring() {
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h2 style={{ color: '#0F172A', fontSize: '1.4rem', fontWeight: 800, margin: 0 }}>Data Digital Fault Recorder (FL)</h2>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button onClick={() => setIsFlAddModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <Server size={16} /> Tambah Peralatan
+                </button>
+                <button onClick={() => setIsFlCleanModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#EF4444', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <Trash2 size={16} /> Clean Memory
+                </button>
+                <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <RefreshCw size={16} /> Refresh Data
+                </button>
+              </div>
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', backgroundColor: '#F1F5F9', borderRadius: '12px', marginBottom: flStatus?.auto_polling_active ? '12px' : '24px', flexWrap: 'wrap', gap: '10px' }}>
@@ -708,14 +737,6 @@ export default function Monitoring() {
                 <span style={{ fontSize: '0.85rem', color: '#64748B', fontWeight: 600 }}>
                   Menampilkan {flList.length} FL | Interval Polling: {flStatus?.poll_interval_seconds || '--'} detik
                 </span>
-              </div>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <button onClick={() => setIsDfrCleanModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#EF4444', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
-                  <Trash2 size={16} /> Clean Memory
-                </button>
-                <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
-                  <RefreshCw size={16} /> Refresh Data
-                </button>
               </div>
             </div>
 
@@ -828,56 +849,238 @@ export default function Monitoring() {
                 <style>{`@keyframes timerLine { 0% { width: 0%; } 100% { width: 100%; } }`}</style>
               </div>
             )}
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
-              {annunciatorList.length > 0 ? (
-                annunciatorList.map((ann, idx) => (
-                  <div key={idx} style={{ backgroundColor: '#FFFFFF', borderRadius: '16px', border: `2px solid ${ann.active_alarms && ann.active_alarms.length > 0 ? '#EF4444' : '#E2E8F0'}`, padding: '20px', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
-                      <div>
-                        <h3 style={{ margin: '0 0 4px 0', fontSize: '1.1rem', fontWeight: 800, color: '#0F172A' }}>{ann.source_name}</h3>
-                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#EF4444', fontWeight: 700 }}>{ann.bay_name}</p>
-                      </div>
-                      <div style={{ padding: '4px 12px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', backgroundColor: ann.connected ? '#DCFCE7' : '#F1F5F9', color: ann.connected ? '#16A34A' : '#94A3B8' }}>
-                        {ann.connected ? 'MONITORING' : 'OFFLINE'}
-                      </div>
-                    </div>
-                    
-                    <div style={{ fontSize: '0.85rem', color: '#64748B', backgroundColor: '#F8FAFC', padding: '12px', borderRadius: '8px', fontWeight: 600, marginBottom: '16px' }}>
-                      {ann.status_message || (ann.connected ? 'Sistem normal, tidak ada alarm aktif.' : 'Koneksi ke annunciator terputus.')}
-                    </div>
 
-                    {ann.active_alarms && ann.active_alarms.length > 0 && (
-                      <div style={{ marginTop: '16px' }}>
-                        <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#EF4444', margin: '0 0 8px 0' }}>ALARM AKTIF:</p>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                          {ann.active_alarms.map((alarm, aIdx) => (
-                            <div key={aIdx} style={{ padding: '8px 12px', backgroundColor: '#FEF2F2', borderLeft: '4px solid #EF4444', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 700, color: '#991B1B' }}>
-                              Port {alarm.port}: {alarm.nama_alat || 'Alarm tanpa nama'} {alarm.flag ? `(Flag: ${alarm.flag})` : ''}
-                            </div>
-                          ))}
-                        </div>
+            {(() => {
+              const annGis = [...new Set(annunciatorList.map(a => a.source_name))].filter(Boolean);
+              const annBays = [...new Set(annunciatorList.filter(a => !annGiFilter || a.source_name === annGiFilter).map(a => a.bay_name))].filter(Boolean);
+              
+              const filteredAnnunciators = annunciatorList.filter(a => {
+                const matchGi = !annGiFilter || a.source_name === annGiFilter;
+                const matchBay = !annBayFilter || a.bay_name === annBayFilter;
+                return matchGi && matchBay;
+              });
+
+              const allActiveAlarms = filteredAnnunciators.flatMap(ann => 
+                (ann.active_alarms || []).map(alarm => ({
+                  gi: ann.source_name,
+                  bay: ann.bay_name,
+                  ...alarm
+                }))
+              );
+
+              return (
+                <>
+                  {/* Alarm Aktif Cards */}
+                  {allActiveAlarms.length > 0 && (
+                    <div style={{ marginBottom: '24px' }}>
+                      <h3 style={{ margin: '0 0 12px 0', fontSize: '1.1rem', color: '#EF4444', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <AlertTriangle size={20} /> Alarm Aktif Saat Ini
+                      </h3>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
+                        {allActiveAlarms.map((alarm, idx) => (
+                          <div key={idx} style={{ padding: '16px', backgroundColor: '#FEF2F2', borderLeft: '4px solid #EF4444', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
+                            <div style={{ fontWeight: 800, color: '#991B1B', marginBottom: '4px' }}>{alarm.gi} - {alarm.bay}</div>
+                            <div style={{ fontSize: '0.9rem', color: '#B91C1C', fontWeight: 600 }}>Port {alarm.port}: {alarm.nama_alat} {alarm.flag ? `(${alarm.flag})` : ''}</div>
+                          </div>
+                        ))}
                       </div>
-                    )}
+                    </div>
+                  )}
+
+                  {/* Filters */}
+                  <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', backgroundColor: '#F8FAFC', padding: '16px', borderRadius: '12px' }}>
+                    <div style={{ flex: 1 }}>
+                      <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: 700, color: '#475569' }}>Filter Gardu Induk (GI)</label>
+                      <select value={annGiFilter} onChange={(e) => { setAnnGiFilter(e.target.value); setAnnBayFilter(''); }} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #CBD5E1', outline: 'none' }}>
+                        <option value="">Semua GI</option>
+                        {annGis.map(gi => <option key={gi} value={gi}>{gi}</option>)}
+                      </select>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: 700, color: '#475569' }}>Filter Bay</label>
+                      <select value={annBayFilter} onChange={(e) => setAnnBayFilter(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #CBD5E1', outline: 'none' }} disabled={!annGiFilter}>
+                        <option value="">Semua Bay</option>
+                        {annBays.map(bay => <option key={bay} value={bay}>{bay}</option>)}
+                      </select>
+                    </div>
                   </div>
-                ))
-              ) : (
-                <div style={{ gridColumn: '1 / -1', padding: '60px', textAlign: 'center', backgroundColor: '#F8FAFC', borderRadius: '16px', border: '2px dashed #E2E8F0' }}>
-                  <Bell size={48} color="#94A3B8" style={{ marginBottom: '16px' }} />
-                  <h3 style={{ color: '#0F172A', fontSize: '1.2rem', margin: '0 0 8px 0' }}>Belum ada data Alarm Center</h3>
-                </div>
-              )}
-            </div>
+
+                  {/* Content View */}
+                  {(() => {
+                    const isPanelView = annGiFilter && annBayFilter;
+                    
+                    if (filteredAnnunciators.length === 0) {
+                      return (
+                        <div style={{ padding: '40px', textAlign: 'center', backgroundColor: '#F8FAFC', borderRadius: '16px', border: '2px dashed #CBD5E1' }}>
+                          <Bell size={48} color="#94A3B8" style={{ margin: '0 auto 16px auto', opacity: 0.5 }} />
+                          <h3 style={{ margin: '0 0 8px 0', color: '#475569', fontSize: '1.2rem', fontWeight: 700 }}>Tidak ada data annunciator ditemukan</h3>
+                          <p style={{ color: '#64748B', margin: 0 }}>Silakan sesuaikan filter GI atau Bay Anda.</p>
+                        </div>
+                      );
+                    }
+
+                    if (isPanelView) {
+                      // TAMPILAN PANEL ALARM (GRID)
+                      return (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                          {filteredAnnunciators.map((ann, idx) => {
+                            const mappingKeys = Object.keys(ann.qualitrol_mapping || {});
+                            const hasMapping = mappingKeys.length > 0;
+                            const hasChannels = ann.channels && ann.channels.length > 0;
+                            const activePorts = (ann.active_alarms || []).map(a => String(a.port));
+
+                            let displayPorts = [];
+                            if (hasMapping) {
+                              displayPorts = mappingKeys.map(portStr => ({
+                                portStr: portStr,
+                                name: ann.qualitrol_mapping[portStr]
+                              }));
+                            } else if (hasChannels) {
+                              displayPorts = ann.channels.map(ch => ({
+                                portStr: String(ch.port),
+                                name: ch.nama_alat || `Port ${ch.port}`
+                              }));
+                            } else {
+                              displayPorts = Array.from({ length: 64 }, (_, i) => ({
+                                portStr: String(i + 1),
+                                name: `Alarm Port ${i + 1}`
+                              }));
+                            }
+
+                            // Filter out "spare"
+                            displayPorts = displayPorts.filter(p => !p.name.toLowerCase().includes('spare'));
+
+                            return (
+                              <div key={idx} style={{ backgroundColor: '#FFFFFF', borderRadius: '16px', padding: '24px', border: '1px solid #E2E8F0', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', borderBottom: '2px solid #F8FAFC', paddingBottom: '16px' }}>
+                                  <div>
+                                    <h3 style={{ margin: '0 0 4px 0', fontSize: '1.4rem', fontWeight: 900, color: '#0F172A' }}>PANEL ANNUNCIATOR</h3>
+                                    <p style={{ margin: 0, fontSize: '1rem', color: '#64748B', fontWeight: 600 }}>{ann.source_name} - {ann.bay_name}</p>
+                                  </div>
+                                  <div style={{ padding: '6px 16px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 800, textTransform: 'uppercase', backgroundColor: ann.connected ? '#DCFCE7' : '#F1F5F9', color: ann.connected ? '#16A34A' : '#94A3B8' }}>
+                                    {ann.connected ? 'ONLINE' : 'OFFLINE'}
+                                  </div>
+                                </div>
+                                
+                                <style>
+                                  {`
+                                    @keyframes blinkRedDashboard {
+                                      0% { background-color: #EF4444; color: white; border-color: #B91C1C; box-shadow: 0 8px 16px rgba(239, 68, 68, 0.4); }
+                                      50% { background-color: #FEF2F2; color: #EF4444; border-color: #FCA5A5; box-shadow: 0 4px 8px rgba(239, 68, 68, 0.1); }
+                                      100% { background-color: #EF4444; color: white; border-color: #B91C1C; box-shadow: 0 8px 16px rgba(239, 68, 68, 0.4); }
+                                    }
+                                  `}
+                                </style>
+
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '12px' }}>
+                                  {displayPorts.map(portObj => {
+                                    const portStr = portObj.portStr;
+                                    const name = portObj.name;
+                                    const isActive = activePorts.includes(portStr);
+                                    
+                                    return (
+                                      <div key={portStr} style={{
+                                        position: 'relative',
+                                        padding: '16px 12px',
+                                        borderRadius: '12px',
+                                        textAlign: 'center',
+                                        fontWeight: 800,
+                                        border: isActive ? '2px solid #B91C1C' : '1px solid #E2E8F0',
+                                        backgroundColor: isActive ? '#EF4444' : '#FFFFFF',
+                                        color: isActive ? '#FFFFFF' : '#334155',
+                                        animation: isActive ? 'blinkRedDashboard 1s ease-in-out infinite' : 'none',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        minHeight: '90px',
+                                        transition: 'all 0.2s ease',
+                                        boxShadow: isActive ? 'none' : '0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02)'
+                                      }}>
+                                        <span style={{ 
+                                          position: 'absolute', 
+                                          top: '8px', 
+                                          left: '10px', 
+                                          fontSize: '0.7rem', 
+                                          fontWeight: 900, 
+                                          opacity: isActive ? 0.9 : 0.4, 
+                                          color: isActive ? '#FFFFFF' : '#64748B' 
+                                        }}>{portStr}</span>
+                                        <span style={{ 
+                                          lineHeight: '1.3', 
+                                          fontSize: '0.95rem',
+                                          marginTop: '4px'
+                                        }}>{name}</span>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      );
+                    }
+
+                    // JIKA TIDAK ADA FILTER YANG DIPILIH (ATAU BELUM LENGKAP)
+                    return (
+                      <div style={{ padding: '60px 20px', textAlign: 'center', backgroundColor: '#F8FAFC', borderRadius: '16px', border: '2px dashed #E2E8F0', marginTop: '20px' }}>
+                        <div style={{ display: 'inline-flex', padding: '16px', borderRadius: '50%', backgroundColor: '#EFF6FF', marginBottom: '16px' }}>
+                          <Bell size={40} color="#3B82F6" />
+                        </div>
+                        <h3 style={{ margin: '0 0 8px 0', color: '#0F172A', fontSize: '1.25rem', fontWeight: 800 }}>Pilih Filter GI & Bay</h3>
+                        <p style={{ color: '#64748B', margin: 0, fontSize: '0.95rem', maxWidth: '400px', marginLeft: 'auto', marginRight: 'auto' }}>
+                          Silakan pilih Gardu Induk dan Bay pada menu filter di atas untuk menampilkan detail Panel Annunciator.
+                        </p>
+                      </div>
+                    );
+                  })()}
+                </>
+              );
+            })()}
           </div>
         )}
 
       </div>
 
+      <PqmAddModal 
+        isOpen={isPqmAddModalOpen} 
+        onClose={() => setIsPqmAddModalOpen(false)} 
+        onAddSuccess={(updatedList) => {
+          setPqmList(updatedList);
+        }} 
+      />
+
+      <DfrAddModal 
+        isOpen={isDfrAddModalOpen} 
+        onClose={() => setIsDfrAddModalOpen(false)} 
+        onAddSuccess={(updatedList) => {
+          setDfrList(updatedList);
+        }} 
+      />
+
       <DfrCleanModal 
         isOpen={isDfrCleanModalOpen} 
         onClose={() => { setIsDfrCleanModalOpen(false); setSelectedDfrForClean(null); }} 
-        selectedDfrInitial={selectedDfrForClean} 
-        dfrList={dfrList} 
+        selectedDeviceInitial={selectedDfrForClean}
+        deviceList={dfrList}
+        deviceType="dfr"
+      />
+
+      <FlAddModal 
+        isOpen={isFlAddModalOpen} 
+        onClose={() => setIsFlAddModalOpen(false)} 
+        onAddSuccess={(updatedList) => {
+          setFlList(updatedList);
+        }} 
+      />
+
+      <DfrCleanModal 
+        isOpen={isFlCleanModalOpen} 
+        onClose={() => { setIsFlCleanModalOpen(false); setSelectedFlForClean(null); }} 
+        selectedDeviceInitial={selectedFlForClean}
+        deviceList={flList}
+        deviceType="fl"
       />
 
       {trendModalOpen && (
