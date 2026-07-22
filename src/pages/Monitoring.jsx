@@ -668,7 +668,7 @@ export default function Monitoring() {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           {ann.active_alarms.map((alarm, aIdx) => (
                             <div key={aIdx} style={{ padding: '8px 12px', backgroundColor: '#FEF2F2', borderLeft: '4px solid #EF4444', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 700, color: '#991B1B' }}>
-                              {alarm}
+                              Port {alarm.port}: {alarm.nama_alat || 'Alarm tanpa nama'} {alarm.flag ? `(Flag: ${alarm.flag})` : ''}
                             </div>
                           ))}
                         </div>
