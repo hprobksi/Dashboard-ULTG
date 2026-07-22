@@ -121,6 +121,18 @@ export default function Monitoring() {
     }
   }, []);
 
+  const fetchFlList = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/fl`);
+      if (!res.ok) throw new Error('Gagal memuat data FL');
+      const data = await res.json();
+      setFlStatus(data.metadata || {});
+      setFlList(Object.values(data.devices || {}));
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
+
   // --- EFFECTS ---
   useEffect(() => {
     const loadData = () => {
@@ -133,13 +145,15 @@ export default function Monitoring() {
         fetchDfrList();
       } else if (activeTab === 'annunciator') {
         fetchAnnunciatorList();
+      } else if (activeTab === 'fl') {
+        fetchFlList();
       }
     };
     
     loadData();
     const interval = setInterval(loadData, 10000);
     return () => clearInterval(interval);
-  }, [activeTab, fetchDcStatus, fetchGiList, fetchPqmList, fetchDfrList, fetchAnnunciatorList]);
+  }, [activeTab, fetchDcStatus, fetchGiList, fetchPqmList, fetchDfrList, fetchAnnunciatorList, fetchFlList]);
 
   const forceRefresh = async () => {
     setLoading(true);
@@ -165,12 +179,49 @@ export default function Monitoring() {
           setAnnunciatorList(Object.values(data.devices || {}));
           setRefreshKey(prev => prev + 1);
         }
+      } else if (activeTab === 'fl') {
+        const res = await fetch('/api/fl');
+        if (res.ok) {
+          const data = await res.json();
+          setFlStatus(data.metadata || {});
+          setFlList(Object.values(data.devices || {}));
+          setRefreshKey(prev => prev + 1);
+        }
       }
       setError('');
     } catch (e) {
       setError(e.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleSaveBayName = async (device, newName) => {
+    try {
+      const endpoint = editType === 'fl' ? `/api/fl/devices/${device.id}` : `/api/dfr/devices/${device.id}`;
+      const res = await fetch(endpoint, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nama_bay: newName })
+      });
+      if (res.ok) {
+        if (editType === 'fl') {
+          await fetchFlList();
+        } else {
+          const fetchRes = await fetch('/api/dfr/refresh', { method: 'POST' });
+          if (fetchRes.ok) {
+            const data = await fetchRes.json();
+            setDfrStatus(data);
+            setDfrList(data.devices || []);
+          }
+        }
+        setEditModalOpen(false);
+      } else {
+        alert('Gagal menyimpan nama bay');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Terjadi kesalahan jaringan saat menyimpan nama bay');
     }
   };
 
