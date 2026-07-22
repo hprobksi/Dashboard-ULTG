@@ -12,6 +12,8 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
   const [statusMessage, setStatusMessage] = useState('');
   const [isDone, setIsDone] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [totalSteps, setTotalSteps] = useState(1);
 
   useEffect(() => {
     if (selectedDfrInitial) {
@@ -29,6 +31,8 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
           if (res.ok) {
             const data = await res.json();
             setStatusMessage(data.status);
+            setCurrentStep(data.current_step || 0);
+            setTotalSteps(data.total_steps || 1);
             if (data.done) {
               setIsCleaning(false);
               setIsDone(true);
@@ -91,6 +95,8 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
     setIsDone(false);
     setIsError(false);
     setPassword('');
+    setCurrentStep(0);
+    setTotalSteps(1);
   };
 
   const handleClose = () => {
@@ -193,7 +199,20 @@ export default function DfrCleanModal({ isOpen, onClose, selectedDfrInitial, dfr
           {(isCleaning || isDone) && (
             <div style={{ textAlign: 'center', padding: '30px 10px' }}>
               {isCleaning ? (
-                <Loader2 size={48} color="#00A2E9" style={{ animation: 'spin 1s linear infinite', margin: '0 auto 16px auto' }} />
+                <div style={{ marginBottom: '24px', textAlign: 'left' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: '#334155' }}>
+                    <span>Proses Pembersihan</span>
+                    <span>{Math.round((currentStep / totalSteps) * 100)}%</span>
+                  </div>
+                  <div style={{ width: '100%', height: '8px', backgroundColor: '#E2E8F0', borderRadius: '4px', overflow: 'hidden' }}>
+                    <div style={{ 
+                      width: `${(currentStep / totalSteps) * 100}%`, 
+                      height: '100%', 
+                      backgroundColor: '#00A2E9',
+                      transition: 'width 0.5s ease'
+                    }} />
+                  </div>
+                </div>
               ) : isError ? (
                 <AlertCircle size={48} color="#EF4444" style={{ margin: '0 auto 16px auto' }} />
               ) : (
