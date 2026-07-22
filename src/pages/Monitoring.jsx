@@ -342,6 +342,19 @@ export default function Monitoring() {
         </button>
 
         <button
+          onClick={() => setActiveTab('fl')}
+          style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            padding: '10px 20px', border: 'none', borderRadius: '8px',
+            fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer', transition: 'all 0.2s',
+            backgroundColor: activeTab === 'fl' ? '#00A2E9' : 'transparent',
+            color: activeTab === 'fl' ? '#FFFFFF' : '#64748B'
+          }}
+        >
+          <Radio size={18} /> FL
+        </button>
+
+        <button
           onClick={() => setActiveTab('annunciator')}
           style={{
             display: 'flex', alignItems: 'center', gap: '8px',
