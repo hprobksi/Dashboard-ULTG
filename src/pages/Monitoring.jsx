@@ -27,6 +27,7 @@ export default function Monitoring() {
   const [error, setError] = useState('');
   const [isDfrCleanModalOpen, setIsDfrCleanModalOpen] = useState(false);
   const [selectedDfrForClean, setSelectedDfrForClean] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const [trendModalOpen, setTrendModalOpen] = useState(false);
   const [trendGiName, setTrendGiName] = useState('');
@@ -145,6 +146,7 @@ export default function Monitoring() {
           const data = await res.json();
           setDfrStatus(data);
           setDfrList(data.devices || []);
+          setRefreshKey(prev => prev + 1); // Memaksa animasi garis untuk reset
         }
       } else if (activeTab === 'annunciator') {
         await fetchAnnunciatorList();
@@ -527,7 +529,7 @@ export default function Monitoring() {
 
             {/* Auto Polling Timer Line */}
             {dfrStatus?.auto_polling_active && (
-              <div style={{ width: '100%', height: '4px', backgroundColor: '#E2E8F0', borderRadius: '4px', marginBottom: '24px', overflow: 'hidden' }}>
+              <div key={refreshKey} style={{ width: '100%', height: '4px', backgroundColor: '#E2E8F0', borderRadius: '4px', marginBottom: '24px', overflow: 'hidden' }}>
                 <div style={{ height: '100%', backgroundColor: '#00A2E9', animation: `timerLine ${dfrStatus?.poll_interval_seconds || 10}s linear infinite` }} />
                 <style>{`@keyframes timerLine { 0% { width: 0%; } 100% { width: 100%; } }`}</style>
               </div>
