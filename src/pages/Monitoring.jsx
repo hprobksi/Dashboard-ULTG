@@ -711,13 +711,15 @@ export default function Monitoring() {
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={trendData}>
                       <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
-                      <XAxis dataKey="timestamp" tick={{ fontSize: 12 }} />
+                      <XAxis dataKey="waktu" tick={{ fontSize: 12 }} />
                       <YAxis yAxisId="left" tick={{ fontSize: 12 }} stroke="#0EA5E9" />
                       <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 12 }} stroke="#F59E0B" />
                       <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }} />
                       <Legend />
-                      <Line yAxisId="left" type="monotone" dataKey="v_pn" stroke="#0EA5E9" strokeWidth={3} dot={false} name="Tegangan P-N (V)" />
-                      <Line yAxisId="right" type="monotone" dataKey="arus" stroke="#F59E0B" strokeWidth={3} dot={false} name="Arus (A)" />
+                      <Line yAxisId="left" type="monotone" dataKey="v_pn" stroke="#0EA5E9" strokeWidth={2} dot={false} name="Teg P-N (V)" />
+                      <Line yAxisId="left" type="monotone" dataKey="v_pg" stroke="#10B981" strokeWidth={2} dot={false} name="Teg P-G (V)" />
+                      <Line yAxisId="left" type="monotone" dataKey="v_ng" stroke="#EF4444" strokeWidth={2} dot={false} name="Teg N-G (V)" />
+                      <Line yAxisId="right" type="monotone" dataKey="arus" stroke="#F59E0B" strokeWidth={2} dot={false} name="Arus (A)" />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
