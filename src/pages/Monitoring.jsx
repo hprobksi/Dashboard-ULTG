@@ -140,7 +140,12 @@ export default function Monitoring() {
       } else if (activeTab === 'pqm') {
         await fetchPqmList();
       } else if (activeTab === 'dfr') {
-        await fetchDfrList();
+        const res = await fetch('/api/dfr/refresh', { method: 'POST' });
+        if (res.ok) {
+          const data = await res.json();
+          setDfrStatus(data);
+          setDfrList(data.devices || []);
+        }
       } else if (activeTab === 'annunciator') {
         await fetchAnnunciatorList();
       }
@@ -524,6 +529,7 @@ export default function Monitoring() {
             {dfrStatus?.auto_polling_active && (
               <div style={{ width: '100%', height: '4px', backgroundColor: '#E2E8F0', borderRadius: '4px', marginBottom: '24px', overflow: 'hidden' }}>
                 <div style={{ height: '100%', backgroundColor: '#00A2E9', animation: `timerLine ${dfrStatus?.poll_interval_seconds || 10}s linear infinite` }} />
+                <style>{`@keyframes timerLine { 0% { width: 0%; } 100% { width: 100%; } }`}</style>
               </div>
             )}
             
