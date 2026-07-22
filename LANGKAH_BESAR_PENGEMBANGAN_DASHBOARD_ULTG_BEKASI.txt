@@ -1,0 +1,420 @@
+LANGKAH BESAR PENGEMBANGAN DASHBOARD ULTG BEKASI
+Tanggal: 19 Juli 2026
+Tujuan: Membuat project Dashboard ULTG Bekasi lebih rapi, terencana,
+profesional, aman, ringan, dan siap dikembangkan bertahap.
+
+======================================================================
+TAHAP 0 - KUNCI ARAH PROJECT
+======================================================================
+
+Tujuan tahap ini:
+Menyepakati arah besar sebelum banyak fitur ditambahkan.
+
+Langkah:
+1. Tetapkan bahwa dashboard ini adalah portal kerja internal ULTG Bekasi.
+2. Tetapkan bidang utama:
+   - HARGI
+   - HARPRO
+   - HARJAR
+   - K3
+   - ADMUM
+   - Dashboard Manajemen ULTG
+3. Tetapkan prinsip:
+   - Satu tampilan standar.
+   - Satu master data.
+   - Satu pola form.
+   - Satu pola arsip dokumen.
+   - Satu pola import/export.
+   - Satu standar keamanan.
+4. Jangan tambah modul besar baru sebelum fondasi data dan tampilan rapi.
+
+Output tahap ini:
+- Arah project jelas.
+- Modul utama jelas.
+- Tidak ada fitur yang dibuat asal tempel tanpa standar.
+
+======================================================================
+TAHAP 1 - RAPIAKAN STRUKTUR MENU DAN MODUL
+======================================================================
+
+Tujuan tahap ini:
+Membuat navigasi web mudah dipahami dan tidak berantakan.
+
+Langkah:
+1. Susun menu utama berdasarkan bidang:
+   - Dashboard ULTG
+   - HARGI
+   - HARPRO
+   - HARJAR
+   - K3
+   - ADMUM
+   - Dokumen
+   - Pengaturan
+2. Setiap bidang memakai pola sub-menu yang sama:
+   - Overview
+   - Input
+   - Jadwal / Program Kerja
+   - Anomali / Temuan
+   - Dokumen / Arsip
+   - Export / Laporan
+3. Hilangkan menu yang dobel atau membingungkan.
+4. Pastikan nama menu memakai bahasa yang konsisten.
+5. Buat aturan: setiap fitur baru harus masuk ke modul yang tepat.
+
+Output tahap ini:
+- Struktur menu rapi.
+- User tahu harus masuk ke menu mana.
+- Modul tidak bercampur satu sama lain.
+
+======================================================================
+TAHAP 2 - BUAT STANDAR TAMPILAN DASHBOARD
+======================================================================
+
+Tujuan tahap ini:
+Membuat semua halaman terlihat satu sistem, bukan gabungan project berbeda.
+
+Langkah:
+1. Tetapkan style utama:
+   - Warna PLN biru sebagai warna utama.
+   - Background abu muda.
+   - Panel putih bersih.
+   - Font jelas dan mudah dibaca.
+   - Radius dan spacing konsisten.
+2. Buat komponen standar:
+   - Header halaman.
+   - Card statistik.
+   - Tabel data.
+   - Toolbar filter/search.
+   - Tombol aksi.
+   - Modal konfirmasi.
+   - Form section.
+   - Empty state.
+   - Loading state.
+3. Terapkan komponen ini ke modul yang sudah ada:
+   - Natura/SPP
+   - Lemburan
+   - Perkap/Logistik
+   - Data Pegawai
+4. Hindari desain berlebihan.
+5. Prioritaskan tampilan yang padat, rapi, dan mudah untuk input pekerjaan.
+
+Output tahap ini:
+- Tampilan semua modul seragam.
+- Halaman terasa profesional.
+- User lebih mudah input dan cek data.
+
+======================================================================
+TAHAP 3 - SATUKAN MASTER DATA
+======================================================================
+
+Tujuan tahap ini:
+Menghindari data dobel, salah, atau beda antar modul.
+
+Langkah:
+1. Buat master data pegawai sebagai sumber utama.
+2. Buat master bidang.
+3. Buat master gardu/lokasi.
+4. Buat master peralatan/aset.
+5. Buat master jenis dokumen.
+6. Pastikan semua modul mengambil data dari master yang sama.
+7. Hapus input manual yang seharusnya bisa diambil dari master.
+8. Buat fitur import master dari Excel dengan preview dan validasi.
+
+Output tahap ini:
+- Data pegawai tidak dobel.
+- Data gardu dan aset lebih rapi.
+- Form lebih cepat karena banyak field otomatis.
+
+======================================================================
+TAHAP 4 - RAPIAKAN FORM INPUT DAN ARSIP
+======================================================================
+
+Tujuan tahap ini:
+Membuat semua input dan arsip punya pola kerja yang sama.
+
+Langkah:
+1. Setiap form panjang dibuat per section:
+   - Identitas dokumen.
+   - Data pegawai/peralatan.
+   - Detail pekerjaan.
+   - Dokumen/lampiran.
+   - Preview dan simpan.
+2. Setiap form wajib punya validasi:
+   - Field wajib.
+   - Format tanggal.
+   - Nomor dokumen.
+   - File lampiran.
+3. Setiap arsip wajib punya:
+   - Search.
+   - Filter bulan/tahun/bidang/status.
+   - Detail/Edit.
+   - PDF/Excel.
+   - Hapus dengan konfirmasi.
+   - Checkbox untuk aksi massal bila diperlukan.
+4. Semua hasil PDF/Excel disimpan sebagai arsip final.
+5. Buat log siapa yang input, edit, hapus, dan download.
+
+Output tahap ini:
+- Form lebih mudah dipakai.
+- Arsip lebih tertib.
+- Dokumen mudah dicari ulang.
+
+======================================================================
+TAHAP 5 - STANDARKAN IMPORT DAN EXPORT DOKUMEN
+======================================================================
+
+Tujuan tahap ini:
+Membuat import Excel/PDF dan export PDF/Excel aman untuk banyak file.
+
+Langkah:
+1. Semua template Word/Excel disimpan dalam folder template khusus.
+2. Template diberi versi.
+3. Export PDF/Excel mengikuti template resmi.
+4. Export banyak file jangan diproses langsung di browser.
+5. Buat proses export massal:
+   - Pilih data.
+   - Klik export.
+   - Sistem memproses.
+   - File hasil bisa di-download.
+6. Import Excel memakai alur:
+   - Upload.
+   - Preview.
+   - Validasi.
+   - Konfirmasi.
+   - Simpan.
+7. File sumber import disimpan untuk arsip.
+
+Output tahap ini:
+- Export tidak berat.
+- Import lebih aman.
+- Format dokumen lebih konsisten.
+
+======================================================================
+TAHAP 6 - PISAHKAN BACKEND PRODUKSI
+======================================================================
+
+Tujuan tahap ini:
+Membuat mesin web lebih profesional dan tidak bergantung pada Vite dev server.
+
+Langkah:
+1. Buat backend API terpisah.
+2. Tentukan framework backend:
+   - Fastify untuk ringan dan cepat.
+   - NestJS untuk struktur besar dan jangka panjang.
+3. Buat struktur API:
+   - Auth.
+   - User/Role.
+   - Master Data.
+   - Dokumen.
+   - Import.
+   - Export.
+   - Modul bidang.
+4. Semua logic penting pindah ke backend.
+5. Frontend hanya menampilkan data dan mengirim request.
+6. Buat response API standar.
+7. Buat error handling standar.
+
+Output tahap ini:
+- Backend lebih rapi.
+- Fungsi lebih mudah dijaga.
+- Project siap dikembangkan lebih besar.
+
+======================================================================
+TAHAP 7 - GUNAKAN DATABASE UTAMA
+======================================================================
+
+Tujuan tahap ini:
+Mengganti penyimpanan file JSON/Excel lokal menjadi database yang aman dan kuat.
+
+Langkah:
+1. Gunakan PostgreSQL.
+2. Gunakan Prisma untuk skema database.
+3. Buat tabel utama:
+   - users
+   - roles
+   - employees
+   - departments
+   - substations
+   - assets
+   - documents
+   - document_templates
+   - import_batches
+   - export_jobs
+   - audit_logs
+4. Migrasi data penting dari JSON/Excel ke database.
+5. Buat backup database otomatis.
+6. Buat index untuk query penting.
+
+Output tahap ini:
+- Data lebih aman.
+- Query lebih cepat.
+- Backup lebih jelas.
+
+======================================================================
+TAHAP 8 - BUAT LOGIN, ROLE, DAN KEAMANAN
+======================================================================
+
+Tujuan tahap ini:
+Membatasi akses sesuai bidang dan tanggung jawab.
+
+Langkah:
+1. Buat login user.
+2. Buat role:
+   - Super Admin.
+   - Admin ULTG.
+   - Admin Bidang.
+   - Operator/Inputer.
+   - Reviewer/Approver.
+   - Viewer.
+3. Setiap menu dicek berdasarkan role.
+4. Setiap API juga dicek berdasarkan role.
+5. Aktifkan audit log.
+6. Validasi semua input.
+7. Batasi upload file.
+8. Jangan simpan token/API key di file terbuka.
+9. Siapkan HTTPS untuk produksi.
+
+Output tahap ini:
+- Data lebih aman.
+- User hanya melihat modul sesuai haknya.
+- Aktivitas penting tercatat.
+
+======================================================================
+TAHAP 9 - OPTIMASI PERFORMA
+======================================================================
+
+Tujuan tahap ini:
+Web tetap halus walau data dan dokumen makin banyak.
+
+Langkah:
+1. Lazy load halaman besar.
+2. Jangan render semua modul sekaligus.
+3. Tabel besar memakai pagination.
+4. Search memakai debounce.
+5. Filter dan sort dilakukan di backend/database.
+6. Export/import besar memakai background job.
+7. Gambar dan file besar tidak dimuat sekaligus.
+8. Monitor ukuran bundle frontend.
+9. Kurangi library yang tidak perlu.
+
+Output tahap ini:
+- Web lebih ringan.
+- Halaman tidak mudah lag.
+- Export/import tidak mengganggu pemakaian dashboard.
+
+======================================================================
+TAHAP 10 - BACKUP, LOG, DAN MONITORING
+======================================================================
+
+Tujuan tahap ini:
+Mencegah kehilangan data dan memudahkan penanganan error.
+
+Langkah:
+1. Backup database harian.
+2. Backup file dokumen.
+3. Buat log error backend.
+4. Buat log aktivitas user.
+5. Buat health check server.
+6. Buat monitoring storage penuh.
+7. Buat SOP restore data.
+8. Uji restore secara berkala.
+
+Output tahap ini:
+- Data lebih aman.
+- Error lebih mudah dilacak.
+- Sistem lebih siap dipakai jangka panjang.
+
+======================================================================
+TAHAP 11 - UJI COBA PER BIDANG
+======================================================================
+
+Tujuan tahap ini:
+Memastikan web benar-benar cocok untuk kerja ULTG.
+
+Langkah:
+1. Uji ADMUM:
+   - Pegawai.
+   - Lemburan.
+   - Natura.
+   - Perkap.
+2. Uji HARPRO:
+   - Program kerja.
+   - Relay.
+   - Anomali.
+   - Dokumen.
+3. Uji HARGI:
+   - Gardu.
+   - Peralatan.
+   - Jadwal.
+   - Anomali.
+4. Uji HARJAR.
+5. Uji K3.
+6. Catat masukan user.
+7. Perbaiki alur yang membingungkan.
+
+Output tahap ini:
+- Web sesuai kebutuhan lapangan.
+- Form lebih natural dipakai.
+- Modul siap dipakai lebih luas.
+
+======================================================================
+TAHAP 12 - SIAPKAN PRODUKSI
+======================================================================
+
+Tujuan tahap ini:
+Menjalankan dashboard sebagai aplikasi internal yang stabil.
+
+Langkah:
+1. Siapkan server/VM.
+2. Siapkan domain atau alamat internal.
+3. Aktifkan HTTPS.
+4. Jalankan frontend hasil build production.
+5. Jalankan backend sebagai service.
+6. Jalankan database PostgreSQL.
+7. Jalankan backup otomatis.
+8. Buat akun user dan role.
+9. Buat SOP penggunaan.
+10. Buat SOP admin.
+
+Output tahap ini:
+- Dashboard siap dipakai lebih resmi.
+- Tidak bergantung pada mode development.
+- Operasional lebih jelas.
+
+======================================================================
+URUTAN PRIORITAS YANG PALING DISARANKAN
+======================================================================
+
+Prioritas 1:
+Rapikan menu, tampilan, form, arsip, dan master data.
+
+Prioritas 2:
+Pisahkan backend dan mulai database.
+
+Prioritas 3:
+Buat login, role, dan audit log.
+
+Prioritas 4:
+Buat import/export profesional dengan background job.
+
+Prioritas 5:
+Migrasi modul satu per satu ke standar baru.
+
+Prioritas 6:
+Optimasi performa, backup, monitoring, dan deployment produksi.
+
+======================================================================
+CATATAN PENTING
+======================================================================
+
+Jangan langsung bongkar semua project.
+Project sudah punya fitur berjalan, jadi cara paling aman adalah:
+
+1. Standarkan yang sudah ada.
+2. Buat fondasi baru di belakangnya.
+3. Migrasi modul satu per satu.
+4. Setiap modul diuji sebelum lanjut ke modul berikutnya.
+
+Dengan cara ini, project tetap bisa dipakai sambil pelan-pelan naik kelas
+menjadi dashboard ULTG yang rapi, profesional, aman, dan ringan.
+

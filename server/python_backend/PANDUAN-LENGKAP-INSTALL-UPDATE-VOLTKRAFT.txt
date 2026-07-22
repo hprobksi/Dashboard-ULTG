@@ -1,0 +1,193 @@
+PANDUAN LENGKAP INSTALL DAN UPDATE VOLTKRAFT SERVER KANTOR
+==========================================================
+
+Tujuan paket ini
+----------------
+Paket ini dipakai untuk memindahkan server VoltKraft ke laptop/PC standby
+yang nyala terus, misalnya laptop yang juga menjalankan gateway WhatsApp.
+
+Laptop baru akan menjadi server utama. Laptop lama tetap bisa dipakai untuk
+edit aplikasi, lalu hasil update dikirim lagi ke laptop server.
+
+
+A. PERSIAPAN SEBELUM INSTALL DI LAPTOP BARU
+-------------------------------------------
+1. Pastikan laptop baru memakai Windows 64-bit.
+2. Pastikan laptop baru tidak sleep/hibernate otomatis.
+3. Pastikan laptop baru tersambung ke jaringan kantor.
+4. Pastikan port 8000 tidak dipakai aplikasi lain.
+5. Jika memungkinkan, buat IP laptop baru menjadi tetap dari router/DHCP.
+6. Jika gateway WhatsApp ada di laptop baru, pastikan gateway tersebut bisa
+   jalan normal.
+7. Matikan dulu server VoltKraft di laptop lama setelah server baru berhasil
+   hidup, supaya polling dan notifikasi tidak dobel.
+
+
+B. INSTALL PERTAMA DI LAPTOP BARU
+---------------------------------
+1. Copy file ZIP installer ke laptop baru:
+
+   VoltKraft-Localhost-Installer.zip
+
+2. Extract ZIP tersebut.
+   Jangan jalankan langsung dari dalam ZIP.
+
+3. Masuk ke folder hasil extract.
+
+4. Klik file:
+
+   KLIK-INSTALL-VOLTKRAFT-SERVER-KANTOR.cmd
+
+5. Tunggu proses install selesai.
+   Installer akan:
+   - menyalin aplikasi ke folder %USERPROFILE%\VoltKraft
+   - membuat virtual environment Python
+   - install dependency dari paket lokal
+   - mengaktifkan mode LAN di port 8000
+   - membuat autostart saat Windows login
+   - menjalankan server setelah install selesai
+
+6. Jika muncul prompt Administrator/UAC untuk firewall, pilih Yes.
+   Ini diperlukan agar PC lain di jaringan kantor bisa membuka dashboard.
+
+7. Setelah selesai, buka dashboard di laptop server:
+
+   http://localhost:8000
+
+8. Untuk akses dari PC/laptop lain di jaringan kantor, buka:
+
+   http://IP-LAPTOP-SERVER:8000
+
+   Contoh:
+
+   http://192.168.110.153:8000
+
+
+C. CEK SETELAH INSTALL
+----------------------
+1. Pastikan dashboard bisa dibuka dari laptop server.
+2. Pastikan dashboard bisa dibuka dari laptop lain di jaringan kantor.
+3. Pastikan data tampil normal.
+4. Pastikan WhatsApp/gateway tidak mengirim notifikasi dobel.
+5. Jika semua sudah normal, matikan server VoltKraft di laptop lama.
+
+
+D. CARA MEMATIKAN SERVER DI LAPTOP LAMA
+---------------------------------------
+Di laptop lama, klik:
+
+   STOP-VOLTKRAF-LOCALHOST.cmd
+
+Jika laptop lama punya autostart, nonaktifkan dengan:
+
+   DISABLE-VOLTKRAF-AUTOSTART.cmd
+
+Catatan penting:
+Jangan biarkan dua server VoltKraft aktif bersamaan jika keduanya polling
+device yang sama dan mengirim notifikasi WhatsApp.
+
+
+E. UPDATE APLIKASI SETELAH SERVER PINDAH
+----------------------------------------
+Pola kerja setelah pindah server:
+
+- Laptop server baru menjalankan VoltKraft produksi.
+- Laptop lama dipakai untuk edit/tambah fitur.
+- Setelah edit selesai, buat paket update dari laptop lama.
+- Copy paket update ke laptop server baru.
+- Jalankan update di laptop server baru.
+
+Langkah membuat paket update dari laptop lama:
+
+1. Di laptop lama, buka folder project VoltKraft.
+2. Klik:
+
+   BUAT-PAKET-INSTALLER-VOLTKRAF.cmd
+
+3. Tunggu sampai ZIP baru dibuat di folder:
+
+   .release\VoltKraft-Localhost-Installer.zip
+
+4. Copy ZIP tersebut ke laptop server baru.
+
+Langkah update di laptop server baru:
+
+1. Extract ZIP update baru.
+2. Masuk ke folder hasil extract.
+3. Klik:
+
+   KLIK-UPDATE-VOLTKRAFT-SERVER-KANTOR.cmd
+
+4. Tunggu sampai proses selesai.
+5. Buka kembali dashboard:
+
+   http://localhost:8000
+
+
+F. DATA YANG TIDAK DITIMPA SAAT UPDATE
+--------------------------------------
+Update aman karena file operasional berikut dipertahankan di laptop server:
+
+*.db
+*.db-wal
+*.db-shm
+whatsapp_*.txt
+telegram_*.txt
+pme_*.txt
+pme_pqm_sources.json
+voltkraf_admin_credentials.json
+kredensial.json
+daftar_gi.json
+alarms_log.json
+trend_data.json
+*.scd
+
+Backup otomatis dibuat di:
+
+   %USERPROFILE%\VoltKraft\backups
+
+
+G. TOMBOL MANUAL YANG TERSEDIA
+------------------------------
+START-VOLTKRAF-SERVER-LAN.cmd
+  Menjalankan server mode LAN.
+
+STOP-VOLTKRAF-LOCALHOST.cmd
+  Menghentikan server.
+
+ENABLE-VOLTKRAF-AUTOSTART-LAN.cmd
+  Mengaktifkan server otomatis saat Windows login.
+
+DISABLE-VOLTKRAF-AUTOSTART.cmd
+  Menonaktifkan autostart.
+
+
+H. TROUBLESHOOTING CEPAT
+------------------------
+Jika dashboard tidak bisa dibuka di laptop server:
+1. Coba buka http://localhost:8000
+2. Klik START-VOLTKRAF-SERVER-LAN.cmd
+3. Cek log di:
+
+   %USERPROFILE%\VoltKraft\runtime-localhost
+
+Jika dashboard bisa dibuka di laptop server tapi tidak bisa dari PC lain:
+1. Pastikan PC lain satu jaringan dengan laptop server.
+2. Pastikan URL memakai IP laptop server, bukan localhost.
+3. Pastikan firewall TCP 8000 sudah dibuka.
+4. Jalankan ulang KLIK-INSTALL-VOLTKRAFT-SERVER-KANTOR.cmd atau buka firewall
+   manual jika dibutuhkan.
+
+Jika update gagal:
+1. Data lama tetap aman karena backup dibuat sebelum update.
+2. Cek pesan error terakhir di jendela CMD.
+3. Cek folder backup:
+
+   %USERPROFILE%\VoltKraft\backups
+
+
+I. CATATAN KEAMANAN
+-------------------
+Paket ZIP ini dapat berisi database, token WhatsApp/Telegram, credential,
+dan konfigurasi lokal. Jangan dibagikan ke luar jaringan/internal team.
+

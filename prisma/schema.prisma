@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  role         String   // ADMIN, OPERATOR
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([role])
+}
+
+model Pegawai {
+  id           Int      @id @default(autoincrement())
+  nama         String
+  bidang       String   // Harpro, Hargi, Harjar
+  jabatan      String?
+  isPiketPenuh Boolean  @default(false)
+  
+  jadwal       Jadwal[]
+  natura       Natura[]
+
+  @@index([bidang])
+  @@index([jabatan])
+}
+
+model GarduInduk {
+  id     Int      @id @default(autoincrement())
+  nama   String
+  
+  jadwal Jadwal[]
+}
+
+model Jadwal {
+  id           Int        @id @default(autoincrement())
+  pegawaiId    Int
+  garduIndukId Int?
+  tanggal      Int        // 1 - 31
+  bulan        Int
+  tahun        Int
+  status       String     // P, M, L, dll
+
+  pegawai    Pegawai    @relation(fields: [pegawaiId], references: [id])
+  garduInduk GarduInduk? @relation(fields: [garduIndukId], references: [id])
+
+  @@index([tanggal, bulan, tahun])
+  @@index([pegawaiId, tanggal, bulan, tahun])
+}
+
+model Natura {
+  id           Int      @id @default(autoincrement())
+  pegawaiId    Int
+  sppId        Int?     // Link to specific SPP document
+  tanggal      Int      // 1 - 31
+  bulan        Int
+  tahun        Int
+  bidangInput  String   // Harpro, Hargi, Harjar
+  createdAt    DateTime @default(now())
+
+  pegawai Pegawai  @relation(fields: [pegawaiId], references: [id])
+  sppData SppData? @relation(fields: [sppId], references: [id], onDelete: Cascade)
+
+  @@index([tanggal, bulan, tahun])
+  @@index([sppId])
+  @@index([pegawaiId, tanggal, bulan, tahun])
+}
+
+model SppData {
+  id              Int      @id @default(autoincrement())
+  tanggal         Int
+  bulan           Int
+  tahun           Int
+  bidangInput     String   // Harpro, Hargi, Harjar
+  kategori        String   @default("SUTT 150 KV")
+  noWo            String?
+  sppNomor        String?
+  jenisPekerjaan  String?
+  uraianPekerjaan String?
+  lokasiKerja     String?
+  waktuPelaksana  String?
+  penerimaTugas   String?
+  namaMultg       String?
+  syncStatus      String   @default("PENDING") // PENDING, SYNCED, ERROR
+  syncedAt        DateTime?
+  syncError       String?
+  createdAt       DateTime @default(now())
+
+  naturaList      Natura[]
+
+  @@index([bulan, tahun])
+  @@index([tanggal, bulan, tahun])
+  @@index([bidangInput, bulan, tahun])
+  @@index([syncStatus, bulan, tahun])
+}

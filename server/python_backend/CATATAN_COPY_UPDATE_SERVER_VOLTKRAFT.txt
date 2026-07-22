@@ -1,0 +1,113 @@
+﻿CATATAN COPY / UPDATE SERVER VOLTKRAFT
+Tanggal: 2026-07-21
+
+LOKASI PROJECT
+- Folder development di laptop ini:
+  C:\Users\rhard\Documents\DC_Monitoring
+- Folder aplikasi di server baru yang sudah berjalan:
+  D:\VoltKraft-App atau folder server lain yang benar-benar dipakai
+  Pakai nama folder yang benar-benar ada di server dan berisi api.py.
+- Paket update dibuat dari laptop development, lalu ZIP hasilnya dicopy dan di-apply ke folder server di atas.
+
+PAKET UPDATE TERBARU
+- Copy ke server:
+  release-packages\update-voltkraft-20260721-211301.zip
+
+- Atau copy folder hasil extract:
+  release-packages\update-voltkraft-20260721-211301\
+
+CARA APPLY DI SERVER
+1. Copy ZIP paket update ke server.
+2. Extract ZIP.
+3. Jalankan dari folder hasil extract:
+   APPLY-UPDATE-VOLTKRAFT.cmd
+4. Saat ditanya ProjectDir, isi folder aplikasi server yang benar-benar ada.
+   Contoh: D:\Voltkraft APP
+
+CATATAN PENTING
+- Tidak perlu copy api.py, dashboard-ui, atau file aplikasi satu-satu.
+- Script apply akan backup dulu, stop server, copy file, cek server sehat, lalu kirim notifikasi update sukses satu kali.
+- Tampilan utama dashboard dikunci saat apply update.
+- Paket membawa baseline dashboard fixed di folder repair khusus.
+- Script apply akan memulihkan baseline fixed hanya jika server terdeteksi belum memakai tampilan fixed.
+- Setelah baseline sudah fixed, file dashboard-ui/dist/assets dan index.html tidak ditimpa update berikutnya.
+- Apply manual dengan -UpdateDashboardBaseline tetap tersedia jika ingin memaksa overwrite baseline.
+- Menu/add-on baru harus memakai file add-on terpisah agar menyesuaikan tampilan yang sudah fix.
+- Script apply juga memastikan mode WhatsApp gateway menjadi WAHA:
+  whatsapp_gateway_mode.txt = waha
+
+FILE KONFIGURASI YANG HARUS ADA / DIPERTAHANKAN DI SERVER
+File ini tidak ikut paket update karena berisi konfigurasi runtime atau credential.
+
+WAHA / WhatsApp
+- waha_base_url.txt
+- waha_api_key.txt
+- waha_session.txt
+- waha_chat_id.txt
+- whatsapp_gateway_mode.txt
+
+Telegram
+- telegram_token.txt
+- telegram_chat_id.txt
+- telegram_listener_token.txt
+- telegram_webhook_secret.txt
+- telegram_supabase_webhook_url.txt
+
+Supabase
+- supabase_url.txt
+- supabase_api_key.txt
+
+PME / PQM Report
+- pme_pqm_sources.json
+- pme_username.txt
+- pme_password.txt
+- pme_report_cookie.txt
+
+Database dan runtime
+- VoltKraf.db atau voltkraf.db
+- VoltKraf.db-wal
+- VoltKraf.db-shm
+- runtime-localhost\
+
+CATATAN MODUL KAPASITOR
+- Notifikasi Kapasitor hanya untuk perubahan status CB 150kV.
+- Notifikasi memakai status CB 150kV Close/Open.
+- Isi notifikasi mencantumkan tegangan sebelum dan sesudah pada fasa tegangan tertinggi sebelum perubahan.
+- Offline/invalid IED tidak dikirim sebagai notifikasi CB agar tidak spam.
+
+CATATAN MODUL ANNUNCIATOR
+- Perubahan status Annunciator tetap dikirim ke WA/Telegram sesuai indikasi.
+- Kondisi normal/recovery Annunciator tetap dikirim ke WA/Telegram sesuai skema.
+- Pending retry alarm Annunciator otomatis dibatalkan jika port sudah normal agar tidak spam.
+- Jika IP/API/type sumber Annunciator berubah, channel lama dibersihkan dan polling pertama menjadi baseline tanpa mengirim alarm lama.
+- GI Cikarang Bay Rajapaksi 2 memakai DAS Annunciator IP 172.20.17.155 dengan API /das/api/item/28 seperti struktur Bay Kopel.
+- Saat update pertama, channel lama Rajapaksi 2 dibersihkan satu kali agar status dari konfigurasi lama tidak spam ke WA/Telegram.
+- CB OPEN / CB CLOSE tetap boleh menjadi notifikasi perubahan status sesuai kondisi dari server.
+
+CATATAN NOTIFIKASI WA / TELEGRAM
+- Pesan teks yang dikirim lewat jalur WhatsApp juga dikirim ke Telegram secara redundant.
+- Dokumen/PDF yang dikirim lewat jalur WhatsApp juga dikirim ke Telegram melalui Bot API sendDocument.
+- Pengiriman Telegram tidak menunggu WAHA sukses/gagal.
+- Pesan dan dokumen yang sama tetap dibatasi dedupe agar tidak spam saat scan/retry.
+- PDF PQM/PME dikirim hanya ketika ada incident baru. Scan pertama saat server hidup hanya menyimpan baseline agar riwayat lama tidak dikirim ulang.
+- Notifikasi WA/SERVER ONLINE hanya dikirim satu kali per proses server hidup; reconnect kecil WAHA tidak mengirim pesan gateway online berulang.
+- Laporan harian jam 07:00 WIB diproses maksimal satu kali per tanggal; jika WA sedang offline, laporan tidak dikirim ulang berulang-ulang ke Telegram/Supabase.
+
+CATATAN PQM GITET MUARATAWAR
+- Ditambahkan notifikasi beban khusus PQM dengan nama GI berisi GITET Muaratawar/Muaratawar.
+- Status BERBEBAN jika arus average > 10 A; TIDAK BERBEBAN jika <= 10 A.
+- Pembacaan pertama menjadi baseline tanpa notifikasi agar tidak spam saat server start.
+- Notifikasi dikirim ke WA/Telegram hanya saat berubah BERBEBAN <-> TIDAK BERBEBAN.
+- Notifikasi mencantumkan GI, Bay, IP alat, status, arus R/S/T, dan arus average.
+- ION9000 GITET Muaratawar memakai fast poll default aktif: hanya register utama dibaca agar tidak timeout; counter gangguan live dilewati.
+- Timeout ION9000 khusus GITET Muaratawar dinaikkan menjadi 20 detik per request dan 120 detik batas total polling.
+
+CATATAN PQM GI FAJAR TRAFO 5
+- Ditambahkan notifikasi beban khusus GI Fajar Trafo 5 dengan status trip/normal/tinggi.
+- Status BEBAN TRIP / ARUS 0 A jika arus average <= 0 A.
+- Status BERBEBAN NORMAL / KONSUMEN MASUK jika arus average > 0 A dan < 192 A.
+- Status BEBAN TINGGI jika arus average >= 192 A.
+- Pembacaan pertama menjadi baseline tanpa notifikasi agar tidak spam saat server start.
+- Notifikasi dikirim ke WA/Telegram hanya saat berubah antar status beban dan mencantumkan arus R/S/T/AVG.
+- Notifikasi tegangan live undervoltage/overvoltage dimatikan khusus GI Fajar Trafo 5 karena salah satu fasa memang rendah.
+- Notifikasi gangguan kualitas daya GI Fajar Trafo 5 tidak dikirim dari counter live saja; gangguan mengikuti validasi incident PME/PDF.

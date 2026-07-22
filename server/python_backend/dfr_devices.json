@@ -1,0 +1,169 @@
+{
+  "devices": [
+    {
+      "id": "gi-cikarang-cikarang-listrindo-1-2-172-20-17-133",
+      "ultg": "BEKASI",
+      "nama_gi": "GI CIKARANG",
+      "nama_bay": "CIKARANG LISTRINDO 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.17.133",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-cikarang-rajapaksi-1-2-172-20-17-151",
+      "ultg": "BEKASI",
+      "nama_gi": "GI CIKARANG",
+      "nama_bay": "RAJAPAKSI 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.17.151",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-fajar-cikarang-1-2-172-20-19-151",
+      "ultg": "BEKASI",
+      "nama_gi": "GI FAJAR",
+      "nama_bay": "CIKARANG 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.19.151",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-jababeka-hankook-1-2-172-20-21-153",
+      "ultg": "BEKASI",
+      "nama_gi": "GI JABABEKA",
+      "nama_bay": "HANKOOK 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.21.153",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-jababeka-mulia-keramik-172-20-21-151",
+      "ultg": "BEKASI",
+      "nama_gi": "GI JABABEKA",
+      "nama_bay": "MULIA KERAMIK",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.21.151",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-poncol-baru-tambun-1-2-172-20-27-151",
+      "ultg": "BEKASI",
+      "nama_gi": "GI PONCOL BARU",
+      "nama_bay": "TAMBUN 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.27.151",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-rajapaksi-cikarang-1-2-172-20-29-5",
+      "ultg": "BEKASI",
+      "nama_gi": "GI RAJAPAKSI",
+      "nama_bay": "CIKARANG 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.29.5",
+      "status_excel": "Offline",
+      "enabled": true
+    },
+    {
+      "id": "gi-rajapaksi-gandamekar-1-2-172-20-29-6",
+      "ultg": "BEKASI",
+      "nama_gi": "GI RAJAPAKSI",
+      "nama_bay": "GANDAMEKAR 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.29.6",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-rajapaksi-konsumen-1-2-172-20-29-4",
+      "ultg": "BEKASI",
+      "nama_gi": "GI RAJAPAKSI",
+      "nama_bay": "KONSUMEN 1 - 2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.29.4",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-rajapaksi-trafo-2-172-20-29-8",
+      "ultg": "BEKASI",
+      "nama_gi": "GI RAJAPAKSI",
+      "nama_bay": "TRAFO 2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.29.8",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-rajapaksi-trafo1-kopel-172-20-29-7",
+      "ultg": "BEKASI",
+      "nama_gi": "GI RAJAPAKSI",
+      "nama_bay": "TRAFO1 & KOPEL",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.29.7",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-tambun-new-tambun-1-2-172-20-31-12",
+      "ultg": "BEKASI",
+      "nama_gi": "GI TAMBUN",
+      "nama_bay": "NEW TAMBUN 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.31.12",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-new-tambun-tambun-1-2-172-20-121-12",
+      "ultg": "BEKASI",
+      "nama_gi": "GI NEW TAMBUN",
+      "nama_bay": "TAMBUN 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.121.12",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gi-new-tambun-jatiwaringin-1-2-172-20-121-13",
+      "ultg": "BEKASI",
+      "nama_gi": "GI NEW TAMBUN",
+      "nama_bay": "JATIWARINGIN 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.121.13",
+      "status_excel": "Online",
+      "enabled": true
+    },
+    {
+      "id": "gitet-muaratawar-sukatani-1-2-172-20-17-25",
+      "ultg": "BEKASI",
+      "nama_gi": "GITET MUARATAWAR",
+      "nama_bay": "SUKATANI 1-2",
+      "merk_tipe": "IDM+18",
+      "kondisi_peralatan": "OPERASI",
+      "ip": "172.20.17.25",
+      "status_excel": "Online",
+      "enabled": true
+    }
+  ]
+}

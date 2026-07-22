@@ -1,0 +1,46 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules/
+**/node_modules/
+dist
+dist-ssr
+*.local
+.next/
+**/.next/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python backend
+.venv/
+__pycache__/
+*.pyc
+
+# Unrelated Large Projects/Folders
+NATURA_ULTG_BEKASI/
+Perkap_ULTG/
+K3/
+*.rar
+*.zip
+*.db
+server/python_backend/deploy/
+server/python_backend/voltkraf.db
+
+# Media and Uploads (too large for GitHub)
+public/gdrive_photos/
+public/avatars/

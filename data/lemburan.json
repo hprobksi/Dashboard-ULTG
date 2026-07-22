@@ -1,0 +1,102 @@
+[
+  {
+    "id": "LBR-1784383068934-1",
+    "nomorSpl": "0973.SPL/SDM.06.01/UPTBKSI/2026",
+    "tanggalSurat": "2026-07-18",
+    "tanggalLembur": "2026-07-18",
+    "mulai": "08:00",
+    "selesai": "10:00",
+    "durasi": 2,
+    "pegawai": {
+      "nama": "ADI GUNA ARSA",
+      "nip": "9717051TBY",
+      "pog": "10",
+      "peg": "10",
+      "jabatan": "JTC JAR TRANS GI",
+      "bidang": "SIE JAR TRANS GI (GI TAMBUN DAN TOYOGIRI)"
+    },
+    "unitInduk": "UIT JBT",
+    "unitPelaksana": "UPT BEKASI",
+    "namaPekerjaan": "Monitoring Penggantian Ct Phasa T Bay Cikarang Listrindo 2",
+    "jenisPekerjaan": "Pekerjaan di luar jam kerja yang tidak meninggalkan tugas pokok",
+    "subKategori": "Pekerjaan Keandalan",
+    "kategori": "Pekerjaan terencana yang dilakukan di luar hari kerja berdasarkan justifikasi pengelola sistem/pemilik aset",
+    "jenisAction": "Preventive Action",
+    "jenisHari": "Hari Kerja Normal",
+    "sppd": "Tanpa SPPD",
+    "lokasi": "GI Cikarang",
+    "koordinator": "Saepul Rohmat",
+    "rincian": "Monitoring Penggantian Ct Phasa T Bay Cikarang Listrindo 2",
+    "evaluasi": "",
+    "kejadianPenting": "Pekerjaan berjalan aman dan lancar.",
+    "kegiatan": [
+      "Safety Briefing",
+      "Pelaksanaan pekerjaan sesuai instruksi",
+      "Closing Briefing"
+    ],
+    "docs": {
+      "perencanaan": "Ada",
+      "perintah": "Ada",
+      "persetujuan": "Ada",
+      "laporan": "Ada"
+    },
+    "signers": {
+      "mupt": "INDRA KURNIAWAN",
+      "muptJabatan": "MUPT BEKASI",
+      "multg": "TRIAWAN AZHARY P. N.",
+      "multgJabatan": "MULTG BEKASI"
+    },
+    "createdAt": "2026-07-18T13:57:48.939Z",
+    "updatedAt": "2026-07-20T09:41:24.093Z"
+  },
+  {
+    "id": "LBR-1784383068934-2",
+    "nomorSpl": "0974.SPL/SDM.06.01/UPTBKSI/2026",
+    "tanggalSurat": "2026-07-18",
+    "tanggalLembur": "2026-07-18",
+    "mulai": "08:00",
+    "selesai": "10:00",
+    "durasi": 2,
+    "pegawai": {
+      "nama": "AHMAD YAZID AL BASTOMY",
+      "nip": "9009077P3B",
+      "pog": "11",
+      "peg": "12",
+      "jabatan": "TL HAR JAR TRANS",
+      "bidang": "SIE HAR RING"
+    },
+    "unitInduk": "UIT JBT",
+    "unitPelaksana": "UPT BEKASI",
+    "namaPekerjaan": "Monitoring Penggantian Ct Phasa T Bay Cikarang Listrindo 2",
+    "jenisPekerjaan": "Pekerjaan di luar jam kerja yang tidak meninggalkan tugas pokok",
+    "subKategori": "Pekerjaan Keandalan",
+    "kategori": "Pekerjaan terencana yang dilakukan di luar hari kerja berdasarkan justifikasi pengelola sistem/pemilik aset",
+    "jenisAction": "Preventive Action",
+    "jenisHari": "Hari Kerja Normal",
+    "sppd": "Tanpa SPPD",
+    "lokasi": "GI Cikarang",
+    "koordinator": "Saepul Rohmat",
+    "rincian": "Monitoring Penggantian Ct Phasa T Bay Cikarang Listrindo 2",
+    "evaluasi": "",
+    "kejadianPenting": "Pekerjaan berjalan aman dan lancar.",
+    "kegiatan": [
+      "Safety Briefing",
+      "Pelaksanaan pekerjaan sesuai instruksi",
+      "Closing Briefing"
+    ],
+    "docs": {
+      "perencanaan": "Ada",
+      "perintah": "Ada",
+      "persetujuan": "Ada",
+      "laporan": "Ada"
+    },
+    "signers": {
+      "mupt": "INDRA KURNIAWAN",
+      "muptJabatan": "MUPT BEKASI",
+      "multg": "TRIAWAN AZHARY P. N.",
+      "multgJabatan": "MULTG BEKASI"
+    },
+    "createdAt": "2026-07-18T13:57:48.939Z",
+    "updatedAt": "2026-07-20T09:41:24.093Z"
+  }
+]

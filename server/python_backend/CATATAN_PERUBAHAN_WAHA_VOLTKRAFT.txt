@@ -1,0 +1,280 @@
+CATATAN PERUBAHAN WAHA VOLTKRAFT
+Dibuat: 2026-06-02
+
+Tujuan perubahan
+----------------
+Menambahkan dukungan WhatsApp Gateway skema baru memakai WAHA tanpa menghapus
+jalur MPWA lama. Default sistem tetap MPWA sampai konfigurasi mode diubah ke
+WAHA.
+
+File yang berubah / ditambahkan
+-------------------------------
+1. api.py
+   - Menambahkan konfigurasi:
+     WHATSAPP_GATEWAY_MODE
+     WAHA_BASE_URL
+     WAHA_API_KEY
+     WAHA_SESSION
+     WAHA_CHAT_ID
+     WAHA_SEND_TEXT_PATH
+   - Menambahkan helper:
+     whatsapp_gateway_mode()
+     is_whatsapp_waha_gateway()
+     is_whatsapp_mpwa_gateway()
+     build_mpwa_text_payload()
+     build_waha_text_payload()
+     build_whatsapp_text_payload()
+     post_mpwa_whatsapp_payload()
+     post_waha_whatsapp_payload()
+   - send_whatsapp_notification() tetap menjadi pintu utama.
+   - Mode MPWA tetap default.
+   - Mode WAHA aktif hanya jika WHATSAPP_GATEWAY_MODE=waha.
+   - WHATSAPP_GATEWAY_MODE sekarang juga bisa dibaca dari
+     whatsapp_gateway_mode.txt.
+   - Retry reconnect lama hanya dijalankan untuk MPWA.
+
+2. test_waha_whatsapp_notification.py
+   - Script test manual untuk kirim pesan WhatsApp via WAHA.
+   - Memaksa WHATSAPP_GATEWAY_MODE=waha hanya untuk proses test.
+   - Tidak menjalankan polling peralatan.
+   - Tidak mengubah konfigurasi server.
+
+3. WAHA_CONFIG_CONTOH.txt
+   - Contoh file konfigurasi WAHA.
+   - Menjelaskan waha_base_url.txt, waha_session.txt, waha_chat_id.txt,
+     dan waha_api_key.txt.
+
+4. SETUP-WAHA-VOLTKRAFT-SERVER.ps1
+   - Script semi-otomatis untuk server kantor.
+   - Menjalankan container WAHA via Docker.
+   - Membuat file config waha_*.txt dan whatsapp_gateway_mode.txt.
+   - Tidak menimpa database.
+
+5. DAFTAR_UPDATE_SERVER_KANTOR_WAHA.txt
+   - Daftar file yang perlu dicopy ke server kantor.
+   - Daftar file yang jangan ditimpa.
+   - Langkah update ringkas.
+
+File konfigurasi WAHA yang nanti bisa dibuat di server
+------------------------------------------------------
+waha_base_url.txt
+waha_session.txt
+waha_chat_id.txt
+waha_api_key.txt
+
+Contoh isi:
+
+waha_base_url.txt:
+http://localhost:3000
+
+waha_session.txt:
+default
+
+waha_chat_id.txt:
+120363xxxxxxxxxxxx@g.us
+
+waha_api_key.txt:
+opsional, hanya jika WAHA memakai API key
+
+Cara mengaktifkan WAHA
+----------------------
+Set environment atau config:
+
+WHATSAPP_GATEWAY_MODE=waha
+
+Atau buat file:
+
+whatsapp_gateway_mode.txt
+
+dengan isi:
+
+waha
+
+Jika tidak diset, sistem tetap memakai mode default:
+
+WHATSAPP_GATEWAY_MODE=mpwa
+
+Validasi yang sudah dijalankan
+------------------------------
+.venv\Scripts\python.exe -m py_compile .\api.py .\test_waha_whatsapp_notification.py
+
+Status test kirim WAHA
+----------------------
+Belum dijalankan karena WAHA belum dipastikan aktif dan chat ID grup WhatsApp
+WAHA belum tersedia. Untuk test manual setelah WAHA aktif:
+
+.venv\Scripts\python.exe .\test_waha_whatsapp_notification.py
+
+File yang perlu dibawa ke server kantor saat update
+---------------------------------------------------
+api.py
+test_waha_whatsapp_notification.py
+WAHA_CONFIG_CONTOH.txt
+CATATAN_PERUBAHAN_WAHA_VOLTKRAFT.txt
+SETUP-WAHA-VOLTKRAFT-SERVER.ps1
+DAFTAR_UPDATE_SERVER_KANTOR_WAHA.txt
+
+File yang jangan asal ditimpa saat update
+-----------------------------------------
+*.db
+*.db-wal
+*.db-shm
+whatsapp_*.txt
+telegram_*.txt
+telegram_listener_token.txt
+telegram_webhook_secret.txt
+telegram_supabase_webhook_url.txt
+waha_*.txt
+session/data runtime WAHA
+
+Catatan migrasi server kantor
+-----------------------------
+1. Install/jalankan WAHA di server kantor.
+2. Scan QR WhatsApp dan pastikan session aktif.
+3. Ambil chat ID grup WhatsApp WAHA.
+4. Isi waha_base_url.txt, waha_session.txt, dan waha_chat_id.txt.
+5. Aktifkan mode WAHA.
+6. Jalankan test_waha_whatsapp_notification.py.
+7. Jika test berhasil, restart server VoltKraft.
+8. MPWA lama jangan dijalankan bersamaan dengan WAHA memakai nomor yang sama.
+
+Update 2026-06-02 - WAHA Lokal Berjalan
+---------------------------------------
+Docker tersedia dan container WAHA sudah dijalankan dengan nama:
+
+voltkraft-waha
+
+Port:
+
+localhost:3000
+
+API key lokal:
+
+voltkraft-waha-local-key
+
+Dashboard login:
+
+Username = admin
+Password = voltkraft-waha-local-key
+
+Status:
+Dashboard http://localhost:3000/dashboard sudah bisa login.
+
+Catatan:
+Kredensial ini untuk test lokal. Untuk server kantor nanti sebaiknya pakai
+API key dan dashboard password yang berbeda.
+
+Update 2026-06-02 - Session WAHA Working dan Config Lokal
+---------------------------------------------------------
+Session WAHA default sudah berhasil ditautkan dan statusnya WORKING.
+
+Ditemukan grup WhatsApp lama dari whatsapp_group_number.txt:
+
+120363427024048580@g.us
+
+File config WAHA lokal sudah dibuat:
+
+waha_base_url.txt = http://localhost:3000
+waha_session.txt = default
+waha_api_key.txt = voltkraft-waha-local-key
+waha_chat_id.txt = 120363427024048580@g.us
+
+Catatan:
+Config ini untuk test lokal. Saat migrasi ke server kantor, isi waha_api_key.txt
+dan dashboard password WAHA sebaiknya diganti dengan nilai produksi.
+
+Update 2026-06-02 - Test Kirim WAHA Berhasil
+--------------------------------------------
+Script test_waha_whatsapp_notification.py sudah dijalankan dari folder project:
+
+.\.venv\Scripts\python.exe .\test_waha_whatsapp_notification.py
+
+Pesan berhasil terkirim ke grup WhatsApp:
+
+TEST WAHA VOLTKRAFT
+PESAN UJI COBA
+02-06-2026 23:08:43.000
+
+MODUL    : WHATSAPP WAHA
+STATUS   : TEST KONEKSI
+
+Status:
+
+WAHA lokal -> grup WhatsApp berhasil.
+
+Update 2026-06-02 - Otomasi Server Kantor
+-----------------------------------------
+Ditambahkan script:
+
+SETUP-WAHA-VOLTKRAFT-SERVER.ps1
+
+Script ini dapat dipakai di server kantor untuk:
+
+1. Menjalankan container Docker WAHA.
+2. Membuat file config waha_*.txt.
+3. Membuat whatsapp_gateway_mode.txt dengan isi waha.
+4. Memberi instruksi scan QR dan test kirim.
+
+Hal yang tetap manual:
+
+1. Memastikan MPWA lama mati jika memakai nomor WhatsApp yang sama.
+2. Scan QR WhatsApp.
+3. Restart server VoltKraft setelah test WAHA berhasil.
+
+Update 2026-06-02 - Paket Gabungan WAHA + Telegram
+---------------------------------------------------
+Ditambahkan file:
+
+APPLY-UPDATE-WA-TELEGRAM.ps1
+BUAT-PAKET-UPDATE-WA-TELEGRAM.ps1
+RUNBOOK_UPDATE_SERVER_KANTOR_WA_TELEGRAM.md
+
+Fungsi:
+
+1. Membuat paket update gabungan WAHA + Telegram/Supabase.
+2. Apply update di server kantor dengan backup otomatis.
+3. Tidak menimpa database, token, secret, config WhatsApp, config WAHA,
+   config Telegram, dan file runtime.
+4. Memberikan panduan lengkap step by step untuk update server kantor.
+
+Cara membuat paket:
+
+powershell -ExecutionPolicy Bypass -File .\BUAT-PAKET-UPDATE-WA-TELEGRAM.ps1
+
+Cara apply di server kantor:
+
+powershell -ExecutionPolicy Bypass -File .\APPLY-UPDATE-WA-TELEGRAM.ps1 -ProjectDir "C:\Path\Ke\DC_Monitoring"
+
+Validasi paket gabungan:
+
+1. PowerShell syntax OK untuk APPLY-UPDATE-WA-TELEGRAM.ps1 dan
+   BUAT-PAKET-UPDATE-WA-TELEGRAM.ps1.
+2. Python compile OK untuk api.py, test_telegram_notification.py,
+   test_supabase_notification.py, dan test_waha_whatsapp_notification.py.
+3. Paket final berhasil dibuat:
+
+release-packages\update-wa-telegram-YYYYMMDD-HHMMSS
+
+4. Isi paket sudah dicek: tidak ada database, token, secret, config runtime
+   Telegram, config runtime WAHA, atau config WhatsApp lama.
+5. APPLY-UPDATE-WA-TELEGRAM.ps1 berhasil dites ke folder dummy.
+
+Update 2026-06-03 - Fanout Telegram dan Supabase Edge
+-----------------------------------------------------
+api.py diperbarui agar notifikasi normal yang masuk lewat
+send_whatsapp_notification() juga mencoba mengirim ke:
+
+1. Telegram grup memakai Bot pengirim VoltKraft.
+2. Supabase Edge Function telegram-to-supabase via POST direct.
+
+Pengaman:
+
+1. Retry outbox WhatsApp memakai fanout_secondary=False agar Telegram dan
+   Supabase tidak terkirim dobel saat WA retry.
+2. test_waha_whatsapp_notification.py memakai fanout_secondary=False agar test
+   WAHA hanya menguji WhatsApp.
+
+Catatan:
+
+Jalur WhatsApp WAHA tetap tidak diubah selain tambahan fanout ini.
+

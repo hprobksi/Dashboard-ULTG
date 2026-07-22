@@ -1,0 +1,1 @@
+https://zavtvdaqpkoblmbbessl.supabase.co/functions/v1/telegram-to-supabase

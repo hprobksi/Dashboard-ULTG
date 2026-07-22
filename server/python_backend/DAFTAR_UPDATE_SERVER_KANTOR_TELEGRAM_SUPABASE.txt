@@ -1,0 +1,164 @@
+DAFTAR UPDATE SERVER KANTOR - TELEGRAM SUPABASE
+Dibuat: 2026-06-02
+
+Tujuan
+------
+Membawa perubahan Telegram dan skema direct VoltKraft -> Supabase Edge Function ke server kantor
+dengan aman, tanpa menimpa database, token, dan config sensitif.
+
+File kode/dokumen yang perlu dicopy
+-----------------------------------
+api.py
+test_telegram_notification.py
+test_supabase_notification.py
+setup_telegram_supabase_webhook.ps1
+APPLY-UPDATE-TELEGRAM-SUPABASE.ps1
+BUAT-PAKET-UPDATE-TELEGRAM-SUPABASE.ps1
+SUPABASE_SCHEMA_NOTIFICATIONS.sql
+PANDUAN_TELEGRAM_KE_SUPABASE.md
+CATATAN_PERUBAHAN_TELEGRAM_VOLTKRAFT.txt
+DAFTAR_UPDATE_SERVER_KANTOR_TELEGRAM_SUPABASE.txt
+supabase\config.toml
+supabase\functions\telegram-to-supabase\index.ts
+
+File config/token yang harus dicek manual di server kantor
+---------------------------------------------------------
+telegram_token.txt
+  Token Bot pengirim VoltKraft.
+
+telegram_listener_token.txt
+  Token Bot Listener. Sekarang hanya cadangan/debug, bukan jalur utama Supabase.
+
+telegram_chat_id.txt
+  Tujuan kirim Telegram. Untuk grup test sebelumnya:
+  -5133586778
+
+telegram_webhook_secret.txt
+  Secret webhook. Harus sama dengan TELEGRAM_WEBHOOK_SECRET di Supabase.
+
+telegram_supabase_webhook_url.txt
+  URL Edge Function:
+  https://zavtvdaqpkoblmbbessl.supabase.co/functions/v1/telegram-to-supabase
+
+File yang jangan ditimpa otomatis
+---------------------------------
+*.db
+*.db-wal
+*.db-shm
+whatsapp_*.txt
+waha_*.txt
+telegram_*.txt
+telegram_listener_token.txt
+telegram_webhook_secret.txt
+telegram_supabase_webhook_url.txt
+supabase_api_key.txt
+supabase_url.txt
+kredensial.json
+voltkraf_admin_credentials.json
+daftar_gi.json
+*.scd
+
+Cara membuat paket update dari laptop pengembangan
+-------------------------------------------------
+Jalankan dari folder project lokal:
+
+cd C:\Users\rhard\Documents\DC_Monitoring
+powershell -ExecutionPolicy Bypass -File .\BUAT-PAKET-UPDATE-TELEGRAM-SUPABASE.ps1
+
+Hasil paket dibuat di:
+
+release-packages\update-telegram-supabase-YYYYMMDD-HHMMSS
+
+Copy folder paket tersebut ke server kantor.
+
+Cara apply update di server kantor
+----------------------------------
+Misal folder server kantor berada di:
+
+C:\Users\rhard\Documents\DC_Monitoring
+
+Dan folder paket ada di:
+
+C:\Users\rhard\Downloads\update-telegram-supabase-YYYYMMDD-HHMMSS
+
+Jalankan:
+
+cd C:\Users\rhard\Downloads\update-telegram-supabase-YYYYMMDD-HHMMSS
+powershell -ExecutionPolicy Bypass -File .\APPLY-UPDATE-TELEGRAM-SUPABASE.ps1 -ProjectDir C:\Users\rhard\Documents\DC_Monitoring
+
+Script akan:
+1. Backup file lama ke folder backups\telegram-supabase-update-YYYYMMDD-HHMMSS.
+2. Copy file kode/dokumen baru.
+3. Tidak menimpa database/token/config sensitif.
+
+Validasi setelah update
+-----------------------
+Jalankan dari folder server VoltKraft:
+
+cd C:\Users\rhard\Documents\DC_Monitoring
+.\.venv\Scripts\python.exe -m py_compile .\api.py .\test_telegram_notification.py .\test_supabase_notification.py
+
+Set config Telegram server kantor
+---------------------------------
+Jika ingin server kantor kirim Telegram ke grup:
+
+Set-Content -LiteralPath .\telegram_chat_id.txt -Value "-5133586778" -NoNewline
+
+Pastikan file ini ada:
+
+telegram_token.txt
+telegram_listener_token.txt
+telegram_webhook_secret.txt
+telegram_supabase_webhook_url.txt
+
+Aktifkan webhook Bot Listener
+-----------------------------
+Langkah ini opsional/cadangan. Jalur utama Supabase sekarang adalah POST direct
+dari server VoltKraft ke Edge Function.
+
+Jalankan dari folder server VoltKraft:
+
+powershell -ExecutionPolicy Bypass -File .\setup_telegram_supabase_webhook.ps1 -BotTokenPath .\telegram_listener_token.txt
+
+Cek webhook listener:
+
+$botToken = (Get-Content -LiteralPath .\telegram_listener_token.txt -Raw).Trim()
+Invoke-RestMethod -Uri "https://api.telegram.org/bot$botToken/getWebhookInfo"
+
+Test kirim Telegram
+-------------------
+Jalankan:
+
+.\.venv\Scripts\python.exe .\test_telegram_notification.py
+
+Untuk test ke grup, pastikan telegram_chat_id.txt berisi chat ID grup.
+
+Test direct Supabase Edge Function
+----------------------------------
+Jalankan:
+
+.\.venv\Scripts\python.exe .\test_supabase_notification.py
+
+Output yang diharapkan:
+
+[SUPABASE EDGE] Notifikasi terkirim ke Edge Function.
+Supabase Edge Function test notification sent.
+
+Cek Supabase
+------------
+Di Supabase SQL Editor:
+
+select *
+from public.voltkraft_notifications
+order by created_at desc
+limit 20;
+
+Catatan penting
+---------------
+1. Bot pengirim dan Bot Listener sebaiknya berbeda jika listener tetap dipakai untuk debug.
+2. Bot Listener tidak menjadi jalur utama Supabase.
+3. Skema utama Supabase adalah server VoltKraft POST direct ke Edge Function.
+4. Service role key Supabase disimpan di Supabase secret:
+   PANDUGIXVOLTKRAFT_SERVICE_ROLE_KEY
+5. Service role key tidak perlu ditaruh di server VoltKraft.
+6. telegram_webhook_secret.txt harus sama dengan TELEGRAM_WEBHOOK_SECRET di Supabase.

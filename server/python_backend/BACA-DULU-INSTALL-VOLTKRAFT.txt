@@ -1,0 +1,90 @@
+PANDUAN SINGKAT INSTALL VOLTKRAFT SERVER KANTOR
+================================================
+
+Pakai paket ini untuk memindahkan VoltKraft ke laptop/PC standby di kantor,
+terutama laptop yang juga terhubung ke gateway WhatsApp.
+
+Untuk panduan yang lebih detail, buka file:
+
+   PANDUAN-LENGKAP-INSTALL-UPDATE-VOLTKRAFT.txt
+
+LANGKAH INSTALL PALING MUDAH
+---------------------------
+1. Extract ZIP ini di laptop kantor.
+2. Klik file:
+
+   KLIK-INSTALL-VOLTKRAFT-SERVER-KANTOR.cmd
+
+3. Jika muncul UAC/Administrator untuk firewall, pilih "Yes".
+4. Tunggu sampai proses selesai.
+5. Dashboard otomatis berjalan di:
+
+   http://localhost:8000
+
+6. Untuk akses dari PC lain di jaringan kantor, gunakan IP laptop kantor:
+
+   http://IP-LAPTOP-KANTOR:8000
+
+Contoh:
+
+   http://192.168.110.153:8000
+
+CATATAN PENTING
+---------------
+- Jalankan hanya 1 server VoltKraft yang aktif.
+- Setelah laptop kantor sudah aktif, matikan server VoltKraft di laptop lama.
+- Ini mencegah polling dobel dan notifikasi WhatsApp dobel.
+- Installer akan mencoba membuka firewall TCP 8000 melalui prompt Administrator.
+- Jika laptop belum punya Python, installer akan memasang Python 3.12 dari paket ini.
+- Dependency backend sudah disiapkan di dalam paket. Jika paket dependency lokal tidak cocok, installer akan mencoba download otomatis via pip.
+- Dashboard frontend sudah dibuild di dalam paket, jadi Node.js tidak diperlukan untuk menjalankan server.
+- Jika akses dari PC lain masih gagal, cek firewall Windows dan routing jaringan.
+
+UPDATE APLIKASI SETELAH PINDAH SERVER
+-------------------------------------
+Jika nanti ada paket update baru:
+
+1. Extract ZIP update baru.
+2. Klik:
+
+   KLIK-UPDATE-VOLTKRAFT-SERVER-KANTOR.cmd
+
+Update ini aman karena:
+
+- database tidak ditimpa,
+- setting WhatsApp tidak ditimpa,
+- credential login tidak ditimpa,
+- mapping dan file SCD tidak ditimpa,
+- backup otomatis dibuat di folder:
+
+   %USERPROFILE%\VoltKraft\backups
+
+FILE DATA YANG DIPERTAHANKAN SAAT UPDATE
+----------------------------------------
+*.db
+*.db-wal
+*.db-shm
+whatsapp_*.txt
+telegram_*.txt
+pme_*.txt
+pme_pqm_sources.json
+voltkraf_admin_credentials.json
+kredensial.json
+daftar_gi.json
+alarms_log.json
+trend_data.json
+*.scd
+
+TOMBOL MANUAL TAMBAHAN
+----------------------
+START-VOLTKRAF-SERVER-LAN.cmd
+  Menjalankan server mode LAN.
+
+STOP-VOLTKRAF-LOCALHOST.cmd
+  Menghentikan server.
+
+ENABLE-VOLTKRAF-AUTOSTART-LAN.cmd
+  Mengaktifkan server otomatis saat Windows login.
+
+DISABLE-VOLTKRAF-AUTOSTART.cmd
+  Menonaktifkan autostart.

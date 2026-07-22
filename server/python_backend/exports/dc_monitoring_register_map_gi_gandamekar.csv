@@ -1,0 +1,5 @@
+device_name,ip,protocol,port,slave_id,function_code,pymodbus_address,modbus_register_start,modbus_register_end,register_index_start,register_index_end,tag_key,tag_name,unit,data_type,word_count,byte_order,word_order,scale,notes
+GI Gandamekar,172.20.20.31,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Gandamekar,172.20.20.31,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Gandamekar,172.20.20.31,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Gandamekar,172.20.20.31,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40

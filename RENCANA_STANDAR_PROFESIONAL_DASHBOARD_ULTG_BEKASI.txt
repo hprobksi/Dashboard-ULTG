@@ -1,0 +1,736 @@
+RENCANA STANDAR PROFESIONAL WEB DASHBOARD ULTG BEKASI
+Tanggal draft: 19 Juli 2026
+Status: Draft awal untuk arah pengembangan, belum mengikat sebagai desain teknis final.
+
+======================================================================
+1. TUJUAN UTAMA
+======================================================================
+
+Dashboard ULTG Bekasi diarahkan menjadi portal kerja internal yang rapi,
+cepat, aman, dan mudah dipakai oleh seluruh bidang ULTG:
+
+1. HARGI: pemeliharaan gardu induk, jadwal, anomali, dokumen, aset.
+2. HARPRO: proteksi, relay, program kerja, anomali, laporan.
+3. HARJAR: jaringan/transmisi, pekerjaan, gangguan, inspeksi.
+4. K3: pelaporan K3, izin kerja, inspeksi, dokumen keselamatan.
+5. ADMUM: pegawai, lemburan, natura/SPP, perkap/logistik, administrasi.
+6. Manajemen ULTG: rekap seluruh bidang, status pekerjaan, KPI, arsip.
+
+Prinsip besar:
+- Satu portal, banyak modul.
+- Satu master data pegawai, aset, gardu, bidang, dokumen.
+- Satu standar tampilan dan komponen UI.
+- Satu standar keamanan, audit, backup, dan hak akses.
+- Import/export dokumen harus stabil untuk puluhan sampai ratusan file.
+- Fungsi kerja lapangan dan administrasi harus cepat, tidak berat, dan
+  tetap nyaman dipakai oleh non-programmer.
+
+======================================================================
+2. ACUAN STANDAR DAN PRAKTIK BAIK
+======================================================================
+
+Catatan penting:
+Dashboard ULTG Bekasi bukan otomatis "bersertifikat nasional" hanya karena
+mengikuti rencana ini. Agar resmi tersertifikasi, tetap perlu audit internal,
+audit keamanan, dokumen SOP, dan persetujuan organisasi. Namun rencana ini
+disusun agar selaras dengan standar/praktik yang umum dipakai.
+
+Acuan nasional dan internasional yang disarankan:
+
+1. SPBE - Perpres 95 Tahun 2018
+   Relevan sebagai pola tata kelola layanan digital: arsitektur, integrasi,
+   manajemen risiko, layanan, keamanan, dan evaluasi.
+
+2. Satu Data Indonesia - Perpres 39 Tahun 2019
+   Relevan untuk master data: data pegawai, aset, gardu, dokumen, kode
+   referensi, metadata, dan interoperabilitas.
+
+3. UU Perlindungan Data Pribadi - UU 27 Tahun 2022
+   Relevan karena dashboard menyimpan nama pegawai, NIP, jabatan, jadwal,
+   dokumen administrasi, dan kemungkinan data pribadi lainnya.
+
+4. SNI ISO/IEC 27001 atau ISO/IEC 27001
+   Relevan sebagai acuan Sistem Manajemen Keamanan Informasi: kontrol akses,
+   klasifikasi data, risiko, backup, audit, dan insiden.
+
+5. OWASP ASVS dan OWASP Top 10
+   Relevan sebagai checklist keamanan teknis aplikasi web dan API.
+
+6. WCAG 2.2 minimal level AA
+   Relevan agar tampilan mudah dibaca, bisa dipakai keyboard, kontras aman,
+   dan form tidak membingungkan.
+
+7. ISO/IEC 25010
+   Relevan sebagai acuan kualitas software: functional suitability,
+   performance efficiency, compatibility, usability, reliability, security,
+   maintainability, portability.
+
+======================================================================
+3. ARAH ARSITEKTUR TARGET
+======================================================================
+
+Kondisi sekarang:
+- Frontend React + Vite.
+- Banyak fungsi masih hidup di sisi frontend dan backend lokal Vite.
+- Data sebagian memakai file lokal JSON/Excel dan modul project lama.
+- Cocok untuk prototipe dan pengembangan cepat.
+
+Target profesional:
+
+Frontend:
+- React tetap bisa dipakai.
+- Gunakan routing modular per domain.
+- Pisahkan komponen UI bersama: Button, Table, Modal, FormField,
+  PageHeader, DataToolbar, UploadDropzone, EmptyState, StatusBadge.
+- Terapkan code splitting agar modul besar tidak membuat dashboard berat.
+
+Backend:
+- Pisahkan backend dari Vite dev server.
+- Gunakan Node.js API server yang jelas, misalnya Express, Fastify, atau
+  NestJS. Untuk skala jangka panjang, NestJS paling rapi karena modular.
+- Semua endpoint API memakai validasi input, autentikasi, otorisasi,
+  audit log, dan error response standar.
+
+Database:
+- Gunakan PostgreSQL sebagai database utama.
+- Gunakan Prisma atau ORM sejenis untuk skema database yang jelas.
+- File JSON lokal dipakai hanya untuk development, bukan produksi.
+
+File storage:
+- Dokumen PDF, Word, Excel, foto, dan hasil export disimpan di folder
+  storage terstruktur atau object storage internal.
+- Database menyimpan metadata file, bukan file besar langsung di kolom DB.
+- Struktur contoh:
+  storage/
+    documents/{domain}/{tahun}/{bulan}/
+    exports/{domain}/{tahun}/{bulan}/
+    imports/{domain}/{tahun}/{bulan}/
+    templates/{domain}/
+
+Worker / queue:
+- Export PDF/Excel puluhan atau ratusan file jangan diproses langsung di
+  request utama.
+- Gunakan job queue: user klik export, sistem membuat job, proses di
+  background, lalu hasilnya bisa diunduh.
+- Ini mencegah browser freeze dan server terasa berat.
+
+Rekomendasi target sederhana:
+Frontend React + Vite/Next, Backend NestJS/Fastify, PostgreSQL + Prisma,
+Redis/BullMQ untuk job export, storage terstruktur, Nginx reverse proxy.
+
+======================================================================
+4. STRUKTUR MODUL DASHBOARD
+======================================================================
+
+Level 1: Portal utama
+- Dashboard ULTG: ringkasan pekerjaan, aset, anomali, dokumen, lemburan,
+  natura, logistik, K3.
+- Notifikasi pekerjaan mendekati jatuh tempo.
+- Aktivitas terbaru.
+- Status import/export.
+
+Level 2: Domain/bidang
+- HARGI
+- HARPRO
+- HARJAR
+- K3
+- ADMUM
+
+Level 3: Sub-menu standar per bidang
+Setiap bidang sebaiknya punya pola yang sama:
+1. Overview
+2. Input / Form
+3. Jadwal / Program Kerja
+4. Anomali / Temuan
+5. Dokumen / Arsip
+6. Master Data khusus bidang
+7. Export / Laporan
+
+Contoh ADMUM:
+- Dashboard ADMUM
+- Data Pegawai
+- Lemburan
+- Natura/SPP
+- Perkap/Logistik
+- Surat/Dokumen Administrasi
+- Rekap Bulanan
+
+Contoh HARPRO:
+- Dashboard HARPRO
+- Master Relay/Proteksi
+- Program Kerja
+- Input Hasil Pemeliharaan
+- Anomali Relay
+- Dokumen BA/LKS
+- Export Laporan
+
+Contoh HARGI:
+- Dashboard HARGI
+- Master Gardu/Peralatan
+- Jadwal Pemeliharaan
+- Anomali Gardu
+- Dokumen Gardu
+- Export Laporan
+
+Contoh K3:
+- Dashboard K3
+- Inspeksi K3
+- Izin Kerja / Permit
+- Temuan K3
+- Dokumentasi Inspeksi
+- Statistik Safety
+
+======================================================================
+5. STANDAR TAMPILAN / UI UX
+======================================================================
+
+Karakter dashboard:
+- Bukan landing page.
+- Bukan halaman promosi.
+- Harus work-focused: padat, rapi, cepat dipindai, konsisten.
+- Pengguna utama adalah pegawai operasional dan administrasi.
+
+Layout standar:
+- Header atas: identitas aplikasi, domain aktif, user, notifikasi.
+- Sidebar kiri: menu domain dan sub-menu.
+- Main content: page header, filter/action bar, data table/form/dashboard.
+- Footer kecil: versi aplikasi, status sinkronisasi, status server.
+
+Standar visual:
+- Warna utama PLN: biru dan aksen kuning/teal secukupnya.
+- Background abu muda.
+- Card hanya untuk panel data, bukan terlalu banyak dekorasi.
+- Radius konsisten 8 sampai 12 px.
+- Font minimal 14 px untuk data, 16 px untuk body penting.
+- Hindari teks terlalu kecil dan warna abu terlalu pudar.
+- Hindari emoji sebagai ikon menu; gunakan icon set konsisten.
+
+Standar halaman dashboard:
+- Ringkasan KPI di atas.
+- Grafik hanya bila membantu keputusan.
+- Tabel utama harus bisa search, filter, sort, pagination, export.
+- Empty state jelas: "Belum ada data", plus tombol aksi bila perlu.
+
+Standar form:
+- Form panjang dibuat per section atau step.
+- Label selalu terlihat.
+- Field wajib ditandai.
+- Validasi muncul dekat field.
+- Ada autosave draft untuk form panjang.
+- Ada preview sebelum generate dokumen.
+- Ada tombol Simpan, Preview, Export PDF/Excel sesuai konteks.
+- Field master data memakai dropdown/searchable select.
+- Hindari input manual bila data bisa diambil dari master.
+
+Standar tabel:
+- Header sticky bila data panjang.
+- Kolom aksi konsisten: Detail/Edit/PDF/Excel/Hapus.
+- Hapus selalu pakai konfirmasi.
+- Bulk action memakai checkbox.
+- Baris terpilih diberi highlight.
+- Data ratusan baris gunakan pagination atau virtualization.
+
+Standar aksesibilitas:
+- Kontras warna minimal sesuai WCAG AA.
+- Semua tombol icon-only harus punya tooltip/aria-label.
+- Bisa dipakai keyboard.
+- Fokus terlihat.
+- Tidak mengandalkan warna saja untuk status.
+
+======================================================================
+6. STANDAR FRONTEND
+======================================================================
+
+Struktur frontend disarankan:
+src/
+  app/
+    routes/
+    layout/
+  domains/
+    admum/
+    hargi/
+    harpro/
+    harjar/
+    k3/
+  components/
+    ui/
+    data-table/
+    forms/
+    charts/
+    documents/
+  services/
+    api/
+    auth/
+    storage/
+  hooks/
+  utils/
+  styles/
+
+Prinsip:
+- Satu domain satu folder.
+- Komponen umum jangan ditulis ulang di tiap halaman.
+- Semua API call lewat satu client service, bukan fetch acak di halaman.
+- State lokal untuk form kecil, state manager/cache untuk data server.
+- Gunakan error boundary agar satu modul rusak tidak menjatuhkan seluruh app.
+- Lazy load modul yang berat.
+- Hindari import library besar di halaman utama.
+
+Hal yang perlu dibuat:
+1. Design system internal.
+2. Komponen DataTable standar.
+3. Komponen FormEngine untuk form administrasi.
+4. Komponen DocumentPreview untuk PDF/Word.
+5. Komponen ImportWizard.
+6. Komponen ExportJobPanel.
+7. Komponen AuditTimeline.
+8. Komponen FileManager.
+
+======================================================================
+7. STANDAR BACKEND DAN API
+======================================================================
+
+Backend harus menjadi pusat logika, bukan frontend.
+
+Standar API:
+- Semua endpoint diberi prefix: /api/v1/
+- Response sukses konsisten:
+  { success: true, data, meta }
+- Response gagal konsisten:
+  { success: false, error: { code, message, details } }
+- Semua input divalidasi.
+- Semua request penting tercatat di audit log.
+- Endpoint export besar memakai job queue.
+
+Modul backend:
+1. AuthModule
+2. UserModule
+3. RolePermissionModule
+4. EmployeeModule
+5. AssetModule
+6. DocumentModule
+7. ImportModule
+8. ExportModule
+9. NotificationModule
+10. AuditLogModule
+11. Domain modules: Hargi, Harpro, Harjar, K3, Admum.
+
+Contoh endpoint:
+- POST /api/v1/auth/login
+- GET /api/v1/me
+- GET /api/v1/employees
+- POST /api/v1/documents/upload
+- POST /api/v1/imports/excel
+- POST /api/v1/exports/pdf-bulk
+- GET /api/v1/jobs/{id}
+- GET /api/v1/audit-logs
+
+Validasi:
+- Gunakan schema validation, misalnya Zod, Joi, atau class-validator.
+- Jangan percaya data dari frontend.
+- Validasi file type, ukuran, dan isi file.
+- Validasi NIP, tanggal, nomor surat, kode aset, status workflow.
+
+======================================================================
+8. DATABASE DAN MASTER DATA
+======================================================================
+
+Master data wajib:
+1. Pegawai
+   - id, nama, nip, jabatan, bidang, grade, status aktif.
+2. Bidang
+   - HARGI, HARPRO, HARJAR, K3, ADMUM.
+3. Gardu / lokasi
+   - kode, nama, wilayah, tegangan, status.
+4. Peralatan listrik
+   - asset id, nama, tipe, merk, serial, lokasi, bidang pemilik,
+     tanggal operasi, status.
+5. Dokumen
+   - nomor dokumen, domain, jenis, tanggal, file path, versi, status.
+6. Template dokumen
+   - domain, jenis template, versi, file, placeholder.
+7. Import batch
+   - file asal, user, tanggal, hasil validasi, status.
+8. Export job
+   - jenis export, filter, status, hasil file, error log.
+9. Audit log
+   - user, aksi, waktu, modul, data lama, data baru, IP/device.
+
+Prinsip Satu Data:
+- Data pegawai satu sumber.
+- Data gardu satu sumber.
+- Data aset satu sumber.
+- Semua modul mengambil dari master yang sama.
+- Jika ada perubahan master, modul lain otomatis ikut konsisten.
+
+======================================================================
+9. DOKUMEN, IMPORT, DAN EXPORT
+======================================================================
+
+Karena dashboard akan banyak mengolah Word, Excel, PDF, dan scan dokumen,
+bagian ini harus dibuat sangat rapi.
+
+Standar template:
+- Semua template Word/Excel disimpan sebagai master versioned template.
+- Nama template jangan berubah sembarangan.
+- Placeholder dibuat konsisten, misalnya:
+  {{nama_pegawai}}, {{nip}}, {{tanggal}}, {{nomor_surat}}.
+- Template punya versi:
+  SPL_v1.0.docx
+  Natura_Rekap_v1.0.xlsx
+  LKS_BA_v1.0.docx
+
+Standar export:
+- Export kecil boleh langsung.
+- Export besar harus lewat job queue.
+- Hasil export disimpan di storage dan bisa di-download ulang.
+- Ada status: menunggu, diproses, berhasil, gagal.
+- Bila gagal, tampilkan alasan dan log sederhana.
+
+Standar import:
+- Import memakai wizard:
+  1. Upload file.
+  2. Baca preview data.
+  3. Validasi kolom.
+  4. Tampilkan error per baris.
+  5. User konfirmasi.
+  6. Simpan.
+- Jangan langsung memasukkan Excel ke database tanpa preview.
+- Simpan file sumber import sebagai arsip.
+
+Standar PDF:
+- Untuk dokumen resmi, hasil PDF harus mengikuti template 100%.
+- Untuk banyak PDF, gunakan background worker.
+- Untuk print, siapkan ukuran A4/F4 sesuai dokumen.
+- Simpan PDF hasil final untuk audit dan cetak ulang.
+
+======================================================================
+10. KEAMANAN
+======================================================================
+
+Target keamanan minimal:
+- Autentikasi login.
+- Role-based access control.
+- Audit log.
+- HTTPS/TLS.
+- Validasi input.
+- Proteksi upload file.
+- Backup rutin.
+- Secure session.
+- Rate limiting.
+- Error message tidak membocorkan detail server.
+
+Role awal:
+1. Super Admin
+   - semua akses.
+2. Admin ULTG
+   - kelola master data dan semua modul.
+3. Admin Bidang
+   - kelola modul bidangnya.
+4. Operator/Inputer
+   - input data dan dokumen.
+5. Reviewer/Approver
+   - validasi dan approve.
+6. Viewer
+   - lihat dan download sesuai hak akses.
+
+Hak akses contoh:
+- Pegawai ADMUM bisa kelola lemburan/natura/perkap.
+- Pegawai HARPRO bisa kelola relay/anomali HARPRO.
+- Viewer hanya melihat dashboard dan dokumen final.
+- Hapus data dibatasi dan tercatat audit log.
+
+Keamanan upload:
+- Batasi ekstensi: pdf, docx, xlsx, jpg, png sesuai kebutuhan.
+- Batasi ukuran file.
+- Rename file saat disimpan.
+- Jangan pakai nama file user sebagai path.
+- Scan malware bila memungkinkan.
+- Jangan izinkan upload file executable.
+
+Keamanan data pribadi:
+- NIP, nama, jabatan, jadwal, dokumen pegawai dianggap data sensitif.
+- Tampilkan data sesuai role.
+- Audit siapa melihat/mengunduh dokumen penting bila diperlukan.
+- Backup dienkripsi.
+- Data lama punya aturan retensi.
+
+Kontrol teknis OWASP:
+- Password di-hash kuat.
+- Session/JWT punya expiry.
+- CSRF protection bila memakai cookie session.
+- CORS dibatasi.
+- Header keamanan: CSP, HSTS, X-Frame-Options, X-Content-Type-Options.
+- SQL injection dicegah dengan ORM/parameterized query.
+- XSS dicegah dengan escaping dan sanitasi.
+- Broken access control dicegah dengan middleware permission di backend.
+
+======================================================================
+11. PERFORMA DAN KELANCARAN
+======================================================================
+
+Target performa:
+- Halaman utama tampil cepat.
+- Modul besar lazy load.
+- Tabel ratusan/ribuan baris tetap ringan.
+- Export ratusan file tidak membekukan browser.
+- Import Excel besar tidak membuat server mati.
+
+Frontend:
+- Code splitting per domain.
+- Virtualized table untuk data besar.
+- Debounce search.
+- Pagination server-side.
+- Memoization untuk grafik berat.
+- Skeleton loading, bukan spinner kosong terlalu lama.
+- Hindari render semua halaman sekaligus.
+
+Backend:
+- Pagination, filter, sort dilakukan di database.
+- Query diberi index.
+- Export/import di background worker.
+- Cache master data yang sering dibaca.
+- Rate limit endpoint berat.
+- Timeout dan retry untuk proses dokumen.
+
+Database:
+- Index pada tanggal, domain, status, nomor dokumen, pegawai, gardu.
+- Archive table untuk data lama.
+- Backup dan vacuum/maintenance terjadwal.
+
+======================================================================
+12. RELIABILITY, BACKUP, DAN DISASTER RECOVERY
+======================================================================
+
+Backup:
+- Database backup harian.
+- File storage backup harian/mingguan.
+- Simpan minimal 7 harian, 4 mingguan, 12 bulanan bila storage cukup.
+- Uji restore minimal setiap bulan.
+
+Reliability:
+- Health check endpoint.
+- Logging error server.
+- Monitoring storage penuh.
+- Monitoring job export gagal.
+- Mode maintenance.
+
+Audit:
+- Semua create/update/delete dicatat.
+- Download dokumen penting bisa dicatat.
+- Login gagal dicatat.
+- Perubahan role dicatat.
+
+======================================================================
+13. DEPLOYMENT DAN OPERASIONAL
+======================================================================
+
+Untuk produksi internal:
+- Gunakan server khusus atau VM internal.
+- Jangan jalankan produksi dari npm run dev.
+- Gunakan build production.
+- Gunakan reverse proxy Nginx/IIS.
+- HTTPS wajib.
+- Environment variable untuk secret.
+- Jangan simpan token/API key di file terbuka.
+- Pisahkan dev, staging, production.
+
+Pipeline:
+1. Development lokal.
+2. Build.
+3. Test.
+4. Staging.
+5. UAT dengan user bidang.
+6. Production.
+7. Monitoring dan backup.
+
+Dokumentasi operasional:
+- SOP login dan role.
+- SOP input data.
+- SOP import Excel.
+- SOP export PDF/Excel.
+- SOP backup/restore.
+- SOP perubahan template dokumen.
+- SOP penanganan error.
+
+======================================================================
+14. ROADMAP PENGEMBANGAN
+======================================================================
+
+Tahap 1 - Fondasi UI dan struktur data
+- Rapikan desain sistem Dashboard AI.
+- Buat komponen standar: PageHeader, DataTable, FormSection, Modal,
+  ConfirmDialog, Upload, ExportButton.
+- Satukan master pegawai.
+- Tentukan master gardu, bidang, aset, dokumen.
+- Rapikan navigasi domain HARGI, HARPRO, HARJAR, K3, ADMUM.
+
+Tahap 2 - Backend profesional
+- Pisahkan backend dari Vite.
+- Buat API server.
+- Buat database PostgreSQL + Prisma.
+- Migrasi data JSON/Excel penting ke database.
+- Buat auth, role, permission, audit log.
+
+Tahap 3 - Dokumen dan export
+- Buat document/template service.
+- Standarkan template Word/Excel.
+- Buat export job queue.
+- Buat import wizard.
+- Buat arsip dokumen terpusat.
+
+Tahap 4 - Modul bidang
+- Selesaikan ADMUM: pegawai, lemburan, natura, perkap.
+- Selesaikan HARPRO: relay, program kerja, anomali, dokumen.
+- Selesaikan HARGI: gardu, aset, program, anomali.
+- Selesaikan HARJAR.
+- Selesaikan K3.
+
+Tahap 5 - Keamanan dan produksi
+- Aktifkan HTTPS.
+- Hardening security header.
+- Rate limit.
+- Backup otomatis.
+- Audit log lengkap.
+- UAT per bidang.
+- Dokumentasi SOP.
+
+Tahap 6 - Optimasi dan monitoring
+- Dashboard KPI manajemen.
+- Monitoring job export/import.
+- Performance profiling.
+- Error monitoring.
+- Pengarsipan data lama.
+
+======================================================================
+15. PRIORITAS TERDEKAT UNTUK PROJECT SEKARANG
+======================================================================
+
+Prioritas 1:
+- Jangan tambah fitur besar sebelum master data jelas.
+- Satukan master pegawai, gardu, bidang, aset.
+- Rapikan pola arsip dan dokumen.
+
+Prioritas 2:
+- Buat standar komponen UI.
+- Semua modul mengikuti tampilan dashboard yang sama.
+- Form panjang dibuat section/step agar mudah input.
+
+Prioritas 3:
+- Pisahkan backend produksi dari Vite.
+- Mulai database PostgreSQL.
+- Mulai audit log dan role.
+
+Prioritas 4:
+- Buat service export/import yang kuat.
+- Export besar jangan langsung di browser.
+- Simpan hasil export untuk download ulang.
+
+Prioritas 5:
+- Security hardening.
+- Backup.
+- SOP.
+- UAT dengan user bidang.
+
+======================================================================
+16. CHECKLIST KELAYAKAN PROFESIONAL
+======================================================================
+
+UI/UX:
+[ ] Tampilan semua modul konsisten.
+[ ] Form mudah dipakai dan ada validasi.
+[ ] Tabel mendukung search/filter/sort/pagination.
+[ ] Aksi penting punya konfirmasi.
+[ ] Responsive minimal laptop dan tablet.
+[ ] Kontras warna aman.
+
+Frontend:
+[ ] Komponen umum reusable.
+[ ] API client terpusat.
+[ ] Error/loading state standar.
+[ ] Lazy loading modul besar.
+[ ] Tidak ada logic dokumen berat di browser.
+
+Backend:
+[ ] API server terpisah.
+[ ] Validasi input.
+[ ] Error response standar.
+[ ] Auth dan role.
+[ ] Audit log.
+[ ] Job queue untuk export/import.
+
+Database:
+[ ] PostgreSQL.
+[ ] Prisma/schema jelas.
+[ ] Master data tunggal.
+[ ] Index query penting.
+[ ] Backup dan restore diuji.
+
+Keamanan:
+[ ] HTTPS.
+[ ] Password hash.
+[ ] Session/JWT aman.
+[ ] RBAC.
+[ ] Proteksi upload file.
+[ ] Security headers.
+[ ] Rate limit.
+[ ] Audit log.
+
+Dokumen:
+[ ] Template versioned.
+[ ] Import wizard.
+[ ] Export queue.
+[ ] PDF/Excel final tersimpan.
+[ ] Arsip dokumen punya metadata.
+
+Operasional:
+[ ] SOP input/import/export.
+[ ] SOP backup/restore.
+[ ] SOP perubahan template.
+[ ] Staging sebelum production.
+[ ] Monitoring error dan storage.
+
+======================================================================
+17. REKOMENDASI KEPUTUSAN AWAL
+======================================================================
+
+Rekomendasi saya:
+Gunakan pendekatan bertahap, bukan bongkar total sekaligus.
+
+Langkah paling masuk akal:
+1. Tetapkan desain sistem dan master data.
+2. Rapikan modul yang sudah ada agar pola UI/fungsi sama.
+3. Buat backend produksi dan database.
+4. Migrasi modul satu per satu.
+5. Baru masuk ke hardening keamanan dan deployment production.
+
+Alasan:
+- Project sudah berjalan dan punya modul nyata.
+- Bongkar total terlalu berisiko.
+- Pengguna bisa tetap mencoba fitur sambil fondasi diperkuat.
+- Setiap modul bisa distandarkan tanpa kehilangan fungsi lama.
+
+======================================================================
+18. REFERENSI
+======================================================================
+
+- Perpres 95 Tahun 2018 tentang Sistem Pemerintahan Berbasis Elektronik:
+  https://peraturan.bpk.go.id/Details/96913/perpres-no-95-tahun-2018
+
+- Perpres 39 Tahun 2019 tentang Satu Data Indonesia:
+  https://peraturan.bpk.go.id/Details/108813/perpres-no-39-tahun-2019
+
+- UU 27 Tahun 2022 tentang Pelindungan Data Pribadi:
+  https://peraturan.bpk.go.id/Details/229798/uu-no-27-tahun-2022
+
+- OWASP Application Security Verification Standard:
+  https://owasp.org/www-project-application-security-verification-standard/
+
+- WCAG 2.2 W3C:
+  https://www.w3.org/TR/WCAG22/
+
+- ISO/IEC 25010:
+  https://www.iso.org/standard/35733.html
+
+- NIST Cybersecurity Framework 2.0:
+  https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final
+

@@ -1,0 +1,50 @@
+section,id,label,channels,records,first_ts,last_ts,channel_labels
+DataRecorder,0x800,Revenue Log,16,96,2026-05-27T09:00:00.000Z,2026-05-29T08:30:00.000Z,kWh del int|kVARh del int|kW tot|kVAR tot|I r|I s|I t|Vln r|Vln s|Vln t|Freq|Vll rs|Vll st|Vll tr|Vll avg|Vln avg
+DataRecorder,0x801,Hist mean Log,16,192,2026-05-27T09:00:00.000Z,2026-05-29T08:45:00.000Z,Vll ab mean|Vll bc mean|Vll ca mean|Vll avg mean|V unbal mean|I a mean|I b mean|I c mean|I avg mean|I 4 mean|kW tot mean|kVAR tot mean|kVA tot mean|PF lag mean|PF lead mean|Freq mean
+DataRecorder,0x802,Hist high Log,16,192,2026-05-27T09:00:00.000Z,2026-05-29T08:45:00.000Z,Vll ab high|Vll bc high|Vll ca high|Vll avg high|V unbal high|I a high|I b high|I c high|I avg high|I 4 high|kW tot high|kVAR tot high|kVA tot high|PF lag high|PF lead high|Freq high
+DataRecorder,0x803,Hist low Log,16,192,2026-05-27T09:00:00.000Z,2026-05-29T08:45:00.000Z,Vll ab low|Vll bc low|Vll ca low|Vll avg low|V unbal low|I a low|I b low|I c low|I avg low|I 4 low|kW tot low|kVAR tot low|kVA tot low|PF lag low|PF lead low|Freq low
+DataRecorder,0x804,Sag/Swell Log,16,0,,,SS1 DistDur|SS1 DistV1Min|SS1 DistV1Max|SS1 DistV1Avg|SS1 DistV1Engy|SS1 DistV2Min|SS1 DistV2Max|SS1 DistV2Avg|SS1 DistV2Engy|SS1 DistV3Min|SS1 DistV3Max|SS1 DistV3Avg|SS1 DistV3Engy|SS1 DistNominal|SS1 Swell Lim|SS1 Sag Lim
+DataRecorder,0x805,Transient Log,12,0,,,TR1 TranV1Dur|TR1 TranV1Max|TR1 TranV2Dur|TR1 TranV2Max|TR1 TranV3Dur|TR1 TranV3Max|TR1 TranNominal|TR1 Threshold|PM1 PT Prim|PM1 PT Sec|PM1 CT Prim|PM1 CT Sec
+DataRecorder,0x806,Harm mean Log,9,48,2026-05-27T09:00:00.000Z,2026-05-29T08:00:00.000Z,V1 THD mean|V2 THD mean|V3 THD mean|I1 THD mean|I2 THD mean|I3 THD mean|I1 K Fac mean|I2 K Fac mean|I3 K Fac mean
+DataRecorder,0x807,Harm high Log,9,48,2026-05-27T09:00:00.000Z,2026-05-29T08:00:00.000Z,V1 THD high|V2 THD high|V3 THD high|I1 THD high|I2 THD high|I3 THD high|I1 K Fac high|I2 K Fac high|I3 K Fac high
+DataRecorder,0x808,Loss Log,9,192,2026-05-27T09:00:00.000Z,2026-05-29T08:45:00.000Z,MU Ia^2h int|MU Ib^2h int|MU Ic^2h int|MU Vllab^2h int|MU Vllbc^2h int|MU Vllca^2h int|MU Vlna^2h int|MU Vlnb^2h int|MU Vlnc^2h int
+DataRecorder,0x809,EgyDmd Log,12,192,2026-05-27T09:00:00.000Z,2026-05-29T08:45:00.000Z,kWh del|kWh rec|kWh del-rec|kVARh del|kVARh rec|kVARh del-rec|kVAh del+rec|kW sd del-rec|kVAR sd del-rec|kVA sd del+rec|PF lag mean|PF lead mean
+DataRecorder,0x80A,EN50160 PrmHrm2,8,288,2026-05-27T09:00:00.000Z,2026-05-29T08:50:00.000Z,PQ V3 THD mn|PQ V3 THD mx|PQ V3 TOHD 10m|PQ V3 TOHD mn|PQ V3 TOHD mx|PQ V3 TEHD 10m|PQ V3 TEHD mn|PQ V3 TEHD mx
+DataRecorder,0x80B,EN50160 PrmHrm1,16,288,2026-05-27T09:00:00.000Z,2026-05-29T08:50:00.000Z,PQ V1 THD mn|PQ V1 THD mx|PQ V1 TOHD 10m|PQ V1 TOHD mn|PQ V1 TOHD mx|PQ V1 TEHD 10m|PQ V1 TEHD mn|PQ V1 TEHD mx|PQ V2 THD mn|PQ V2 THD mx|PQ V2 TOHD 10m|PQ V2 TOHD mn|PQ V2 TOHD mx|PQ V2 TEHD 10m|PQ V2 TEHD mn|PQ V2 TEHD mx
+DataRecorder,0x80C,I-Trend Disp Lg,1,192,2026-05-27T09:00:00.000Z,2026-05-29T08:45:00.000Z,Iavg trend
+DataRecorder,0x80D,V-Trend Disp Lg,1,192,2026-05-27T09:00:00.000Z,2026-05-29T08:45:00.000Z,Vll avg trend
+DataRecorder,0x80E,P-Trend Disp Lg,1,192,2026-05-27T09:00:00.000Z,2026-05-29T08:45:00.000Z,kW tot trend
+DataRecorder,0x80F,4-30 10mRMS Log,14,288,2026-05-27T09:00:00.000Z,2026-05-29T08:50:00.000Z,PqFlag 10m|V1 10m|V2 10m|V3 10m|PQA1 I1 10 Minute|PQA1 I2 10 Minute|PQA1 I3 10 Minute|V1 UnderDev 10m|V1 OverDev 10m|V2 UnderDev 10m|V2 OverDev 10m|V3 UnderDev 10m|V3 OverDev 10m|Power Freq 10m
+DataRecorder,0x810,EN50160 Frq/Mg,16,0,,,Freq N|Freq N1|Freq N2|Freq N invld|V1-Mag N|V1-Mag N1|V1-Mag N2|V1-Mag N invld|V2-Mag N|V2-Mag N1|V2-Mag N2|V2-Mag N invld|V3-Mag N|V3-Mag N1|V3-Mag N2|V3-Mag N invld
+DataRecorder,0x811,EN50160 Flicker,9,0,,,V1-Flck N|V1-Flck N invd|V1-Flck N1|V2-Flck N|V2-Flck N invd|V2-Flck N1|V3-Flck N|V3-Flck N invd|V3-Flck N1
+DataRecorder,0x812,EN50160 Vlt Dp1,16,0,,,V-Dip A1|V-Dip B1|V-Dip C1|V-Dip D1|V-Dip X1|V-Dip A2|V-Dip B2|V-Dip C2|V-Dip D2|V-Dip X2|V-Dip A3|V-Dip B3|V-Dip C3|V-Dip D3|V-Dip X3|V-Dip A4
+DataRecorder,0x813,EN50160 Vlt Dp2,9,0,,,V-Dip B4|V-Dip C4|V-Dip D4|V-Dip X4|V-Dip A5|V-Dip B5|V-Dip C5|V-Dip D5|V-Dip X5
+DataRecorder,0x814,4-30 10s Freq,2,0,,,Power Frequency|PqFlag 10s
+DataRecorder,0x815,4-30 Intrp Log,1,0,,,V Intrp DrtnAll
+DataRecorder,0x816,RVC Log,3,0,,,SS1 Delta Umax|SS1 Delta Uss|SS1 RVC Duration
+DataRecorder,0x817,EN50160 Intrp,4,0,,,V-Intrpt N1|V-Intrpt N2|V-Intrpt N3|PO V-Intrpt tot
+DataRecorder,0x818,EN50160 Swell,9,0,,,V-Swell S1|V-Swell T1|V-Swell S2|V-Swell T2|V-Swell S3|V-Swell T3|V-Swell S4|V-Swell T4|RVC Count
+DataRecorder,0x819,4-30 3s THD Log,11,0,,,PqFlag 3s THD|V1 THD 3s|V2 THD 3s|V3 THD 3s|I1 THD 3s|I2 THD 3s|I3 THD 3s|VlnUnbal u2 3s|VlnUnbal u0 3s|IUnbal u2 3s|IUnbal u0 3s
+DataRecorder,0x81A,4-30 10mTHD Log,11,288,2026-05-27T09:00:00.000Z,2026-05-29T08:50:00.000Z,PqFlag 10m|PQ V1 THD 10m|PQ V2 THD 10m|PQ V3 THD 10m|PQ I1 THD 10m|PQ I2 THD 10m|PQ I3 THD 10m|VlnUnbal u2 10m|VlnUnbal u0 10m|IUnbal u2 10m|IUnbal u0 10m
+DataRecorder,0x81B,EN50160 Vunbal,3,0,,,Vunbal N|Vunbal N invld|Vunbal N1
+DataRecorder,0x81C,EN50160 Hrm Vlt,12,0,,,V1-Hrm N|V1-Hrm N invld|V1-Hrm N1|V1-Hrm N2|V2-Hrm N|V2-Hrm N invld|V2-Hrm N1|V2-Hrm N2|V3-Hrm N|V3-Hrm N invld|V3-Hrm N1|V3-Hrm N2
+DataRecorder,0x81D,EN50160 Ihm Vlt,9,0,,,V1-Inthrm N|V1-Inthrm N ivd|V1-Inthrm N1|V2-Inthrm N|V2-Inthrm N ivd|V2-Inthrm N1|V3-Inthrm N|V3-Inthrm N ivd|V3-Inthrm N1
+DataRecorder,0x81E,EN50160 MSignal,9,2,2026-05-27T17:00:00.000Z,2026-05-28T17:00:00.000Z,V1-MSignal N|V1-MSignl N ivd|V1-MSignal N1|V2-MSignal N|V2-MSignl N ivd|V2-MSignal N1|V3-MSignal N|V3-MSignl N ivd|V3-MSignal N1
+DataRecorder,0x81F,EN50160 Prm-f/V,12,288,2026-05-27T09:00:00.000Z,2026-05-29T08:50:00.000Z,PQ Freq mean|PQ Freq low|PQ Freq high|PQ V1 mean|PQ V1 low|PQ V1 high|PQ V2 mean|PQ V2 low|PQ V2 high|PQ V3 mean|PQ V3 low|PQ V3 high
+DataRecorder,0x820,EN50160 Prm-Flk,6,288,2026-05-27T09:00:00.000Z,2026-05-29T08:50:00.000Z,V1-Flck Pst|V2-Flck Pst|V3-Flck Pst|V1-Flck Plt|V2-Flck Plt|V3-Flck Plt
+DataRecorder,0x821,4-30 2hrTHD Log,11,24,2026-05-27T09:00:00.000Z,2026-05-29T07:00:00.000Z,PqFlag 2hr|V1 THD 2hr|V2 THD 2hr|V3 THD 2hr|I1 THD 2hr|I2 THD 2hr|I3 THD 2hr|VlnUnbal u2 2hr|VlnUnbal u0 2hr|IUnbal u2 2hr|IUnbal u0 2hr
+DataRecorder,0x824,4-30 2hrRMS Log,14,24,2026-05-27T09:00:00.000Z,2026-05-29T07:00:00.000Z,PqFlag 2hr|V1 2hr|V2 2hr|V3 2hr|I1 2hr|I2 2hr|I3 2hr|V1 UnderDev 2hr|V1 OverDev 2hr|V2 UnderDev 2hr|V2 OverDev 2hr|V3 UnderDev 2hr|V3 OverDev 2hr|Power Freq 2hr
+DataRecorder,0x825,4-30 3s RMS Log,13,0,,,PqFlag 3s|V1 3s|V2 3s|V3 3s|PQA1 I1 150 180 Cycle|PQA1 I2 150 180 Cycle|PQA1 I3 150 180 Cycle|V1 UnderDev 3s|V1 OverDev 3s|V2 UnderDev 3s|V2 OverDev 3s|V3 UnderDev 3s|V3 OverDev 3s
+DataRecorder,0x826,DailyNom Log,2,2,2026-05-27T17:00:00.000Z,2026-05-28T17:00:00.000Z,SS1 Nom Volts|FAC1 NomFreqNum
+WaveformRecorder,0x880,Wfm Rc V1-Sg/Sw,1,100,2025-01-24T09:12:52.739Z,2026-04-30T09:10:26.328Z,V1
+WaveformRecorder,0x881,Wfm Rc V2-Sg/Sw,1,100,2025-01-24T09:12:52.739Z,2026-04-30T09:10:26.328Z,V2
+WaveformRecorder,0x882,Wfm Rc V3-Sg/Sw,1,100,2025-01-24T09:12:52.739Z,2026-04-30T09:10:26.328Z,V3
+WaveformRecorder,0x884,Wfm Rc I1-Sg/Sw,1,100,2025-01-24T09:12:52.739Z,2026-04-30T09:10:26.328Z,I1
+WaveformRecorder,0x885,Wfm Rc I2-Sg/Sw,1,100,2025-01-24T09:12:52.739Z,2026-04-30T09:10:26.328Z,I2
+WaveformRecorder,0x886,Wfm Rc I3-Sg/Sw,1,100,2025-01-24T09:12:52.739Z,2026-04-30T09:10:26.328Z,I3
+WaveformRecorder,0x888,Wfm Rc V1-Trnst,1,95,2025-01-15T00:18:52.398Z,2026-04-12T09:13:29.047Z,V1
+WaveformRecorder,0x889,Wfm Rc V2-Trnst,1,95,2025-01-15T00:18:52.398Z,2026-04-12T09:13:29.047Z,V2
+WaveformRecorder,0x88A,Wfm Rc V3-Trnst,1,95,2025-01-15T00:18:52.398Z,2026-04-12T09:13:29.047Z,V3
+WaveformRecorder,0x88C,Wfm Rc I1-Trnst,1,95,2025-01-15T00:18:52.398Z,2026-04-12T09:13:29.047Z,I1
+WaveformRecorder,0x88D,Wfm Rc I2-Trnst,1,95,2025-01-15T00:18:52.398Z,2026-04-12T09:13:29.047Z,I2
+WaveformRecorder,0x88E,Wfm Rc I3-Trnst,1,95,2025-01-15T00:18:52.398Z,2026-04-12T09:13:29.047Z,I3

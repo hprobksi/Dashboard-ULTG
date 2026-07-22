@@ -1,0 +1,582 @@
+FORMAT PENGIRIMAN ALARM VOLTKRAF
+Dibuat: 2026-06-01 20:32:46 WIB
+Lokasi kode utama: api.py, database.py, modbus.py
+
+Tujuan dokumen
+--------------
+Dokumen ini merangkum format alarm yang dikirim dari modul:
+1. DC Monitoring
+2. Annunciator / DAS
+3. PQM
+4. AVR
+5. Kapasitor
+6. AR / Auto-Recloser
+
+Catatan singkat:
+- Semua notifikasi alarm yang ditemukan di backend dikirim lewat WhatsApp gateway.
+- File telegram_token.txt dan telegram_chat_id.txt ada di folder project, tetapi pada kode aktif yang diperiksa tidak ditemukan fungsi pengiriman Telegram.
+- Semua pesan WhatsApp memakai template teks yang sama dari notification_event_template().
+- Pesan dikirim oleh send_whatsapp_notification().
+
+
+1. PAYLOAD PENGIRIMAN WHATSAPP
+------------------------------
+Endpoint:
+  WHATSAPP_ENDPOINT_URL
+  default: http://192.168.110.100:8001/id/send-message
+
+Method:
+  POST
+
+Body:
+  form-data / x-www-form-urlencoded via requests.post(data=payload)
+
+Payload text message:
+  {
+    "api_key": WHATSAPP_API_KEY,
+    "sender": WHATSAPP_SENDER,
+    "number": WHATSAPP_GROUP_NUMBER,
+    "type": WHATSAPP_MESSAGE_TYPE,
+    "message": normalized_message
+  }
+
+Sumber konfigurasi:
+  whatsapp_endpoint_url.txt
+  whatsapp_api_key.txt
+  whatsapp_sender.txt
+  whatsapp_group_number.txt
+  env: WHATSAPP_*, VoltKraf_WHATSAPP_*, VOLTCRAFT_WHATSAPP_*
+
+Proteksi pengiriman:
+  WHATSAPP_MAX_MESSAGE_LENGTH default 3500 karakter
+  WHATSAPP_MIN_INTERVAL_SECONDS default 20 detik
+  WHATSAPP_DUPLICATE_TTL_SECONDS default 10 menit
+  WHATSAPP_MAX_MESSAGES_PER_WINDOW default 120 pesan/jam
+  Jika gateway offline, sistem bisa menunda dan membuat recovery recap.
+  Outbox retry tersedia, tetapi default WHATSAPP_QUEUE_FAILED_MESSAGES = False sehingga pesan gagal tidak diantrikan untuk mencegah spam saat WA pulih.
+
+
+2. TEMPLATE UMUM PESAN ALARM
+----------------------------
+Format dasar:
+
+=========================
+{TITLE_UPPERCASE}
+{SUBTITLE_UPPERCASE}
+{DD-MM-YYYY HH:MM:SS.000}
+
+MODUL    : {MODULE}
+IP ALAT  : {IP_ALAT optional}
+STATUS   : {STATUS optional}
+INDIKASI :
+{line 1}
+{line 2}
+...
+
+=========================
+by VoltKraft
+
+Aturan:
+  TITLE dan SUBTITLE selalu dibuat huruf besar.
+  Waktu notifikasi memakai format: DD-MM-YYYY HH:MM:SS.000
+  Field IP ALAT hanya muncul bila ada IP.
+  Field STATUS hanya muncul bila diberikan oleh modul.
+  Field INDIKASI hanya muncul bila ada isi.
+  Semua isi di-escape dengan html.escape sebelum dikirim.
+
+
+3. DC MONITORING
+----------------
+Trigger alarm:
+  Dibaca dari Modbus TCP port 502.
+  Alarm dihitung dari nilai mutlak terbesar antara V_PG dan V_NG.
+
+Threshold:
+  GITET Muaratawar:
+    warning  > 160 V
+    critical > 187 V
+  GI lain:
+    warning  > 80 V
+    critical > 90 V
+
+Status internal:
+  online:normal
+  online:warning
+  online:critical
+  offline / timeout / error
+
+Pengiriman:
+  Alarm dikirim hanya saat transisi dari normal ke warning/critical.
+  Jika masih abnormal, WA tidak dikirim ulang.
+  Recovery dikirim saat kondisi kembali online:normal, hanya bila sebelumnya abnormal.
+  Status offline/error dicatat, tetapi tidak dikirim sebagai notifikasi alarm DC pada handler utama.
+
+Format pesan alarm DC:
+
+=========================
+{NAMA_GI}
+SUPLAI DC 110V
+{WAKTU}
+
+MODUL    : DC MONITORING
+STATUS   : WARNING (TEGANGAN TIDAK NORMAL)
+INDIKASI :
+V_PG = {v_pg} V
+V_NG = {v_ng} V
+
+=========================
+by VoltKraft
+
+Untuk critical, STATUS menjadi:
+  CRITICAL (TEGANGAN TIDAK NORMAL)
+
+Format recovery DC:
+  STATUS   : ONLINE / NORMAL
+  INDIKASI : V_PG dan V_NG terakhir
+
+Data event tersimpan:
+  table dc_alarm_events
+  fields: id, waktu, nama, level, v_pg, v_ng
+
+
+4. ANNUNCIATOR / DAS
+--------------------
+Trigger alarm:
+  Polling HTTP ke source["api_url"].
+  Data channel dinormalisasi menjadi:
+    port
+    nama_alat
+    kondisi
+    flag
+    flag_kondisi
+    is_active
+
+Nilai dianggap aktif bila kondisi/flag_kondisi termasuk:
+  1, true, on, active, alarm, yes
+
+Pengiriman:
+  Pada startup pertama hanya membuat baseline, WA tidak dikirim.
+  Perubahan channel harus stabil sesuai ANNUNCIATOR_CHANGE_CONFIRM_POLLS default 2 polling.
+  Alarm aktif baru dikirim sebagai level active.
+  Alarm kembali normal dikirim sebagai level normal.
+  Jika gagal kirim, pending alarm/recovery disimpan di settings dan dicoba ulang setelah jeda aman.
+
+Format pesan alarm active:
+
+=========================
+{SOURCE_NAME}
+{BAY_NAME}
+{WAKTU}
+
+MODUL    : ANNUNCIATOR SYSTEM
+IP ALAT  : {IP}
+INDIKASI :
+PORT {port}: {nama_alat}
+
+=========================
+by VoltKraft
+
+Format pesan recovery:
+
+=========================
+{SOURCE_NAME}
+{BAY_NAME}
+{WAKTU}
+
+MODUL    : ANNUNCIATOR SYSTEM
+IP ALAT  : {IP}
+STATUS   : NORMAL / RESET
+INDIKASI :
+PORT {port}: {nama_alat}
+KONDISI = ALARM SUDAH NORMAL
+
+=========================
+by VoltKraft
+
+Data event tersimpan:
+  table annunciator_events
+  fields: id, waktu, source_id, source_name, bay_name, ip, port, nama_alat, level
+
+
+5. PQM
+------
+Jenis PQM:
+  ion7650: Modbus TCP
+  ion9000: HTTPS API registerValues
+
+5.1 PQM disturbance counter
+
+Trigger:
+  Kenaikan counter gangguan PQM.
+  Counter disimpan sebagai baseline dulu jika belum ada previous data.
+  Event dikirim setelah konfirmasi PQM_DISTURBANCE_CONFIRM_POLLS default 2 polling.
+
+Jenis event:
+  sag_dip
+  swell
+  interruption
+  voltage_magnitude
+  frequency
+  flicker
+  voltage_unbalance
+  mains_signaling
+  harmonic
+  interharmonic
+  rvc
+
+Format pesan disturbance:
+
+=========================
+{NAMA_GI}
+{NAMA_BAY}
+{WAKTU}
+
+MODUL    : PQM
+STATUS   : GANGGUAN KUALITAS DAYA
+INDIKASI :
+{EVENT_TYPE_LABEL} ({JUMLAH_COUNTER} COUNTER)
+{EVENT_TYPE_LABEL} ({JUMLAH_COUNTER} COUNTER)
+
+=========================
+by VoltKraft
+
+Contoh indikasi:
+  SAG / DIP TEGANGAN (1 COUNTER)
+  SWELL TEGANGAN (2 COUNTER)
+  HARMONIC (1 COUNTER)
+
+Data event tersimpan:
+  table pqm_disturbance_events
+  fields:
+    id, waktu, device_id, nama_gi, nama_bay, ip,
+    event_type, counter_name, address,
+    previous_value, current_value, delta
+
+Catatan:
+  Untuk ION7650, setelah event terkirim sistem juga queue_pme_report_for_pqm().
+  Untuk ION9000, pesan disturbance dikirim juga. Pada potongan kode yang diperiksa, PME report queue dipanggil eksplisit pada ION7650 dan voltage alarm.
+
+5.2 PQM voltage alarm live
+
+Trigger:
+  Cek V_AN, V_BN, V_CN terhadap nominal L-N.
+  Default nominal L-N: 86600 V.
+  GITET Muaratawar 500 kV memakai nominal 500000 / sqrt(3).
+
+Threshold:
+  undervoltage bila phase < 90% nominal
+  overvoltage bila phase > 110% nominal
+
+Pengiriman:
+  Perubahan state harus stabil sesuai PQM_VOLTAGE_ALARM_CONFIRM_POLLS default 2 polling.
+  Alarm dikirim untuk state undervoltage/overvoltage.
+  Recovery hanya dicatat sebagai state normal, tidak membangun pesan recovery WA khusus.
+  Retry alarm dibatasi PQM_VOLTAGE_ALARM_RETRY_SECONDS default 10 menit.
+
+Format pesan voltage alarm:
+
+=========================
+{NAMA_GI}
+{NAMA_BAY}
+{WAKTU}
+
+MODUL    : PQM
+STATUS   : UNDERVOLTAGE AKTIF
+INDIKASI :
+NOMINAL L-N = {nominal}
+BATAS BAWAH = {limit} (90% NOMINAL)
+V_AN = {v_an}
+V_BN = {v_bn}
+V_CN = {v_cn}
+PHASE TERDETEKSI = V_AN {value}, V_BN {value}
+
+=========================
+by VoltKraft
+
+Untuk overvoltage:
+  STATUS   : OVERVOLTAGE AKTIF
+  BATAS ATAS = {limit} (110% NOMINAL)
+
+
+6. AVR
+------
+Sumber data:
+  IEC 61850 MMS.
+  Group point:
+    measurement_points
+    setting_points
+    status_points
+    alarm_points
+    led_points
+
+Trigger alarm/indikasi:
+  Hanya alarm_points dan led_points yang aktif dikirim sebagai alarm aktif.
+  Point harus quality != invalid, punya key, dan whatsapp tidak false.
+  Active point dihitung oleh avr_point_is_active().
+  Perubahan aktif harus stabil sesuai AVR_POINT_NOTIFICATION_CONFIRM_POLLS default 2 polling.
+  Retry tiap point dibatasi AVR_POINT_NOTIFICATION_RETRY_SECONDS default 10 menit.
+
+Format nilai AVR:
+  bool True  -> ON
+  bool False -> OFF
+  float      -> dibulatkan 3 desimal lalu trim nol belakang
+  unit       -> ditambahkan bila ada
+
+Format pesan AVR alarm/LED aktif:
+
+=========================
+{NAMA_GI}
+{NAMA_BAY}
+{WAKTU}
+
+MODUL    : AVR
+IP ALAT  : {IP}
+STATUS   : ALARM AVR AKTIF
+INDIKASI :
+{label_point} = {value_formatted}
+
+=========================
+by VoltKraft
+
+Untuk LED aktif:
+  STATUS   : LED AVR AKTIF
+
+Format pesan AVR normal:
+
+=========================
+{NAMA_GI}
+{NAMA_BAY}
+{WAKTU}
+
+MODUL    : AVR
+IP ALAT  : {IP}
+STATUS   : NORMAL
+INDIKASI :
+SEMUA ALARM / LED INDIKASI SUDAH HILANG
+ACTIVE ALARM = {jumlah_active_alarm}
+ACTIVE LED = {jumlah_active_led}
+
+=========================
+by VoltKraft
+
+Format pesan perubahan status_points:
+
+=========================
+{NAMA_GI}
+{NAMA_BAY}
+{WAKTU}
+
+MODUL    : AVR
+IP ALAT  : {IP}
+STATUS   : PERUBAHAN STATUS / INDIKASI
+INDIKASI :
+{label_point_1} = {value_formatted}
+{label_point_2} = {value_formatted}
+
+=========================
+by VoltKraft
+
+Catatan penyimpanan:
+  Tidak ditemukan table event khusus AVR.
+  State aktif, snapshot status, dan retry attempt disimpan di table settings.
+
+
+7. KAPASITOR
+------------
+Sumber data:
+  IEC 61850 MMS.
+  Group point:
+    metering_points
+    angle_points
+    power_points
+    status_points
+
+Trigger notifikasi:
+  Perubahan status CB 150 kV dari point status_points key cb_q50.
+  Nilai CB ditafsirkan:
+    close: 2, 8, true, on, close, closed, cb close
+    open : 0, 1, false, off, open, opened, cb open
+
+Data tegangan:
+  Dipakai dari metering_points:
+    v_rs
+    v_st
+    v_tr
+
+Pengiriman:
+  Pada baseline pertama hanya menyimpan snapshot, WA tidak dikirim.
+  Perubahan CB harus valid bersama snapshot tegangan.
+  Konfirmasi memakai KAPASITOR_CB_NOTIFICATION_CONFIRM_POLLS default 1 polling.
+  Sistem memilih fasa dengan tegangan tertinggi pada snapshot sebelum perubahan, lalu membandingkan nilai sebelum dan sesudah dari fasa yang sama.
+
+Format pesan kapasitor:
+
+=========================
+{NAMA_GI}
+{NAMA_BAY}
+{WAKTU}
+
+MODUL    : KAPASITOR
+IP ALAT  : {IP}
+STATUS   : CB 150kV Close
+INDIKASI :
+Tegangan : {before_voltage} kV -> {after_voltage} kV
+
+=========================
+by VoltKraft
+
+Untuk CB open:
+  STATUS   : CB 150kV Open
+
+Catatan penyimpanan:
+  Tidak ditemukan table event khusus kapasitor.
+  Snapshot CB/tegangan dan kandidat perubahan disimpan di table settings.
+
+
+8. AR / AUTO-RECLOSER
+---------------------
+Walaupun tidak diminta eksplisit, AR ikut muncul di alarm center dashboard, jadi formatnya dicatat untuk kelengkapan.
+
+Sumber data:
+  IEC 61850 MMS.
+  Group point:
+    rrec_points
+    xcbr_points
+    rsyn_points
+    external_points
+    health_points
+
+Trigger:
+  Perubahan snapshot point yang recordable.
+  Dikirim bila point masuk kategori notifiable:
+    working event key
+    severity critical/alarm
+    whatsapp true
+
+Status pesan:
+  AR BEKERJA
+  PERUBAHAN STATUS AR CRITICAL
+  PERUBAHAN STATUS AR
+
+Format pesan AR:
+
+=========================
+{NAMA_GI}
+{NAMA_BAY}
+{WAKTU}
+
+MODUL    : AR / AUTO-RECLOSER
+IP ALAT  : {IP}
+STATUS   : {STATUS_AR}
+INDIKASI :
+{label_point} = {before} -> {after}
+{label_point} = {before} -> {after}
++ {N} EVENT LAINNYA TERCATAT DI DASHBOARD
+
+=========================
+by VoltKraft
+
+Data event tersimpan:
+  table ar_events
+  fields:
+    id, waktu, device_id, nama_gi, nama_bay, ip,
+    group_name, point_key, point_label, reference,
+    previous_value, current_value, quality, severity
+
+
+9. RINGKASAN PER MODUL
+----------------------
+DC Monitoring:
+  Kirim WA alarm warning/critical saat V_PG atau V_NG melewati threshold.
+  Kirim WA recovery saat kembali normal.
+  Simpan event ke dc_alarm_events.
+
+Annunciator:
+  Kirim WA saat port berubah menjadi active.
+  Kirim WA recovery saat port berubah normal.
+  Simpan event ke annunciator_events.
+
+PQM:
+  Kirim WA saat counter gangguan PQ naik.
+  Kirim WA saat undervoltage/overvoltage live aktif.
+  Simpan event counter ke pqm_disturbance_events.
+  Bisa kirim/queue PDF PME untuk event tertentu.
+
+AVR:
+  Kirim WA saat alarm_points/led_points aktif.
+  Kirim WA normal saat semua alarm/LED hilang.
+  Kirim WA saat status_points berubah bila whatsapp true.
+  Tidak ada table event khusus AVR pada kode yang diperiksa.
+
+Kapasitor:
+  Kirim WA saat CB 150 kV berubah open/close dengan pembanding tegangan.
+  Tidak ada table event khusus kapasitor pada kode yang diperiksa.
+
+AR:
+  Kirim WA saat event AR notifiable berubah.
+  Simpan event ke ar_events.
+
+
+10. FILE DAN FUNGSI REFERENSI
+-----------------------------
+api.py:
+  notification_event_template()
+  send_whatsapp_notification()
+  build_dc_anomaly_message()
+  build_dc_recovery_message()
+  handle_dc_notification_state()
+  build_annunciator_alarm_message()
+  build_annunciator_recovery_message()
+  send_annunciator_alarm_notification()
+  send_annunciator_recovery_notification()
+  record_pqm_disturbance_events()
+  build_pqm_disturbance_message()
+  build_pqm_voltage_alarm_message()
+  handle_pqm_voltage_alarm_notification()
+  build_avr_point_active_message()
+  build_avr_normal_message()
+  build_avr_status_change_message()
+  handle_avr_point_notifications()
+  build_kapasitor_cb_message()
+  handle_kapasitor_cb_notification()
+  build_ar_events_message()
+  notify_ar_state_events()
+
+database.py:
+  dc_alarm_events
+  annunciator_events
+  pqm_disturbance_events
+  ar_events
+  whatsapp_outbox
+
+modbus.py:
+  calculate_dc_alarm_level()
+  read_dc_device()
+  legacy jalankan_logger()
+
+
+11. CONTOH PAYLOAD FINAL KE GATEWAY
+-----------------------------------
+Contoh:
+
+POST http://192.168.110.100:8001/id/send-message
+Content-Type: application/x-www-form-urlencoded
+
+api_key={WHATSAPP_API_KEY}
+sender={WHATSAPP_SENDER}
+number={WHATSAPP_GROUP_NUMBER}
+type=text
+message=
+=========================
+GI FAJAR SW
+SUPLAI DC 110V
+01-06-2026 20:32:46.000
+
+MODUL    : DC MONITORING
+STATUS   : WARNING (TEGANGAN TIDAK NORMAL)
+INDIKASI :
+V_PG = 82.4 V
+V_NG = 10.2 V
+
+=========================
+by VoltKraft

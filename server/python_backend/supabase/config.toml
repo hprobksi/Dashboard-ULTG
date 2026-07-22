@@ -1,0 +1,2 @@
+[functions.telegram-to-supabase]
+verify_jwt = false

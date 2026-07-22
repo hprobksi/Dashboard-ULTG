@@ -1,0 +1,5095 @@
+{
+  "status": 200,
+  "success": true,
+  "message": "",
+  "listError": null,
+  "data": {
+    "content": [
+      {
+        "no": 1,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB - 75253471 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "8da6502e-86bd-465e-8183-9fab63ec240b",
+        "bay": "TRF#5 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 2,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB - 75253470 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "d2e91b14-a468-4905-93aa-e63cdbd1eed4",
+        "bay": "TRF#5 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 3,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB - 75253472 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "bc827a47-b55f-47a9-ba2a-53f8be71ee2c",
+        "bay": "TRF#5 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 4,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - T,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - HUBBELL - NO DATA - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "4912cc68-9142-44fb-91f0-e0683290ff0b",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 5,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - T,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - HUBBELL - NO DATA - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "1367666f-0c7b-4da7-98c9-e9fe99f78e53",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 6,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - T,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - HUBBELL - NO DATA - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "f51c7c3a-f862-4bf4-abd2-d7a454c1dd80",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 7,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - T",
+        "name": "Lightning Arrester - SIEMENS - 11213536 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "0ba19a7f-6ece-40b4-a054-007d8f6f62ab",
+        "bay": "TRF#3 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 8,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - T",
+        "name": "Lightning Arrester - SIEMENS - 11213537 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "12b312f8-e4d6-4fd5-983b-bc3a94674beb",
+        "bay": "TRF#3 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 9,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - T",
+        "name": "Lightning Arrester - SIEMENS - 11213535 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "8df48018-6ed0-46bd-a95c-7ee9ff90fe67",
+        "bay": "TRF#3 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 10,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan,Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter,Pengukuran Arus Bocor (LCM) - T,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - EMP BOWTHORPE - Q 932 20 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          },
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "35c04ef9-c2cd-4053-a688-1654ca190d4b",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 11,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan,Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter,Pengukuran Arus Bocor (LCM) - T,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - EMP BOWTHORPE - Q 932 19 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          },
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "9f1613dc-412f-4d32-aec3-9367b3744222",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 12,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan,Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter,Pengukuran Arus Bocor (LCM) - T,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - EMP BOWTHORPE - Q 932 21 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          },
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - T"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "a93fb238-fc17-4526-9323-223c3a9e0bf1",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 13,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Power Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Trafo Tenaga - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Bushing HV",
+        "name": "Power Transformer - UNINDO - P060LEC673-03 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Bushing HV"
+              }
+            ],
+            "formulir": "Form IL2 - Trafo Tenaga - Mingguan"
+          }
+        ],
+        "id": "3dd86d5d-b7a6-4a65-8190-624996adee9b",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 14,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circuit Breaker",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengujian Gas SF6 - Dew Point,Pengujian Gas SF6 - Purity",
+        "name": "Circuit Breaker - GAE - BH125801064 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengujian Gas SF6 - Dew Point"
+              },
+              {
+                "parameter": "Pengujian Gas SF6 - Purity"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan"
+          }
+        ],
+        "id": "de2c3fbf-40ef-4e41-aba0-05225a5be5ab",
+        "bay": "TRF#1 150/20KV (INC)",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 15,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - SAFT - 31-02804-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "4d3b2d16-1b44-4aa4-bf83-561391ac9785",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 16,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - SAFT - 31-02804-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "bf77db11-0db3-4081-9e29-e58915e6f0a7",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 17,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - ENERMILD - EM 08-18-00051 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "a7a4c30f-bee8-4f61-8591-13e2826534cb",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 18,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - COREDEL - L13 1162 07 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "f565b12b-5e97-49a4-aefe-9689f4b67e67",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 19,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Grounding",
+        "name": "Current Transformer - TRENCH - 12002745 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "36e4c6ad-c392-4540-adc9-650dfc225c16",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 20,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Grounding",
+        "name": "Current Transformer - TRENCH - 12002744 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "d6eef14f-2106-4e55-9bc6-36ad3238f380",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 21,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Grounding",
+        "name": "Current Transformer - TRENCH - 12002746 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "7c84a52a-4557-496c-8ba1-b45bd8ea36b3",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 22,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - TRIDELTA - 30150 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "75cb7f92-89a2-4354-a1dc-c198b13c491a",
+        "bay": "PHT 150KV TAMBUN#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 23,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - TRIDELTA - 30147 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "ddce9ebc-1602-4b96-b7d8-08a47cc03df8",
+        "bay": "PHT 150KV TAMBUN#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 24,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - TRIDELTA - 30149 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "9ffab6de-ea58-4435-97f8-3afe44fd37ad",
+        "bay": "PHT 150KV TAMBUN#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 25,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB AB - 75289455 - S",
+        "modifiedDate": "2026-07-19T18:08:36.174023",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "9fd4bb46-161b-4142-a68c-f097b853eece",
+        "bay": "PHT 150KV MARGAHAYU#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 26,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB AB - 75289454 - R",
+        "modifiedDate": "2026-07-19T18:08:36.173652",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "971806d0-95c0-4f0e-a9da-9358633dabd6",
+        "bay": "PHT 150KV MARGAHAYU#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 27,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB AB - 75289456 - T",
+        "modifiedDate": "2026-07-19T18:08:36.173012",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "5629da78-3721-4e0a-b5f4-5040aee7f740",
+        "bay": "PHT 150KV MARGAHAYU#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 28,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB AB - 75289458 - S",
+        "modifiedDate": "2026-07-19T18:08:35.047059",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "ce0af3a5-4da2-40c7-b908-2e450f92a3e6",
+        "bay": "PHT 150KV MARGAHAYU#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 29,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB AB - 75289457 - R",
+        "modifiedDate": "2026-07-19T18:08:35.046758",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "d6184d76-cd5e-45e6-a703-93adcd1c3f27",
+        "bay": "PHT 150KV MARGAHAYU#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 30,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - ABB AB - 75289459 - T",
+        "modifiedDate": "2026-07-19T18:08:35.046378",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "794e4de4-89a3-444d-89a2-ab1b70229efd",
+        "bay": "PHT 150KV MARGAHAYU#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 31,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circuit Breaker",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengujian Tahanan Isolasi (3 phasa) - R",
+        "name": "Circuit Breaker - ABB - 1HSB01703058-A1 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengujian Tahanan Isolasi (3 phasa) - R"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan"
+          }
+        ],
+        "id": "45618891-3178-4df5-bad6-f3f8e82353fd",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 32,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Fisik Isolator",
+        "name": "Current Transformer - ARTECHE - 17014288/2 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Fisik Isolator"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "e2eae078-555a-4d9b-978a-fad45c0ad39e",
+        "bay": "TRF K#2 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 33,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Fisik Isolator",
+        "name": "Current Transformer - ARTECHE - 17014288 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Fisik Isolator"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "3e0b6e2c-25fe-4466-be50-1c8bcd04ff8e",
+        "bay": "TRF K#2 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 34,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Fisik Isolator",
+        "name": "Current Transformer - ARTECHE - 17014288/5 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Fisik Isolator"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "dd0ae57c-fd05-4257-9cca-d1f1cd4117f7",
+        "bay": "TRF K#2 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 35,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circuit Breaker",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi PMT - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Fisik Isolator",
+        "name": "Circuit Breaker - ALSTHOM - 12313001006 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Fisik Isolator"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi PMT - Mingguan"
+          }
+        ],
+        "id": "6bb62606-34e8-413f-a2ec-931a2a04c0b9",
+        "bay": "TRF K#2 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 36,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 350379 - S,Tahanan Isolasi Sekunder - 350378 - R,Tahanan Isolasi Sekunder - 350380 - T",
+        "name": "Current Transformer - MAGRINI GALILEO - 350378 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350379 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350378 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350380 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "d6dbd2bd-8009-42b6-8cdf-4f125b972a65",
+        "bay": "TRF#2 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 37,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 350379 - S,Tahanan Isolasi Sekunder - 350378 - R,Tahanan Isolasi Sekunder - 350380 - T",
+        "name": "Current Transformer - MAGRINI GALILEO - 350380 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350379 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350378 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350380 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "e1947822-663a-4c2e-b2fc-513fe0a8fc91",
+        "bay": "TRF#2 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 38,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 350379 - S,Tahanan Isolasi Sekunder - 350378 - R,Tahanan Isolasi Sekunder - 350380 - T",
+        "name": "Current Transformer - MAGRINI GALILEO - 350379 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350379 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350378 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 350380 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "ddad6354-4e8b-4dda-835c-a5f8afdc1d95",
+        "bay": "TRF#2 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 39,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - SAFT - 242003833011 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "8140cf44-a66a-4085-8fa6-8b2e7ea81c05",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 40,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - STANDBY POWER - 24.200383A.002 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "30572c10-1f1e-4457-a6a3-310168857389",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 41,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - ENERMILD - LT9W08092 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "5d0405ba-b775-4690-9c63-2bcaba462295",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 42,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer,Pengukuran DC Ground",
+        "name": "Substation Rectifier - BORRI - EM 2-21-00225 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              },
+              {
+                "parameter": "Pengukuran DC Ground"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "ee4d5d61-8480-4989-8fdf-32e5e01af630",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 43,
+        "garduInduk": "GI 150KV TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Insulator Tumpu - T",
+        "name": "Lightning Arrester - ALSTOM - 3942551 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Insulator Tumpu - T"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan"
+          }
+        ],
+        "id": "3755c3d2-d412-469b-bc29-0f3ad5d4de2d",
+        "bay": "PHT 150KV NEW TAMBUN#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 44,
+        "garduInduk": "GI 150KV TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Insulator Tumpu - T",
+        "name": "Lightning Arrester - ALSTOM - 3942550 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Insulator Tumpu - T"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan"
+          }
+        ],
+        "id": "09495f12-68a6-45a0-a353-b5891a033161",
+        "bay": "PHT 150KV NEW TAMBUN#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 45,
+        "garduInduk": "GI 150KV TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Insulator Tumpu - T",
+        "name": "Lightning Arrester - ALSTOM - 3942549 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Insulator Tumpu - T"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan"
+          }
+        ],
+        "id": "0e14b0ce-b617-4ed7-a10e-9d6a1b1eabd5",
+        "bay": "PHT 150KV NEW TAMBUN#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 46,
+        "garduInduk": "GIS 150KV MARGAHAYU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - SAFT - 31-02804-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "2e392805-31c6-4540-aafb-eb45485af7f2",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 47,
+        "garduInduk": "GIS 150KV MARGAHAYU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - SAFT - 31-02804-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "0200eb04-246b-4894-ad3a-a83f5d88af96",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 48,
+        "garduInduk": "GIS 150KV MARGAHAYU",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - BORRI - LP8T09004 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "018cb135-4034-46bc-817f-66a556a89b92",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 49,
+        "garduInduk": "GI 150KV TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi MCB, Indikasi, Metering, pada Panel Catu Daya - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Rectifier",
+        "name": "Substation Rectifier - ENERMILD - EM 10-21-00267 - RST",
+        "modifiedDate": "2026-07-19T14:28:36.220598",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Rectifier"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi MCB, Indikasi, Metering, pada Panel Catu Daya - Harian"
+          }
+        ],
+        "id": "cbd18876-7e60-46a1-a32f-34ef30b36862",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 50,
+        "garduInduk": "GIS 150KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - GRIDTECH - LT9Y45018 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "c7c5b5d2-8241-454e-8e9e-32e195b4075c",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 51,
+        "garduInduk": "GIS 150KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - BORRI - LP7S44002 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "8aa1da38-8077-4d95-b9be-c32c30899c3e",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 52,
+        "garduInduk": "GIS 150KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - SAFT - 31-02804-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "095ec8c5-087b-46ba-a018-ba29153763d3",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 53,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Line Current Differential (87L) + Distance (21) TL",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (LCD+Dist TL) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Tele Proteksi (TP) Distance,Kondisi Komunikasi LCD,Kondisi Proteksi Utama",
+        "name": "Line Current Differential (87L) + Distance (21) TL - TOSHIBA - BF1102103567 - RST",
+        "modifiedDate": "2026-07-19T13:42:45.847255",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Tele Proteksi (TP) Distance"
+              },
+              {
+                "parameter": "Kondisi Komunikasi LCD"
+              },
+              {
+                "parameter": "Kondisi Proteksi Utama"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (LCD+Dist TL) - Harian"
+          }
+        ],
+        "id": "27c6eee0-1f76-4e16-9e35-66cc64a38b1f",
+        "bay": "PHT 500KV NEW TAMBUN",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 54,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circulating Current Protection Relay",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Utama",
+        "name": "Circulating Current Protection Relay - ABB - 1KHF 305551 - RST",
+        "modifiedDate": "2026-07-19T13:42:36.044652",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Utama"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian"
+          }
+        ],
+        "id": "de594d29-e0f6-4a0a-b7cb-5dc59e136d6e",
+        "bay": "ST#5.0 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 55,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circulating Current Protection Relay",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Utama",
+        "name": "Circulating Current Protection Relay - ABB - 1KHF305551 - RST",
+        "modifiedDate": "2026-07-19T13:42:34.776245",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Utama"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian"
+          }
+        ],
+        "id": "1e5dff5e-988d-4686-b45c-6000c0859ad2",
+        "bay": "GT#5.1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 56,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circulating Current Protection Relay",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Utama",
+        "name": "Circulating Current Protection Relay - ABB - 1KHF 305551 - RST",
+        "modifiedDate": "2026-07-19T13:42:34.370305",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Utama"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian"
+          }
+        ],
+        "id": "352fba20-9eae-4dec-82fa-e9315ab23baf",
+        "bay": "GT#4.3",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 57,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circulating Current Protection Relay",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Utama",
+        "name": "Circulating Current Protection Relay - ABB - 1KHF305551 - RST",
+        "modifiedDate": "2026-07-19T13:42:33.001172",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Utama"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian"
+          }
+        ],
+        "id": "567a10bd-6d79-4311-91ae-a77c04b081f7",
+        "bay": "GT#4.1/4.2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 58,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circulating Current Protection Relay",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Utama",
+        "name": "Circulating Current Protection Relay - ABB - 1KHF 305551 - RST",
+        "modifiedDate": "2026-07-19T13:42:32.695224",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Utama"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian"
+          }
+        ],
+        "id": "6a626c6e-f73e-496e-b896-56281117d7ec",
+        "bay": "GT#3.3",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 59,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circulating Current Protection Relay",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Utama",
+        "name": "Circulating Current Protection Relay - ABB - 1KHF 305551 - RST",
+        "modifiedDate": "2026-07-19T13:42:31.472356",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Utama"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (CCP) - Harian"
+          }
+        ],
+        "id": "9a537d2b-396d-4bfb-8b08-803b9555b70d",
+        "bay": "GT#3.1/3.2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 60,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB150082R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:27.682089",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "3833390c-34e9-4ea7-8fa6-2472a753c323",
+        "bay": "7AB14 DIAMETER#14 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 61,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB1500821R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:27.244272",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "0b02f774-5eae-46d9-af8f-806f6c6ea933",
+        "bay": "7A14 DIAMETER#14 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 62,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB1500821R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:26.83438",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "65dcc20a-06a0-4742-a1f2-9b649dc77624",
+        "bay": "7AB13 DIAMETER#13 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 63,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB1500821R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:26.449697",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "d1db5849-ee9c-4d52-bb4c-e7db705a9729",
+        "bay": "7A13 DIAMETER#13 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 64,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB150082R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:26.031272",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "190139a3-5ff6-4e3c-ad6d-16ce0c4bb988",
+        "bay": "7AB10 DIAMETER#10 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 65,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB150082R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:25.60971",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "478b0542-d799-4060-a2f2-2c795415ed58",
+        "bay": "7A10 DIAMETER#10 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 66,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB150082R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:25.198111",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "7967e083-8e1d-4fc9-83cf-90c7cac04968",
+        "bay": "7AB9 DIAMETER#9 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 67,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB1500821R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:24.790632",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "3a4ddef9-5e0d-4ebb-a908-9fba564ced9b",
+        "bay": "7A9 DIAMETER#9 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 68,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB150082R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:24.36299",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "a1916649-a961-4d31-91d2-3b08ee9b04e9",
+        "bay": "7AB8 DIAMETER#8 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 69,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB1500821R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:23.94647",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "588c98fa-abeb-4bcc-bf50-208fe34ff603",
+        "bay": "7A8 DIAMETER#8 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 70,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB150082R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:23.498715",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "b59017c9-c1d7-4e9c-ba27-813564cdcd80",
+        "bay": "7AB7 DIAMETER#7 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 71,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "CB Failure (50 BF)+Short Zone Protection (51 SZP)",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Cadangan",
+        "name": "CB Failure (50 BF)+Short Zone Protection (51 SZP) - ABB - 1MRB1500821R1/D - RST",
+        "modifiedDate": "2026-07-19T13:42:22.986651",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Cadangan"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (50BF+51 SZP) - Harian"
+          }
+        ],
+        "id": "563f4215-7637-419b-8f4d-f598c71167aa",
+        "bay": "7A7 DIAMETER#7 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 72,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Harian",
+        "verifikator2": "-",
+        "parameter": "Inspeksi Level Minyak - 2017/31279 - R,Inspeksi Level Minyak - 2017/37014 - R",
+        "name": "Current Transformer - NANJING ZHIDA ELECTRIC CO., Ltd - 2017/37013 - T",
+        "modifiedDate": "2026-07-19T12:20:19.191547",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Inspeksi Level Minyak - 2017/31279 - R"
+              },
+              {
+                "parameter": "Inspeksi Level Minyak - 2017/37014 - R"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Harian"
+          }
+        ],
+        "id": "751cb7cf-30c3-4104-a987-00e87d808765",
+        "bay": "IBT#1 500/150KV (HV)",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 73,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Harian",
+        "verifikator2": "-",
+        "parameter": "Inspeksi Level Minyak - 2017/31279 - R,Inspeksi Level Minyak - 2017/37014 - R",
+        "name": "Current Transformer - NANJING ZHIDA ELECTRIC CO., Ltd - 2017/37015 - S",
+        "modifiedDate": "2026-07-19T12:20:19.191598",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Inspeksi Level Minyak - 2017/31279 - R"
+              },
+              {
+                "parameter": "Inspeksi Level Minyak - 2017/37014 - R"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Harian"
+          }
+        ],
+        "id": "cdf0eef0-579f-4bef-b683-a00dc061dafe",
+        "bay": "IBT#1 500/150KV (HV)",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 74,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Harian",
+        "verifikator2": "-",
+        "parameter": "Inspeksi Level Minyak - 2017/31279 - R,Inspeksi Level Minyak - 2017/37014 - R",
+        "name": "Current Transformer - NANJING ZHIDA ELECTRIC CO., Ltd - 2017/37014 - R",
+        "modifiedDate": "2026-07-19T12:20:19.191586",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Inspeksi Level Minyak - 2017/31279 - R"
+              },
+              {
+                "parameter": "Inspeksi Level Minyak - 2017/37014 - R"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Harian"
+          }
+        ],
+        "id": "9997666c-457b-4ebe-8dda-1e0af179abc5",
+        "bay": "IBT#1 500/150KV (HV)",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 75,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - BORRI - LP7T51007 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "17d2ecb4-2c15-4ccc-a444-6878b86c97ce",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 76,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - BORRI - LP7T51009 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "0ee8ee4a-39f6-4c48-b8dd-c9fd824cce4d",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 77,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - SAFT - 31-02804-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "550c968b-69ee-4e23-b151-e627992d6280",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 78,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - SAFT - 31-02804-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "2959c34b-702b-4233-aa1c-87d3df5e0b33",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 79,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circuit Breaker",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tahanan Closing dan Tripping Coil - R,Pengukuran Tegangan Kerja Coil PMT - R",
+        "name": "Circuit Breaker - SIEMENS - K 31 270 722 R - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tahanan Closing dan Tripping Coil - R"
+              },
+              {
+                "parameter": "Pengukuran Tegangan Kerja Coil PMT - R"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan"
+          }
+        ],
+        "id": "7104e610-a795-4996-a3cb-90df7dce4553",
+        "bay": "7A4 DIAMETER#4 500KV",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 80,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Compartment",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi GIS Compartment - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Media Peredam Busur Api (SF6, Minyak) - 3P",
+        "name": "Compartment - SIEMENS - 31270713 - R",
+        "modifiedDate": "2026-07-19T12:20:20.200734",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Media Peredam Busur Api (SF6, Minyak) - 3P"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi GIS Compartment - Harian"
+          }
+        ],
+        "id": "5b1300a4-61b5-4f8e-878a-c8b17bcea419",
+        "bay": "IBT#1 500/150KV (HV)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 81,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Power Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Trafo Tenaga - Ming",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Bushing HV",
+        "name": "Power Transformer - CG PAUWELS - 3011160083 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Bushing HV"
+              }
+            ],
+            "formulir": "Form IL2 - Trafo Tenaga - Ming"
+          }
+        ],
+        "id": "3686e059-65fc-46da-a80f-5ea64ee23c4c",
+        "bay": "IBT#2 500/150KV (HV)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 82,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Line Current Differential (87L) + Distance (21) TL",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (LCD+Dist TL) - Harian",
+        "verifikator2": "-",
+        "parameter": "Kondisi Proteksi Utama,Kondisi Komunikasi LCD",
+        "name": "Line Current Differential (87L) + Distance (21) TL - TOSHIBA - VNT0642FM0001-4 - RST",
+        "modifiedDate": "2026-07-19T12:19:45.220713",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Proteksi Utama"
+              },
+              {
+                "parameter": "Kondisi Komunikasi LCD"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi dan Indikasi Relay (LCD+Dist TL) - Harian"
+          }
+        ],
+        "id": "5ad52ca6-2ad9-474a-9f4f-85ce79b76e90",
+        "bay": "PHT 500KV MUARATAWAR",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 83,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559554 - T,Pengujian Tan Delta dan Kapasitansi CT - 559555 - S,Pengujian Tan Delta dan Kapasitansi CT - 559556 - R",
+        "name": "Current Transformer - BALTEAU - 559554 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559554 - T"
+              },
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559555 - S"
+              },
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559556 - R"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "3802c75d-f43c-47ea-96df-685a158a1cf7",
+        "bay": "PHT 150KV CIKARANG#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 84,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559554 - T,Pengujian Tan Delta dan Kapasitansi CT - 559555 - S,Pengujian Tan Delta dan Kapasitansi CT - 559556 - R",
+        "name": "Current Transformer - BALTEAU - 559556 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559554 - T"
+              },
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559555 - S"
+              },
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559556 - R"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "7f181186-ab3e-4b66-9f64-93bd8cd23acc",
+        "bay": "PHT 150KV CIKARANG#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 85,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559554 - T,Pengujian Tan Delta dan Kapasitansi CT - 559555 - S,Pengujian Tan Delta dan Kapasitansi CT - 559556 - R",
+        "name": "Current Transformer - BALTEAU - 559555 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559554 - T"
+              },
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559555 - S"
+              },
+              {
+                "parameter": "Pengujian Tan Delta dan Kapasitansi CT - 559556 - R"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "7e5d8580-c8e0-4a50-87b8-365113952033",
+        "bay": "PHT 150KV CIKARANG#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 86,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - SWADEN - 0105-04-25 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "1a7a2d57-cacb-48b5-ae0f-ea36bdcc54d5",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 87,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - SIEMENS - 22082387 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "f5c2bed7-a27b-41ae-81b7-6a804139df7b",
+        "bay": "TRF#2 150/22KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 88,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929075 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "ec0b45c6-4d4b-485a-bb8d-bcc89e1e29e3",
+        "bay": "TRF#2 150/22KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 89,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - SIEMENS - 22082388 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "4e801516-6034-4e8d-82e8-a04cf726ec21",
+        "bay": "TRF#2 150/22KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 90,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Power Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Trafo Tenaga - Mingguan,Form IL1 - Trafo Tenaga - Harian",
+        "verifikator2": "-",
+        "parameter": "Inspeksi Suara Maintank,Inspeksi Level Minyak Trafo",
+        "name": "Power Transformer - SIEMENS - D416371 - RST",
+        "modifiedDate": "2026-07-19T12:02:27.527691",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Inspeksi Suara Maintank"
+              }
+            ],
+            "formulir": "Form IL1 - Trafo Tenaga - Mingguan"
+          },
+          {
+            "listParameter": [
+              {
+                "parameter": "Inspeksi Level Minyak Trafo"
+              }
+            ],
+            "formulir": "Form IL1 - Trafo Tenaga - Harian"
+          }
+        ],
+        "id": "143ae3ee-4885-4d66-bffb-5f933e966824",
+        "bay": "TRF#3 150/20KV",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 91,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 17014301/9 - S,Tahanan Isolasi Sekunder - 17014301/1 - R,Tahanan Isolasi Sekunder - 17014301/13 - T",
+        "name": "Current Transformer - ARTECHE - 17014301/13 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/9 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/1 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/13 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "29693802-79a6-456c-b5cd-af527887c21f",
+        "bay": "PHT KONSUMEN#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 92,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 17014301/9 - S,Tahanan Isolasi Sekunder - 17014301/1 - R,Tahanan Isolasi Sekunder - 17014301/13 - T",
+        "name": "Current Transformer - ARTECHE - 17014301/1 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/9 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/1 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/13 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "6dd50609-9c04-4b8b-bbdc-99fec58d55d3",
+        "bay": "PHT KONSUMEN#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 93,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 17014301/9 - S,Tahanan Isolasi Sekunder - 17014301/1 - R,Tahanan Isolasi Sekunder - 17014301/13 - T",
+        "name": "Current Transformer - ARTECHE - 17014301/9 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/9 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/1 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17014301/13 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "b4948943-2abe-420c-aa8f-a0e9547097a4",
+        "bay": "PHT KONSUMEN#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 94,
+        "garduInduk": "GI 150KV TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Power Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Trafo Tenaga - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Inspeksi Suara Maintank",
+        "name": "Power Transformer - UNINDO - P060LEC532-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Inspeksi Suara Maintank"
+              }
+            ],
+            "formulir": "Form IL1 - Trafo Tenaga - Mingguan"
+          }
+        ],
+        "id": "45dcfb3b-ca83-4044-9c42-31ec8d757728",
+        "bay": "TRF#3 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 95,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Circuit Breaker",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengujian Opening Time",
+        "name": "Circuit Breaker - ABB - 1HSB01833121 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengujian Opening Time"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan"
+          }
+        ],
+        "id": "170c4464-51cc-46fc-bdc0-e3b57f6f9f10",
+        "bay": "7A11 DIAMETER#11 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 96,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Circuit Breaker",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - PMT - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset",
+        "name": "Circuit Breaker - ABB - 1HSB01833127 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset"
+              }
+            ],
+            "formulir": "Form IL2 - PMT - Mingguan"
+          }
+        ],
+        "id": "27622990-0987-475a-aec4-5a246aa05cf4",
+        "bay": "7A6 DIAMETER#6 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 97,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Circuit Breaker",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi PMT - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Fisik Isolator",
+        "name": "Circuit Breaker - ABB - GP.33110568 /4 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Fisik Isolator"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi PMT - Mingguan"
+          }
+        ],
+        "id": "71d19c2a-27d6-4f64-b6cc-1b335a171bb3",
+        "bay": "7A2 DIAMETER#2 500KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 98,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - R,Tahanan Isolasi Sekunder - S",
+        "name": "Potential Transformer - TRENCH - 30097231 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "f1c504f5-fbf3-4383-bbe6-3e967527faeb",
+        "bay": "PHT 150KV FAJAR SURYA WISESA#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 99,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - R,Tahanan Isolasi Sekunder - S",
+        "name": "Potential Transformer - TRENCH - 300097229 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "00a3aca0-f121-4fd5-ad04-db4be4dc7831",
+        "bay": "PHT 150KV FAJAR SURYA WISESA#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 100,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - R,Tahanan Isolasi Sekunder - S",
+        "name": "Potential Transformer - TRENCH - 30097230 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "aca13e7d-aeed-417d-83e5-61252372c742",
+        "bay": "PHT 150KV FAJAR SURYA WISESA#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 101,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - MERLIN GERIN - 88313.22 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "c07a6fa0-f2bb-47bb-8607-b5d3960e9ef5",
+        "bay": "PHT 150KV FAJAR SURYA WISESA#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 102,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - MERLIN GERIN - 88313.11 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "18f285d2-fb69-4a16-b2fa-5f42f3fe75e7",
+        "bay": "PHT 150KV FAJAR SURYA WISESA#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 103,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - MERLIN GERIN - 15957/56/55 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "c71cd1aa-8c13-4dcc-9e74-df272f63d406",
+        "bay": "KOPEL BUS 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 104,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - MERLIN GERIN - 15960/59/58 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "c86a738e-daa1-46ba-bd24-48cc8dd699fb",
+        "bay": "KOPEL BUS 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "19-07-2026"
+      },
+      {
+        "no": 105,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Klem",
+        "name": "Current Transformer - ABB - AJ1908612 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Klem"
+              }
+            ],
+            "formulir": "Form IL2 - CT - 2 Mingguan"
+          }
+        ],
+        "id": "6ce6200d-3d10-4163-9b62-2224ad63c582",
+        "bay": "KAPASITOR SC 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 106,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Fisik Isolator",
+        "name": "Current Transformer - BALTEAU - 01 CT KPL R2 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Fisik Isolator"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "8944523f-b19d-474d-8832-396dc1c8a1a6",
+        "bay": "KOPEL BUS 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 107,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Klem",
+        "name": "Current Transformer - ABB - AJ1908617 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Klem"
+              }
+            ],
+            "formulir": "Form IL2 - CT - 2 Mingguan"
+          }
+        ],
+        "id": "56fc40b3-bdfa-425c-b2cd-59c963bfb5f2",
+        "bay": "KAPASITOR SC 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 108,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Fisik Isolator",
+        "name": "Current Transformer - BALTEAU - 03 CT KPL R2 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Fisik Isolator"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "3c7b0388-4823-41cf-a62c-a30cb6505fac",
+        "bay": "KOPEL BUS 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 109,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Klem",
+        "name": "Current Transformer - ABB - AJ1908613 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Klem"
+              }
+            ],
+            "formulir": "Form IL2 - CT - 2 Mingguan"
+          }
+        ],
+        "id": "f8c38768-740d-4413-8f51-30dfe468627c",
+        "bay": "KAPASITOR SC 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 110,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - CT - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Fisik Isolator",
+        "name": "Current Transformer - BALTEAU - 02 CT KPL R2 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Fisik Isolator"
+              }
+            ],
+            "formulir": "Form IL1 - CT - Bulanan"
+          }
+        ],
+        "id": "cdee2067-4ddd-4cf9-88db-c6d4cf97f489",
+        "bay": "KOPEL BUS 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 111,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - SWADEN - 0230-12-09 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "fc32f58b-5a71-4c5b-ab04-132be48e818a",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 112,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi MCB, Indikasi, Metering, pada Panel Catu Daya - Harian,Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Rectifier,Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - ALCATEL - 7286823 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Rectifier"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi MCB, Indikasi, Metering, pada Panel Catu Daya - Harian"
+          },
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "2691224c-c770-4cb0-9c2f-4ab7a816dfe7",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 113,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - HBL - 1303-110/3156299S120002-01A - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "6db9578b-ec53-41d3-8750-9f3115f28129",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 114,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Power Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Trafo Tenaga - Harian",
+        "verifikator2": "-",
+        "parameter": "Inspeksi Trafo",
+        "name": "Power Transformer - CG PAUWELS - 3011100063 - RST",
+        "modifiedDate": "2026-07-18T18:31:21.049016",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Inspeksi Trafo"
+              }
+            ],
+            "formulir": "Form IL1 - Trafo Tenaga - Harian"
+          }
+        ],
+        "id": "ecc716ef-7736-4ba5-a85e-07bfa94534ba",
+        "bay": "TRF#3 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 115,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Circuit Breaker",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengujian Closing Time",
+        "name": "Circuit Breaker - CG PAUWELS - 174/PT.TDKK/VI/2017 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengujian Closing Time"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan PMT - 2 Tahunan"
+          }
+        ],
+        "id": "92254bcf-3436-40f6-85dd-62f733971a7a",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 116,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 17/0909210132740 - S,Tahanan Isolasi Sekunder - 17/0909210132718 - R,Tahanan Isolasi Sekunder - 17/0909210132741 - T",
+        "name": "Current Transformer - RITZ - 17/0909210132740 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132740 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132718 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132741 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "437bc011-ddea-41b2-ac86-8114722616cf",
+        "bay": "TRF#4 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 117,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 17/0909210132740 - S,Tahanan Isolasi Sekunder - 17/0909210132718 - R,Tahanan Isolasi Sekunder - 17/0909210132741 - T",
+        "name": "Current Transformer - RITZ - 17/0909210132718 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132740 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132718 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132741 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "22d34b79-f6ed-4899-9c74-9638213b37c2",
+        "bay": "TRF#4 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 118,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Current Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - 17/0909210132740 - S,Tahanan Isolasi Sekunder - 17/0909210132718 - R,Tahanan Isolasi Sekunder - 17/0909210132741 - T",
+        "name": "Current Transformer - RITZ - 17/0909210132741 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132740 - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132718 - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - 17/0909210132741 - T"
+              }
+            ],
+            "formulir": "Form IL3 - CT - 2 Tahunan"
+          }
+        ],
+        "id": "0a924fee-5b39-4b67-bbe6-975f45e64ea1",
+        "bay": "TRF#4 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 119,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - SIEMENS - K/35302782 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "96baf917-6095-40ec-b8ea-2b55484442c6",
+        "bay": "IBT#2 500/150KV (HV)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 120,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - SIEMENS - K/35302780 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "f7268029-83b0-485a-b16e-9f0bf9a22f5c",
+        "bay": "IBT#2 500/150KV (HV)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 121,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - SIEMENS - K/35302781 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "dde485c1-59e3-464a-afab-884f6c174358",
+        "bay": "IBT#2 500/150KV (HV)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 122,
+        "garduInduk": "GITET 500KV MUARATAWAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam",
+        "name": "Substation Battery - TECHFILL - NO DATA - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "ac53ebe9-7596-46dc-a98f-ec29ff3053c8",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 123,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Tegangan Sel Batere Asam,Pengukuran Berat Jenis Elektrolit Batere Asam [Lama]",
+        "name": "Substation Battery - SAFT - 31-02804-01 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Tegangan Sel Batere Asam"
+              },
+              {
+                "parameter": "Pengukuran Berat Jenis Elektrolit Batere Asam [Lama]"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "922f95a7-bab5-49cb-a632-ef6e67b123f5",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 124,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Substation Battery",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Berat Jenis Elektrolit Batere Asam [Lama]",
+        "name": "Substation Battery - HBL - 5007029 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Berat Jenis Elektrolit Batere Asam [Lama]"
+              }
+            ],
+            "formulir": "Form IL2 - Pengukuran Tegangan dan Berat Jenis per Sel Batere - Bulanan"
+          }
+        ],
+        "id": "ccd93dd4-36b6-4e1b-bd43-b86a9ffaf3f2",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 125,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - TECHFILL - NO DATA - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "d6fdbe65-a274-4bc2-845f-ded00076d7a9",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 126,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Substation Rectifier",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Rectifier - Bulanan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Thermovisi Recitifer",
+        "name": "Substation Rectifier - TECHFILL - 1411026-1046A-AI - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Thermovisi Recitifer"
+              }
+            ],
+            "formulir": "Form IL2 - Rectifier - Bulanan"
+          }
+        ],
+        "id": "bf9c97f1-8cd8-4994-9d1a-81983c9fb194",
+        "bay": "GEDUNG",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "18-07-2026"
+      },
+      {
+        "no": 127,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CVT/PT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset (PT/CVT)",
+        "name": "Potential Transformer - ABB - 1219779 - R",
+        "modifiedDate": "2026-07-17T23:53:25.615843",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset (PT/CVT)"
+              }
+            ],
+            "formulir": "Form IL2 - CVT/PT - 2 Mingguan"
+          }
+        ],
+        "id": "80cc1507-fc19-4250-94d7-7b9486e99e7a",
+        "bay": "BUSBAR A 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 128,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CVT/PT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset (PT/CVT)",
+        "name": "Potential Transformer - ABB - 1219781 - T",
+        "modifiedDate": "2026-07-17T23:53:25.615182",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset (PT/CVT)"
+              }
+            ],
+            "formulir": "Form IL2 - CVT/PT - 2 Mingguan"
+          }
+        ],
+        "id": "a0ac8ce4-2113-40f5-bcf7-7d0a6b492e96",
+        "bay": "BUSBAR A 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 129,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CVT/PT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset (PT/CVT)",
+        "name": "Potential Transformer - ABB - 1219780 - S",
+        "modifiedDate": "2026-07-17T23:53:25.614614",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset (PT/CVT)"
+              }
+            ],
+            "formulir": "Form IL2 - CVT/PT - 2 Mingguan"
+          }
+        ],
+        "id": "ab1edfaf-d068-4437-8a66-caf97b6443a4",
+        "bay": "BUSBAR A 150KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 130,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - CROMPTON GREAVES - X430227 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "1845ba22-081c-4bec-89e4-91df2e06d8ad",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 131,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - CROMPTON GREAVES - X430228 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "402487f7-3bcf-4f23-8ef7-25468a7ee248",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 132,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Counter",
+        "name": "Lightning Arrester - CROMPTON GREAVES - X430226 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Counter"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - Mingguan"
+          }
+        ],
+        "id": "66245176-77a2-4253-811d-db7fb2fe4d33",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 133,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929069 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "4c344bf7-364d-4b15-94b1-275d648bff6d",
+        "bay": "PHT 150KV CIKARANG#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 134,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929071 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "e19db6d8-1ab4-43de-aeec-be2e0ffaac27",
+        "bay": "PHT 150KV CIKARANG#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 135,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929070 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "691a70c9-e5f6-479d-a728-1f42bd37e83d",
+        "bay": "PHT 150KV CIKARANG#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 136,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929066 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "973c9d5f-bab8-42a0-9b8e-68369a1f69ac",
+        "bay": "PHT 150KV CIKARANG#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 137,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - SIEMENS - 22082382 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "c7334e09-fac9-496d-9dcc-41289b4fb439",
+        "bay": "PHT 150KV CIKARANG#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 138,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929068 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "d2e91e2c-54c9-4055-97b1-a1e235b8827a",
+        "bay": "PHT 150KV CIKARANG#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 139,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - R",
+        "name": "Potential Transformer - TRENCH - 30099233 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "3a982b14-f7a6-4e1c-b1d2-0ffad3548e0c",
+        "bay": "PHT 150KV MULIA KERAMIK",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 140,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - R",
+        "name": "Potential Transformer - TRENCH - 30099232 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "3eaaa521-34c9-4be0-9dfd-63a68e09c980",
+        "bay": "PHT 150KV MULIA KERAMIK",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 141,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - R",
+        "name": "Potential Transformer - TRENCH - 30099231 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "e660d0f1-34fe-4181-8a52-0668599ce483",
+        "bay": "PHT 150KV MULIA KERAMIK",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 142,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CVT/PT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset (PT/CVT)",
+        "name": "Potential Transformer - ABB - 1220642 - T",
+        "modifiedDate": "2026-07-17T21:23:52.155695",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset (PT/CVT)"
+              }
+            ],
+            "formulir": "Form IL2 - CVT/PT - 2 Mingguan"
+          }
+        ],
+        "id": "5ad72e4b-4771-46d2-82ac-42f0845731aa",
+        "bay": "PHT 150KV CIKARANG LIPPO#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 143,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CVT/PT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset (PT/CVT)",
+        "name": "Potential Transformer - ABB - 1220643 - S",
+        "modifiedDate": "2026-07-17T21:23:52.155118",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset (PT/CVT)"
+              }
+            ],
+            "formulir": "Form IL2 - CVT/PT - 2 Mingguan"
+          }
+        ],
+        "id": "cf427471-37bc-4dd3-9a06-2631ce9cbc92",
+        "bay": "PHT 150KV CIKARANG LIPPO#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 144,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - CVT/PT - 2 Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset (PT/CVT)",
+        "name": "Potential Transformer - ABB - 1219589 - R",
+        "modifiedDate": "2026-07-17T21:23:52.1547",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset (PT/CVT)"
+              }
+            ],
+            "formulir": "Form IL2 - CVT/PT - 2 Mingguan"
+          }
+        ],
+        "id": "7a5c045e-247d-4ebc-88b2-7b04810ba6a3",
+        "bay": "PHT 150KV CIKARANG LIPPO#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 145,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - SIEMENS - 25120796 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "f4c324b5-778c-487f-9df3-9d0cc66b26ce",
+        "bay": "PHT 150KV HANKOOK#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 146,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset",
+        "name": "Lightning Arrester - SIEMENS - K/35302767 - T",
+        "modifiedDate": "2026-07-17T15:56:57.655963",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset"
+              }
+            ],
+            "formulir": "Form IL2 - LA - Mingguan"
+          }
+        ],
+        "id": "e7ff5c20-debf-41c3-aac3-fecb81e0bdfd",
+        "bay": "PHT 500KV BEKASI",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 147,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929082 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "bc125cc1-9e2e-40a4-9a39-cd3578188417",
+        "bay": "PHT 150KV HANKOOK#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 148,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset",
+        "name": "Lightning Arrester - SIEMENS - K/35302766 - S",
+        "modifiedDate": "2026-07-17T15:56:57.655712",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset"
+              }
+            ],
+            "formulir": "Form IL2 - LA - Mingguan"
+          }
+        ],
+        "id": "bbaca667-a17c-4717-ac85-906882ae9b5c",
+        "bay": "PHT 500KV BEKASI",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 149,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929080 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "7ce644b9-0690-4752-aecf-b768550abac9",
+        "bay": "PHT 150KV HANKOOK#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 150,
+        "garduInduk": "GISTET 500KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Thermovisi Body Aset",
+        "name": "Lightning Arrester - SIEMENS - K/35302765 - R",
+        "modifiedDate": "2026-07-17T15:56:57.656188",
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Thermovisi Body Aset"
+              }
+            ],
+            "formulir": "Form IL2 - LA - Mingguan"
+          }
+        ],
+        "id": "265371fe-3b8d-4566-8906-87311333f9ea",
+        "bay": "PHT 500KV BEKASI",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 151,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929078 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "082849ba-ac23-4ca3-813e-31aca149844b",
+        "bay": "PHT 150KV HANKOOK#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 152,
+        "garduInduk": "GIS 150KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - SIEMENS - T73004941040-002300/001 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "8e0d2fc1-fbac-4003-b6c0-3ad889c52e4f",
+        "bay": "TRF#2 150/22KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 153,
+        "garduInduk": "GIS 150KV NEW TAMBUN",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - SIEMENS - T73004941040-001000/001 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "64410388-eb17-46d7-9c83-7150a6915b75",
+        "bay": "TRF#1 150/22KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 154,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929083 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "1609cba7-c0fc-4903-b45e-8dd9b99b51a8",
+        "bay": "PHT 150KV HANKOOK#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 155,
+        "garduInduk": "GI 150KV JABABEKA",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - NO DATA - 44929081 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "f1edde1f-4dba-4fb6-b3be-efd9f83e0e77",
+        "bay": "PHT 150KV HANKOOK#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "17-07-2026"
+      },
+      {
+        "no": 156,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - R",
+        "name": "Potential Transformer - RITZ - 17/0909210232686 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "a6b1c2c7-dd25-4b08-9620-e45842a7311a",
+        "bay": "TRF#4 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "16-07-2026"
+      },
+      {
+        "no": 157,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - R",
+        "name": "Potential Transformer - RITZ - 17/0909210232685 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "26897706-ed35-458f-b1c9-813bbf04eaf3",
+        "bay": "TRF#4 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "16-07-2026"
+      },
+      {
+        "no": 158,
+        "garduInduk": "GI 150KV GANDAMEKAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - T,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - R",
+        "name": "Potential Transformer - RITZ - 17/0909210232687 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "2db4962f-7cca-4516-b2ed-cefc49a3a894",
+        "bay": "TRF#4 150/20KV (INC)",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "16-07-2026"
+      },
+      {
+        "no": 159,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - UNINDO - A68307 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "22045f4a-1ddf-4efd-8bb4-01658e955e36",
+        "bay": "PHT 150KV CIKARANG#2",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "16-07-2026"
+      },
+      {
+        "no": 160,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan,Form IL1 - Inspeksi Kondisi LA - 3 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Uji Fungsi Counter - S,Uji Fungsi Counter - T,Uji Fungsi Counter - R,Kondisi Grounding - URG/12302002 - S,Kondisi Grounding - URG/1232001 - R,Kondisi Grounding - URG/12302003 - T",
+        "name": "Lightning Arrester - SIEMENS - URG/12302002 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Uji Fungsi Counter - S"
+              },
+              {
+                "parameter": "Uji Fungsi Counter - T"
+              },
+              {
+                "parameter": "Uji Fungsi Counter - R"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan"
+          },
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding - URG/12302002 - S"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG/1232001 - R"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG/12302003 - T"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan"
+          }
+        ],
+        "id": "4936e6a2-3397-4f14-bd62-42b69f71f409",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 6,
+        "inspectionDate": "16-07-2026"
+      },
+      {
+        "no": 161,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan,Form IL1 - Inspeksi Kondisi LA - 3 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Uji Fungsi Counter - S,Uji Fungsi Counter - T,Uji Fungsi Counter - R,Kondisi Grounding - URG/12302002 - S,Kondisi Grounding - URG/1232001 - R,Kondisi Grounding - URG/12302003 - T",
+        "name": "Lightning Arrester - SIEMENS - URG/12302003 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Uji Fungsi Counter - S"
+              },
+              {
+                "parameter": "Uji Fungsi Counter - T"
+              },
+              {
+                "parameter": "Uji Fungsi Counter - R"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan"
+          },
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding - URG/12302002 - S"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG/1232001 - R"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG/12302003 - T"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan"
+          }
+        ],
+        "id": "2a1a7725-ff3a-4dd9-a1a0-2fcb8478442b",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 6,
+        "inspectionDate": "16-07-2026"
+      },
+      {
+        "no": 162,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan,Form IL1 - Inspeksi Kondisi LA - 3 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Uji Fungsi Counter - S,Uji Fungsi Counter - T,Uji Fungsi Counter - R,Kondisi Grounding - URG/12302002 - S,Kondisi Grounding - URG/1232001 - R,Kondisi Grounding - URG/12302003 - T",
+        "name": "Lightning Arrester - SIEMENS - URG/1232001 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Uji Fungsi Counter - S"
+              },
+              {
+                "parameter": "Uji Fungsi Counter - T"
+              },
+              {
+                "parameter": "Uji Fungsi Counter - R"
+              }
+            ],
+            "formulir": "Form IL3 - Pemeliharaan LA - 2 Tahunan"
+          },
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding - URG/12302002 - S"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG/1232001 - R"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG/12302003 - T"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan"
+          }
+        ],
+        "id": "7f5bd926-7391-4590-b595-8f4b64e8f9c4",
+        "bay": "TRF#1 150/20KV",
+        "jumlahParameterAnomali": 6,
+        "inspectionDate": "16-07-2026"
+      },
+      {
+        "no": 163,
+        "garduInduk": "GI 150KV TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - S,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - SIEMENS ENERGY - URG/23450463 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - S"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "da4d7863-23ae-4344-82fc-1d482b75a584",
+        "bay": "PHT 150KV PONCOL BARU#1",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 164,
+        "garduInduk": "GI 150KV TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - S,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - EMP BOWTHORPE - 0932-S - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - S"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "c70492ad-292f-4b6a-ad06-54da613847aa",
+        "bay": "PHT 150KV PONCOL BARU#1",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 165,
+        "garduInduk": "GI 150KV TAMBUN",
+        "healthIndex": "5 - Critical",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - LA (LCM) - Tahunan",
+        "verifikator2": "-",
+        "parameter": "Pengukuran Arus Bocor (LCM) - S,Pengukuran Arus Bocor (LCM) - R",
+        "name": "Lightning Arrester - EMP BOWTHORPE - 0932-R - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - S"
+              },
+              {
+                "parameter": "Pengukuran Arus Bocor (LCM) - R"
+              }
+            ],
+            "formulir": "Form IL2 - LA (LCM) - Tahunan"
+          }
+        ],
+        "id": "a8f6787d-755e-4f62-9943-f038bf493abc",
+        "bay": "PHT 150KV PONCOL BARU#1",
+        "jumlahParameterAnomali": 2,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 166,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - SCHNEIDER ELECTRIC - 8X139UC1 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "725321d5-969c-4541-a3e6-8da1242fffa6",
+        "bay": "TRF#5 150/20KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 167,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - SCHNEIDER ELECTRIC - 2000098276/10/010 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "99e6bce8-cd30-43fc-86a8-0293ccd0e942",
+        "bay": "TRF#4 150/20KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 168,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - SCHNEIDER ELECTRIC - M4 0300188 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "29dc49f4-22e3-47a9-b124-1ccf167a2037",
+        "bay": "TRF#1 150/20KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 169,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - SCHNEIDER ELECTRIC - M4 0300193 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "da7cdc8b-df5f-40ec-b65c-67ebe13047d4",
+        "bay": "TRF#2 150/20KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 170,
+        "garduInduk": "GI 150KV PONCOL BARU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - SCHNEIDER ELECTRIC - M40124C1 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "a10664f0-98c8-44d3-903f-1d827deeeba0",
+        "bay": "TRF#3 150/20KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 171,
+        "garduInduk": "GI 150KV MUARATAWAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Grounding",
+        "name": "Lightning Arrester - SIEMENS - K/35301444 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan"
+          }
+        ],
+        "id": "aab32236-ffad-496b-917d-621d0e0a6c30",
+        "bay": "IBT#1 500/150KV (LV)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "15-07-2026"
+      },
+      {
+        "no": 172,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - R,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - T",
+        "name": "Potential Transformer - ALSTOM - 37992005937 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "5a54a6eb-31b0-471f-88fa-993a11cb8e78",
+        "bay": "PHT KONSUMEN#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "14-07-2026"
+      },
+      {
+        "no": 173,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - R,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - T",
+        "name": "Potential Transformer - ALSTOM - 37992005936 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "bdf08758-d7f6-4749-9eb9-48b9095b9298",
+        "bay": "PHT KONSUMEN#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "14-07-2026"
+      },
+      {
+        "no": 174,
+        "garduInduk": "GI 150KV RAJAPAKSI",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Potential Transformer",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL3 - CVT/PT - 2 Tahunan",
+        "verifikator2": "-",
+        "parameter": "Tahanan Isolasi Sekunder - R,Tahanan Isolasi Sekunder - S,Tahanan Isolasi Sekunder - T",
+        "name": "Potential Transformer - ALSTOM - 37992005938 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Tahanan Isolasi Sekunder - R"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - S"
+              },
+              {
+                "parameter": "Tahanan Isolasi Sekunder - T"
+              }
+            ],
+            "formulir": "Form IL3 - CVT/PT - 2 Tahunan"
+          }
+        ],
+        "id": "ced4da09-66f2-46e0-8a4a-9491f6e5f0c2",
+        "bay": "PHT KONSUMEN#2",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "14-07-2026"
+      },
+      {
+        "no": 175,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - MERLIN GERIN - 16027/26/25 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "41fab232-bc9c-4ebc-94c6-cfbf2b8687a3",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "14-07-2026"
+      },
+      {
+        "no": 176,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - HAPAM - 506705.196/197/198 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "63935ef6-401b-4122-a0f7-b6c6c9033f53",
+        "bay": "PHT 150KV FAJAR SURYA WISESA#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "14-07-2026"
+      },
+      {
+        "no": 177,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - HAPAM - 506705.165/166/167 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "ac69df6e-bb46-495b-a9b4-d056df81b024",
+        "bay": "PHT 150KV FAJAR SURYA WISESA#1",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "14-07-2026"
+      },
+      {
+        "no": 178,
+        "garduInduk": "GI 150KV CIKARANG",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Disconnecting Switch",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - PMS - Mingguan",
+        "verifikator2": "-",
+        "parameter": "Pemeriksaan Kondisi Sekering/ MCB",
+        "name": "Disconnecting Switch - MERLIN GERIN - 15970/69/28 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Pemeriksaan Kondisi Sekering/ MCB"
+              }
+            ],
+            "formulir": "Form IL1 - PMS - Mingguan"
+          }
+        ],
+        "id": "a3a9aadd-67d2-4be2-8605-6edf963d619a",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "14-07-2026"
+      },
+      {
+        "no": 179,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Grounding - URG-11266552 - R,Kondisi Grounding - URG-11266553 - S,Kondisi Grounding - URG-11266554 - T",
+        "name": "Lightning Arrester - SIEMENS - URG-11266554 - T",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding - URG-11266552 - R"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG-11266553 - S"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG-11266554 - T"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan"
+          }
+        ],
+        "id": "c408b3db-4d9d-4175-bdf9-f05ff51db698",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "13-07-2026"
+      },
+      {
+        "no": 180,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Grounding - URG-11266552 - R,Kondisi Grounding - URG-11266553 - S,Kondisi Grounding - URG-11266554 - T",
+        "name": "Lightning Arrester - SIEMENS - URG-11266553 - S",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding - URG-11266552 - R"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG-11266553 - S"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG-11266554 - T"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan"
+          }
+        ],
+        "id": "e26f16b7-21a7-4f28-9082-f223fab0dd18",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "13-07-2026"
+      },
+      {
+        "no": 181,
+        "garduInduk": "GI 150KV FAJAR",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Lightning Arrester",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Kondisi Grounding - URG-11266552 - R,Kondisi Grounding - URG-11266553 - S,Kondisi Grounding - URG-11266554 - T",
+        "name": "Lightning Arrester - SIEMENS - URG-11266552 - R",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Kondisi Grounding - URG-11266552 - R"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG-11266553 - S"
+              },
+              {
+                "parameter": "Kondisi Grounding - URG-11266554 - T"
+              }
+            ],
+            "formulir": "Form IL1 - Inspeksi Kondisi LA - 3 Bulanan"
+          }
+        ],
+        "id": "7393d2da-2a82-4b68-9433-def7649c5c1f",
+        "bay": "TRF#4 150/20KV",
+        "jumlahParameterAnomali": 3,
+        "inspectionDate": "13-07-2026"
+      },
+      {
+        "no": 182,
+        "garduInduk": "GIS 150KV MARGAHAYU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - ABB - IDABB318080561 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "7e629bce-56d2-43c8-b052-8a2410b86939",
+        "bay": "TRF#2 150/22KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "12-07-2026"
+      },
+      {
+        "no": 183,
+        "garduInduk": "GIS 150KV MARGAHAYU",
+        "healthIndex": "4 - Poor",
+        "assetClass": "Cubicle",
+        "tanggalVerifikasi2": "-",
+        "formulir": "Form IL2 - Cubicle - 6 Bulanan",
+        "verifikator2": "-",
+        "parameter": "Partial discharge (PD) Cubicle",
+        "name": "Cubicle - ABB - 1YHP000079A5810 - RST",
+        "modifiedDate": null,
+        "listDetail": [
+          {
+            "listParameter": [
+              {
+                "parameter": "Partial discharge (PD) Cubicle"
+              }
+            ],
+            "formulir": "Form IL2 - Cubicle - 6 Bulanan"
+          }
+        ],
+        "id": "d89c3fed-a81f-4c4f-a7e6-f60a0083f5d2",
+        "bay": "TRF#2 150/22KV (INC)",
+        "jumlahParameterAnomali": 1,
+        "inspectionDate": "12-07-2026"
+      }
+    ],
+    "totalPages": 1,
+    "totalElements": 183,
+    "last": true,
+    "numberOfElements": 183,
+    "first": true,
+    "size": 1000,
+    "number": 0,
+    "empty": false
+  }
+}

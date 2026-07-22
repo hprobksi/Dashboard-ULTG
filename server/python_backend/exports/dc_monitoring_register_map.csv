@@ -1,0 +1,49 @@
+device_name,ip,protocol,port,slave_id,function_code,pymodbus_address,modbus_register_start,modbus_register_end,register_index_start,register_index_end,tag_key,tag_name,unit,data_type,word_count,byte_order,word_order,scale,notes
+GI Cikarang,172.20.17.154,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Cikarang,172.20.17.154,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Cikarang,172.20.17.154,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Cikarang,172.20.17.154,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Fajar SW,172.20.19.145,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Fajar SW,172.20.19.145,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Fajar SW,172.20.19.145,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Fajar SW,172.20.19.145,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Gandamekar,172.20.20.31,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Gandamekar,172.20.20.31,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Gandamekar,172.20.20.31,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Gandamekar,172.20.20.31,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Jababeka,172.20.21.154,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Jababeka,172.20.21.154,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Jababeka,172.20.21.154,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Jababeka,172.20.21.154,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Poncol Baru,172.20.27.153,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Poncol Baru,172.20.27.153,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Poncol Baru,172.20.27.153,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Poncol Baru,172.20.27.153,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Rajapaksi,172.20.29.20,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Rajapaksi,172.20.29.20,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Rajapaksi,172.20.29.20,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Rajapaksi,172.20.29.20,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Tambun,172.20.31.50,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Tambun,172.20.31.50,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Tambun,172.20.31.50,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Tambun,172.20.31.50,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GIS Margahayu,172.20.123.126,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GIS Margahayu,172.20.123.126,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GIS Margahayu,172.20.123.126,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GIS Margahayu,172.20.123.126,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GIS New Tambun,172.20.121.11,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GIS New Tambun,172.20.121.11,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GIS New Tambun,172.20.121.11,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GIS New Tambun,172.20.121.11,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GITET New Tambun,172.20.121.10,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GITET New Tambun,172.20.121.10,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GITET New Tambun,172.20.121.10,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GITET New Tambun,172.20.121.10,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GITET Muaratawar,172.20.17.26,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GITET Muaratawar,172.20.17.26,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GITET Muaratawar,172.20.17.26,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GITET Muaratawar,172.20.17.26,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Juishin,172.20.22.52,Modbus TCP,502,1,03 Holding Register,0,40001,40002,0,1,v_pn,Tegangan DC Positif-Negatif,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Juishin,172.20.22.52,Modbus TCP,502,1,03 Holding Register,6,40007,40008,6,7,arus,Arus Beban,A,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Juishin,172.20.22.52,Modbus TCP,502,1,03 Holding Register,12,40013,40014,12,13,v_pg,Tegangan Positif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40
+GI Juishin,172.20.22.52,Modbus TCP,502,1,03 Holding Register,14,40015,40016,14,15,v_ng,Tegangan Negatif-Ground,V,float32,2,big-endian,high-word-first,1,Backend reads address 0 count 40

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pymodbus
+pydantic
+requests
+psutil
+iec61850
+matplotlib
+reportlab

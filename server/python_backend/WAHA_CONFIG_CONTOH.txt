@@ -1,0 +1,34 @@
+KONFIGURASI CONTOH WAHA VOLTKRAFT
+=================================
+
+Mode default VoltKraft tetap MPWA lama.
+WAHA baru aktif jika konfigurasi berikut dipasang:
+
+WHATSAPP_GATEWAY_MODE=waha
+
+File config lokal yang bisa dipakai:
+
+1. waha_base_url.txt
+   Contoh isi:
+   http://localhost:3000
+
+2. waha_session.txt
+   Contoh isi:
+   default
+
+3. waha_chat_id.txt
+   Contoh isi grup WhatsApp WAHA:
+   120363xxxxxxxxxxxx@g.us
+
+4. waha_api_key.txt
+   Opsional. Isi hanya jika WAHA dipasang dengan API key.
+
+Endpoint default:
+
+WAHA_SEND_TEXT_PATH=/api/sendText
+
+Catatan:
+- Jangan menimpa file whatsapp_*.txt produksi sebelum migrasi benar-benar siap.
+- Untuk test lokal jalankan:
+  .venv\Scripts\python.exe .\test_waha_whatsapp_notification.py
+- Script test memaksa WHATSAPP_GATEWAY_MODE=waha hanya untuk proses test itu.

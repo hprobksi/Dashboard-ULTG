@@ -1,0 +1,499 @@
+[
+  {
+    "category": "ALAT PELINDUNG KEPALA",
+    "item": "HELM BIRU (HAR, OPERATOR)",
+    "satuan": "Buah/orang",
+    "standar": 1,
+    "rowNumber": 9
+  },
+  {
+    "category": "ALAT PELINDUNG KEPALA",
+    "item": "HELM MERAH (P.K3, P.M, P.P)",
+    "satuan": "Buah",
+    "standar": 3,
+    "rowNumber": 10
+  },
+  {
+    "category": "ALAT PELINDUNG KEPALA",
+    "item": "HELM KUNING (MITRA, MAGANG)",
+    "satuan": "Buah",
+    "standar": 3,
+    "rowNumber": 11
+  },
+  {
+    "category": "ALAT PELINDUNG KEPALA",
+    "item": "HELM PUTIH (TAMU & MANAJEMEN)",
+    "satuan": "Buah",
+    "standar": 10,
+    "rowNumber": 12
+  },
+  {
+    "category": "ALAT PELINDUNG KEPALA",
+    "item": "HELM ORANGE",
+    "satuan": "Buah",
+    "standar": "-",
+    "rowNumber": 13
+  },
+  {
+    "category": "ALAT PELINDUNG KEPALA",
+    "item": "HELM HIJAU (LING) *",
+    "satuan": "Buah/orang",
+    "standar": "-",
+    "rowNumber": 14
+  },
+  {
+    "category": "ALAT PELINDUNG MATA DAN MUKA",
+    "item": "KACAMATA PENGAMAN",
+    "satuan": "Buah",
+    "standar": 2,
+    "rowNumber": 15
+  },
+  {
+    "category": "ALAT PELINDUNG MATA DAN MUKA",
+    "item": "GOOGLES",
+    "satuan": "Buah/orang",
+    "standar": 1,
+    "rowNumber": 16
+  },
+  {
+    "category": "ALAT PELINDUNG MATA DAN MUKA",
+    "item": "FACE SHIELD",
+    "satuan": "Buah",
+    "standar": 1,
+    "rowNumber": 17
+  },
+  {
+    "category": "ALAT PELINDUNG MATA DAN MUKA",
+    "item": "WELDING SHIELD",
+    "satuan": "Buah",
+    "standar": 1,
+    "rowNumber": 18
+  },
+  {
+    "category": "ALAT PELINDUNG TANGAN",
+    "item": "SARUNG TANGAN TAHAN PANAS / API BAHAN KULIT",
+    "satuan": "Box",
+    "standar": 1,
+    "rowNumber": 19
+  },
+  {
+    "category": "ALAT PELINDUNG TANGAN",
+    "item": "SARUNG TANGAN TAHAN MEKANIS COATED GLOVES",
+    "satuan": "Box",
+    "standar": 1,
+    "rowNumber": 20
+  },
+  {
+    "category": "ALAT PELINDUNG TANGAN",
+    "item": "SARUNG TANGAN TAHAN KIMIA DAN CAIRAN BAHAN BUTYL",
+    "satuan": "Pasang",
+    "standar": 3,
+    "rowNumber": 21
+  },
+  {
+    "category": "ALAT PELINDUNG TANGAN",
+    "item": "SARUNG TANGAN INSULASI",
+    "satuan": "Pasang",
+    "standar": 2,
+    "rowNumber": 22
+  },
+  {
+    "category": "ALAT PELINDUNG TANGAN",
+    "item": "CONDUCTIVE GLOVES *",
+    "satuan": "Pasang",
+    "standar": "-",
+    "rowNumber": 23
+  },
+  {
+    "category": "ALAT PELINDUNG TELINGA",
+    "item": "SUMBAT TELINGA  (EAR PLUG)",
+    "satuan": "Set",
+    "standar": "-",
+    "rowNumber": 24
+  },
+  {
+    "category": "ALAT PELINDUNG TELINGA",
+    "item": "PENUTUP TELINGA  (EAR MUFF)",
+    "satuan": "Set",
+    "standar": 2,
+    "rowNumber": 25
+  },
+  {
+    "category": "ALAT PELINDUNG KAKI",
+    "item": "SAFETY SHOES",
+    "satuan": "Pasang/orang",
+    "standar": 1,
+    "rowNumber": 26
+  },
+  {
+    "category": "ALAT PELINDUNG KAKI",
+    "item": "SEPATU TAHAN TEGANGAN",
+    "satuan": "Pasang",
+    "standar": 2,
+    "rowNumber": 27
+  },
+  {
+    "category": "ALAT PELINDUNG KAKI",
+    "item": "CONDUCTIVE SHOES *",
+    "satuan": "Pasang",
+    "standar": "-",
+    "rowNumber": 28
+  },
+  {
+    "category": "ALAT PELINDUNG KAKI",
+    "item": "CONDUCTIVE SOCKS *",
+    "satuan": "Pasang",
+    "standar": "-",
+    "rowNumber": 29
+  },
+  {
+    "category": "ALAT PELINDUNG KAKI",
+    "item": "SEPATU TAHAN AIR *",
+    "satuan": "Pasang",
+    "standar": 3,
+    "rowNumber": 30
+  },
+  {
+    "category": "PAKAIAN PELINDUNG",
+    "item": "WEARPACK TERPISAH",
+    "satuan": "Pasang/orang",
+    "standar": 2,
+    "rowNumber": 31
+  },
+  {
+    "category": "PAKAIAN PELINDUNG",
+    "item": "WEARPACK TERUSAN",
+    "satuan": "Buah",
+    "standar": "-",
+    "rowNumber": 32
+  },
+  {
+    "category": "PAKAIAN PELINDUNG",
+    "item": "WEARPACK LABORATORIUM",
+    "satuan": "Set/orang",
+    "standar": "-",
+    "rowNumber": 33
+  },
+  {
+    "category": "PAKAIAN PELINDUNG",
+    "item": "PAKAIAN PELINDUNG B3 (HAZMAT)",
+    "satuan": "Set",
+    "standar": 2,
+    "rowNumber": 34
+  },
+  {
+    "category": "PAKAIAN PELINDUNG",
+    "item": "BAJU MANUVER",
+    "satuan": "Set",
+    "standar": "-",
+    "rowNumber": 35
+  },
+  {
+    "category": "PAKAIAN PELINDUNG",
+    "item": "BAJU TAHAN API",
+    "satuan": "Set",
+    "standar": "-",
+    "rowNumber": 36
+  },
+  {
+    "category": "PAKAIAN PELINDUNG",
+    "item": "JAS HUJAN *",
+    "satuan": "Set",
+    "standar": 3,
+    "rowNumber": 37
+  },
+  {
+    "category": "ROMPI PENGAWAS *",
+    "item": "ROMPI PP (HIJAU) *",
+    "satuan": "Buah",
+    "standar": 2,
+    "rowNumber": 38
+  },
+  {
+    "category": "ROMPI PENGAWAS *",
+    "item": "ROMPI PK3 (MERAH) *",
+    "satuan": "Buah",
+    "standar": 2,
+    "rowNumber": 39
+  },
+  {
+    "category": "ROMPI PENGAWAS *",
+    "item": "ROMPI PM (KUNING) *",
+    "satuan": "Buah",
+    "standar": 2,
+    "rowNumber": 40
+  },
+  {
+    "category": "ROMPI PENGAWAS *",
+    "item": "ROMPI TAMU (BIRU) *",
+    "satuan": "Buah",
+    "standar": 10,
+    "rowNumber": 41
+  },
+  {
+    "category": "ALAT PELINDUNG PERNAPASAN",
+    "item": "PARTICULATE RESPIRATOR (SINGLE USE FILTER)",
+    "satuan": "Box",
+    "standar": 2,
+    "rowNumber": 42
+  },
+  {
+    "category": "ALAT PELINDUNG PERNAPASAN",
+    "item": "NON-POWERED HALF FACEPIECE RESPIRATOR (WITH REPLACABLE FILTER)",
+    "satuan": "Buah",
+    "standar": 3,
+    "rowNumber": 43
+  },
+  {
+    "category": "ALAT PELINDUNG PERNAPASAN",
+    "item": "NON-POWERED FULL FACEPIECE RESPIRATOR (WITH REPLACABLE FILTER)",
+    "satuan": "Buah",
+    "standar": "-",
+    "rowNumber": 44
+  },
+  {
+    "category": "ALAT PELINDUNG PERNAPASAN",
+    "item": "SELF CONTAINED BREATHING APPARATUS (SCBA) - RESCUE UNIT",
+    "satuan": "Buah",
+    "standar": "-",
+    "rowNumber": 45
+  },
+  {
+    "category": "ALAT PELINDUNG PERNAPASAN",
+    "item": "EMERGENCY ESCAPE BREATHING APPARATUS",
+    "satuan": "Buah",
+    "standar": "-",
+    "rowNumber": 46
+  },
+  {
+    "category": "ALAT PELINDUNG PERNAPASAN",
+    "item": "ALAT UKUR GAS BERACUN *",
+    "satuan": "Buah",
+    "standar": 1,
+    "rowNumber": 47
+  },
+  {
+    "category": "ALAT PELINDUNG JATUH",
+    "item": "ANCHOR / ANGKUR",
+    "satuan": "Set",
+    "standar": 2,
+    "rowNumber": 48
+  },
+  {
+    "category": "ALAT PELINDUNG JATUH",
+    "item": "BODY SUPPORT / FULL BODY HARNESS",
+    "satuan": "Set",
+    "standar": 2,
+    "rowNumber": 49
+  },
+  {
+    "category": "ALAT PELINDUNG JATUH",
+    "item": "CONNECTOR / LANYARD",
+    "satuan": "Set",
+    "standar": "-",
+    "rowNumber": 50
+  },
+  {
+    "category": "ALAT PELINDUNG JATUH",
+    "item": "TANDU *",
+    "satuan": "Buah",
+    "standar": 1,
+    "rowNumber": 51
+  },
+  {
+    "category": "PELAMPUNG",
+    "item": "JAKET KESELAMATAN (LIFE JACKET)",
+    "satuan": "Buah",
+    "standar": "-",
+    "rowNumber": 52
+  },
+  {
+    "category": "PELAMPUNG",
+    "item": "ROMPI KESELAMATAN (LIFE VEST)",
+    "satuan": "Buah",
+    "standar": 4,
+    "rowNumber": 53
+  },
+  {
+    "category": "PELAMPUNG",
+    "item": "ALAT PELAMPUNG YANG DAPAT DILEMPAR (THROWABLE FLOTATION DEVICES)",
+    "satuan": "Buah",
+    "standar": "2/GI rawan rob",
+    "rowNumber": 54
+  },
+  {
+    "category": "PELAMPUNG",
+    "item": "ALAT PELAMPUNG KHUSUS",
+    "satuan": "Buah",
+    "standar": "-",
+    "rowNumber": 55
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "BACKMED (KIT) P3K DAN ISINYA *",
+    "satuan": "Kit",
+    "standar": 1,
+    "rowNumber": 56
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "SAFETY LINE MERAH *",
+    "satuan": "Meter",
+    "standar": "70 kV = 150 Meter\n150kV = 200 Meter\n275/500kV= 300 Meter",
+    "rowNumber": 57
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "BENDERA SEGI EMPAT ( MERAH ) *",
+    "satuan": "Buah",
+    "standar": 25,
+    "rowNumber": 58
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "BENDERA SEGI EMPAT (  HIJAU ) *",
+    "satuan": "Buah",
+    "standar": 25,
+    "rowNumber": 59
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "TAGING PANEL MASUK (PLAT+RANTAI)",
+    "satuan": "Buah",
+    "standar": 5,
+    "rowNumber": 60
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "TAGING PANEL KELUAR (PLAT+RANTAI)",
+    "satuan": "Buah",
+    "standar": 5,
+    "rowNumber": 61
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "TAGING PANEL MASUK (AKRILIK+MAGNET)",
+    "satuan": "Buah",
+    "standar": 5,
+    "rowNumber": 62
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "TAGING PANEL KELUAR (AKRILIK+MAGNET)",
+    "satuan": "Buah",
+    "standar": 5,
+    "rowNumber": 63
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "LAMPU EMERGENCY/LAMPU SOROT *",
+    "satuan": "Buah",
+    "standar": 4,
+    "rowNumber": 64
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "LEMARI K3 *",
+    "satuan": "Buah",
+    "standar": 1,
+    "rowNumber": 65
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "SOP KEBAKARAN *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 66
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "SOP KEAMANAN *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 67
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "DENAH PENEMPATAN APAR *",
+    "satuan": "Set",
+    "standar": "Sesuai Lay - Out",
+    "rowNumber": 68
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "DENAH EVAKUASI *",
+    "satuan": "Set",
+    "standar": "Sesuai Lay - Out",
+    "rowNumber": 69
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "TERMOMETER SUHU BADAN *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 70
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "TENSI METER *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 71
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "SENTER KEPALA *",
+    "satuan": "Buah",
+    "standar": "1 buah /\norang",
+    "rowNumber": 72
+  },
+  {
+    "category": "RAMBU-RAMBU **",
+    "item": "ASSEMBLY POINT",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 73
+  },
+  {
+    "category": "ALAT KERJA *",
+    "item": "Stick Ground 70/150 kV (termasuk kabel tembaga untuk grounding-3 kabel)  *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 74
+  },
+  {
+    "category": "ALAT KERJA *",
+    "item": "Stick Ground 275/500 kV (termasuk kabel tembaga untuk grounding-3 kabel)  *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 75
+  },
+  {
+    "category": "ALAT KERJA *",
+    "item": "Stick Ground 20 kV (termasuk kabel tembaga untuk grounding-3 kabel)  *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 76
+  },
+  {
+    "category": "ALAT KERJA *",
+    "item": "Voltage Detector 20 kV with Insulating Stick *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 77
+  },
+  {
+    "category": "ALAT KERJA *",
+    "item": "Voltage Detector 70/150 kV with Insulating Stick *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 78
+  },
+  {
+    "category": "ALAT KERJA *",
+    "item": "Voltage Detector 275-500 kV with Insulating Stick *",
+    "satuan": "Set",
+    "standar": 1,
+    "rowNumber": 79
+  }
+]

@@ -1,0 +1,60 @@
+DAFTAR UPDATE SERVER KANTOR - WAHA
+Dibuat: 2026-06-02
+
+File kode yang perlu dicopy ke server kantor
+--------------------------------------------
+api.py
+test_waha_whatsapp_notification.py
+WAHA_CONFIG_CONTOH.txt
+CATATAN_PERUBAHAN_WAHA_VOLTKRAFT.txt
+SETUP-WAHA-VOLTKRAFT-SERVER.ps1
+
+File config yang dibuat otomatis oleh SETUP-WAHA-VOLTKRAFT-SERVER.ps1
+---------------------------------------------------------------------
+waha_base_url.txt
+waha_session.txt
+waha_api_key.txt
+waha_chat_id.txt
+whatsapp_gateway_mode.txt
+
+File/folder yang jangan ditimpa saat update
+-------------------------------------------
+*.db
+*.db-wal
+*.db-shm
+whatsapp_*.txt
+telegram_*.txt
+telegram_listener_token.txt
+telegram_webhook_secret.txt
+telegram_supabase_webhook_url.txt
+waha_*.txt jika sudah dipakai produksi
+folder/session runtime WAHA
+
+Langkah update ringkas di server kantor
+---------------------------------------
+1. Backup folder server VoltKraft.
+2. Copy file kode di daftar atas ke path yang sama.
+3. Pastikan MPWA lama tidak berjalan jika nomor WA sama.
+4. Jalankan:
+
+   powershell -ExecutionPolicy Bypass -File .\SETUP-WAHA-VOLTKRAFT-SERVER.ps1
+
+5. Buka:
+
+   http://localhost:3000/dashboard
+
+6. Scan QR WhatsApp dan tunggu session default WORKING.
+7. Jalankan test:
+
+   .\.venv\Scripts\python.exe .\test_waha_whatsapp_notification.py
+
+8. Jika test berhasil, restart server VoltKraft.
+
+Catatan
+-------
+Script SETUP-WAHA-VOLTKRAFT-SERVER.ps1 membuat API key random jika tidak
+diberi parameter -ApiKey. Simpan hasil API key yang tertulis di waha_api_key.txt.
+
+Jika ingin pakai chat ID tertentu:
+
+   powershell -ExecutionPolicy Bypass -File .\SETUP-WAHA-VOLTKRAFT-SERVER.ps1 -ChatId "120363xxxxxxxxxxxx@g.us"

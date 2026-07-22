@@ -1,0 +1,583 @@
+CATATAN PERUBAHAN TELEGRAM VOLTKRAFT
+Dibuat: 2026-06-01
+
+Tujuan perubahan
+----------------
+Menambahkan jalur pengiriman notifikasi Telegram dan menyiapkan skema
+Telegram webhook ke Supabase, tanpa mengubah logic WhatsApp, outbox WhatsApp,
+gateway WhatsApp, konfigurasi WhatsApp, atau worker polling peralatan.
+
+File yang berubah / ditambahkan
+-------------------------------
+1. api.py
+   - Menambahkan konfigurasi Telegram:
+     TELEGRAM_ENABLED
+     TELEGRAM_BOT_TOKEN
+     TELEGRAM_CHAT_ID
+     TELEGRAM_API_BASE_URL
+     TELEGRAM_TIMEOUT_SECONDS
+     TELEGRAM_MAX_MESSAGE_LENGTH
+     TELEGRAM_PARSE_MODE
+   - Konfigurasi dibaca dari environment atau file lokal:
+     telegram_token.txt
+     telegram_chat_id.txt
+   - Menambahkan fungsi:
+     is_telegram_configured()
+     normalize_telegram_message()
+     send_telegram_notification()
+   - Token Telegram direduksi dari log error agar tidak bocor.
+   - Menambahkan konfigurasi Supabase:
+     SUPABASE_ENABLED
+     SUPABASE_URL
+     SUPABASE_API_KEY
+     SUPABASE_NOTIFICATIONS_TABLE
+     SUPABASE_TIMEOUT_SECONDS
+   - Konfigurasi Supabase dibaca dari environment atau file lokal:
+     supabase_url.txt
+     supabase_api_key.txt
+   - Menambahkan fungsi:
+     is_supabase_configured()
+     build_supabase_notification_payload()
+     send_supabase_notification_event()
+   - Supabase API key direduksi dari log error agar tidak bocor.
+   - Status Supabase langsung dari api.py: cadangan saja, tidak dipakai untuk
+     skema utama Telegram -> Supabase.
+
+2. test_telegram_notification.py
+   - Script test manual untuk kirim pesan contoh ke Telegram.
+   - Tidak menjalankan server FastAPI.
+   - Tidak menjalankan polling peralatan.
+   - Tidak mengirim WhatsApp.
+
+3. test_supabase_notification.py
+   - Script test manual untuk insert pesan contoh ke Supabase.
+   - Tidak menjalankan server FastAPI.
+   - Tidak menjalankan polling peralatan.
+   - Tidak mengirim WhatsApp.
+   - Tidak mengirim Telegram.
+   - Status: disimpan sebagai cadangan untuk skema server langsung ke Supabase.
+     Untuk skema utama sekarang, file ini tidak dipakai.
+
+4. SUPABASE_SCHEMA_NOTIFICATIONS.sql
+   - Schema table public.voltkraft_notifications.
+   - Menambahkan kolom metadata Telegram:
+     telegram_update_id
+     telegram_chat_id
+     telegram_message_id
+     telegram_sender
+   - Unique index pada telegram_update_id untuk menghindari duplikasi update
+     Telegram saat retry webhook.
+   - RLS diaktifkan.
+   - Policy baca untuk aplikasi perlu dibuat sesuai pola login aplikasi.
+
+5. supabase/config.toml
+   - Mengatur function telegram-to-supabase dengan verify_jwt = false.
+   - Validasi akses dilakukan memakai Telegram webhook secret, bukan JWT app.
+
+6. supabase/functions/telegram-to-supabase/index.ts
+   - Edge Function penerima webhook Telegram.
+   - Memvalidasi header X-Telegram-Bot-Api-Secret-Token jika secret diset.
+   - Mengubah update Telegram menjadi record notifikasi.
+   - Insert ke public.voltkraft_notifications memakai Supabase service role
+     secret di environment Supabase Function.
+   - Membaca service role key dari PANDUGIXVOLTKRAFT_SERVICE_ROLE_KEY.
+     SUPABASE_SERVICE_ROLE_KEY tetap didukung sebagai fallback.
+
+7. setup_telegram_supabase_webhook.ps1
+   - Helper lokal untuk mengaktifkan Telegram setWebhook.
+   - Membaca telegram_token.txt, telegram_supabase_webhook_url.txt,
+     dan telegram_webhook_secret.txt.
+   - Tidak memakai Supabase API key dan tidak menyentuh server polling.
+
+8. PANDUAN_TELEGRAM_KE_SUPABASE.md
+   - Panduan setup table, deploy Edge Function, set secret, dan set webhook.
+   - Ditambahkan urutan langkah berikutnya yang aman dan penegasan lokasi
+     penyimpanan service_role key Supabase.
+
+File yang tidak boleh ditimpa saat update server kantor
+------------------------------------------------------
+telegram_token.txt
+telegram_chat_id.txt
+supabase_url.txt
+supabase_api_key.txt
+telegram_supabase_webhook_url.txt
+telegram_webhook_secret.txt
+whatsapp_*.txt
+*.db
+*.db-wal
+*.db-shm
+voltkraf_admin_credentials.json
+kredensial.json
+daftar_gi.json
+*.scd
+
+Command validasi yang sudah dijalankan
+--------------------------------------
+.venv\Scripts\python.exe -m py_compile .\api.py .\test_telegram_notification.py
+.venv\Scripts\python.exe -m py_compile .\api.py .\test_telegram_notification.py .\test_supabase_notification.py
+
+Command test kirim Telegram yang sudah dijalankan
+------------------------------------------------
+.venv\Scripts\python.exe .\test_telegram_notification.py
+
+Hasil test
+----------
+Telegram test notification sent.
+
+Command test Supabase yang sudah dijalankan
+------------------------------------------
+.venv\Scripts\python.exe .\test_supabase_notification.py
+
+Hasil test Supabase saat ini
+----------------------------
+Belum insert karena file konfigurasi Supabase belum dipasang:
+supabase_url.txt
+supabase_api_key.txt
+
+Catatan:
+Test ini hanya untuk cadangan skema server langsung ke Supabase. Untuk skema
+utama Telegram -> Supabase, tidak perlu membuat supabase_url.txt dan
+supabase_api_key.txt di server VoltKraft.
+
+Langkah skema utama Telegram -> Supabase
+----------------------------------------
+1. Jalankan SQL di SUPABASE_SCHEMA_NOTIFICATIONS.sql pada Supabase SQL Editor.
+2. Deploy Supabase Edge Function telegram-to-supabase.
+3. Simpan service role key sebagai Supabase Function secret:
+   PANDUGIXVOLTKRAFT_SERVICE_ROLE_KEY
+4. Simpan Telegram webhook secret sebagai Supabase Function secret:
+   TELEGRAM_WEBHOOK_SECRET
+5. Buat file lokal telegram_supabase_webhook_url.txt berisi URL function.
+6. Buat file lokal telegram_webhook_secret.txt berisi secret yang sama dengan
+   TELEGRAM_WEBHOOK_SECRET.
+7. Jalankan:
+   .\setup_telegram_supabase_webhook.ps1
+8. Test dengan mengirim pesan ke bot/grup Telegram.
+
+Status integrasi alarm
+----------------------
+Pada tahap ini Telegram sender sudah aktif dan sudah berhasil test kirim
+pesan manual. Skema server langsung ke Supabase sudah ada sebagai cadangan,
+tetapi tidak dilanjutkan karena skema utama yang dipilih adalah:
+
+VoltKraft -> Telegram -> Supabase Edge Function -> Supabase table
+
+Alarm otomatis dari DC/Annunciator/PQM/AVR/Kapasitor/AR belum disambungkan
+ke Telegram/Supabase. Step berikutnya adalah deploy Edge Function, set secret
+di Supabase, aktifkan webhook Telegram, lalu test dengan pesan Telegram.
+
+Tempat menyimpan API key Supabase untuk skema utama
+--------------------------------------------------
+Service role key Supabase disimpan sebagai Supabase Edge Function secret:
+
+PANDUGIXVOLTKRAFT_SERVICE_ROLE_KEY
+
+Jangan simpan service_role key di frontend. Untuk skema utama ini, service_role
+key juga tidak perlu disimpan di server VoltKraft.
+
+Update 2026-06-01
+-----------------
+File telegram_webhook_secret.txt sudah dibuat lokal berisi secret random 64
+karakter. Nilai di file ini harus dipakai juga saat mengisi Supabase secret:
+
+TELEGRAM_WEBHOOK_SECRET
+
+Jangan kirim isi secret lewat chat. Simpan sebagai konfigurasi lokal/server.
+
+Update 2026-06-01 malam
+-----------------------
+Secret di telegram_webhook_secret.txt sudah dirotasi karena nilai sebelumnya
+sempat terlihat di chat/selection. Gunakan isi file terbaru untuk Supabase
+secret TELEGRAM_WEBHOOK_SECRET dan untuk setup webhook Telegram.
+
+Update 2026-06-01 - Nama Secret Supabase
+----------------------------------------
+Supabase menolak nama SUPABASE_SERVICE_ROLE_KEY pada project teman. Secret
+service role yang digunakan sekarang:
+
+PANDUGIXVOLTKRAFT_SERVICE_ROLE_KEY
+
+Edge Function sudah disesuaikan untuk membaca nama secret tersebut. Nama
+project Supabase PANDUGIXVOLTKRAFT tidak perlu penyesuaian lain selain URL
+function dan secret.
+
+Update 2026-06-02 - URL Edge Function
+-------------------------------------
+File telegram_supabase_webhook_url.txt sudah dibuat/diisi dengan URL:
+
+https://zavtvdaqpkoblmbbessl.supabase.co/functions/v1/telegram-to-supabase
+
+File lokal yang siap untuk aktivasi webhook Telegram:
+
+telegram_token.txt
+telegram_supabase_webhook_url.txt
+telegram_webhook_secret.txt
+
+Sebelum menjalankan setup_telegram_supabase_webhook.ps1, pastikan Supabase
+Edge Function sudah deploy dan Supabase secret TELEGRAM_WEBHOOK_SECRET berisi
+nilai yang sama dengan telegram_webhook_secret.txt.
+
+Update 2026-06-02 - Test Edge Function
+--------------------------------------
+GET ke Edge Function berhasil:
+
+{"ok":true,"service":"telegram-to-supabase"}
+
+POST manual simulasi Telegram ke Edge Function belum berhasil:
+
+HTTP 500
+{"ok":false,"error":"Supabase insert failed"}
+
+Artinya Function sudah hidup dan menerima request, tetapi insert ke table
+Supabase gagal. Sebelum aktivasi webhook Telegram, perlu cek di sisi Supabase:
+
+1. SQL terbaru SUPABASE_SCHEMA_NOTIFICATIONS.sql sudah dijalankan ulang.
+2. Table public.voltkraft_notifications ada.
+3. Kolom telegram_update_id, telegram_chat_id, telegram_message_id, dan
+   telegram_sender sudah ada.
+4. Secret PANDUGIXVOLTKRAFT_SERVICE_ROLE_KEY berisi service_role key yang benar.
+5. Secret SUPABASE_NOTIFICATIONS_TABLE berisi voltkraft_notifications.
+6. Jika Function log tersedia, cek error insert di log Edge Function.
+
+Update 2026-06-02 - Webhook Telegram Aktif
+------------------------------------------
+POST manual simulasi Telegram ke Edge Function berhasil:
+
+{"ok":true,"update_id":260602004,"duplicate":false}
+
+Webhook Telegram sudah diaktifkan memakai setup_telegram_supabase_webhook.ps1.
+Hasil Telegram:
+
+Webhook was set
+
+getWebhookInfo:
+
+url = https://zavtvdaqpkoblmbbessl.supabase.co/functions/v1/telegram-to-supabase
+pending_update_count = 0
+last_error_date = null
+last_error_message = null
+allowed_updates = message, edited_message, channel_post, edited_channel_post
+
+Catatan penting:
+Webhook Telegram menerima update pesan yang masuk ke bot. Pesan yang dikirim
+keluar oleh bot melalui sendMessage tidak selalu muncul lagi sebagai update
+webhook. Untuk test webhook -> Supabase, kirim pesan manual dari akun Telegram
+ke bot atau grup yang berisi bot, lalu cek table public.voltkraft_notifications.
+
+Update 2026-06-02 - Test Kirim Telegram dari Log Lama
+-----------------------------------------------------
+Dicari antrean whatsapp_outbox lokal:
+
+pending = 0
+discarded = 111
+
+Dipilih satu log discarded terbaru tanpa mengubah status database:
+
+id = wa-1779701179060-a96ca79f
+status = discarded
+last_error = Gateway WA pulih; antrean lama tidak dikirim ulang.
+
+Pesan dikirim manual ke Telegram memakai send_telegram_notification() dengan
+penanda:
+
+TEST MANUAL - LOG LAMA, BUKAN ALARM BARU
+
+Hasil:
+
+telegram_sent = True
+
+getWebhookInfo setelah test tetap bersih:
+
+pending_update_count = 0
+last_error_message = null
+
+Catatan: test ini membuktikan jalur VoltKraft -> Telegram. Untuk membuktikan
+Telegram webhook -> Supabase, perlu pesan masuk ke bot/grup dari akun Telegram,
+atau test POST manual ke Edge Function seperti yang sudah berhasil sebelumnya.
+
+Update 2026-06-02 - Test Manual Webhook dari Lokal
+--------------------------------------------------
+Dilakukan simulasi update Telegram manual dari lokal ke Edge Function:
+
+url = https://zavtvdaqpkoblmbbessl.supabase.co/functions/v1/telegram-to-supabase
+update_id = 260696252
+message = TEST MANUAL DARI CODEX KE SUPABASE VIA TELEGRAM WEBHOOK - BUKAN ALARM PERALATAN
+
+Hasil:
+
+{"ok":true,"update_id":260696252,"duplicate":false}
+HTTP_STATUS = 200
+
+Teman dapat cek di Supabase:
+
+select *
+from public.voltkraft_notifications
+where telegram_update_id = 260696252;
+
+Update 2026-06-02 - Test Pesan Annunciator ke Telegram
+------------------------------------------------------
+Atas permintaan teman, dikirim 1 pesan test Annunciator ke Telegram dengan
+format:
+
+GI CIKARANG
+BAY TRAFO 1
+01-06-2026 20:32:46.000
+MODUL    : ANNUNCIATOR SYSTEM
+IP ALAT  : 192.168.1.10
+PORT 7: TRIP PMT 150KV
+
+Hasil:
+
+telegram_sent = True
+
+getWebhookInfo setelah test:
+
+url = https://zavtvdaqpkoblmbbessl.supabase.co/functions/v1/telegram-to-supabase
+pending_update_count = 0
+last_error_message = null
+
+Catatan: test ini mengirim pesan keluar dari bot Telegram. Jika row tidak
+muncul di Supabase, penyebabnya kemungkinan karena webhook Telegram tidak
+menerima salinan pesan yang dikirim keluar oleh bot.
+
+Update 2026-06-02 - Test Alarm Manual GI Cikarang
+-------------------------------------------------
+Dikirim ulang 1 pesan test alarm manual GI Cikarang ke Telegram:
+
+GI CIKARANG
+BAY TRAFO 2
+02-06-2026 10:42:29.000
+MODUL    : ANNUNCIATOR SYSTEM
+IP ALAT  : 192.168.1.11
+STATUS   : TEST ALARM MANUAL
+PORT 12: TEST ALARM ANNUNCIATOR GI CIKARANG
+
+Hasil:
+
+telegram_sent = True
+
+Update 2026-06-02 - Kirim Ulang Test Alarm Manual GI Cikarang
+-------------------------------------------------------------
+Dikirim ulang pesan test manual yang sama sesuai permintaan:
+
+GI CIKARANG
+BAY TRAFO 2
+02-06-2026 10:42:29.000
+MODUL    : ANNUNCIATOR SYSTEM
+IP ALAT  : 192.168.1.11
+STATUS   : TEST ALARM MANUAL
+PORT 12: TEST ALARM ANNUNCIATOR GI CIKARANG
+
+Hasil:
+
+telegram_sent = True
+
+Update 2026-06-02 - Test Kirim ke Grup Telegram
+-----------------------------------------------
+Dikirim 1 pesan test alarm manual GI Cikarang ke grup Telegram:
+
+target_group_chat_id = -5133586778
+
+Pesan:
+
+GI CIKARANG
+BAY TRAFO 2
+02-06-2026 10:42:29.000
+MODUL    : ANNUNCIATOR SYSTEM
+IP ALAT  : 192.168.1.11
+STATUS   : TEST ALARM MANUAL KE GRUP
+PORT 12: TEST ALARM ANNUNCIATOR GI CIKARANG
+
+Hasil:
+
+telegram_sent = True
+
+Catatan:
+Pengiriman test ini memakai override environment TELEGRAM_CHAT_ID hanya untuk
+command test. File telegram_chat_id.txt tidak diubah dan masih berisi tujuan
+lama. Jika ingin produksi kirim ke grup, nanti telegram_chat_id.txt di server
+produksi perlu diisi chat ID grup yang benar setelah semua test selesai.
+
+getWebhookInfo setelah test grup:
+
+pending_update_count = 0
+last_error_message = null
+
+Update 2026-06-02 - Webhook Dipindah ke Bot Listener
+----------------------------------------------------
+File telegram_listener_token.txt sudah tersedia lokal. Nilai token tidak
+ditampilkan di catatan.
+
+Webhook Supabase diaktifkan ulang memakai token Bot Listener:
+
+setup_telegram_supabase_webhook.ps1 -BotTokenPath .\telegram_listener_token.txt
+
+Hasil:
+
+Webhook was set
+
+getWebhookInfo Bot Listener:
+
+url = https://zavtvdaqpkoblmbbessl.supabase.co/functions/v1/telegram-to-supabase
+pending_update_count = 0
+last_error_message = null
+allowed_updates = message, edited_message, channel_post, edited_channel_post
+
+Setelah itu dikirim test ke grup memakai Bot pengirim lama:
+
+target_group_chat_id = -5133586778
+message_time = 02-06-2026 14:27:46.000
+STATUS = TEST BOT PENGIRIM KE GRUP UNTUK LISTENER
+INDIKASI = PORT 12: TEST LISTENER SUPABASE GI CIKARANG
+
+Hasil kirim:
+
+telegram_sent = True
+
+getWebhookInfo Bot Listener setelah test tetap bersih:
+
+pending_update_count = 0
+last_error_message = null
+
+Langkah cek Supabase:
+
+select *
+from public.voltkraft_notifications
+where message ilike '%TEST BOT PENGIRIM KE GRUP UNTUK LISTENER%'
+order by created_at desc
+limit 5;
+
+Update 2026-06-02 - Otomasi Update Server Kantor
+------------------------------------------------
+Ditambahkan file:
+
+APPLY-UPDATE-TELEGRAM-SUPABASE.ps1
+BUAT-PAKET-UPDATE-TELEGRAM-SUPABASE.ps1
+DAFTAR_UPDATE_SERVER_KANTOR_TELEGRAM_SUPABASE.txt
+
+Fungsi:
+
+1. BUAT-PAKET-UPDATE-TELEGRAM-SUPABASE.ps1
+   Membuat folder paket update berisi file kode/dokumen Telegram/Supabase.
+   File sensitif seperti telegram_token.txt, telegram_listener_token.txt,
+   telegram_webhook_secret.txt, database, dan config produksi tidak dimasukkan.
+
+2. APPLY-UPDATE-TELEGRAM-SUPABASE.ps1
+   Dijalankan di server kantor untuk backup file lama dan copy file baru.
+   Script tidak menimpa database/token/config sensitif.
+
+3. DAFTAR_UPDATE_SERVER_KANTOR_TELEGRAM_SUPABASE.txt
+   Berisi daftar file yang perlu dicopy, file yang jangan ditimpa, dan
+   perintah PowerShell install/update yang bisa dicopy.
+
+Validasi script PowerShell dan Python sudah dilakukan pada 2026-06-02.
+
+Validasi paket update
+---------------------
+Script BUAT-PAKET-UPDATE-TELEGRAM-SUPABASE.ps1 berhasil dijalankan dan membuat
+paket:
+
+release-packages\update-telegram-supabase-20260602-232024
+
+File sensitif tidak dimasukkan ke paket.
+
+Update 2026-06-02 - Paket Gabungan WAHA + Telegram
+---------------------------------------------------
+Ditambahkan file:
+
+APPLY-UPDATE-WA-TELEGRAM.ps1
+BUAT-PAKET-UPDATE-WA-TELEGRAM.ps1
+RUNBOOK_UPDATE_SERVER_KANTOR_WA_TELEGRAM.md
+
+Fungsi:
+
+1. Membuat satu paket update gabungan untuk perubahan Telegram/Supabase dan
+   WhatsApp WAHA.
+2. Apply update di server kantor dengan backup otomatis.
+3. Tidak menimpa token Telegram, token Bot Listener, secret webhook, database,
+   config WAHA, config WhatsApp, atau file runtime server.
+4. Runbook menjelaskan urutan update lengkap dari copy paket, validasi Python,
+   setup webhook Bot Listener, test Telegram/Supabase, setup WAHA, test WAHA,
+   restart server, dan rollback.
+
+Cara membuat paket gabungan:
+
+powershell -ExecutionPolicy Bypass -File .\BUAT-PAKET-UPDATE-WA-TELEGRAM.ps1
+
+Cara apply di server kantor:
+
+powershell -ExecutionPolicy Bypass -File .\APPLY-UPDATE-WA-TELEGRAM.ps1 -ProjectDir "C:\Path\Ke\DC_Monitoring"
+
+Validasi paket gabungan:
+
+1. PowerShell syntax OK untuk APPLY-UPDATE-WA-TELEGRAM.ps1 dan
+   BUAT-PAKET-UPDATE-WA-TELEGRAM.ps1.
+2. Python compile OK untuk api.py, test_telegram_notification.py,
+   test_supabase_notification.py, dan test_waha_whatsapp_notification.py.
+3. Paket final berhasil dibuat:
+
+release-packages\update-wa-telegram-YYYYMMDD-HHMMSS
+
+4. Isi paket sudah dicek: tidak ada database, token, secret, config runtime
+   Telegram, config runtime WAHA, atau config WhatsApp lama.
+5. APPLY-UPDATE-WA-TELEGRAM.ps1 berhasil dites ke folder dummy.
+
+Update 2026-06-03 - Supabase Direct Edge Function
+-------------------------------------------------
+Kesimpulan test Telegram:
+
+Jalur Bot pengirim VoltKraft -> Grup Telegram -> Bot Listener tidak bisa
+diandalkan untuk masuk Supabase, karena Telegram tidak meneruskan pesan dari
+bot lain ke bot listener seperti pesan manusia biasa.
+
+Perubahan script:
+
+1. api.py
+   - Menambahkan konfigurasi direct Edge Function:
+     SUPABASE_EDGE_ENABLED
+     SUPABASE_EDGE_FUNCTION_URL
+     SUPABASE_EDGE_SECRET
+     SUPABASE_EDGE_SOURCE
+     SUPABASE_EDGE_SENDER
+   - Default URL/secret dibaca dari:
+     telegram_supabase_webhook_url.txt
+     telegram_webhook_secret.txt
+   - Menambahkan fungsi:
+     is_supabase_edge_configured()
+     build_supabase_edge_payload()
+     send_supabase_edge_notification_text()
+     send_notification_side_channels()
+   - Notifikasi normal yang lewat send_whatsapp_notification() sekarang juga
+     mencoba mengirim ke Telegram dan Supabase Edge Function.
+   - Retry outbox WhatsApp memakai fanout_secondary=False agar Telegram dan
+     Supabase tidak terkirim dobel saat WA retry.
+
+2. test_supabase_notification.py
+   - Diubah dari direct insert tabel Supabase lama menjadi POST direct ke
+     Supabase Edge Function telegram-to-supabase.
+   - Payload mengikuti skema:
+     source = direct_voltkraft
+     sender = VoltKraft
+     text = isi alarm
+
+3. test_waha_whatsapp_notification.py
+   - Ditambah fanout_secondary=False agar test WAHA hanya test WhatsApp dan
+     tidak ikut mengirim ke Telegram/Supabase.
+
+Validasi:
+
+1. Manual POST direct ke Edge Function berhasil:
+   ok = True
+   duplicate = False
+2. Python compile OK untuk api.py, test_telegram_notification.py,
+   test_supabase_notification.py, dan test_waha_whatsapp_notification.py.
+3. test_supabase_notification.py berhasil:
+   [SUPABASE EDGE] Notifikasi terkirim ke Edge Function.
+
+Catatan keamanan:
+
+Karena token/secret sempat pernah dibagikan di chat/file koordinasi, setelah
+test selesai sebaiknya token Bot Telegram di-revoke dari BotFather dan
+TELEGRAM_WEBHOOK_SECRET diganti di Supabase, lalu file secret server kantor
+diupdate.
+
