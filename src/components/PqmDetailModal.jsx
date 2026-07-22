@@ -147,10 +147,11 @@ export default function PqmDetailModal({ isOpen, onClose, device, iticEvents = [
                   </thead>
                   <tbody>
                     {[...disturbanceEvents, ...iticEvents]
-                      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+                      .map(e => ({ ...e, eventTime: e.waktu || e.waktu_mulai || e.timestamp || '-' }))
+                      .sort((a, b) => new Date(b.eventTime === '-' ? 0 : b.eventTime) - new Date(a.eventTime === '-' ? 0 : a.eventTime))
                       .map((event, idx) => (
                       <tr key={idx} style={{ borderBottom: '1px solid #F1F5F9', backgroundColor: idx % 2 === 0 ? '#FFFFFF' : '#F8FAFC' }}>
-                        <td style={{ padding: '12px 16px', fontSize: '0.85rem', color: '#475569', fontWeight: 600 }}>{event.timestamp}</td>
+                        <td style={{ padding: '12px 16px', fontSize: '0.85rem', color: '#475569', fontWeight: 600 }}>{event.eventTime}</td>
                         <td style={{ padding: '12px 16px' }}>
                           <span style={{ backgroundColor: '#FEE2E2', color: '#EF4444', padding: '4px 8px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 800 }}>
                             {event.event_type || 'DISTURBANCE'}
