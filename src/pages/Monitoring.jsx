@@ -4,6 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import DcDatabase from '../components/DcDatabase';
 import DcAlarmLog from '../components/DcAlarmLog';
 import PqmDetailModal from '../components/PqmDetailModal';
+import DfrCleanModal from '../components/DfrCleanModal';
 
 export default function Monitoring() {
   const [activeTab, setActiveTab] = useState('dc');
@@ -24,6 +25,8 @@ export default function Monitoring() {
   const [filterType, setFilterType] = useState('Semua');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isDfrCleanModalOpen, setIsDfrCleanModalOpen] = useState(false);
+  const [selectedDfrForClean, setSelectedDfrForClean] = useState(null);
 
   const [trendModalOpen, setTrendModalOpen] = useState(false);
   const [trendGiName, setTrendGiName] = useState('');
@@ -508,6 +511,9 @@ export default function Monitoring() {
                 </span>
               </div>
               <div style={{ display: 'flex', gap: '8px' }}>
+                <button onClick={() => setIsDfrCleanModalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#EF4444', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  <Trash2 size={16} /> Clean Memory
+                </button>
                 <button onClick={forceRefresh} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', backgroundColor: '#00A2E9', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
                   <RefreshCw size={16} /> Refresh Data
                 </button>
@@ -657,6 +663,13 @@ export default function Monitoring() {
         )}
 
       </div>
+
+      <DfrCleanModal 
+        isOpen={isDfrCleanModalOpen} 
+        onClose={() => { setIsDfrCleanModalOpen(false); setSelectedDfrForClean(null); }} 
+        selectedDfrInitial={selectedDfrForClean} 
+        dfrList={dfrList} 
+      />
 
       {trendModalOpen && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(15, 23, 42, 0.8)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000, padding: '20px' }}>

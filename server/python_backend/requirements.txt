@@ -7,3 +7,4 @@ psutil
 iec61850
 matplotlib
 reportlab
+paramiko
