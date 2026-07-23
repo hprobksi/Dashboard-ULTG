@@ -319,7 +319,6 @@ export default function LksForm({ onSuccessSubmitted }) {
             <h4 style={{ fontSize: '0.85rem', fontWeight: 800, color: '#0F172A', margin: '0 0 10px 0' }}>Data Personil Pengaju (Staff / Pelaksana)</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <input type="text" name="pengajuNama" placeholder="Nama Pengaju (contoh: FAJAR KURNIAWAN)" value={formData.pengajuNama} onChange={handleChange} required style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid #CBD5E1', fontSize: '0.84rem' }} />
-              <input type="text" name="pengajuNip" placeholder="NIP Pengaju" value={formData.pengajuNip} onChange={handleChange} style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid #CBD5E1', fontSize: '0.84rem' }} />
               <input type="text" name="pengajuJabatan" placeholder="Jabatan (contoh: TL JARGI CIKARANG)" value={formData.pengajuJabatan} onChange={handleChange} style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid #CBD5E1', fontSize: '0.84rem' }} />
             </div>
           </div>
@@ -385,14 +384,12 @@ export default function LksForm({ onSuccessSubmitted }) {
             lampiranText: formData.lampiranText,
             pengaju: {
               nama: formData.pengajuNama,
-              nip: formData.pengajuNip,
               jabatan: formData.pengajuJabatan,
               signatureDataUrl: formData.pengajuSignature
             },
             approval: {
-              tlNama: formData.tlNama,
-              tlNip: formData.pengajuNip,
-              tlJabatan: formData.tlJabatan,
+              tlNama: formData.pengajuNama,
+              tlJabatan: formData.pengajuJabatan,
               tlSignature: formData.pengajuSignature,
               managerNama: 'TRIAWAN AZHARY P. N.',
               managerJabatan: 'MANAGER ULTG BEKASI'

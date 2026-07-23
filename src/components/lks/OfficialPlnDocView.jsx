@@ -60,6 +60,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
   if (!lksData) return null;
 
   const handleDownloadDocx = () => exportToDocx(lksData);
+  const handlePrintPdf = () => window.print();
   const formatIndonesianDate = (dateVal) => {
     if (!dateVal) return '-';
     if (typeof dateVal === 'string') {
@@ -416,7 +417,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
               <p style={{ margin: 0, fontWeight: 'bold', textDecoration: 'underline' }}>
                 {lksData.approval?.managerNama || 'TRIAWAN AZHARY P. N.'}
               </p>
-              <p style={{ margin: 0, fontSize: '9pt' }}>MANAGER ULTG BEKASI</p>
+              <p style={{ margin: 0, fontSize: '9pt' }}>{lksData.approval?.managerJabatan || 'MANAGER ULTG BEKASI'}</p>
             </div>
 
             {/* Kanan: TL Terkait */}
@@ -437,7 +438,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
                 {lksData.approval?.tlNama || lksData.pengaju?.nama || 'FAJAR KURNIAWAN'}
               </p>
               <p style={{ margin: 0, fontSize: '9pt' }}>
-                NIP. {lksData.approval?.tlNip || lksData.pengaju?.nip || '44767564135'}
+                {lksData.approval?.tlJabatan || lksData.pengaju?.jabatan || 'TL TERKAIT'}
               </p>
             </div>
           </div>

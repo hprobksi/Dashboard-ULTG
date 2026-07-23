@@ -24,17 +24,14 @@ const INITIAL_MOCK_DATA = [
     lampiranText: '- Foto Kerusakan & Hasil Uji Ulang (Terlampir)',
     pengaju: {
       nama: 'FAJAR KURNIAWAN',
-      nip: '941823901',
       jabatan: 'Staff HARPRO',
       signatureDataUrl: ''
     },
     status: 'Open',
     approval: {
       tlNama: 'AHMAD Y. AL BASTOMY',
-      tlNip: '921839182',
       tlJabatan: 'TL HARPRO ULTG BEKASI',
       managerNama: 'TRIAWAN AZHARY P. N.',
-      managerNip: '891726351',
       managerJabatan: 'MANAGER ULTG BEKASI'
     },
     createdAt: new Date('2026-07-08T08:30:00Z').toISOString()
@@ -62,17 +59,14 @@ const INITIAL_MOCK_DATA = [
     lampiranText: '- Foto Kerusakan (Terlampir)',
     pengaju: {
       nama: 'AHMAD Y. AL BASTOMY',
-      nip: '921839182',
       jabatan: 'TL HARJAR ULTG BEKASI',
       signatureDataUrl: ''
     },
     status: 'Close',
     approval: {
       tlNama: 'AHMAD Y. AL BASTOMY',
-      tlNip: '921839182',
       tlJabatan: 'TL HARJAR ULTG BEKASI',
       managerNama: 'TRIAWAN AZHARY P. N.',
-      managerNip: '891726351',
       managerJabatan: 'MANAGER ULTG BEKASI'
     },
     createdAt: new Date('2026-07-08T10:15:00Z').toISOString()
@@ -129,17 +123,14 @@ export const lksService = {
       lampiranText: formData.lampiranText || '- Foto Kerusakan (Terlampir)',
       pengaju: {
         nama: formData.pengajuNama || '',
-        nip: formData.pengajuNip || '',
         jabatan: formData.pengajuJabatan || '',
         signatureDataUrl: formData.pengajuSignature || ''
       },
       status: 'Open',
       approval: {
-        tlNama: formData.tlNama || 'FAJAR KURNIAWAN',
-        tlNip: formData.tlNip || '',
-        tlJabatan: formData.tlJabatan || `TL ${bidang} ULTG BEKASI`,
+        tlNama: formData.pengajuNama || 'FAJAR KURNIAWAN',
+        tlJabatan: formData.pengajuJabatan || `TL ${bidang} ULTG BEKASI`,
         managerNama: 'TRIAWAN AZHARY P. N.',
-        managerNip: '',
         managerJabatan: 'MANAGER ULTG BEKASI'
       },
       filePdfName: formData.filePdfName || null,

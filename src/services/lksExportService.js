@@ -110,10 +110,8 @@ export const exportToDocx = async (lksData) => {
       lampiranText:       lksData.lampiranText                      || '- Foto Kerusakan (Terlampir)',
       tanggalLokasi:      dateFormatted,
       tlNama:             lksData.approval?.tlNama   || lksData.pengaju?.nama || 'FAJAR KURNIAWAN',
-      tlNip:              lksData.approval?.tlNip    || lksData.pengaju?.nip  || '',
-      tlJabatan:          lksData.approval?.tlJabatan                         || 'TL TERKAIT',
+      tlJabatan:          lksData.approval?.tlJabatan || lksData.pengaju?.jabatan || 'TL TERKAIT',
       managerNama:        lksData.approval?.managerNama                       || 'TRIAWAN AZHARY P. N.',
-      managerNip:         lksData.approval?.managerNip                        || '',
       managerJabatan:     lksData.approval?.managerJabatan                    || 'MANAGER ULTG BEKASI',
     });
 
