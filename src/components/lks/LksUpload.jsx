@@ -271,7 +271,7 @@ export default function LksUpload({ onUploadSuccess }) {
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              justify: 'center',
+              justifyContent: 'center',
               gap: '8px',
               boxShadow: '0 4px 12px rgba(0,162,233,0.3)'
             }}
