@@ -54,12 +54,16 @@ export default function LksUpload({ onUploadSuccess }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!selectedFile) {
-      setErrorMsg('Silakan pilih file LKS (PDF, DOCX, atau Gambar) yang ingin diunggah!');
+    if (!formData.nomorLks.trim()) {
+      setErrorMsg('Mohon isi No. LKS sesuai penomoran dokumen yang diunggah!');
       return;
     }
-    if (!formData.namaPeralatan) {
-      setErrorMsg('Mohon isi Nama Peralatan!');
+    if (!formData.namaPeralatan.trim()) {
+      setErrorMsg('Mohon isi Judul LKS!');
+      return;
+    }
+    if (!selectedFile) {
+      setErrorMsg('Silakan pilih file LKS (PDF, DOCX, atau Gambar) yang ingin diunggah!');
       return;
     }
 
@@ -132,15 +136,16 @@ export default function LksUpload({ onUploadSuccess }) {
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
           
           {/* Metadata Rows */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '14px' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>No. LKS (Opsional)</label>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>No. LKS (Wajib Diisi) *</label>
               <input
                 type="text"
                 name="nomorLks"
-                placeholder="Auto-generate jika kosong"
+                placeholder="Nomor LKS sesuai dokumen (contoh: 001/LKS/ULTG-BKS/2026)"
                 value={formData.nomorLks}
                 onChange={handleChange}
+                required
                 style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem' }}
               />
             </div>
@@ -157,13 +162,13 @@ export default function LksUpload({ onUploadSuccess }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '14px' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>Nama Peralatan *</label>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>Judul LKS *</label>
               <input
                 type="text"
                 name="namaPeralatan"
-                placeholder="Contoh: PMT 150kV Bay Trafo 2 GI Bekasi"
+                placeholder="Contoh: Temuan Thermovisi Klem Jumper T.4 SUTT Cikarang - Jababeka"
                 value={formData.namaPeralatan}
                 onChange={handleChange}
                 required
@@ -175,7 +180,7 @@ export default function LksUpload({ onUploadSuccess }) {
               <input
                 type="text"
                 name="penempatanPeralatan"
-                placeholder="Contoh: GI 150kV Bekasi Tambun"
+                placeholder="Contoh: SUTT CKRNG-JBBKA T.4 ARAH T.5"
                 value={formData.penempatanPeralatan}
                 onChange={handleChange}
                 style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem' }}
@@ -183,7 +188,7 @@ export default function LksUpload({ onUploadSuccess }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '14px' }}>
             <div>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>Nama Pengunggah / Staff</label>
               <input
@@ -196,15 +201,18 @@ export default function LksUpload({ onUploadSuccess }) {
               />
             </div>
             <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>Jabatan</label>
-              <input
-                type="text"
-                name="pengajuJabatan"
-                placeholder="Jabatan Staff"
-                value={formData.pengajuJabatan}
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>Team Pemeliharaan Terkait *</label>
+              <select
+                name="bidang"
+                value={formData.bidang || 'HARPRO'}
                 onChange={handleChange}
-                style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem' }}
-              />
+                required
+                style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem', fontWeight: 700, backgroundColor: '#FFFFFF' }}
+              >
+                <option value="HARGI">HARGI (Pemeliharaan Gardu Induk)</option>
+                <option value="HARPRO">HARPRO (Pemeliharaan Proteksi)</option>
+                <option value="HARJAR">HARJAR (Pemeliharaan Jaringan)</option>
+              </select>
             </div>
           </div>
 

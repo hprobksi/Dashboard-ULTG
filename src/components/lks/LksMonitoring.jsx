@@ -125,7 +125,7 @@ export default function LksMonitoring({ onAddNew }) {
           <thead>
             <tr style={{ backgroundColor: '#F8FAFC', borderBottom: '2px solid #E2E8F0', color: '#475569' }}>
               <th style={{ padding: '10px 12px' }}>No. LKS & Tanggal</th>
-              <th style={{ padding: '10px 12px' }}>Nama Peralatan</th>
+              <th style={{ padding: '10px 12px' }}>Judul LKS</th>
               <th style={{ padding: '10px 12px' }}>Penempatan Peralatan</th>
               <th style={{ padding: '10px 12px' }}>Jenis Kerusakan</th>
               <th style={{ padding: '10px 12px' }}>Status LKS</th>
