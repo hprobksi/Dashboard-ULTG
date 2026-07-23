@@ -3,9 +3,12 @@ import Docxtemplater from 'docxtemplater';
 
 export const exportToDocx = async (lksData) => {
   try {
-    const response = await fetch('/templates/LKP_TEMPLATE.docx');
+    let response = await fetch('/templates/LKP_TEMPLATE_OFFICIAL.docx');
     if (!response.ok) {
-      throw new Error('Template LKP_TEMPLATE.docx tidak ditemukan di server.');
+      response = await fetch('/templates/LKP_TEMPLATE.docx');
+    }
+    if (!response.ok) {
+      throw new Error('Template dokumen Word LKP tidak ditemukan.');
     }
 
     const arrayBuffer = await response.arrayBuffer();
@@ -51,8 +54,7 @@ export const exportToDocx = async (lksData) => {
       mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     });
 
-    // Trigger download
-    const fileName = `LKP_${(lksData.nomorLks || 'DRAF').replace(/[\/\\]/g, '_')}.docx`;
+    const fileName = `LKP_RESMI_${(lksData.nomorLks || 'DRAF').replace(/[\/\\]/g, '_')}.docx`;
     const link = document.createElement('a');
     link.href = URL.createObjectURL(out);
     link.download = fileName;
