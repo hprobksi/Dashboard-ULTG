@@ -36,15 +36,15 @@ export default function Lks({ initialTab = 'upload' }) {
             height: '54px',
             borderRadius: '14px',
             background: 'linear-gradient(135deg, #00A2E9 0%, #0284C7 100%)',
-            display: 'inline-flex',
+            display: 'flex',
             alignItems: 'center',
             justify: 'center',
             boxShadow: '0 6px 16px -2px rgba(0, 162, 233, 0.35)',
             flexShrink: 0,
-            lineHeight: 1,
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            padding: 0
           }}>
-            <FileCheck size={30} color="#FFFFFF" strokeWidth={2.2} style={{ display: 'block', margin: 0 }} />
+            <FileCheck size={28} color="#FFFFFF" strokeWidth={2.2} style={{ display: 'block', margin: 'auto' }} />
           </div>
           <div>
             <h1 style={{ margin: 0, fontSize: '1.6rem', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.02em' }}>
