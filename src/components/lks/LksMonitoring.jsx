@@ -82,21 +82,11 @@ export default function LksMonitoring({ onAddNew }) {
       {/* Header Bar */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
         <div>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0F172A', margin: 0 }}>Dashboard Monitoring LKS / LKP</h2>
-          <p style={{ fontSize: '0.8rem', color: '#64748B', margin: '2px 0 0 0' }}>Sistem Pemantauan Status Dokumen & Team Pemeliharaan (OPEN / CLOSE)</p>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0F172A', margin: 0 }}>Monitoring status LKS</h2>
+          <p style={{ fontSize: '0.8rem', color: '#64748B', margin: '2px 0 0 0' }}>Pemantauan status LKS Open / Close</p>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          {onAddNew && (
-            <button
-              type="button"
-              onClick={onAddNew}
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 14px', borderRadius: '8px', border: 'none', backgroundColor: '#00A2E9', color: '#FFFFFF', fontWeight: 700, fontSize: '0.82rem', cursor: 'pointer' }}
-            >
-              <Plus size={16} /> Upload LKS Baru
-            </button>
-          )}
-
           <div style={{ position: 'relative', width: '240px' }}>
             <Search size={15} color="#94A3B8" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
             <input
