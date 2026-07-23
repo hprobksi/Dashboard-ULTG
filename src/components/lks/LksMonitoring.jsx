@@ -244,31 +244,40 @@ export default function LksMonitoring({ onAddNew }) {
         </table>
       </div>
 
-      {/* POP-UP MODAL: Ubah Status LKS (Centered Layout Original Design) */}
+      {/* POP-UP MODAL: Ubah Status LKS (100% Dead-Center Viewport Positioning) */}
       {editItem && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(15, 23, 42, 0.65)',
-          backdropFilter: 'blur(4px)',
-          WebkitBackdropFilter: 'blur(4px)',
-          zIndex: 99999,
-          display: 'flex',
-          alignItems: 'center',
-          justify: 'center',
-          padding: '20px'
-        }}>
+        <>
+          {/* Backdrop Blur Overlay */}
+          <div
+            onClick={() => setEditItem(null)}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              backgroundColor: 'rgba(15, 23, 42, 0.65)',
+              backdropFilter: 'blur(4px)',
+              WebkitBackdropFilter: 'blur(4px)',
+              zIndex: 99998,
+            }}
+          />
+
+          {/* Centered Modal Card Box */}
           <div style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
             backgroundColor: '#FFFFFF',
             borderRadius: '16px',
-            width: '100%',
+            width: '90%',
             maxWidth: '460px',
-            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.35)',
             overflow: 'hidden',
-            border: '1px solid #E2E8F0'
+            border: '1px solid #E2E8F0',
+            zIndex: 99999,
+            margin: 0
           }}>
             {/* Modal Header */}
             <div style={{
@@ -380,7 +389,7 @@ export default function LksMonitoring({ onAddNew }) {
               </div>
             </form>
           </div>
-        </div>
+        </>
       )}
 
       {/* Modal View 1:1 Official PLN Doc Output */}
