@@ -36,6 +36,96 @@ function removeProtection(zip) {
   return zip;
 }
 
+function embedLampiranImages(zip, lksData) {
+  let imagesList = [];
+  if (lksData.lampiranImages && Array.isArray(lksData.lampiranImages) && lksData.lampiranImages.length > 0) {
+    imagesList = lksData.lampiranImages.map(item => (typeof item === 'string' ? item : item.dataUrl));
+  } else if (lksData.lampiranImageDataUrl) {
+    imagesList = [lksData.lampiranImageDataUrl];
+  }
+
+  if (imagesList.length === 0) return zip;
+
+  let relsXml = zip.file('word/_rels/document.xml.rels') ? zip.file('word/_rels/document.xml.rels').asText() : '';
+  let docXml = zip.file('word/document.xml') ? zip.file('word/document.xml').asText() : '';
+
+  let injectedDrawingsXml = '';
+
+  imagesList.forEach((dataUrl, idx) => {
+    if (!dataUrl || typeof dataUrl !== 'string' || !dataUrl.includes('base64,')) return;
+
+    try {
+      const parts = dataUrl.split('base64,');
+      const mimeMatch = dataUrl.match(/data:image\/([a-zA-Z]+);/);
+      const ext = mimeMatch ? (mimeMatch[1] === 'jpeg' ? 'jpg' : mimeMatch[1]) : 'png';
+      const base64Data = parts[1];
+      
+      // Convert base64 string to Uint8Array
+      const binaryString = atob(base64Data);
+      const len = binaryString.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+
+      const mediaPath = `word/media/lampiran_photo_${idx + 1}.${ext}`;
+      zip.file(mediaPath, bytes);
+
+      const relId = `rIdLampiranImg${idx + 1}`;
+      const relTag = `<Relationship Id="${relId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/lampiran_photo_${idx + 1}.${ext}"/>`;
+
+      if (!relsXml.includes(relId)) {
+        relsXml = relsXml.replace('</Relationships>', `${relTag}</Relationships>`);
+      }
+
+      const docPrId = 2000 + idx;
+      const drawingXml = `
+<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="120" w:after="240"/></w:pPr>
+<w:r>
+  <w:drawing>
+    <wp:inline distT="0" distB="0" distL="0" distR="0">
+      <wp:extent cx="4500000" cy="3375000"/>
+      <wp:docPr id="${docPrId}" name="Foto Lampiran ${idx + 1}"/>
+      <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+        <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/main">
+          <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+            <pic:nvPicPr>
+              <pic:cNvPr id="${docPrId}" name="Foto Lampiran ${idx + 1}"/>
+              <pic:cNvPicPr/>
+            </pic:nvPicPr>
+            <pic:blipFill>
+              <a:blip r:embed="${relId}"/>
+              <a:stretch><a:fillRect/></a:stretch>
+            </pic:blipFill>
+            <pic:spPr>
+              <a:xfrm>
+                <a:off x="0" y="0"/>
+                <a:ext cx="4500000" cy="3375000"/>
+              </a:xfrm>
+              <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+            </pic:spPr>
+          </pic:pic>
+        </a:graphicData>
+      </a:graphic>
+    </wp:inline>
+  </w:drawing>
+</w:r>
+</w:p>`;
+      injectedDrawingsXml += drawingXml;
+    } catch (err) {
+      console.error('Error embedding image into docx:', err);
+    }
+  });
+
+  if (injectedDrawingsXml && docXml) {
+    docXml = docXml.replace('</w:body>', `${injectedDrawingsXml}</w:body>`);
+    zip.file('word/_rels/document.xml.rels', relsXml);
+    zip.file('word/document.xml', docXml);
+  }
+
+  return zip;
+}
+
 export const exportToDocx = async (lksData) => {
   try {
     let response = await fetch('/templates/LKP_TEMPLATE_OFFICIAL.docx');
@@ -116,10 +206,13 @@ export const exportToDocx = async (lksData) => {
     });
 
     // ── Generate output blob ──
-    const outZip = doc.getZip();
+    let outZip = doc.getZip();
 
-    // Remove protection from rendered output as well
-    removeProtection(outZip);
+    // Remove protection from rendered output
+    outZip = removeProtection(outZip);
+
+    // Embed uploaded photo images into Page 2 (LAMPIRAN)
+    outZip = embedLampiranImages(outZip, lksData);
 
     const out = outZip.generate({
       type: 'blob',
