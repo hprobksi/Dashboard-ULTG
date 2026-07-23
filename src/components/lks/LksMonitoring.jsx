@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Search, Filter, CheckCircle2, Clock, CheckCheck, Trash2, 
   PenTool, X, ShieldCheck, FileText, Building2, UserCheck, 
-  Calendar, AlertCircle, Eye, RefreshCw, Check
+  Calendar, AlertCircle, Eye, RefreshCw, Check, Plus
 } from 'lucide-react';
 import lksService from '../../services/lksService';
 import DigitalSignatureModal from './DigitalSignatureModal';
