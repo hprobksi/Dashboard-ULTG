@@ -22,6 +22,10 @@ export default function Sidebar({ activeDomain, activeTab, setActiveTab }) {
           { id: 'data-pegawai', label: 'Database Pegawai', icon: Users, desc: 'Tabel Personil & Avatar' },
           { id: 'jadwal-pekerjaan', label: 'Jadwal Pekerjaan', icon: CalendarDays, desc: 'Agenda Kedinasan Luar Kota' }
         ];
+      case 'lks-dom':
+        return [
+          { id: 'lks-overview', label: 'Modul LKS Utama', icon: FileText, desc: 'Pengajuan & Monitoring LKS' },
+        ];
       case 'harpro':
         return [
           { id: 'overview', label: 'Overview Proteksi', icon: LayoutDashboard, desc: 'Ringkasan & Statistik Proteksi' },

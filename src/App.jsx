@@ -21,6 +21,8 @@ import Monitoring from './pages/Monitoring';
 import K3Dashboard from './pages/K3Dashboard';
 import PeralatanK3 from './pages/PeralatanK3';
 import AuthPage from './pages/AuthPage';
+import Lks from './pages/Lks';
+
 import { storageService } from './services/storage';
 
 export default function App() {
@@ -226,20 +228,15 @@ export default function App() {
             )}
           </div>
 
-          {/* LKS BA PLACEHOLDERS */}
-          <div style={{ display: activeTab === 'lks-overview' ? 'block' : 'none', padding: '32px' }}>
-            {visitedTabs['lks-overview'] && (
-              <div className="card" style={{ padding: '36px', backgroundColor: '#FFFFFF', borderRadius: '16px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.06)' }}>
-                <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#0F172A', margin: '0 0 8px 0' }}>Arsip LKS & Berita Acara Pemeliharaan</h2>
-                <p style={{ color: '#64748B', fontWeight: 600, margin: 0 }}>Lembar Kerja Selesai (LKS) dan Berita Acara (BA) pemeliharaan rutin, perbaikan proteksi, dan investigasi gangguan ULTG Bekasi.</p>
-              </div>
-            )}
+          {/* LKS & BA SECTION */}
+          <div style={{ display: activeTab === 'lks-overview' ? 'block' : 'none' }}>
+            {visitedTabs['lks-overview'] && <Lks />}
           </div>
           <div style={{ display: activeTab === 'lks-upload' ? 'block' : 'none', padding: '32px' }}>
             {visitedTabs['lks-upload'] && (
               <div className="card" style={{ padding: '36px', backgroundColor: '#FFFFFF', borderRadius: '16px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.06)' }}>
-                <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#0F172A', margin: '0 0 8px 0' }}>Unggah Berita Acara Baru</h2>
-                <p style={{ color: '#64748B', fontWeight: 600, margin: 0 }}>Fasilitas pengunggahan dokumen digital bertanda tangan (PDF/Scanned BA) ke dalam arsip terpusat.</p>
+                <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#0F172A', margin: '0 0 8px 0' }}>Upload BA / LKS ULTG Bekasi</h2>
+                <p style={{ color: '#64748B', fontWeight: 600, margin: 0 }}>Modul ini dalam tahap pengembangan. Silakan hubungi administrator.</p>
               </div>
             )}
           </div>
