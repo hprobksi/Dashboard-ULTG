@@ -121,8 +121,7 @@ export const lksService = {
       akibatKerusakan: formData.akibatKerusakan || '',
       usulDanSaran: formData.usulDanSaran || '',
       lampiranText: formData.lampiranText || '- Foto Kerusakan (Terlampir)',
-      lampiranImageDataUrl: formData.lampiranImageDataUrl || '',
-      lampiranImageName: formData.lampiranImageName || '',
+      lampiranImages: formData.lampiranImages || [],
       pengaju: {
         nama: formData.pengajuNama || '',
         jabatan: formData.pengajuJabatan || '',

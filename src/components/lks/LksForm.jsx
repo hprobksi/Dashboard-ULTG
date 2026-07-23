@@ -24,8 +24,7 @@ export default function LksForm({ onSuccessSubmitted }) {
     akibatKerusakan: '',
     usulDanSaran: '',
     lampiranText: '- Foto Kerusakan (Terlampir)',
-    lampiranImageDataUrl: '',
-    lampiranImageName: '',
+    lampiranImages: [],
     pengajuNama: '',
     pengajuNip: '',
     pengajuJabatan: 'Staff Pemeliharaan',
@@ -315,64 +314,82 @@ export default function LksForm({ onSuccessSubmitted }) {
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
-              Upload Gambar Foto Kerusakan / Dokumentasi (Halaman 2 Lampiran)
-            </label>
-            {formData.lampiranImageDataUrl ? (
-              <div style={{ border: '1px solid #10B981', borderRadius: '10px', padding: '12px', backgroundColor: '#F0FDF4', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <img src={formData.lampiranImageDataUrl} alt="Preview Foto" style={{ width: '80px', height: '60px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #A7F3D0' }} />
-                  <div>
-                    <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#065F46' }}>{formData.lampiranImageName || 'Foto_Kerusakan.jpg'}</div>
-                    <div style={{ fontSize: '0.75rem', color: '#047857' }}>Foto siap ditampilkan di Halaman 2 Lampiran</div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+              <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#334155' }}>
+                Upload Foto Kerusakan & Dokumentasi (Halaman 2 Lampiran — Bisa Banyak Foto)
+              </label>
+              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#0284C7' }}>
+                {(formData.lampiranImages || []).length} Foto Terlampir
+              </span>
+            </div>
+
+            {/* Render Uploaded Image Thumbnails Grid */}
+            {(formData.lampiranImages || []).length > 0 && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px', marginBottom: '10px' }}>
+                {formData.lampiranImages.map((imgItem, imgIdx) => (
+                  <div key={imgItem.id || imgIdx} style={{ position: 'relative', border: '1px solid #CBD5E1', borderRadius: '8px', padding: '6px', backgroundColor: '#FFFFFF', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <img src={imgItem.dataUrl} alt={`Foto ${imgIdx + 1}`} style={{ width: '100%', height: '110px', objectFit: 'cover', borderRadius: '6px' }} />
+                    <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#334155', marginTop: '4px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '160px' }}>
+                      Foto {imgIdx + 1}: {imgItem.name || 'Foto.jpg'}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({
+                        ...prev,
+                        lampiranImages: prev.lampiranImages.filter((_, idx) => idx !== imgIdx)
+                      }))}
+                      style={{ position: 'absolute', top: '10px', right: '10px', padding: '4px', borderRadius: '50%', border: 'none', backgroundColor: 'rgba(239,68,68,0.9)', color: '#FFF', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      title="Hapus foto ini"
+                    >
+                      <Trash2 size={13} />
+                    </button>
                   </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setFormData(prev => ({ ...prev, lampiranImageDataUrl: '', lampiranImageName: '' }))}
-                  style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', backgroundColor: '#FEF2F2', color: '#EF4444', fontWeight: 700, fontSize: '0.78rem', cursor: 'pointer' }}
-                >
-                  Hapus Foto
-                </button>
+                ))}
               </div>
-            ) : (
-              <div
-                style={{
-                  border: '2px dashed #CBD5E1',
-                  borderRadius: '10px',
-                  padding: '14px 16px',
-                  textAlign: 'center',
-                  backgroundColor: '#FFFFFF',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                }}
-                onClick={() => document.getElementById('lampiran-image-input').click()}
-              >
-                <input
-                  id="lampiran-image-input"
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg"
-                  style={{ display: 'none' }}
-                  onChange={(e) => {
-                    if (e.target.files && e.target.files[0]) {
-                      const file = e.target.files[0];
+            )}
+
+            {/* Drop / Select Input Box */}
+            <div
+              style={{
+                border: '2px dashed #CBD5E1',
+                borderRadius: '10px',
+                padding: '14px 16px',
+                textAlign: 'center',
+                backgroundColor: '#FFFFFF',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+              onClick={() => document.getElementById('lampiran-multi-image-input').click()}
+            >
+              <input
+                id="lampiran-multi-image-input"
+                type="file"
+                multiple
+                accept="image/png, image/jpeg, image/jpg"
+                style={{ display: 'none' }}
+                onChange={(e) => {
+                  if (e.target.files && e.target.files.length > 0) {
+                    const files = Array.from(e.target.files);
+                    files.forEach(file => {
                       const reader = new FileReader();
                       reader.onload = (evt) => {
                         setFormData(prev => ({
                           ...prev,
-                          lampiranImageDataUrl: evt.target.result,
-                          lampiranImageName: file.name
+                          lampiranImages: [
+                            ...(prev.lampiranImages || []),
+                            { id: Date.now() + Math.random().toString(36).substr(2, 4), dataUrl: evt.target.result, name: file.name }
+                          ]
                         }));
                       };
                       reader.readAsDataURL(file);
-                    }
-                  }}
-                />
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#00A2E9', fontWeight: 700, fontSize: '0.84rem' }}>
-                  <ImageIcon size={18} /> Upload Foto Kerusakan / Pengujiam (PNG / JPG)
-                </div>
+                    });
+                  }
+                }}
+              />
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#00A2E9', fontWeight: 700, fontSize: '0.84rem' }}>
+                <ImageIcon size={18} /> + Tambah Foto Kerusakan / Hasil Pengujian (Bisa Pilih Banyak Foto Sekaligus)
               </div>
-            )}
+            </div>
           </div>
         </div>
 
@@ -445,8 +462,7 @@ export default function LksForm({ onSuccessSubmitted }) {
             akibatKerusakan: formData.akibatKerusakan,
             usulDanSaran: formData.usulDanSaran,
             lampiranText: formData.lampiranText,
-            lampiranImageDataUrl: formData.lampiranImageDataUrl,
-            lampiranImageName: formData.lampiranImageName,
+            lampiranImages: formData.lampiranImages || [],
             pengaju: {
               nama: formData.pengajuNama,
               jabatan: formData.pengajuJabatan,

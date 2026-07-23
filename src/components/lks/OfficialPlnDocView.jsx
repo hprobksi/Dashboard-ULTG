@@ -59,6 +59,12 @@ const outerBorder = '1.5px solid #000000';
 export default function OfficialPlnDocView({ lksData, onClose }) {
   if (!lksData) return null;
 
+  const initialImagesList = lksData.lampiranImages && lksData.lampiranImages.length > 0
+    ? lksData.lampiranImages
+    : lksData.lampiranImageDataUrl
+      ? [{ id: 'img-1', dataUrl: lksData.lampiranImageDataUrl, name: lksData.lampiranImageName || 'Foto 1' }]
+      : [];
+  const [lampiranImages, setLampiranImages] = useState(initialImagesList);
   const handleDownloadDocx = () => exportToDocx(lksData);
   const handlePrintPdf = () => window.print();
   const formatIndonesianDate = (dateVal) => {
@@ -510,61 +516,107 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             </div>
 
             <div style={{
-              border: lampiranImage ? '1px solid #CBD5E1' : '2px dashed #00A2E9',
+              border: lampiranImages.length > 0 ? '1px solid #E2E8F0' : '2px dashed #00A2E9',
               borderRadius: '12px',
-              padding: lampiranImage ? '16px' : '32px',
+              padding: lampiranImages.length > 0 ? '16px' : '32px',
               minHeight: '380px',
-              backgroundColor: lampiranImage ? '#FFFFFF' : '#F0F9FF',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justify: 'center',
+              backgroundColor: lampiranImages.length > 0 ? '#FFFFFF' : '#F0F9FF',
             }}>
-              {lampiranImage ? (
-                <div style={{ textAlign: 'center', width: '100%' }}>
-                  <img
-                    src={lampiranImage}
-                    alt="Foto Kerusakan"
-                    style={{ maxWidth: '100%', maxHeight: '450px', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}
-                  />
-                  <div style={{ marginTop: '12px', fontSize: '0.84rem', fontWeight: 800, color: '#334155' }}>
-                    FOTO DOKUMENTASI KERUSAKAN & PENGUJIAN PERALATAN
+              {lampiranImages.length > 0 ? (
+                <div>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: lampiranImages.length === 1 ? '1fr' : 'repeat(2, 1fr)',
+                    gap: '16px',
+                  }}>
+                    {lampiranImages.map((imgObj, idx) => (
+                      <div key={imgObj.id || idx} style={{ textAlign: 'center', border: '1px solid #CBD5E1', borderRadius: '8px', padding: '10px', backgroundColor: '#FFFFFF', position: 'relative' }}>
+                        <img
+                          src={imgObj.dataUrl}
+                          alt={`Foto ${idx + 1}`}
+                          style={{ maxWidth: '100%', maxHeight: lampiranImages.length > 2 ? '240px' : '340px', objectFit: 'contain', borderRadius: '6px' }}
+                        />
+                        <div style={{ marginTop: '8px', fontSize: '0.82rem', fontWeight: 800, color: '#334155' }}>
+                          FOTO {idx + 1}: DOKUMENTASI KERUSAKAN & PENGUJIAN
+                        </div>
+                        <button
+                          type="button"
+                          className="no-print"
+                          onClick={() => setLampiranImages(prev => prev.filter((_, i) => i !== idx))}
+                          style={{ position: 'absolute', top: '8px', right: '8px', padding: '4px 8px', borderRadius: '6px', border: 'none', backgroundColor: '#FEF2F2', color: '#EF4444', fontWeight: 700, fontSize: '0.72rem', cursor: 'pointer' }}
+                        >
+                          Hapus
+                        </button>
+                      </div>
+                    ))}
                   </div>
-                  <button
-                    type="button"
-                    className="no-print"
-                    onClick={() => setLampiranImage('')}
-                    style={{ marginTop: '8px', padding: '4px 12px', borderRadius: '6px', border: 'none', backgroundColor: '#FEF2F2', color: '#EF4444', fontWeight: 700, fontSize: '0.75rem', cursor: 'pointer' }}
-                  >
-                    Ganti / Hapus Foto
-                  </button>
+
+                  <div className="no-print" style={{ textAlign: 'center', marginTop: '16px' }}>
+                    <button
+                      type="button"
+                      onClick={() => document.getElementById('preview-multi-image-input').click()}
+                      style={{ padding: '8px 16px', borderRadius: '8px', border: '1px solid #00A2E9', backgroundColor: '#EFF6FF', color: '#00A2E9', fontWeight: 800, fontSize: '0.82rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      <Upload size={14} /> + Tambah Foto Lampiran Lainnya
+                    </button>
+                    <input
+                      id="preview-multi-image-input"
+                      type="file"
+                      multiple
+                      accept="image/png, image/jpeg, image/jpg"
+                      style={{ display: 'none' }}
+                      onChange={(e) => {
+                        if (e.target.files && e.target.files.length > 0) {
+                          const files = Array.from(e.target.files);
+                          files.forEach(file => {
+                            const reader = new FileReader();
+                            reader.onload = (evt) => {
+                              setLampiranImages(prev => [
+                                ...prev,
+                                { id: Date.now() + Math.random().toString(36).substr(2, 4), dataUrl: evt.target.result, name: file.name }
+                              ]);
+                            };
+                            reader.readAsDataURL(file);
+                          });
+                        }
+                      }}
+                    />
+                  </div>
                 </div>
               ) : (
                 <div
                   className="no-print"
-                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', cursor: 'pointer', textAlign: 'center' }}
-                  onClick={() => document.getElementById('preview-lampiran-image-input').click()}
+                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height: '320px', cursor: 'pointer', textAlign: 'center' }}
+                  onClick={() => document.getElementById('preview-multi-image-input-empty').click()}
                 >
                   <input
-                    id="preview-lampiran-image-input"
+                    id="preview-multi-image-input-empty"
                     type="file"
+                    multiple
                     accept="image/png, image/jpeg, image/jpg"
                     style={{ display: 'none' }}
                     onChange={(e) => {
-                      if (e.target.files && e.target.files[0]) {
-                        const file = e.target.files[0];
-                        const reader = new FileReader();
-                        reader.onload = (evt) => setLampiranImage(evt.target.result);
-                        reader.readAsDataURL(file);
+                      if (e.target.files && e.target.files.length > 0) {
+                        const files = Array.from(e.target.files);
+                        files.forEach(file => {
+                          const reader = new FileReader();
+                          reader.onload = (evt) => {
+                            setLampiranImages(prev => [
+                              ...prev,
+                              { id: Date.now() + Math.random().toString(36).substr(2, 4), dataUrl: evt.target.result, name: file.name }
+                            ]);
+                          };
+                          reader.readAsDataURL(file);
+                        });
                       }
                     }}
                   />
-                  <Upload size={36} color="#00A2E9" />
+                  <Upload size={38} color="#00A2E9" />
                   <div style={{ fontWeight: 800, color: '#00A2E9', fontSize: '0.95rem' }}>
                     Klik di Sini Untuk Upload Foto Kerusakan pada Halaman 2 Lampiran
                   </div>
                   <div style={{ fontSize: '0.78rem', color: '#64748B' }}>
-                    Foto (PNG/JPG) akan otomatis tampil utuh di lembar lampiran ini
+                    Bisa memilih banyak foto (PNG/JPG) sekaligus untuk tampil di lembar lampiran ini
                   </div>
                 </div>
               )}
