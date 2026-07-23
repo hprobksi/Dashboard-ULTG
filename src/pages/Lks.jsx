@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Activity, UploadCloud } from 'lucide-react';
+import { FileText, Activity, UploadCloud, Archive } from 'lucide-react';
 import LksMonitoring from '../components/lks/LksMonitoring';
 import LksUpload from '../components/lks/LksUpload';
+import LksArchive from '../components/lks/LksArchive';
 
 export default function Lks({ initialTab = 'upload' }) {
   const [activeSubTab, setActiveSubTab] = useState('upload');
 
   useEffect(() => {
     if (initialTab) {
-      if (initialTab === 'lks-monitoring') setActiveSubTab('monitoring');
-      else setActiveSubTab('upload');
+      if (initialTab === 'lks-archive' || initialTab === 'lks-arsip') setActiveSubTab('archive');
+      else if (initialTab === 'lks-monitoring') setActiveSubTab('monitoring');
+      else if (initialTab === 'lks-upload') setActiveSubTab('upload');
     }
   }, [initialTab]);
 
@@ -47,7 +49,7 @@ export default function Lks({ initialTab = 'upload' }) {
               Modul LKS (Lembar Kerja Selesai) - ULTG Bekasi
             </h1>
             <p style={{ margin: '4px 0 0 0', color: '#64748B', fontSize: '0.92rem', fontWeight: 600 }}>
-              Upload Dokumen Berkas Scan PDF/Word & Monitoring Status LKS (Open / Close)
+              Upload Dokumen Berkas Scan PDF/Word, Monitoring Status LKS (OPEN / CLOSE), & Tabel Arsip LKS
             </p>
           </div>
         </div>
@@ -108,15 +110,42 @@ export default function Lks({ initialTab = 'upload' }) {
           <Activity size={17} color={activeSubTab === 'monitoring' ? '#00A2E9' : '#64748B'} />
           2. Monitoring LKS
         </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveSubTab('archive')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '12px 22px',
+            borderRadius: '10px 10px 0 0',
+            border: 'none',
+            borderBottom: activeSubTab === 'archive' ? '3px solid #00A2E9' : '3px solid transparent',
+            backgroundColor: activeSubTab === 'archive' ? '#EFF6FF' : 'transparent',
+            color: activeSubTab === 'archive' ? '#00A2E9' : '#64748B',
+            fontWeight: activeSubTab === 'archive' ? 800 : 600,
+            fontSize: '0.92rem',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            marginBottom: '-2px'
+          }}
+        >
+          <Archive size={17} color={activeSubTab === 'archive' ? '#00A2E9' : '#64748B'} />
+          3. Arsip LKS
+        </button>
       </div>
 
       {/* Tab Content */}
       <div style={{ marginTop: '8px' }}>
         {activeSubTab === 'upload' && (
-          <LksUpload onUploadSuccess={() => setActiveSubTab('monitoring')} />
+          <LksUpload onUploadSuccess={() => setActiveSubTab('archive')} />
         )}
         {activeSubTab === 'monitoring' && (
           <LksMonitoring onAddNew={() => setActiveSubTab('upload')} />
+        )}
+        {activeSubTab === 'archive' && (
+          <LksArchive />
         )}
       </div>
 

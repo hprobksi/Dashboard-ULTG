@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UploadCloud, FileText, CheckCircle2, Download, Trash2, File, AlertCircle, Eye } from 'lucide-react';
+import { UploadCloud, CheckCircle2, File, AlertCircle } from 'lucide-react';
 import lksService from '../../services/lksService';
 
 export default function LksUpload({ onUploadSuccess }) {
@@ -94,17 +94,6 @@ export default function LksUpload({ onUploadSuccess }) {
       setSuccessMsg('');
       if (onUploadSuccess) onUploadSuccess();
     }, 2000);
-  };
-
-  // Get uploaded files from lksService
-  const allRecords = lksService.getAll();
-  const uploadedList = allRecords.filter(item => item.filePdfName || item.isUploadedScan);
-
-  const handleDeleteUpload = (id) => {
-    if (window.confirm('Hapus arsip file LKS ini?')) {
-      lksService.delete(id);
-      window.location.reload();
-    }
   };
 
   return (
@@ -292,76 +281,6 @@ export default function LksUpload({ onUploadSuccess }) {
         </form>
       </div>
 
-      {/* Uploaded Files Table */}
-      <div style={{ backgroundColor: '#FFFFFF', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', border: '1px solid #E2E8F0' }}>
-        <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0F172A', margin: '0 0 16px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <FileText size={20} color="#00A2E9" /> Arsip File Upload LKS ({uploadedList.length})
-        </h3>
-
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.82rem' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#F8FAFC', borderBottom: '2px solid #E2E8F0', color: '#475569' }}>
-                <th style={{ padding: '10px 12px' }}>No. LKS & Tanggal</th>
-                <th style={{ padding: '10px 12px' }}>Nama Peralatan</th>
-                <th style={{ padding: '10px 12px' }}>Nama File Scan</th>
-                <th style={{ padding: '10px 12px' }}>Pengunggah</th>
-                <th style={{ padding: '10px 12px', textAlign: 'right' }}>Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              {uploadedList.length === 0 ? (
-                <tr>
-                  <td colSpan={5} style={{ textAlign: 'center', padding: '24px', color: '#94A3B8' }}>
-                    Belum ada file scan LKS yang diunggah.
-                  </td>
-                </tr>
-              ) : (
-                uploadedList.map((item) => (
-                  <tr key={item.id} style={{ borderBottom: '1px solid #F1F5F9' }}>
-                    <td style={{ padding: '10px 12px' }}>
-                      <div style={{ fontWeight: 800, color: '#0F172A' }}>{item.nomorLks}</div>
-                      <div style={{ fontSize: '0.74rem', color: '#64748B' }}>{item.tanggalKejadian}</div>
-                    </td>
-                    <td style={{ padding: '10px 12px' }}>
-                      <div style={{ fontWeight: 700, color: '#334155' }}>{item.dataPeralatan?.namaPeralatan || '-'}</div>
-                      <span style={{ fontSize: '0.72rem', color: '#0284C7', fontWeight: 800 }}>{item.bidang}</span>
-                    </td>
-                    <td style={{ padding: '10px 12px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600, color: '#0284C7' }}>
-                        <File size={14} /> {item.filePdfName || 'Dokumen_LKS_Scan.pdf'}
-                      </div>
-                      <div style={{ fontSize: '0.72rem', color: '#64748B' }}>{item.fileSize || 'Dokumen Terlampir'}</div>
-                    </td>
-                    <td style={{ padding: '10px 12px', color: '#475569' }}>
-                      {item.pengaju?.nama || 'Staff ULTG'}<br />
-                      <span style={{ fontSize: '0.72rem', color: '#94A3B8' }}>{item.pengaju?.jabatan}</span>
-                    </td>
-                    <td style={{ padding: '10px 12px', textAlign: 'right' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '6px' }}>
-                        <button
-                          type="button"
-                          onClick={() => alert(`Mengunduh file: ${item.filePdfName || 'Dokumen_LKS.pdf'}`)}
-                          style={{ padding: '6px 10px', borderRadius: '6px', border: '1px solid #CBD5E1', backgroundColor: '#FFF', color: '#334155', fontSize: '0.76rem', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
-                        >
-                          <Download size={13} /> Unduh
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteUpload(item.id)}
-                          style={{ padding: '6px', borderRadius: '6px', border: '1px solid #FCA5A5', backgroundColor: '#FEF2F2', color: '#EF4444', cursor: 'pointer' }}
-                        >
-                          <Trash2 size={13} />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   );
 }

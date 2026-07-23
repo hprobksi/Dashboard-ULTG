@@ -230,7 +230,7 @@ export default function App() {
 
           {/* LKS & BA SECTION */}
           <div style={{ display: activeTab.startsWith('lks-') ? 'block' : 'none' }}>
-            {(visitedTabs['lks-overview'] || visitedTabs['lks-pengajuan'] || visitedTabs['lks-monitoring'] || visitedTabs['lks-upload']) && (
+            {(visitedTabs['lks-overview'] || visitedTabs['lks-pengajuan'] || visitedTabs['lks-monitoring'] || visitedTabs['lks-upload'] || visitedTabs['lks-archive']) && (
               <Lks initialTab={activeTab} />
             )}
           </div>

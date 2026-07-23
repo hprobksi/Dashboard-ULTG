@@ -27,6 +27,7 @@ export default function Sidebar({ activeDomain, activeTab, setActiveTab }) {
         return [
           { id: 'lks-upload', label: 'Upload LKS', icon: UploadCloud, desc: 'Upload File Scan PDF / Word LKS' },
           { id: 'lks-monitoring', label: 'Monitoring LKS', icon: Activity, desc: 'Dashboard Status Open / Close' },
+          { id: 'lks-archive', label: 'Arsip LKS', icon: Archive, desc: 'Tabel Arsip Berkas Scan LKS' },
         ];
       case 'harpro':
         return [
