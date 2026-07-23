@@ -229,15 +229,9 @@ export default function App() {
           </div>
 
           {/* LKS & BA SECTION */}
-          <div style={{ display: activeTab === 'lks-overview' ? 'block' : 'none' }}>
-            {visitedTabs['lks-overview'] && <Lks />}
-          </div>
-          <div style={{ display: activeTab === 'lks-upload' ? 'block' : 'none', padding: '32px' }}>
-            {visitedTabs['lks-upload'] && (
-              <div className="card" style={{ padding: '36px', backgroundColor: '#FFFFFF', borderRadius: '16px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.06)' }}>
-                <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#0F172A', margin: '0 0 8px 0' }}>Upload BA / LKS ULTG Bekasi</h2>
-                <p style={{ color: '#64748B', fontWeight: 600, margin: 0 }}>Modul ini dalam tahap pengembangan. Silakan hubungi administrator.</p>
-              </div>
+          <div style={{ display: activeTab.startsWith('lks-') ? 'block' : 'none' }}>
+            {(visitedTabs['lks-overview'] || visitedTabs['lks-pengajuan'] || visitedTabs['lks-monitoring'] || visitedTabs['lks-upload']) && (
+              <Lks initialTab={activeTab} />
             )}
           </div>
 

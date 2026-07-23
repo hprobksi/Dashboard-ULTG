@@ -2,7 +2,8 @@ import React from 'react';
 import {
   LayoutDashboard, Users, CalendarDays, FileText, Archive, ShoppingCart,
   Cpu, AlertTriangle, ShieldAlert, Building, Clock,
-  ChevronRight, FolderTree, Download, Activity, ShieldCheck, Leaf, ClipboardList, LayoutGrid
+  ChevronRight, FolderTree, Download, Activity, ShieldCheck, Leaf, ClipboardList, LayoutGrid,
+  PlusCircle, UploadCloud
 } from 'lucide-react';
 import { getFlatDomainsList } from './Header';
 
@@ -24,7 +25,9 @@ export default function Sidebar({ activeDomain, activeTab, setActiveTab }) {
         ];
       case 'lks-dom':
         return [
-          { id: 'lks-overview', label: 'Modul LKS Utama', icon: FileText, desc: 'Pengajuan & Monitoring LKS' },
+          { id: 'lks-pengajuan', label: 'Pengajuan LKS', icon: PlusCircle, desc: 'Input Form LKS Resmi' },
+          { id: 'lks-monitoring', label: 'Monitoring LKS', icon: Activity, desc: 'Dashboard Status Open / Close' },
+          { id: 'lks-upload', label: 'Upload LKS', icon: UploadCloud, desc: 'Upload File Scan PDF / Word LKS' },
         ];
       case 'harpro':
         return [
