@@ -36,13 +36,15 @@ export default function Lks({ initialTab = 'upload' }) {
             height: '52px',
             borderRadius: '14px',
             backgroundColor: '#00A2E9',
-            display: 'flex',
+            display: 'inline-flex',
             alignItems: 'center',
             justify: 'center',
             boxShadow: '0 4px 12px rgba(0, 162, 233, 0.3)',
-            flexShrink: 0
+            flexShrink: 0,
+            lineHeight: 1,
+            boxSizing: 'border-box'
           }}>
-            <FileText size={28} color="#FFFFFF" />
+            <FileText size={28} color="#FFFFFF" style={{ display: 'block', margin: 0 }} />
           </div>
           <div>
             <h1 style={{ margin: 0, fontSize: '1.6rem', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.02em' }}>
@@ -67,7 +69,7 @@ export default function Lks({ initialTab = 'upload' }) {
           type="button"
           onClick={() => setActiveSubTab('upload')}
           style={{
-            display: 'flex',
+            display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             padding: '12px 22px',
@@ -80,10 +82,11 @@ export default function Lks({ initialTab = 'upload' }) {
             fontSize: '0.92rem',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
-            marginBottom: '-2px'
+            marginBottom: '-2px',
+            lineHeight: 1
           }}
         >
-          <UploadCloud size={17} color={activeSubTab === 'upload' ? '#00A2E9' : '#64748B'} />
+          <UploadCloud size={18} color={activeSubTab === 'upload' ? '#00A2E9' : '#64748B'} style={{ display: 'block', margin: 0 }} />
           1. Upload LKS
         </button>
 
@@ -91,7 +94,7 @@ export default function Lks({ initialTab = 'upload' }) {
           type="button"
           onClick={() => setActiveSubTab('monitoring')}
           style={{
-            display: 'flex',
+            display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             padding: '12px 22px',
@@ -104,10 +107,11 @@ export default function Lks({ initialTab = 'upload' }) {
             fontSize: '0.92rem',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
-            marginBottom: '-2px'
+            marginBottom: '-2px',
+            lineHeight: 1
           }}
         >
-          <Activity size={17} color={activeSubTab === 'monitoring' ? '#00A2E9' : '#64748B'} />
+          <Activity size={18} color={activeSubTab === 'monitoring' ? '#00A2E9' : '#64748B'} style={{ display: 'block', margin: 0 }} />
           2. Monitoring LKS
         </button>
 
@@ -115,7 +119,7 @@ export default function Lks({ initialTab = 'upload' }) {
           type="button"
           onClick={() => setActiveSubTab('archive')}
           style={{
-            display: 'flex',
+            display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             padding: '12px 22px',
@@ -128,10 +132,11 @@ export default function Lks({ initialTab = 'upload' }) {
             fontSize: '0.92rem',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
-            marginBottom: '-2px'
+            marginBottom: '-2px',
+            lineHeight: 1
           }}
         >
-          <Archive size={17} color={activeSubTab === 'archive' ? '#00A2E9' : '#64748B'} />
+          <Archive size={18} color={activeSubTab === 'archive' ? '#00A2E9' : '#64748B'} style={{ display: 'block', margin: 0 }} />
           3. Arsip LKS
         </button>
       </div>
