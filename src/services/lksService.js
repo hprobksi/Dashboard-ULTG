@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'ultg_lks_data_v2';
+const STORAGE_KEY = 'ultg_lks_data_v3';
 
 const INITIAL_MOCK_DATA = [
   {
@@ -21,25 +21,21 @@ const INITIAL_MOCK_DATA = [
     penyebabKerusakan: 'Kerapatan gas SF6 berkurang akibat micro leak pada valve',
     akibatKerusakan: 'Dapat memicu lock-out trip jika tekanan SF6 mencapai stage 2',
     usulDanSaran: 'Refill gas SF6 dan kalibrasi ulang densiti switch',
-    lampiranText: 'Foto Kerusakan & Hasil Uji Ulang (Terlampir)',
+    lampiranText: '- Foto Kerusakan & Hasil Uji Ulang (Terlampir)',
     pengaju: {
       nama: 'FAJAR KURNIAWAN',
       nip: '941823901',
       jabatan: 'Staff HARPRO',
       signatureDataUrl: ''
     },
-    status: 'On Progress',
+    status: 'Open',
     approval: {
-      tlApproved: false,
       tlNama: 'AHMAD Y. AL BASTOMY',
       tlNip: '921839182',
       tlJabatan: 'TL HARPRO ULTG BEKASI',
-      tlSignature: '',
-      managerApproved: false,
       managerNama: 'TRIAWAN AZHARY P. N.',
       managerNip: '891726351',
-      managerJabatan: 'MANAGER ULTG BEKASI',
-      managerSignature: ''
+      managerJabatan: 'MANAGER ULTG BEKASI'
     },
     createdAt: new Date('2026-07-08T08:30:00Z').toISOString()
   },
@@ -70,18 +66,14 @@ const INITIAL_MOCK_DATA = [
       jabatan: 'TL HARJAR ULTG BEKASI',
       signatureDataUrl: ''
     },
-    status: 'Approved',
+    status: 'Close',
     approval: {
-      tlApproved: true,
       tlNama: 'AHMAD Y. AL BASTOMY',
       tlNip: '921839182',
       tlJabatan: 'TL HARJAR ULTG BEKASI',
-      tlSignature: '',
-      managerApproved: true,
       managerNama: 'TRIAWAN AZHARY P. N.',
       managerNip: '891726351',
-      managerJabatan: 'MANAGER ULTG BEKASI',
-      managerSignature: ''
+      managerJabatan: 'MANAGER ULTG BEKASI'
     },
     createdAt: new Date('2026-07-08T10:15:00Z').toISOString()
   }
@@ -141,18 +133,14 @@ export const lksService = {
         jabatan: formData.pengajuJabatan || '',
         signatureDataUrl: formData.pengajuSignature || ''
       },
-      status: 'On Progress',
+      status: 'Open',
       approval: {
-        tlApproved: false,
-        tlNama: formData.tlNama || '',
+        tlNama: formData.tlNama || 'FAJAR KURNIAWAN',
         tlNip: formData.tlNip || '',
         tlJabatan: formData.tlJabatan || `TL ${bidang} ULTG BEKASI`,
-        tlSignature: '',
-        managerApproved: false,
         managerNama: 'TRIAWAN AZHARY P. N.',
         managerNip: '',
-        managerJabatan: 'MANAGER ULTG BEKASI',
-        managerSignature: ''
+        managerJabatan: 'MANAGER ULTG BEKASI'
       },
       filePdfName: formData.filePdfName || null,
       createdAt: new Date().toISOString()
@@ -162,17 +150,11 @@ export const lksService = {
     return newLks;
   },
 
-  updateStatus: (id, newStatus, approvalInfo = {}) => {
+  updateStatus: (id, newStatus) => {
     const list = lksService.getAll();
     const idx = list.findIndex(item => item.id === id);
     if (idx !== -1) {
       list[idx].status = newStatus;
-      if (approvalInfo && Object.keys(approvalInfo).length > 0) {
-        list[idx].approval = {
-          ...list[idx].approval,
-          ...approvalInfo
-        };
-      }
       localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
       return list[idx];
     }

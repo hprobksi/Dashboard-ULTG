@@ -50,7 +50,7 @@ export default function LksForm({ onSuccessSubmitted }) {
     }
 
     const created = lksService.create(formData);
-    setSubmittedMessage(`Berhasil mengajukan LKS/LKP ${created.nomorLks} (Status: On Progress)`);
+    setSubmittedMessage(`Berhasil mengajukan LKS/LKP ${created.nomorLks} (Status: Open)`);
     setTimeout(() => {
       setSubmittedMessage('');
       if (onSuccessSubmitted) onSuccessSubmitted();

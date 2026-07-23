@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Search, Filter, CheckCircle2, Clock, Trash2, 
-  PenTool, ShieldCheck, FileText, Building2, 
-  Calendar, Eye, RefreshCw, Check, Plus, Printer
+  Search, CheckCircle2, Clock, Trash2, 
+  Eye, Plus, Check, RefreshCw, XCircle
 } from 'lucide-react';
 import lksService from '../../services/lksService';
-import DigitalSignatureModal from './DigitalSignatureModal';
 import OfficialPlnDocView from './OfficialPlnDocView';
 
 export default function LksMonitoring({ onAddNew }) {
@@ -14,14 +12,8 @@ export default function LksMonitoring({ onAddNew }) {
   const [selectedBidang, setSelectedBidang] = useState('SEMUA');
   const [selectedStatus, setSelectedStatus] = useState('SEMUA');
 
-  // Modal State
+  // Modal State for Official Printable View
   const [viewItem, setViewItem] = useState(null);
-  const [approvalModalItem, setApprovalModalItem] = useState(null);
-  const [approvalRole, setApprovalRole] = useState('TL');
-  const [approverName, setApproverName] = useState('');
-  const [approverNip, setApproverNip] = useState('');
-  const [approverSig, setApproverSig] = useState('');
-  const [isSigModalOpen, setIsSigModalOpen] = useState(false);
 
   const loadData = () => {
     setLksList(lksService.getAll());
@@ -36,84 +28,34 @@ export default function LksMonitoring({ onAddNew }) {
     const matchStatus = selectedStatus === 'SEMUA' || item.status === selectedStatus;
     const q = searchQuery.toLowerCase();
     const matchQuery = !searchQuery || 
-      item.nomorLks.toLowerCase().includes(q) ||
+      (item.nomorLks || '').toLowerCase().includes(q) ||
       (item.dataPeralatan?.namaPeralatan || '').toLowerCase().includes(q) ||
-      item.penempatanPeralatan.toLowerCase().includes(q) ||
-      item.pengaju.nama.toLowerCase().includes(q);
+      (item.penempatanPeralatan || '').toLowerCase().includes(q) ||
+      (item.pengaju?.nama || '').toLowerCase().includes(q);
     return matchBidang && matchStatus && matchQuery;
   });
 
   const getStatusBadge = (status) => {
-    switch (status) {
-      case 'On Progress':
-        return (
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '4px 10px', borderRadius: '20px', backgroundColor: '#FEF3C7', color: '#D97706', fontSize: '0.76rem', fontWeight: 800 }}>
-            <Clock size={13} /> On Progress
-          </span>
-        );
-      case 'Approved':
-        return (
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '4px 10px', borderRadius: '20px', backgroundColor: '#E0F2FE', color: '#0284C7', fontSize: '0.76rem', fontWeight: 800 }}>
-            <ShieldCheck size={13} /> Approved
-          </span>
-        );
-      case 'Done':
-        return (
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '4px 10px', borderRadius: '20px', backgroundColor: '#D1FAE5', color: '#059669', fontSize: '0.76rem', fontWeight: 800 }}>
-            <CheckCircle2 size={13} /> Done
-          </span>
-        );
-      default:
-        return status;
+    if (status === 'Close') {
+      return (
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px 12px', borderRadius: '20px', backgroundColor: '#D1FAE5', color: '#059669', fontSize: '0.78rem', fontWeight: 800 }}>
+          <CheckCircle2 size={14} /> Close
+        </span>
+      );
     }
+    // Default: Open
+    return (
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px 12px', borderRadius: '20px', backgroundColor: '#FEF3C7', color: '#D97706', fontSize: '0.78rem', fontWeight: 800 }}>
+        <Clock size={14} /> Open
+      </span>
+    );
   };
 
-  const handleOpenApproval = (item, role) => {
-    setApprovalModalItem(item);
-    setApprovalRole(role);
-    if (role === 'TL') {
-      setApproverName(item.approval.tlNama || 'AHMAD Y. AL BASTOMY');
-      setApproverNip(item.approval.tlNip || '921839182');
-    } else {
-      setApproverName(item.approval.managerNama || 'TRIAWAN AZHARY P. N.');
-      setApproverNip(item.approval.managerNip || '891726351');
-    }
-    setApproverSig('');
-  };
-
-  const handleSaveApproval = () => {
-    if (!approvalModalItem) return;
-
-    let payload = {};
-    if (approvalRole === 'TL') {
-      payload = {
-        tlApproved: true,
-        tlNama: approverName,
-        tlNip: approverNip,
-        tlSignature: approverSig
-      };
-    } else {
-      payload = {
-        managerApproved: true,
-        managerNama: approverName,
-        managerNip: approverNip,
-        managerSignature: approverSig
-      };
-    }
-
-    const willBeApproved = (approvalModalItem.approval.tlApproved || approvalRole === 'TL') &&
-      (approvalModalItem.approval.managerApproved || approvalRole === 'MANAGER');
-
-    const nextStatus = willBeApproved ? 'Approved' : approvalModalItem.status;
-
-    lksService.updateStatus(approvalModalItem.id, nextStatus, payload);
-    setApprovalModalItem(null);
-    loadData();
-  };
-
-  const handleSetDone = (id) => {
-    if (window.confirm('Ubah status LKS ini menjadi Done (Selesai 100%)?')) {
-      lksService.updateStatus(id, 'Done');
+  const handleToggleStatus = (item) => {
+    const nextStatus = item.status === 'Open' ? 'Close' : 'Open';
+    const actionText = nextStatus === 'Close' ? 'menutup (Close)' : 'membuka kembali (Open)';
+    if (window.confirm(`Apakah Anda yakin ingin ${actionText} LKS No. ${item.nomorLks}?`)) {
+      lksService.updateStatus(item.id, nextStatus);
       loadData();
     }
   };
@@ -131,7 +73,7 @@ export default function LksMonitoring({ onAddNew }) {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
         <div>
           <h2 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0F172A', margin: 0 }}>Dashboard Monitoring LKS / LKP</h2>
-          <p style={{ fontSize: '0.8rem', color: '#64748B', margin: '2px 0 0 0' }}>Data Draf Standar Resmi Pemeliharaan ULTG Bekasi</p>
+          <p style={{ fontSize: '0.8rem', color: '#64748B', margin: '2px 0 0 0' }}>Sistem Manajemen Status Lembar Kerja Pemeliharaan (Open / Close)</p>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -145,11 +87,11 @@ export default function LksMonitoring({ onAddNew }) {
             </button>
           )}
 
-          <div style={{ position: 'relative', width: '220px' }}>
+          <div style={{ position: 'relative', width: '230px' }}>
             <Search size={15} color="#94A3B8" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
             <input
               type="text"
-              placeholder="Cari LKS / Peralatan / GI..."
+              placeholder="Cari No. LKS / Peralatan / GI..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{ width: '100%', padding: '8px 12px 8px 34px', borderRadius: '20px', border: '1px solid #CBD5E1', fontSize: '0.82rem' }}
@@ -159,7 +101,7 @@ export default function LksMonitoring({ onAddNew }) {
       </div>
 
       {/* Filter Tabs */}
-      <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', borderBottom: '1px solid #F1F5F9', paddingBottom: '12px', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', borderBottom: '1px solid #F1F5F9', paddingBottom: '14px', flexWrap: 'wrap', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B' }}>Bidang:</span>
           {['SEMUA', 'HARPRO', 'HARGI', 'HARJAR', 'JARGI'].map(b => (
@@ -176,7 +118,7 @@ export default function LksMonitoring({ onAddNew }) {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B' }}>Status:</span>
-          {['SEMUA', 'On Progress', 'Approved', 'Done'].map(s => (
+          {['SEMUA', 'Open', 'Close'].map(s => (
             <button
               key={s}
               type="button"
@@ -198,15 +140,14 @@ export default function LksMonitoring({ onAddNew }) {
               <th style={{ padding: '10px 12px' }}>Nama Peralatan</th>
               <th style={{ padding: '10px 12px' }}>Penempatan Peralatan</th>
               <th style={{ padding: '10px 12px' }}>Jenis Kerusakan</th>
-              <th style={{ padding: '10px 12px' }}>Status</th>
-              <th style={{ padding: '10px 12px' }}>ACC TL & Mgr</th>
+              <th style={{ padding: '10px 12px' }}>Status LKS</th>
               <th style={{ padding: '10px 12px', textAlign: 'right' }}>Aksi</th>
             </tr>
           </thead>
           <tbody>
             {filteredList.length === 0 ? (
               <tr>
-                <td colSpan={7} style={{ textAlign: 'center', padding: '32px', color: '#94A3B8' }}>Belum ada data LKS yang sesuai.</td>
+                <td colSpan={6} style={{ textAlign: 'center', padding: '32px', color: '#94A3B8' }}>Belum ada data LKS yang sesuai filter.</td>
               </tr>
             ) : (
               filteredList.map((item) => (
@@ -226,61 +167,42 @@ export default function LksMonitoring({ onAddNew }) {
                     {item.jenisKerusakan}
                   </td>
                   <td style={{ padding: '10px 12px' }}>{getStatusBadge(item.status)}</td>
-                  <td style={{ padding: '10px 12px' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '0.74rem' }}>
-                      <span style={{ color: item.approval.tlApproved ? '#059669' : '#D97706', fontWeight: 700 }}>
-                        TL: {item.approval.tlApproved ? `✓ ${item.approval.tlNama}` : '⏳ Belum ACC'}
-                      </span>
-                      <span style={{ color: item.approval.managerApproved ? '#059669' : '#D97706', fontWeight: 700 }}>
-                        MGR: {item.approval.managerApproved ? `✓ ${item.approval.managerNama}` : '⏳ Belum ACC'}
-                      </span>
-                    </div>
-                  </td>
                   <td style={{ padding: '10px 12px', textAlign: 'right' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '6px' }}>
                       <button
                         type="button"
                         onClick={() => setViewItem(item)}
-                        title="Lihat Draf / Cetak"
-                        style={{ padding: '5px 8px', borderRadius: '6px', border: '1px solid #CBD5E1', backgroundColor: '#FFFFFF', color: '#334155', cursor: 'pointer' }}
+                        title="Lihat Draf Official / Cetak / Export"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 10px', borderRadius: '6px', border: '1px solid #CBD5E1', backgroundColor: '#FFFFFF', color: '#334155', cursor: 'pointer', fontWeight: 600, fontSize: '0.76rem' }}
                       >
-                        <Eye size={14} />
+                        <Eye size={14} /> Pratinjau / Export
                       </button>
 
-                      {!item.approval.tlApproved && (
+                      {item.status === 'Open' ? (
                         <button
                           type="button"
-                          onClick={() => handleOpenApproval(item, 'TL')}
-                          style={{ padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: '#0284C7', color: '#FFF', fontSize: '0.74rem', fontWeight: 700, cursor: 'pointer' }}
+                          onClick={() => handleToggleStatus(item)}
+                          title="Tutup LKS ini (Set status jadi Close)"
+                          style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 10px', borderRadius: '6px', border: 'none', backgroundColor: '#059669', color: '#FFFFFF', fontSize: '0.76rem', fontWeight: 700, cursor: 'pointer' }}
                         >
-                          ACC TL
+                          <CheckCircle2 size={13} /> Set Close
                         </button>
-                      )}
-
-                      {!item.approval.managerApproved && (
+                      ) : (
                         <button
                           type="button"
-                          onClick={() => handleOpenApproval(item, 'MANAGER')}
-                          style={{ padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: '#4F46E5', color: '#FFF', fontSize: '0.74rem', fontWeight: 700, cursor: 'pointer' }}
+                          onClick={() => handleToggleStatus(item)}
+                          title="Buka kembali LKS ini (Set status jadi Open)"
+                          style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 10px', borderRadius: '6px', border: '1px solid #D97706', backgroundColor: '#FEF3C7', color: '#B45309', fontSize: '0.76rem', fontWeight: 700, cursor: 'pointer' }}
                         >
-                          ACC MGR
-                        </button>
-                      )}
-
-                      {item.status !== 'Done' && (
-                        <button
-                          type="button"
-                          onClick={() => handleSetDone(item.id)}
-                          style={{ padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: '#10B981', color: '#FFF', fontSize: '0.74rem', fontWeight: 700, cursor: 'pointer' }}
-                        >
-                          Done
+                          <RefreshCw size={13} /> Reopen
                         </button>
                       )}
 
                       <button
                         type="button"
                         onClick={() => handleDelete(item.id)}
-                        style={{ padding: '5px', borderRadius: '6px', border: '1px solid #FCA5A5', backgroundColor: '#FEF2F2', color: '#EF4444', cursor: 'pointer' }}
+                        title="Hapus Dokumen"
+                        style={{ padding: '6px', borderRadius: '6px', border: '1px solid #FCA5A5', backgroundColor: '#FEF2F2', color: '#EF4444', cursor: 'pointer' }}
                       >
                         <Trash2 size={14} />
                       </button>
@@ -300,52 +222,6 @@ export default function LksMonitoring({ onAddNew }) {
           onClose={() => setViewItem(null)}
         />
       )}
-
-      {/* Modal Approval */}
-      {approvalModalItem && (
-        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(15,23,42,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '16px', padding: '24px', width: '450px', maxWidth: '90vw' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0F172A', margin: '0 0 12px 0' }}>
-              Approval {approvalRole === 'TL' ? 'Team Leader (TL)' : 'Manager ULTG'}
-            </h3>
-            <p style={{ fontSize: '0.82rem', color: '#64748B', marginBottom: '16px' }}>
-              No. LKS: <b>{approvalModalItem.nomorLks}</b><br />
-              Peralatan: <b>{approvalModalItem.dataPeralatan?.namaPeralatan}</b>
-            </p>
-
-            <div style={{ marginBottom: '12px' }}>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>Nama Pejabat Penandatangan</label>
-              <input type="text" value={approverName} onChange={(e) => setApproverName(e.target.value)} style={{ width: '100%', padding: '8px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem' }} />
-            </div>
-
-            <div style={{ marginBottom: '16px' }}>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>Tanda Tangan Digital</label>
-              {approverSig ? (
-                <div style={{ border: '1px solid #10B981', borderRadius: '8px', padding: '6px', backgroundColor: '#F0FDF4', textAlign: 'center' }}>
-                  <img src={approverSig} alt="TTD" style={{ maxHeight: '60px' }} />
-                  <button type="button" onClick={() => setIsSigModalOpen(true)} style={{ display: 'block', margin: '2px auto 0 auto', border: 'none', background: 'none', color: '#0284C7', fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer' }}>Ubah TTD</button>
-                </div>
-              ) : (
-                <button type="button" onClick={() => setIsSigModalOpen(true)} style={{ width: '100%', padding: '12px', border: '1px dashed #CBD5E1', borderRadius: '8px', backgroundColor: '#F8FAFC', color: '#0284C7', fontWeight: 700, fontSize: '0.82rem', cursor: 'pointer' }}>
-                  + Tambah Tanda Tangan Digital
-                </button>
-              )}
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
-              <button type="button" onClick={() => setApprovalModalItem(null)} style={{ padding: '8px 14px', borderRadius: '8px', border: '1px solid #CBD5E1', backgroundColor: '#FFF', color: '#475569', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}>Batal</button>
-              <button type="button" onClick={handleSaveApproval} style={{ padding: '8px 16px', borderRadius: '8px', border: 'none', backgroundColor: '#00A2E9', color: '#FFF', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>Simpan Approval</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <DigitalSignatureModal
-        isOpen={isSigModalOpen}
-        onClose={() => setIsSigModalOpen(false)}
-        onSave={(dataUrl) => setApproverSig(dataUrl)}
-        title={`Tanda Tangan Digital ${approvalRole === 'TL' ? 'TL' : 'Manager'}`}
-      />
     </div>
   );
 }
