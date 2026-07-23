@@ -90,11 +90,11 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
   const formattedKejadianDate = formatIndonesianDate(lksData.tanggalKejadian);
   const formattedSuratDate = formatIndonesianDate(lksData.tanggalSurat || lksData.tanggalPengajuan || lksData.createdAt || new Date());
 
-  // Arial 11pt double-spaced — matches w:sz=22, w:line=480
+  // Arial 10pt — matches w:sz=20
   const body = {
     fontFamily: '"Arial", sans-serif',
-    fontSize: '11pt',
-    lineHeight: '2.0',
+    fontSize: '10pt',
+    lineHeight: '1.8',
     color: '#000',
     verticalAlign: 'top',
   };
@@ -174,6 +174,10 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             padding: 0 !important;
             box-shadow: none !important;
             border-radius: 0 !important;
+          }
+          .pln-signature-block {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
           }
         }
       `}</style>
@@ -411,14 +415,19 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             </tbody>
           </table>
 
-          {/* ════ SIGNATURE BLOCK ════ */}
-          <div style={{
-            marginTop: '36pt',
-            display: 'flex', justifyContent: 'space-between',
-            fontFamily: '"Arial", sans-serif',
-            fontSize: '10pt',
-            textAlign: 'center',
-          }}>
+          {/* ════ SIGNATURE BLOCK (Intact on 1 page — no page break split) ════ */}
+          <div
+            className="pln-signature-block"
+            style={{
+              marginTop: '24pt',
+              display: 'flex', justifyContent: 'space-between',
+              fontFamily: '"Arial", sans-serif',
+              fontSize: '10pt',
+              textAlign: 'center',
+              pageBreakInside: 'avoid',
+              breakInside: 'avoid',
+            }}
+          >
             {/* Kiri: Manager ULTG Bekasi */}
             <div style={{ width: '255px' }}>
               <p style={{ margin: 0, lineHeight: '2' }}>&nbsp;</p>
