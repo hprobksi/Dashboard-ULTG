@@ -305,20 +305,23 @@ export default function LksMonitoring({ onAddNew }) {
                   border: 'none',
                   backgroundColor: '#E2E8F0',
                   color: '#475569',
-                  width: '30px',
-                  height: '30px',
+                  width: '32px',
+                  height: '32px',
                   borderRadius: '50%',
                   cursor: 'pointer',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   justify: 'center',
                   flexShrink: 0,
                   transition: 'all 0.2s ease',
-                  padding: 0
+                  padding: 0,
+                  margin: 0,
+                  lineHeight: 1,
+                  boxSizing: 'border-box'
                 }}
-                title="Tutup"
+                title="Tutup Modal"
               >
-                <X size={16} />
+                <X size={16} style={{ display: 'block', margin: 0 }} />
               </button>
             </div>
 
