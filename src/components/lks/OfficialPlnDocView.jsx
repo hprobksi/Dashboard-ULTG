@@ -1,5 +1,5 @@
-import React from 'react';
-import { Download, Printer, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Download, Printer, X, Upload, Image as ImageIcon } from 'lucide-react';
 import { exportToDocx } from '../../services/lksExportService';
 
 /**
@@ -510,12 +510,65 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             </div>
 
             <div style={{
-              border: '1px dashed #CBD5E1',
-              borderRadius: '8px',
-              padding: '32px',
+              border: lampiranImage ? '1px solid #CBD5E1' : '2px dashed #00A2E9',
+              borderRadius: '12px',
+              padding: lampiranImage ? '16px' : '32px',
               minHeight: '380px',
-              backgroundColor: '#FAFAFA',
-            }} />
+              backgroundColor: lampiranImage ? '#FFFFFF' : '#F0F9FF',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justify: 'center',
+            }}>
+              {lampiranImage ? (
+                <div style={{ textAlign: 'center', width: '100%' }}>
+                  <img
+                    src={lampiranImage}
+                    alt="Foto Kerusakan"
+                    style={{ maxWidth: '100%', maxHeight: '450px', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 4px 16px rgba(0,0,0,0.1)' }}
+                  />
+                  <div style={{ marginTop: '12px', fontSize: '0.84rem', fontWeight: 800, color: '#334155' }}>
+                    FOTO DOKUMENTASI KERUSAKAN & PENGUJIAN PERALATAN
+                  </div>
+                  <button
+                    type="button"
+                    className="no-print"
+                    onClick={() => setLampiranImage('')}
+                    style={{ marginTop: '8px', padding: '4px 12px', borderRadius: '6px', border: 'none', backgroundColor: '#FEF2F2', color: '#EF4444', fontWeight: 700, fontSize: '0.75rem', cursor: 'pointer' }}
+                  >
+                    Ganti / Hapus Foto
+                  </button>
+                </div>
+              ) : (
+                <div
+                  className="no-print"
+                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', cursor: 'pointer', textAlign: 'center' }}
+                  onClick={() => document.getElementById('preview-lampiran-image-input').click()}
+                >
+                  <input
+                    id="preview-lampiran-image-input"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg"
+                    style={{ display: 'none' }}
+                    onChange={(e) => {
+                      if (e.target.files && e.target.files[0]) {
+                        const file = e.target.files[0];
+                        const reader = new FileReader();
+                        reader.onload = (evt) => setLampiranImage(evt.target.result);
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                  <Upload size={36} color="#00A2E9" />
+                  <div style={{ fontWeight: 800, color: '#00A2E9', fontSize: '0.95rem' }}>
+                    Klik di Sini Untuk Upload Foto Kerusakan pada Halaman 2 Lampiran
+                  </div>
+                  <div style={{ fontSize: '0.78rem', color: '#64748B' }}>
+                    Foto (PNG/JPG) akan otomatis tampil utuh di lembar lampiran ini
+                  </div>
+                </div>
+              )}
+            </div>
 
             <div style={{
               marginTop: '40pt',

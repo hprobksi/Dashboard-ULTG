@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, Send, Printer, Download, CheckCircle2, PenTool, Eye } from 'lucide-react';
+import { FileText, Send, Printer, Download, CheckCircle2, PenTool, Eye, Image as ImageIcon, Trash2 } from 'lucide-react';
 import DigitalSignatureModal from './DigitalSignatureModal';
 import OfficialPlnDocView from './OfficialPlnDocView';
 import { lksService } from '../../services/lksService';
@@ -24,6 +24,8 @@ export default function LksForm({ onSuccessSubmitted }) {
     akibatKerusakan: '',
     usulDanSaran: '',
     lampiranText: '- Foto Kerusakan (Terlampir)',
+    lampiranImageDataUrl: '',
+    lampiranImageName: '',
     pengajuNama: '',
     pengajuNip: '',
     pengajuJabatan: 'Staff Pemeliharaan',
@@ -311,6 +313,67 @@ export default function LksForm({ onSuccessSubmitted }) {
               style={{ width: '100%', padding: '8px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem' }}
             />
           </div>
+
+          <div>
+            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+              Upload Gambar Foto Kerusakan / Dokumentasi (Halaman 2 Lampiran)
+            </label>
+            {formData.lampiranImageDataUrl ? (
+              <div style={{ border: '1px solid #10B981', borderRadius: '10px', padding: '12px', backgroundColor: '#F0FDF4', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <img src={formData.lampiranImageDataUrl} alt="Preview Foto" style={{ width: '80px', height: '60px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #A7F3D0' }} />
+                  <div>
+                    <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#065F46' }}>{formData.lampiranImageName || 'Foto_Kerusakan.jpg'}</div>
+                    <div style={{ fontSize: '0.75rem', color: '#047857' }}>Foto siap ditampilkan di Halaman 2 Lampiran</div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, lampiranImageDataUrl: '', lampiranImageName: '' }))}
+                  style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', backgroundColor: '#FEF2F2', color: '#EF4444', fontWeight: 700, fontSize: '0.78rem', cursor: 'pointer' }}
+                >
+                  Hapus Foto
+                </button>
+              </div>
+            ) : (
+              <div
+                style={{
+                  border: '2px dashed #CBD5E1',
+                  borderRadius: '10px',
+                  padding: '14px 16px',
+                  textAlign: 'center',
+                  backgroundColor: '#FFFFFF',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+                onClick={() => document.getElementById('lampiran-image-input').click()}
+              >
+                <input
+                  id="lampiran-image-input"
+                  type="file"
+                  accept="image/png, image/jpeg, image/jpg"
+                  style={{ display: 'none' }}
+                  onChange={(e) => {
+                    if (e.target.files && e.target.files[0]) {
+                      const file = e.target.files[0];
+                      const reader = new FileReader();
+                      reader.onload = (evt) => {
+                        setFormData(prev => ({
+                          ...prev,
+                          lampiranImageDataUrl: evt.target.result,
+                          lampiranImageName: file.name
+                        }));
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#00A2E9', fontWeight: 700, fontSize: '0.84rem' }}>
+                  <ImageIcon size={18} /> Upload Foto Kerusakan / Pengujiam (PNG / JPG)
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Section 4: Data Pengaju & TTD Digital */}
@@ -382,6 +445,8 @@ export default function LksForm({ onSuccessSubmitted }) {
             akibatKerusakan: formData.akibatKerusakan,
             usulDanSaran: formData.usulDanSaran,
             lampiranText: formData.lampiranText,
+            lampiranImageDataUrl: formData.lampiranImageDataUrl,
+            lampiranImageName: formData.lampiranImageName,
             pengaju: {
               nama: formData.pengajuNama,
               jabatan: formData.pengajuJabatan,
