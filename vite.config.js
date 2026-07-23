@@ -20,7 +20,7 @@ const EXCEL_PATH = path.resolve(__dirname, 'Perkap_ULTG', 'Perkap_ULTG', 'Databa
 const INVENTARIS_BACKUP_FILE = path.resolve(__dirname, 'inventaris_backup.json');
 const WEB_NATURA_DIR = path.resolve(__dirname, 'NATURA_ULTG_BEKASI', 'NATURA_ULTG_BEKASI', 'web-natura');
 const NATURA_TEMPLATE_PATH = path.resolve(__dirname, 'NATURA_ULTG_BEKASI', 'NATURA_ULTG_BEKASI', '3. NATURA HARPRO JUNI.xlsx');
-const ExcelJS = require(path.join(WEB_NATURA_DIR, 'node_modules', 'exceljs'));
+const ExcelJS = require('exceljs');
 const naturaBackend = createNaturaBackend({ rootDir: __dirname, webNaturaDir: WEB_NATURA_DIR });
 const lemburanBackend = createLemburanBackend({ rootDir: __dirname, webNaturaDir: WEB_NATURA_DIR });
 

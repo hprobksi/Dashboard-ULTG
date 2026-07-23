@@ -161,13 +161,26 @@ export function createNaturaBackend({ rootDir, webNaturaDir }) {
   const dbPath = fs.existsSync(rootDbPath) ? rootDbPath : path.join(webNaturaDir, 'prisma', 'dev.db');
   process.env.DATABASE_URL = `file:${dbPath.replace(/\\/g, '/')}`;
 
-  const naturaRequire = createRequire(path.join(webNaturaDir, 'package.json'));
-  const { PrismaClient } = naturaRequire('@prisma/client');
+  const naturaRequire = createRequire(import.meta.url);
+  let PrismaClient, prisma;
+  try {
+    const prismaModule = naturaRequire('@prisma/client');
+    PrismaClient = prismaModule.PrismaClient;
+    if (PrismaClient) prisma = new PrismaClient();
+  } catch (e) {
+    console.warn('[naturaBackend] @prisma/client not available:', e.message);
+  }
   const ExcelJS = naturaRequire('exceljs');
-  const { GoogleSpreadsheet } = naturaRequire('google-spreadsheet');
-  const { JWT } = naturaRequire('google-auth-library');
-  const PDFParser = naturaRequire('pdf2json');
-  const prisma = new PrismaClient();
+  let GoogleSpreadsheet, JWT, PDFParser;
+  try {
+    const gs = naturaRequire('google-spreadsheet');
+    GoogleSpreadsheet = gs.GoogleSpreadsheet;
+    const auth = naturaRequire('google-auth-library');
+    JWT = auth.JWT;
+  } catch (e) {}
+  try {
+    PDFParser = naturaRequire('pdf2json');
+  } catch (e) {}
 
   const getNaturaArchive = async (query) => {
     const where = {};

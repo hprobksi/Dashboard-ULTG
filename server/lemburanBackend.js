@@ -608,7 +608,7 @@ export const createLemburanBackend = ({ rootDir, webNaturaDir }) => {
   const masterExcelPath = path.join(rootDir, 'NATURA_ULTG_BEKASI', 'NATURA_ULTG_BEKASI', 'DAFTAR PEGAWAI ULTG BEKASI AGUSTUS 2025.xlsx');
   const rekapTemplatePath = path.join(rootDir, 'Lemburan', '06. Form Rekap Lembur Juni Tahun 2026.xlsx');
   const docxTemplatePath = path.join(rootDir, 'Lemburan', '04_07_2026RIKI HARDIANTO.docx');
-  const ExcelJS = require(path.join(webNaturaDir, 'node_modules', 'exceljs'));
+  const ExcelJS = require('exceljs');
 
   const getPegawaiList = async () => {
     const local = await readJsonFile(masterOverrideFile, null);
