@@ -179,6 +179,12 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             page-break-inside: avoid !important;
             break-inside: avoid !important;
           }
+          .pln-lampiran-page {
+            page-break-before: always !important;
+            break-before: page !important;
+            border-top: none !important;
+            padding-top: 0 !important;
+          }
         }
       `}</style>
 
@@ -469,7 +475,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             </div>
           </div>
 
-          {/* ════ FOOTER: nomor halaman rata kanan (mirroring footer1.xml PAGE field) ════ */}
+          {/* ════ FOOTER: nomor halaman 1 ════ */}
           <div style={{
             marginTop: '24pt',
             textAlign: 'right',
@@ -478,6 +484,57 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             color: '#000',
           }}>
             1
+          </div>
+
+          {/* ════ HALAMAN KETIGA/TERAKHIR: LAMPIRAN (PAGE BREAK ALWAY) ════ */}
+          <div
+            className="pln-lampiran-page"
+            style={{
+              pageBreakBefore: 'always',
+              breakBefore: 'page',
+              marginTop: '40pt',
+              paddingTop: '20pt',
+              borderTop: '1px dashed #CBD5E1',
+              fontFamily: '"Arial", sans-serif',
+            }}
+          >
+            <div style={{
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: '11pt',
+              textDecoration: 'underline',
+              marginBottom: '20pt',
+              textTransform: 'uppercase',
+            }}>
+              LAMPIRAN DOKUMENTASI & FOTO KERUSAKAN
+            </div>
+
+            <div style={{
+              border: '1px solid #000',
+              borderRadius: '6px',
+              padding: '16px',
+              minHeight: '280px',
+              backgroundColor: '#FAFAFA',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justify: 'center',
+              gap: '12px',
+              color: '#475569',
+              fontSize: '10pt',
+            }}>
+              <p style={{ margin: 0, fontWeight: 'bold' }}>{lksData.lampiranText || '- Foto Kerusakan & Hasil Uji Ulang (Terlampir)'}</p>
+              <p style={{ margin: 0, fontSize: '9pt', color: '#64748B' }}>(Dokumentasi Foto & Hasil Uji Terlampir pada Lembar Terpisah ini)</p>
+            </div>
+
+            <div style={{
+              marginTop: '40pt',
+              textAlign: 'right',
+              fontSize: '9pt',
+              color: '#000',
+            }}>
+              2
+            </div>
           </div>
 
         </div>
