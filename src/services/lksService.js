@@ -1,229 +1,189 @@
-/**
- * LKS Service - Service layer for managing Lembar Kerja Selesai (LKS) data
- * Storage Key: ultg_lks_data_v1
- * PLN ULTG Bekasi
- */
+const STORAGE_KEY = 'ultg_lks_data_v2';
 
-export const STORAGE_KEY = 'ultg_lks_data_v1';
-
-// In-memory storage fallback for non-browser environment (Node / test runners)
-const memoryStorage = {};
-
-const getStorage = () => {
-  if (typeof window !== 'undefined' && window.localStorage) {
-    return window.localStorage;
-  }
-  return {
-    getItem: (key) => (Object.prototype.hasOwnProperty.call(memoryStorage, key) ? memoryStorage[key] : null),
-    setItem: (key, value) => {
-      memoryStorage[key] = String(value);
-    },
-    removeItem: (key) => {
-      delete memoryStorage[key];
-    }
-  };
-};
-
-export const INITIAL_LKS_DATA = [
+const INITIAL_MOCK_DATA = [
   {
-    id: 'LKS-HARPRO-20260722-001',
+    id: 'lks-101',
     nomorLks: '001/LKS/HARPRO/2026',
-    tanggal: '2026-07-22',
-    tim: 'HARPRO',
-    substation: 'GI 150kV Bekasi',
-    bay: 'Trafo Daya 1 (60MVA)',
-    peralatan: 'Relay Differential SIEMENS 7UT613',
-    uraianPekerjaan: 'Pengujian Rutin 2 Tahunan & Kalibrasi Relay Differential Trafo 1',
-    kategori: 'Pemeliharaan Rutin',
-    pelaksana: 'Tim Harpro 1 (Budi Santoso, Eko Prasetyo)',
-    supervisor: 'Spv Harpro ULTG Bekasi',
+    tanggalKejadian: '2026-07-08',
+    bidang: 'HARPRO',
+    dataPeralatan: {
+      namaPeralatan: 'Relay 7UT631 Bay Trafo 2 150kV',
+      merk: 'SIEMENS',
+      type: '7UT631',
+      noSeri: 'SN-9482910',
+      harga: '-',
+      kodeAsset: 'AST-HARPRO-001',
+      tahunOperasi: '2015',
+      tahunBuat: '2014'
+    },
+    penempatanPeralatan: 'GI 150kV Bekasi Tambun Bay Trafo 2',
+    jenisKerusakan: 'Indikasi alarm SF6 pressure stage 1 pada CB 150kV',
+    penyebabKerusakan: 'Kerapatan gas SF6 berkurang akibat micro leak pada valve',
+    akibatKerusakan: 'Dapat memicu lock-out trip jika tekanan SF6 mencapai stage 2',
+    usulDanSaran: 'Refill gas SF6 dan kalibrasi ulang densiti switch',
+    lampiranText: 'Foto Kerusakan & Hasil Uji Ulang (Terlampir)',
+    pengaju: {
+      nama: 'FAJAR KURNIAWAN',
+      nip: '941823901',
+      jabatan: 'Staff HARPRO',
+      signatureDataUrl: ''
+    },
     status: 'On Progress',
-    approvalInfo: null,
-    catatan: 'Pemeriksaan sekunder selesai, persiapan pengujian trip ke PMT.',
-    createdAt: '2026-07-22T08:00:00.000Z',
-    updatedAt: '2026-07-22T14:30:00.000Z'
+    approval: {
+      tlApproved: false,
+      tlNama: 'AHMAD Y. AL BASTOMY',
+      tlNip: '921839182',
+      tlJabatan: 'TL HARPRO ULTG BEKASI',
+      tlSignature: '',
+      managerApproved: false,
+      managerNama: 'TRIAWAN AZHARY P. N.',
+      managerNip: '891726351',
+      managerJabatan: 'MANAGER ULTG BEKASI',
+      managerSignature: ''
+    },
+    createdAt: new Date('2026-07-08T08:30:00Z').toISOString()
   },
   {
-    id: 'LKS-HARGI-20260721-002',
-    nomorLks: '002/LKS/HARGI/2026',
-    tanggal: '2026-07-21',
-    tim: 'HARGI',
-    substation: 'GI 150kV Tambun',
-    bay: 'Bay Penghantar Tambun - Bekasi #1',
-    peralatan: 'PMT 150kV & Disconnecting Switch',
-    uraianPekerjaan: 'Pemeliharaan Bay Penghantar & Pengukuran Tahanan Kontak PMT',
-    kategori: 'Pemeliharaan Rutin',
-    pelaksana: 'Tim Hargi 2 (Ahmad Rizal, Doni Setiawan)',
-    supervisor: 'Spv Hargi ULTG Bekasi',
-    status: 'Approved',
-    approvalInfo: {
-      approvedBy: 'Manager ULTG Bekasi',
-      approvedAt: '2026-07-21T16:00:00.000Z',
-      catatan: 'Dokumen dan hasil uji sesuai standar PLN. Disetujui.',
-      ttdManager: true,
-      ttdSpv: true
+    id: 'lks-102',
+    nomorLks: '002/LKS/HARJAR/2026',
+    tanggalKejadian: '2026-07-08',
+    bidang: 'HARJAR',
+    dataPeralatan: {
+      namaPeralatan: 'KLEM JUMPER Tower No. T.4 arah T.5 SUTT CKRNG-JBBKA Penghantar 1 Fasa S',
+      merk: '-',
+      type: '-',
+      noSeri: '-',
+      harga: '-',
+      kodeAsset: '-',
+      tahunOperasi: '-',
+      tahunBuat: '-'
     },
-    catatan: 'Hasil pengukuran tahanan kontak 42 micro-ohm (kondisi baik).',
-    createdAt: '2026-07-21T07:30:00.000Z',
-    updatedAt: '2026-07-21T16:00:00.000Z'
+    penempatanPeralatan: 'SUTT CKRNG-JBBKA T.4 ARAH T.5 Penghantar 1 Fasa S',
+    jenisKerusakan: 'Temuan Thermovisi ( Hotspot )',
+    penyebabKerusakan: 'Kemungkinan klem kendor atau kotor',
+    akibatKerusakan: 'Dapat menyebabkan kerusakan pada klem',
+    usulDanSaran: 'Segera di Lakukan Perbaikan',
+    lampiranText: '- Foto Kerusakan (Terlampir)',
+    pengaju: {
+      nama: 'AHMAD Y. AL BASTOMY',
+      nip: '921839182',
+      jabatan: 'TL HARJAR ULTG BEKASI',
+      signatureDataUrl: ''
+    },
+    status: 'Approved',
+    approval: {
+      tlApproved: true,
+      tlNama: 'AHMAD Y. AL BASTOMY',
+      tlNip: '921839182',
+      tlJabatan: 'TL HARJAR ULTG BEKASI',
+      tlSignature: '',
+      managerApproved: true,
+      managerNama: 'TRIAWAN AZHARY P. N.',
+      managerNip: '891726351',
+      managerJabatan: 'MANAGER ULTG BEKASI',
+      managerSignature: ''
+    },
+    createdAt: new Date('2026-07-08T10:15:00Z').toISOString()
   }
 ];
 
-function initializeStorage() {
-  const store = getStorage();
-  try {
-    const raw = store.getItem(STORAGE_KEY);
-    if (!raw) {
-      store.setItem(STORAGE_KEY, JSON.stringify(INITIAL_LKS_DATA));
-      return INITIAL_LKS_DATA;
-    }
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) {
-      store.setItem(STORAGE_KEY, JSON.stringify(INITIAL_LKS_DATA));
-      return INITIAL_LKS_DATA;
-    }
-    return parsed;
-  } catch (e) {
-    console.error('Error parsing LKS storage data, re-initializing:', e);
-    store.setItem(STORAGE_KEY, JSON.stringify(INITIAL_LKS_DATA));
-    return INITIAL_LKS_DATA;
-  }
-}
-
 export const lksService = {
-  /**
-   * Get all LKS records
-   * @returns {Array} List of LKS objects
-   */
-  getAll() {
-    return initializeStorage();
+  getAll: () => {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (!data) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(INITIAL_MOCK_DATA));
+        return INITIAL_MOCK_DATA;
+      }
+      return JSON.parse(data);
+    } catch (e) {
+      console.error('Error fetching LKS data', e);
+      return INITIAL_MOCK_DATA;
+    }
   },
 
-  /**
-   * Get a single LKS record by ID
-   * @param {string} id
-   * @returns {Object|null}
-   */
-  getById(id) {
-    const list = initializeStorage();
-    return list.find((item) => String(item.id) === String(id)) || null;
+  getById: (id) => {
+    const list = lksService.getAll();
+    return list.find(item => item.id === id) || null;
   },
 
-  /**
-   * Create a new LKS record
-   * Generates new ID, formats nomorLks, and sets status to 'On Progress'
-   * @param {Object} formData
-   * @returns {Object} Newly created LKS object
-   */
-  create(formData = {}) {
-    const list = initializeStorage();
-    const now = new Date();
-    const timestamp = now.getTime();
-    const year = now.getFullYear();
-
-    const tim = (formData.tim || 'HARPRO').toUpperCase();
+  create: (formData) => {
+    const list = lksService.getAll();
+    const year = new Date().getFullYear();
     const nextSeq = list.length + 1;
     const formattedSeq = String(nextSeq).padStart(3, '0');
-    const autoNomorLks = `${formattedSeq}/LKS/${tim}/${year}`;
+    const bidang = formData.bidang || 'HARPRO';
 
-    const newId = `LKS-${tim}-${timestamp}`;
-
-    const newRecord = {
-      id: newId,
-      nomorLks: formData.nomorLks && formData.nomorLks.trim() ? formData.nomorLks.trim() : autoNomorLks,
-      tanggal: formData.tanggal || now.toISOString().split('T')[0],
-      tim: tim,
-      substation: formData.substation || 'GI 150kV Bekasi',
-      bay: formData.bay || '',
-      peralatan: formData.peralatan || '',
-      uraianPekerjaan: formData.uraianPekerjaan || '',
-      kategori: formData.kategori || 'Pemeliharaan Rutin',
-      pelaksana: formData.pelaksana || '',
-      supervisor: formData.supervisor || '',
-      ...formData,
+    const newLks = {
+      id: `lks-${Date.now()}`,
+      nomorLks: formData.nomorLks || `${formattedSeq}/LKS/${bidang}/${year}`,
+      tanggalKejadian: formData.tanggalKejadian || new Date().toISOString().split('T')[0],
+      bidang: bidang,
+      dataPeralatan: {
+        namaPeralatan: formData.namaPeralatan || '',
+        merk: formData.merk || '-',
+        type: formData.type || '-',
+        noSeri: formData.noSeri || '-',
+        harga: formData.harga || '-',
+        kodeAsset: formData.kodeAsset || '-',
+        tahunOperasi: formData.tahunOperasi || '-',
+        tahunBuat: formData.tahunBuat || '-'
+      },
+      penempatanPeralatan: formData.penempatanPeralatan || '',
+      jenisKerusakan: formData.jenisKerusakan || '',
+      penyebabKerusakan: formData.penyebabKerusakan || '',
+      akibatKerusakan: formData.akibatKerusakan || '',
+      usulDanSaran: formData.usulDanSaran || '',
+      lampiranText: formData.lampiranText || '- Foto Kerusakan (Terlampir)',
+      pengaju: {
+        nama: formData.pengajuNama || '',
+        nip: formData.pengajuNip || '',
+        jabatan: formData.pengajuJabatan || '',
+        signatureDataUrl: formData.pengajuSignature || ''
+      },
       status: 'On Progress',
-      approvalInfo: null,
-      createdAt: now.toISOString(),
-      updatedAt: now.toISOString()
+      approval: {
+        tlApproved: false,
+        tlNama: formData.tlNama || '',
+        tlNip: formData.tlNip || '',
+        tlJabatan: formData.tlJabatan || `TL ${bidang} ULTG BEKASI`,
+        tlSignature: '',
+        managerApproved: false,
+        managerNama: 'TRIAWAN AZHARY P. N.',
+        managerNip: '',
+        managerJabatan: 'MANAGER ULTG BEKASI',
+        managerSignature: ''
+      },
+      filePdfName: formData.filePdfName || null,
+      createdAt: new Date().toISOString()
     };
-
-    const updatedList = [newRecord, ...list];
-    const store = getStorage();
-    store.setItem(STORAGE_KEY, JSON.stringify(updatedList));
-
-    return newRecord;
+    list.unshift(newLks);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    return newLks;
   },
 
-  /**
-   * Update status and approval signatures of an LKS record
-   * @param {string} id
-   * @param {string} newStatus
-   * @param {Object|null} approvalInfo
-   * @returns {Object|null} Updated LKS object or null if not found
-   */
-  updateStatus(id, newStatus, approvalInfo = null) {
-    const list = initializeStorage();
-    const index = list.findIndex((item) => String(item.id) === String(id));
-
-    if (index === -1) {
-      return null;
+  updateStatus: (id, newStatus, approvalInfo = {}) => {
+    const list = lksService.getAll();
+    const idx = list.findIndex(item => item.id === id);
+    if (idx !== -1) {
+      list[idx].status = newStatus;
+      if (approvalInfo && Object.keys(approvalInfo).length > 0) {
+        list[idx].approval = {
+          ...list[idx].approval,
+          ...approvalInfo
+        };
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      return list[idx];
     }
-
-    const nowIso = new Date().toISOString();
-    let finalApprovalInfo = approvalInfo;
-
-    if (newStatus === 'Approved' && !finalApprovalInfo) {
-      finalApprovalInfo = {
-        approvedBy: 'Manager ULTG Bekasi',
-        approvedAt: nowIso,
-        catatan: 'Disetujui',
-        ttdManager: true,
-        ttdSpv: true
-      };
-    }
-
-    const updatedItem = {
-      ...list[index],
-      status: newStatus,
-      approvalInfo: finalApprovalInfo,
-      updatedAt: nowIso
-    };
-
-    list[index] = updatedItem;
-    const store = getStorage();
-    store.setItem(STORAGE_KEY, JSON.stringify(list));
-
-    return updatedItem;
+    return null;
   },
 
-  /**
-   * Delete an LKS record by ID
-   * @param {string} id
-   * @returns {boolean} True if deleted, false if not found
-   */
-  delete(id) {
-    const list = initializeStorage();
-    const initialLength = list.length;
-    const updatedList = list.filter((item) => String(item.id) !== String(id));
-
-    if (updatedList.length === initialLength) {
-      return false;
-    }
-
-    const store = getStorage();
-    store.setItem(STORAGE_KEY, JSON.stringify(updatedList));
-
+  delete: (id) => {
+    let list = lksService.getAll();
+    list = list.filter(item => item.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
     return true;
-  },
-
-  /**
-   * Reset storage back to initial mock data (Utility method)
-   * @returns {Array} Initial mock data
-   */
-  resetToMockData() {
-    const store = getStorage();
-    store.setItem(STORAGE_KEY, JSON.stringify(INITIAL_LKS_DATA));
-    return INITIAL_LKS_DATA;
   }
 };
 
