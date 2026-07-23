@@ -510,11 +510,11 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             </div>
 
             <div style={{
-              border: '1px solid #000',
-              borderRadius: '6px',
-              padding: '16px',
-              minHeight: '280px',
-              backgroundColor: '#FAFAFA',
+              border: '1px dashed #000000',
+              borderRadius: '8px',
+              padding: '32px',
+              minHeight: '380px',
+              backgroundColor: '#FFFFFF',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -523,8 +523,8 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
               color: '#475569',
               fontSize: '10pt',
             }}>
-              <p style={{ margin: 0, fontWeight: 'bold' }}>{lksData.lampiranText || '- Foto Kerusakan & Hasil Uji Ulang (Terlampir)'}</p>
-              <p style={{ margin: 0, fontSize: '9pt', color: '#64748B' }}>(Dokumentasi Foto & Hasil Uji Terlampir pada Lembar Terpisah ini)</p>
+              <p style={{ margin: 0, fontWeight: 'bold', fontSize: '10pt', color: '#334155' }}>DOKUMENTASI FOTO KERUSAKAN & HASIL PENGUJIAN</p>
+              <p style={{ margin: 0, fontSize: '9pt', color: '#94A3B8' }}>(Area Penempelan / Lampiran Foto Kerusakan & Hasil Uji Peralatan)</p>
             </div>
 
             <div style={{
