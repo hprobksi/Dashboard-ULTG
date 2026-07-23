@@ -227,11 +227,32 @@ export default function Monitoring() {
         }
         setEditModalOpen(false);
       } else {
-        alert('Gagal menyimpan nama bay');
+        const data = await res.json();
+        setError(data.detail || 'Gagal menyimpan perubahan');
       }
-    } catch (err) {
-      console.error(err);
-      alert('Terjadi kesalahan jaringan saat menyimpan nama bay');
+    } catch (e) {
+      setError(e.message);
+    }
+  };
+
+  const handleDeleteFl = async (device) => {
+    if (!window.confirm(`Apakah Anda yakin ingin menghapus peralatan ${device.nama_gi} - ${device.nama_bay}?`)) {
+      return;
+    }
+    
+    try {
+      const res = await fetch(`/api/fl/devices/${device.id}`, {
+        method: 'DELETE'
+      });
+      if (res.ok) {
+        await fetchFlList();
+      } else {
+        const errorData = await res.json();
+        alert(errorData.detail || 'Gagal menghapus peralatan');
+      }
+    } catch (e) {
+      console.error(e);
+      alert('Gagal menghapus peralatan');
     }
   };
 
@@ -755,7 +776,10 @@ export default function Monitoring() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                       <div>
                         <h3 style={{ margin: '0 0 4px 0', fontSize: '1.1rem', fontWeight: 800, color: '#0F172A' }}>{dev.nama_gi}</h3>
-                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748B', fontWeight: 700, display: 'flex', alignItems: 'center' }}>{dev.nama_bay} <button onClick={() => { setEditDevice(dev); setEditType('fl'); setEditModalOpen(true); }} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px', marginLeft: '6px' }}><Edit2 size={14} color="#64748B" /></button></p>
+                        <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748B', fontWeight: 700, display: 'flex', alignItems: 'center' }}>{dev.nama_bay} 
+                          <button onClick={() => { setEditDevice(dev); setEditType('fl'); setEditModalOpen(true); }} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px', marginLeft: '6px' }} title="Edit"><Edit2 size={14} color="#64748B" /></button>
+                          <button onClick={() => handleDeleteFl(dev)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px', marginLeft: '2px' }} title="Hapus"><Trash2 size={14} color="#EF4444" /></button>
+                        </p>
                       </div>
                       <div style={{ padding: '4px 12px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', backgroundColor: dev.connected ? '#DCFCE7' : '#FEE2E2', color: dev.connected ? '#16A34A' : '#EF4444' }}>
                         {dev.connected ? 'ONLINE' : 'OFFLINE'}

@@ -3840,8 +3840,6 @@ def get_fl_devices():
     seen_ips = set()
     for raw_device in payload.get("devices") or []:
         device = normalize_dfr_device(raw_device)
-        if str(device.get("ultg") or "").strip().upper() != "BEKASI":
-            continue
         ip = device.get("ip")
         if not ip or ip in seen_ips:
             continue
@@ -3867,8 +3865,6 @@ def get_dfr_devices():
     seen_ips = set()
     for raw_device in payload.get("devices") or []:
         device = normalize_dfr_device(raw_device)
-        if str(device.get("ultg") or "").strip().upper() != "BEKASI":
-            continue
         ip = device.get("ip")
         if not ip or ip in seen_ips:
             continue
@@ -11911,6 +11907,26 @@ def update_fl_device(device_id: str, request: Request):
         return {"message": "Berhasil mengupdate FL"}
     raise HTTPException(status_code=404, detail="Device not found")
 
+@app.delete("/api/fl/devices/{device_id}", dependencies=[Depends(require_admin_session)])
+def delete_fl_device(device_id: str):
+    try:
+        with open(FL_DEVICES_FILE, "r", encoding="utf-8") as file:
+            data = json.load(file)
+    except:
+        raise HTTPException(status_code=500, detail="Gagal membaca data perangkat FL")
+        
+    original_len = len(data.get("devices", []))
+    data["devices"] = [dev for dev in data.get("devices", []) if dev.get("id") != device_id]
+    
+    if len(data["devices"]) < original_len:
+        save_fl_devices(data["devices"])
+        if "fl_devices" in app_state and isinstance(app_state["fl_devices"], dict):
+            app_state["fl_devices"].pop(device_id, None)
+        return {"message": "Berhasil menghapus FL"}
+    
+    raise HTTPException(status_code=404, detail="Device not found")
+
+
 class FLData(BaseModel):
     nama_gi: str
     nama_bay: str
@@ -11934,9 +11950,14 @@ def add_fl_device(fl: FLData):
     
     data.setdefault("devices", []).append(new_device)
     save_fl_devices(data["devices"])
-    app_state["fl_devices"] = poll_fl_once()
     
-    return {"message": "FL berhasil ditambahkan", "fl_devices": app_state["fl_devices"]}
+    # Do not poll synchronously, it causes timeouts on the frontend!
+    if "fl_devices" not in app_state or not isinstance(app_state["fl_devices"], dict):
+        app_state["fl_devices"] = {}
+        
+    app_state["fl_devices"][new_device["id"]] = build_empty_dfr_state(new_device)
+    
+    return {"message": "FL berhasil ditambahkan", "fl_devices": list(app_state["fl_devices"].values())}
 
 @app.post("/api/fl/clean/{device_id}", dependencies=[Depends(require_admin_session)])
 def clean_fl_device(device_id: str):

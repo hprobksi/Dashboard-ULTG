@@ -59,8 +59,8 @@ function parseCSV(str) {
 }
 
 export const gsheetService = {
-  async fetchSheetData(gid, forceRefresh = false) {
-    const cacheKey = `sheet_data_${gid}`;
+  async fetchSheetData(gid, forceRefresh = false, spreadsheetId = SPREADSHEET_ID) {
+    const cacheKey = `sheet_data_${spreadsheetId}_${gid}`;
     
     if (!forceRefresh) {
       const cached = await gsheetStore.getItem(cacheKey);
@@ -71,9 +71,10 @@ export const gsheetService = {
 
     // Utamakan proxy /api-gsheet untuk bypass CORS di browser, fallback ke direct docs.google.com
     const urls = [
-      `/api-gsheet/${SPREADSHEET_ID}/export?format=csv&gid=${gid}`,
-      `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=${gid}`,
-      `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}`
+      `/api-gsheet/${spreadsheetId}/gviz/tq?tqx=out:csv&gid=${gid}`,
+      `/api-gsheet/${spreadsheetId}/export?format=csv&gid=${gid}`,
+      `https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&gid=${gid}`,
+      `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&gid=${gid}`
     ];
     
     let rows = null;

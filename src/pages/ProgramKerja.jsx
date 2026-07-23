@@ -385,8 +385,8 @@ export default function ProgramKerja() {
       const results = await Promise.all(
         SHEETS.map(async (sheet) => {
           try {
-            const res = await gsheetService.fetchSheetData(sheet.gid, forceRefresh);
-            const rawRows = trimSheetRows(res?.rows || []);
+            const { rows, fromCache, lastUpdated: sheetLastUpdated } = await gsheetService.fetchSheetData(sheet.gid, forceRefresh);
+            const rawRows = trimSheetRows(rows || []);
 
             const headerInfo = findHeader(rawRows, "ULTG");
             if (!headerInfo) {
@@ -426,8 +426,8 @@ export default function ProgramKerja() {
               displayRows: matches,
               records,
               message: matches.length ? `Terbaca ${matches.length} baris ULTG Bekasi` : "Tidak ada baris ULTG Bekasi",
-              lastUpdated: res?.lastUpdated || new Date().toLocaleTimeString('id-ID'),
-              fromCache: res?.fromCache || false
+              lastUpdated: sheetLastUpdated || new Date().toLocaleTimeString('id-ID'),
+              fromCache: fromCache || false
             };
           } catch (error) {
             return {
