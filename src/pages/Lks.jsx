@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Activity, UploadCloud, Archive } from 'lucide-react';
+import { FileCheck, Activity, UploadCloud, Archive } from 'lucide-react';
 import LksMonitoring from '../components/lks/LksMonitoring';
 import LksUpload from '../components/lks/LksUpload';
 import LksArchive from '../components/lks/LksArchive';
@@ -32,19 +32,19 @@ export default function Lks({ initialTab = 'upload' }) {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <div style={{
-            width: '52px',
-            height: '52px',
+            width: '54px',
+            height: '54px',
             borderRadius: '14px',
-            backgroundColor: '#00A2E9',
+            background: 'linear-gradient(135deg, #00A2E9 0%, #0284C7 100%)',
             display: 'inline-flex',
             alignItems: 'center',
             justify: 'center',
-            boxShadow: '0 4px 12px rgba(0, 162, 233, 0.3)',
+            boxShadow: '0 6px 16px -2px rgba(0, 162, 233, 0.35)',
             flexShrink: 0,
             lineHeight: 1,
             boxSizing: 'border-box'
           }}>
-            <FileText size={28} color="#FFFFFF" style={{ display: 'block', margin: 0 }} />
+            <FileCheck size={30} color="#FFFFFF" strokeWidth={2.2} style={{ display: 'block', margin: 0 }} />
           </div>
           <div>
             <h1 style={{ margin: 0, fontSize: '1.6rem', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.02em' }}>
