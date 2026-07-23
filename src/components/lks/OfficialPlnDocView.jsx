@@ -501,12 +501,12 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             <div style={{
               textAlign: 'center',
               fontWeight: 'bold',
-              fontSize: '11pt',
-              textDecoration: 'underline',
+              fontSize: '12pt',
               marginBottom: '20pt',
               textTransform: 'uppercase',
+              letterSpacing: '1px',
             }}>
-              LAMPIRAN DOKUMENTASI & FOTO KERUSAKAN
+              LAMPIRAN
             </div>
 
             <div style={{
