@@ -32,7 +32,7 @@ export const domainsList = [
       {
         id: 'lks-dom',
         label: 'LKS',
-        desc: 'Lembar Kerja Selesai',
+        desc: 'Lembar Ketidaksesuaian',
         icon: FileCheck,
         defaultTab: 'lks-upload'
       },

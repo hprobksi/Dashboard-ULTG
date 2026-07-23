@@ -46,10 +46,10 @@ export default function Lks({ initialTab = 'upload' }) {
           </div>
           <div>
             <h1 style={{ margin: 0, fontSize: '1.6rem', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.02em' }}>
-              Modul LKS (Lembar Kerja Selesai) - ULTG Bekasi
+              LKS ( LEMBAR KETIDAKSESUAIAN ) - ULTG BEKASI
             </h1>
             <p style={{ margin: '4px 0 0 0', color: '#64748B', fontSize: '0.92rem', fontWeight: 600 }}>
-              Upload Dokumen Berkas Scan PDF/Word, Monitoring Status LKS (OPEN / CLOSE), & Tabel Arsip LKS
+              Monitoring Pengajuan LKS ULTG Bekasi
             </p>
           </div>
         </div>
