@@ -101,23 +101,40 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
 
   const bodyBold = { ...body, fontWeight: 'bold' };
 
-  // 4-column data row
+  // 4-column data row:
+  // Col 1 (width 32px): Main item number (1., 2., etc)
+  // Col 2 (width 240px): Label. For sub-items (a.-h.), renders <span style={{ width: '28px', display: 'inline-block' }}>a.</span> Label
+  // Col 3 (width 16px): :
+  // Col 4: Value
   const DataRow = ({ num, label, value, bold = false, indented = false }) => (
     <tr>
       <td style={{
         ...body,
         fontWeight: bold ? 'bold' : 'normal',
         whiteSpace: 'nowrap',
-        paddingLeft: indented ? `${SUBINDENT}px` : '0',
-        width: '36px',
+        width: '32px',
+        verticalAlign: 'top',
       }}>
-        {num}
+        {!indented ? num : ''}
       </td>
-      <td style={{ ...body, fontWeight: bold ? 'bold' : 'normal', width: LABEL_COL_W, whiteSpace: 'nowrap' }}>
-        {label}
+      <td style={{
+        ...body,
+        fontWeight: bold ? 'bold' : 'normal',
+        width: '240px',
+        whiteSpace: 'nowrap',
+        verticalAlign: 'top',
+      }}>
+        {indented ? (
+          <>
+            <span style={{ display: 'inline-block', width: '28px', fontWeight: 'normal' }}>{num}</span>
+            {label}
+          </>
+        ) : (
+          label
+        )}
       </td>
-      <td style={{ ...body, whiteSpace: 'nowrap', width: '18px', paddingRight: '6px' }}>:</td>
-      <td style={{ ...body, wordBreak: 'break-word' }}>{value || '-'}</td>
+      <td style={{ ...body, whiteSpace: 'nowrap', width: '16px', paddingRight: '4px', verticalAlign: 'top' }}>:</td>
+      <td style={{ ...body, wordBreak: 'break-word', verticalAlign: 'top' }}>{value || '-'}</td>
     </tr>
   );
 
@@ -360,19 +377,19 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
           <table style={{
             width: '100%', borderCollapse: 'collapse',
             marginTop: '6pt',
+            tableLayout: 'fixed',
           }}>
             <colgroup>
-              <col style={{ width: '36px' }} />
-              <col style={{ width: LABEL_COL_W }} />
-              <col style={{ width: '18px' }} />
+              <col style={{ width: '32px' }} />
+              <col style={{ width: '240px' }} />
+              <col style={{ width: '16px' }} />
               <col />
             </colgroup>
             <tbody>
               {/* 1. DATA PERALATAN */}
               <tr>
-                <td colSpan={4} style={{ ...bodyBold }}>
-                  {'1.\u00A0\u00A0'}DATA PERALATAN
-                </td>
+                <td style={{ ...bodyBold, width: '32px', verticalAlign: 'top' }}>1.</td>
+                <td colSpan={3} style={{ ...bodyBold, verticalAlign: 'top' }}>DATA PERALATAN</td>
               </tr>
               {/* a–h sub-items: indent kiri sesuai w:ind w:left="1134" */}
               <DataRow indented num="a." label="Nama Peralatan" value={lksData.dataPeralatan?.namaPeralatan} />
