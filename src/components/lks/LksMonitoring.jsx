@@ -281,27 +281,44 @@ export default function LksMonitoring({ onAddNew }) {
           }}>
             {/* Modal Header */}
             <div style={{
-              padding: '18px 24px',
+              padding: '20px 24px',
               backgroundColor: '#F8FAFC',
               borderBottom: '1px solid #E2E8F0',
               display: 'flex',
-              alignItems: 'center',
-              justify: 'space-between'
+              alignItems: 'flex-start',
+              justify: 'space-between',
+              gap: '16px'
             }}>
-              <div>
-                <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 900, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Pencil size={18} color="#00A2E9" /> Ubah Status Dokumen LKS
+              <div style={{ flex: 1 }}>
+                <h3 style={{ margin: '0 0 4px 0', fontSize: '1.1rem', fontWeight: 900, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px', lineHeight: 1.2 }}>
+                  <Pencil size={19} color="#00A2E9" /> Ubah Status Dokumen LKS
                 </h3>
-                <span style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 700 }}>
-                  No. LKS: {editItem.nomorLks}
-                </span>
+                <div style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 700 }}>
+                  No. LKS: <span style={{ color: '#0284C7', fontWeight: 800 }}>{editItem.nomorLks}</span>
+                </div>
               </div>
+              
               <button
                 type="button"
                 onClick={() => setEditItem(null)}
-                style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#64748B', padding: '4px' }}
+                style={{
+                  border: 'none',
+                  backgroundColor: '#E2E8F0',
+                  color: '#475569',
+                  width: '30px',
+                  height: '30px',
+                  borderRadius: '50%',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  flexShrink: 0,
+                  transition: 'all 0.2s ease',
+                  padding: 0
+                }}
+                title="Tutup"
               >
-                <X size={20} />
+                <X size={16} />
               </button>
             </div>
 
