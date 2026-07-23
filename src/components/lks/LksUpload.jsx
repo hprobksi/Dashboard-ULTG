@@ -132,7 +132,7 @@ export default function LksUpload({ onUploadSuccess }) {
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
           
           {/* Metadata Rows */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr', gap: '14px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
             <div>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>No. LKS (Opsional)</label>
               <input
@@ -154,20 +154,6 @@ export default function LksUpload({ onUploadSuccess }) {
                 required
                 style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem' }}
               />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>Bidang / Tim *</label>
-              <select
-                name="bidang"
-                value={formData.bidang}
-                onChange={handleChange}
-                style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem', backgroundColor: '#FFF' }}
-              >
-                <option value="HARPRO">HARPRO (Pemeliharaan Proteksi)</option>
-                <option value="HARGI">HARGI (Pemeliharaan Gardu Induk)</option>
-                <option value="HARJAR">HARJAR (Pemeliharaan Jaringan)</option>
-                <option value="JARGI">JARGI (Jaringan & Gardu Induk)</option>
-              </select>
             </div>
           </div>
 

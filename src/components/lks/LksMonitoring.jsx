@@ -102,19 +102,7 @@ export default function LksMonitoring({ onAddNew }) {
 
       {/* Filter Tabs */}
       <div style={{ display: 'flex', gap: '16px', marginBottom: '20px', borderBottom: '1px solid #F1F5F9', paddingBottom: '14px', flexWrap: 'wrap', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B' }}>Bidang:</span>
-          {['SEMUA', 'HARPRO', 'HARGI', 'HARJAR', 'JARGI'].map(b => (
-            <button
-              key={b}
-              type="button"
-              onClick={() => setSelectedBidang(b)}
-              style={{ padding: '4px 12px', borderRadius: '14px', border: 'none', backgroundColor: selectedBidang === b ? '#00A2E9' : '#F1F5F9', color: selectedBidang === b ? '#FFFFFF' : '#475569', fontSize: '0.78rem', fontWeight: 700, cursor: 'pointer' }}
-            >
-              {b}
-            </button>
-          ))}
-        </div>
+
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B' }}>Status:</span>
@@ -158,7 +146,6 @@ export default function LksMonitoring({ onAddNew }) {
                   </td>
                   <td style={{ padding: '10px 12px' }}>
                     <div style={{ fontWeight: 700, color: '#334155' }}>{item.dataPeralatan?.namaPeralatan || '-'}</div>
-                    <span style={{ fontSize: '0.72rem', color: '#0284C7', fontWeight: 800 }}>{item.bidang}</span>
                   </td>
                   <td style={{ padding: '10px 12px', color: '#475569' }}>
                     {item.penempatanPeralatan}

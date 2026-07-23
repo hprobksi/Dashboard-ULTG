@@ -126,10 +126,10 @@ export default function LksForm({ onSuccessSubmitted }) {
       )}
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        {/* Section 1: Data Pengajuan & Bidang */}
+        {/* Section 1: Data Pengajuan */}
         <div style={{ backgroundColor: '#F8FAFC', padding: '16px', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-          <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#0F172A', margin: '0 0 12px 0' }}>1. Data Pengajuan & Bidang</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '14px' }}>
+          <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#0F172A', margin: '0 0 12px 0' }}>1. Data Pengajuan LKS</h4>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
             <div>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '4px' }}>Nomor LKS (Opsional)</label>
               <input
@@ -151,20 +151,6 @@ export default function LksForm({ onSuccessSubmitted }) {
                 required
                 style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem' }}
               />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '4px' }}>Tim / Bidang *</label>
-              <select
-                name="bidang"
-                value={formData.bidang}
-                onChange={handleChange}
-                style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.85rem', fontWeight: 700 }}
-              >
-                <option value="HARPRO">HARPRO (Pemeliharaan Proteksi)</option>
-                <option value="HARGI">HARGI (Pemeliharaan Gardu Induk)</option>
-                <option value="HARJAR">HARJAR (Pemeliharaan Jaringan)</option>
-                <option value="JARGI">JARGI (Jaringan & Gardu Induk)</option>
-              </select>
             </div>
           </div>
         </div>
