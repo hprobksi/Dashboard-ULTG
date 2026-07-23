@@ -510,22 +510,12 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             </div>
 
             <div style={{
-              border: '1px dashed #000000',
+              border: '1px dashed #CBD5E1',
               borderRadius: '8px',
               padding: '32px',
               minHeight: '380px',
-              backgroundColor: '#FFFFFF',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justify: 'center',
-              gap: '12px',
-              color: '#475569',
-              fontSize: '10pt',
-            }}>
-              <p style={{ margin: 0, fontWeight: 'bold', fontSize: '10pt', color: '#334155' }}>DOKUMENTASI FOTO KERUSAKAN & HASIL PENGUJIAN</p>
-              <p style={{ margin: 0, fontSize: '9pt', color: '#94A3B8' }}>(Area Penempelan / Lampiran Foto Kerusakan & Hasil Uji Peralatan)</p>
-            </div>
+              backgroundColor: '#FAFAFA',
+            }} />
 
             <div style={{
               marginTop: '40pt',
