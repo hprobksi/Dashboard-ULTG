@@ -244,7 +244,7 @@ export default function LksMonitoring({ onAddNew }) {
         </table>
       </div>
 
-      {/* POP-UP MODAL: Ubah Status LKS (Redesigned Centered & Premium) */}
+      {/* POP-UP MODAL: Ubah Status LKS (Centered Layout Original Design) */}
       {editItem && (
         <div style={{
           position: 'fixed',
@@ -252,9 +252,9 @@ export default function LksMonitoring({ onAddNew }) {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(15, 23, 42, 0.72)',
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
+          backgroundColor: 'rgba(15, 23, 42, 0.65)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
           zIndex: 99999,
           display: 'flex',
           alignItems: 'center',
@@ -263,240 +263,119 @@ export default function LksMonitoring({ onAddNew }) {
         }}>
           <div style={{
             backgroundColor: '#FFFFFF',
-            borderRadius: '20px',
+            borderRadius: '16px',
             width: '100%',
-            maxWidth: '520px',
-            boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.35)',
+            maxWidth: '460px',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
             overflow: 'hidden',
-            border: '1px solid #E2E8F0',
-            animation: 'fadeInUp 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
+            border: '1px solid #E2E8F0'
           }}>
             {/* Modal Header */}
             <div style={{
-              padding: '22px 26px',
-              background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
-              color: '#FFFFFF',
+              padding: '18px 24px',
+              backgroundColor: '#F8FAFC',
+              borderBottom: '1px solid #E2E8F0',
               display: 'flex',
               alignItems: 'center',
-              justify: 'space-between',
-              position: 'relative'
+              justify: 'space-between'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '12px',
-                  backgroundColor: '#00A2E9',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  boxShadow: '0 4px 12px rgba(0, 162, 233, 0.4)',
-                  flexShrink: 0
-                }}>
-                  <Pencil size={22} color="#FFFFFF" />
-                </div>
-                <div>
-                  <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 900, color: '#FFFFFF', letterSpacing: '-0.01em' }}>
-                    Ubah Status Dokumen LKS
-                  </h3>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
-                    <span style={{ fontSize: '0.78rem', backgroundColor: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', padding: '2px 8px', borderRadius: '6px', fontWeight: 800, border: '1px solid rgba(56, 189, 248, 0.3)' }}>
-                      No: {editItem.nomorLks}
-                    </span>
-                    <span style={{ fontSize: '0.78rem', color: '#94A3B8', fontWeight: 600 }}>
-                      • {editItem.bidang || 'HARPRO'}
-                    </span>
-                  </div>
-                </div>
+              <div>
+                <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 900, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Pencil size={18} color="#00A2E9" /> Ubah Status Dokumen LKS
+                </h3>
+                <span style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 700 }}>
+                  No. LKS: {editItem.nomorLks}
+                </span>
               </div>
               <button
                 type="button"
                 onClick={() => setEditItem(null)}
-                style={{
-                  border: 'none',
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: '#94A3B8',
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '50%',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  transition: 'all 0.2s ease'
-                }}
+                style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#64748B', padding: '4px' }}
               >
-                <X size={18} color="#FFFFFF" />
+                <X size={20} />
               </button>
             </div>
 
             {/* Modal Body / Form */}
-            <form onSubmit={handleSaveStatusEdit} style={{ padding: '26px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <form onSubmit={handleSaveStatusEdit} style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 900, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px' }}>
-                  PILIH STATUS TERBARU LKS:
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 800, color: '#334155', marginBottom: '8px' }}>
+                  Pilih Status Baru LKS:
                 </label>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  
-                  {/* OPEN Status Selector Card */}
-                  <div
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <button
+                    type="button"
                     onClick={() => setNewStatusValue('Open')}
                     style={{
-                      padding: '16px 18px',
-                      borderRadius: '14px',
-                      border: newStatusValue === 'Open' ? '2px solid #D97706' : '1px solid #E2E8F0',
-                      backgroundColor: newStatusValue === 'Open' ? '#FFFBEB' : '#F8FAFC',
+                      padding: '14px',
+                      borderRadius: '10px',
+                      border: newStatusValue === 'Open' ? '2px solid #D97706' : '1px solid #CBD5E1',
+                      backgroundColor: newStatusValue === 'Open' ? '#FEF3C7' : '#FFFFFF',
+                      color: newStatusValue === 'Open' ? '#B45309' : '#475569',
+                      fontWeight: 800,
+                      fontSize: '0.9rem',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
-                      justify: 'space-between',
-                      transition: 'all 0.2s ease',
-                      boxShadow: newStatusValue === 'Open' ? '0 4px 12px rgba(217, 119, 6, 0.15)' : 'none'
+                      justify: 'center',
+                      gap: '8px',
+                      transition: 'all 0.2s ease'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                      <div style={{
-                        width: '38px',
-                        height: '38px',
-                        borderRadius: '10px',
-                        backgroundColor: newStatusValue === 'Open' ? '#D97706' : '#E2E8F0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justify: 'center',
-                        color: newStatusValue === 'Open' ? '#FFFFFF' : '#64748B'
-                      }}>
-                        <Clock size={20} />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: '0.95rem', fontWeight: 900, color: newStatusValue === 'Open' ? '#B45309' : '#1E293B' }}>
-                          STATUS OPEN
-                        </div>
-                        <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '2px', fontWeight: 600 }}>
-                          Temuan sedang ditindaklanjuti & proses pemeliharaan aktif
-                        </div>
-                      </div>
-                    </div>
-                    <div style={{
-                      width: '20px',
-                      height: '20px',
-                      borderRadius: '50%',
-                      border: newStatusValue === 'Open' ? '6px solid #D97706' : '2px solid #CBD5E1',
-                      backgroundColor: '#FFFFFF'
-                    }} />
-                  </div>
+                    <Clock size={18} /> OPEN
+                  </button>
 
-                  {/* CLOSE Status Selector Card */}
-                  <div
+                  <button
+                    type="button"
                     onClick={() => setNewStatusValue('Close')}
                     style={{
-                      padding: '16px 18px',
-                      borderRadius: '14px',
-                      border: newStatusValue === 'Close' ? '2px solid #059669' : '1px solid #E2E8F0',
-                      backgroundColor: newStatusValue === 'Close' ? '#ECFDF5' : '#F8FAFC',
+                      padding: '14px',
+                      borderRadius: '10px',
+                      border: newStatusValue === 'Close' ? '2px solid #059669' : '1px solid #CBD5E1',
+                      backgroundColor: newStatusValue === 'Close' ? '#D1FAE5' : '#FFFFFF',
+                      color: newStatusValue === 'Close' ? '#047857' : '#475569',
+                      fontWeight: 800,
+                      fontSize: '0.9rem',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
-                      justify: 'space-between',
-                      transition: 'all 0.2s ease',
-                      boxShadow: newStatusValue === 'Close' ? '0 4px 12px rgba(5, 150, 105, 0.15)' : 'none'
+                      justify: 'center',
+                      gap: '8px',
+                      transition: 'all 0.2s ease'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                      <div style={{
-                        width: '38px',
-                        height: '38px',
-                        borderRadius: '10px',
-                        backgroundColor: newStatusValue === 'Close' ? '#059669' : '#E2E8F0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justify: 'center',
-                        color: newStatusValue === 'Close' ? '#FFFFFF' : '#64748B'
-                      }}>
-                        <CheckCircle2 size={20} />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: '0.95rem', fontWeight: 900, color: newStatusValue === 'Close' ? '#047857' : '#1E293B' }}>
-                          STATUS CLOSE
-                        </div>
-                        <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '2px', fontWeight: 600 }}>
-                          Pekerjaan perbaikan 100% selesai & dokumen diarsip
-                        </div>
-                      </div>
-                    </div>
-                    <div style={{
-                      width: '20px',
-                      height: '20px',
-                      borderRadius: '50%',
-                      border: newStatusValue === 'Close' ? '6px solid #059669' : '2px solid #CBD5E1',
-                      backgroundColor: '#FFFFFF'
-                    }} />
-                  </div>
-
+                    <CheckCircle2 size={18} /> CLOSE
+                  </button>
                 </div>
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
-                  Catatan Perubahan Status (Opsional)
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '4px' }}>
+                  Catatan / Keterangan Perubahan (Opsional)
                 </label>
                 <textarea
                   rows={3}
-                  placeholder="Masukkan catatan perbaikan (contoh: Klem jumper telah dikencangkan dan thermovisi ulang aman)..."
+                  placeholder="Contoh: Pekerjaan perbaikan klem jumper telah selesai 100%"
                   value={statusNotes}
                   onChange={(e) => setStatusNotes(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px',
-                    borderRadius: '10px',
-                    border: '1px solid #CBD5E1',
-                    fontSize: '0.84rem',
-                    fontFamily: 'inherit',
-                    outline: 'none',
-                    transition: 'all 0.2s ease',
-                    boxSizing: 'border-box'
-                  }}
+                  style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #CBD5E1', fontSize: '0.84rem', fontFamily: 'inherit', boxSizing: 'border-box' }}
                 />
               </div>
 
               {/* Modal Actions */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '12px', marginTop: '6px', paddingTop: '16px', borderTop: '1px solid #F1F5F9' }}>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '10px' }}>
                 <button
                   type="button"
                   onClick={() => setEditItem(null)}
-                  style={{
-                    padding: '11px 20px',
-                    borderRadius: '10px',
-                    border: '1px solid #CBD5E1',
-                    backgroundColor: '#FFFFFF',
-                    color: '#475569',
-                    fontWeight: 700,
-                    fontSize: '0.86rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
+                  style={{ padding: '9px 16px', borderRadius: '8px', border: '1px solid #CBD5E1', backgroundColor: '#FFFFFF', color: '#475569', fontWeight: 700, fontSize: '0.84rem', cursor: 'pointer' }}
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  style={{
-                    padding: '11px 24px',
-                    borderRadius: '10px',
-                    border: 'none',
-                    background: 'linear-gradient(135deg, #00A2E9 0%, #0284C7 100%)',
-                    color: '#FFFFFF',
-                    fontWeight: 800,
-                    fontSize: '0.86rem',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 14px rgba(0, 162, 233, 0.4)',
-                    transition: 'all 0.2s ease',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px'
-                  }}
+                  style={{ padding: '9px 20px', borderRadius: '8px', border: 'none', backgroundColor: '#00A2E9', color: '#FFFFFF', fontWeight: 800, fontSize: '0.84rem', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0, 162, 233, 0.3)' }}
                 >
-                  <CheckCircle2 size={17} /> Simpan Perubahan Status
+                  Simpan Perubahan Status
                 </button>
               </div>
             </form>
