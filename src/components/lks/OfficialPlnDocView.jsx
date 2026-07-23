@@ -20,7 +20,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
   return (
     <div className="pln-modal-overlay" style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(15,23,42,0.75)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '20px' }}>
       
-      {/* Print CSS styles injection for 100% pixel-perfect A4 printing */}
+      {/* Print CSS styles injection */}
       <style>{`
         @media print {
           body * {
@@ -55,7 +55,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
         {/* Modal Action Controls Bar */}
         <div className="no-print" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #E2E8F0', paddingBottom: '14px', marginBottom: '20px' }}>
           <div>
-            <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 900, color: '#0F172A', fontFamily: 'sans-serif' }}>Dokumen LKP / LKS Resmi Presisi 100% (Standard PLN)</h3>
+            <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 900, color: '#0F172A', fontFamily: 'sans-serif' }}>Dokumen LKP / LKS Resmi Presisi 100% (Dengan Penomoran 1. a-h, 2-8)</h3>
             <p style={{ margin: '2px 0 0 0', fontSize: '0.78rem', color: '#64748B', fontFamily: 'sans-serif' }}>Format: {lksData.nomorLks}</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'sans-serif' }}>
@@ -83,7 +83,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
           </div>
         </div>
 
-        {/* Printable Official PLN Document Box (100% Matching 01. LKP ( FORMAT DASAR ).docx) */}
+        {/* Printable Official PLN Document Box */}
         <div className="printable-pln-document" style={{
           backgroundColor: '#FFFFFF',
           padding: '40px 50px',
@@ -93,7 +93,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
           lineHeight: '1.4'
         }}>
           
-          {/* HEADER BOX TABLE (Exact 1:1 matching header2.xml) */}
+          {/* HEADER BOX TABLE */}
           <table style={{ width: '100%', borderCollapse: 'collapse', border: '1.5pt solid #000000', marginBottom: '24px' }}>
             <tbody>
               <tr>
@@ -143,43 +143,51 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             </tbody>
           </table>
 
-          {/* BODY DOCUMENT PARAGRAPHS & COLON ALIGNED TAB STOPS */}
+          {/* BODY DOCUMENT WITH EXACT NUMBERING (1. a-h, 2-8) */}
           <div style={{ fontSize: '11pt' }}>
             <p style={{ fontWeight: 'bold', marginBottom: '8px', marginTop: 0 }}>
-              DATA PERALATAN
+              1. DATA PERALATAN
             </p>
 
             <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '14px', fontSize: '11pt' }}>
               <tbody>
                 <tr>
-                  <td style={{ width: '220px', padding: '2px 0', verticalAlign: 'top' }}>Nama Peralatan</td>
+                  <td style={{ width: '25px', padding: '2px 0', verticalAlign: 'top' }}>a.</td>
+                  <td style={{ width: '195px', padding: '2px 0', verticalAlign: 'top' }}>Nama Peralatan</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>: {lksData.dataPeralatan?.namaPeralatan || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '2px 0', verticalAlign: 'top' }}>b.</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>Merk</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>: {lksData.dataPeralatan?.merk || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '2px 0', verticalAlign: 'top' }}>c.</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>Type</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>: {lksData.dataPeralatan?.type || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '2px 0', verticalAlign: 'top' }}>d.</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>No Seri</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>: {lksData.dataPeralatan?.noSeri || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '2px 0', verticalAlign: 'top' }}>e.</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>Harga</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>: {lksData.dataPeralatan?.harga || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '2px 0', verticalAlign: 'top' }}>f.</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>Kode Asset</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>: {lksData.dataPeralatan?.kodeAsset || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '2px 0', verticalAlign: 'top' }}>g.</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>Tahun Operasi</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>: {lksData.dataPeralatan?.tahunOperasi || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '2px 0', verticalAlign: 'top' }}>h.</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>Tahun Buat</td>
                   <td style={{ padding: '2px 0', verticalAlign: 'top' }}>: {lksData.dataPeralatan?.tahunBuat || '-'}</td>
                 </tr>
@@ -189,30 +197,37 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11pt' }}>
               <tbody>
                 <tr>
-                  <td style={{ width: '220px', padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>PENEMPATAN PERALATAN</td>
+                  <td style={{ width: '25px', padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>2.</td>
+                  <td style={{ width: '195px', padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>PENEMPATAN PERALATAN</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top' }}>: {lksData.penempatanPeralatan || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>3.</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>TANGGAL KEJADIAN</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top' }}>: {formattedDate}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>4.</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>JENIS KERUSAKAN</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top' }}>: {lksData.jenisKerusakan || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>5.</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>PENYEBAB KERUSAKAN</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top' }}>: {lksData.penyebabKerusakan || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>6.</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>AKIBAT KERUSAKAN</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top' }}>: {lksData.akibatKerusakan || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>7.</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>USUL DAN SARAN</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top' }}>: {lksData.usulDanSaran || '-'}</td>
                 </tr>
                 <tr>
+                  <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>8.</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top', fontWeight: 'bold' }}>LAMPIRAN</td>
                   <td style={{ padding: '4px 0', verticalAlign: 'top' }}>: {lksData.lampiranText || '- Foto Kerusakan (Terlampir)'}</td>
                 </tr>
@@ -220,7 +235,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
             </table>
           </div>
 
-          {/* SIGNATORIES BLOCK (EXACT POSITIONS MATED WITH WORD DOCUMENT TABLE 1) */}
+          {/* SIGNATORIES BLOCK */}
           <div style={{ marginTop: '45px', display: 'flex', justifyContent: 'space-between', fontSize: '10.5pt', textAlign: 'center' }}>
             
             {/* Left Column: Manager ULTG Bekasi */}
