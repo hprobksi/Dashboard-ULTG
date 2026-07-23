@@ -60,13 +60,34 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
   if (!lksData) return null;
 
   const handleDownloadDocx = () => exportToDocx(lksData);
-  const handlePrintPdf = () => window.print();
+  const formatIndonesianDate = (dateVal) => {
+    if (!dateVal) return '-';
+    if (typeof dateVal === 'string') {
+      const match = dateVal.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      if (match) {
+        const year = parseInt(match[1], 10);
+        const month = parseInt(match[2], 10);
+        const day = parseInt(match[3], 10);
+        const months = [
+          'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+          'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+        if (month >= 1 && month <= 12) {
+          return `${day} ${months[month - 1]} ${year}`;
+        }
+      }
+    }
+    try {
+      const d = new Date(dateVal);
+      if (isNaN(d.getTime())) return String(dateVal);
+      return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    } catch (e) {
+      return String(dateVal);
+    }
+  };
 
-  const formattedDate = lksData.tanggalKejadian
-    ? new Date(lksData.tanggalKejadian).toLocaleDateString('id-ID', {
-        day: 'numeric', month: 'long', year: 'numeric',
-      })
-    : '-';
+  const formattedKejadianDate = formatIndonesianDate(lksData.tanggalKejadian);
+  const formattedSuratDate = formatIndonesianDate(lksData.tanggalSurat || lksData.tanggalPengajuan || lksData.createdAt || new Date());
 
   // Arial 11pt double-spaced — matches w:sz=22, w:line=480
   const body = {
@@ -363,7 +384,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
               <DataRow indented num="h." label="Tahun Buat" value={lksData.dataPeralatan?.tahunBuat} />
               {/* 2–8 main items */}
               <DataRow bold num="2." label="PENEMPATAN PERALATAN" value={lksData.penempatanPeralatan} />
-              <DataRow bold num="3." label="TANGGAL KEJADIAN" value={formattedDate} />
+              <DataRow bold num="3." label="TANGGAL KEJADIAN" value={formattedKejadianDate} />
               <DataRow bold num="4." label="JENIS KERUSAKAN" value={lksData.jenisKerusakan} />
               <DataRow bold num="5." label="PENYEBAB KERUSAKAN" value={lksData.penyebabKerusakan} />
               <DataRow bold num="6." label="AKIBAT KERUSAKAN" value={lksData.akibatKerusakan} />
@@ -400,7 +421,7 @@ export default function OfficialPlnDocView({ lksData, onClose }) {
 
             {/* Kanan: TL Terkait */}
             <div style={{ width: '255px' }}>
-              <p style={{ margin: 0, lineHeight: '2' }}>Bekasi, {formattedDate}</p>
+              <p style={{ margin: 0, lineHeight: '2' }}>Bekasi, {formattedSuratDate}</p>
               <p style={{ margin: 0, fontWeight: 'bold', lineHeight: '1.5' }}>
                 Mengetahui,<br />
                 {lksData.approval?.tlJabatan || `TL ${lksData.bidang || 'JARGI CIKARANG'}`}

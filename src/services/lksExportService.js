@@ -59,11 +59,36 @@ export const exportToDocx = async (lksData) => {
       nullGetter: () => '',
     });
 
-    const dateFormatted = lksData.tanggalKejadian
-      ? `Bekasi, ${new Date(lksData.tanggalKejadian).toLocaleDateString('id-ID', {
-          day: 'numeric', month: 'long', year: 'numeric',
-        })}`
-      : 'Bekasi';
+    const formatIndonesianDate = (dateVal) => {
+      if (!dateVal) return '-';
+      if (typeof dateVal === 'string') {
+        const match = dateVal.match(/^(\d{4})-(\d{2})-(\d{2})/);
+        if (match) {
+          const year = parseInt(match[1], 10);
+          const month = parseInt(match[2], 10);
+          const day = parseInt(match[3], 10);
+          const months = [
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+          ];
+          if (month >= 1 && month <= 12) {
+            return `${day} ${months[month - 1]} ${year}`;
+          }
+        }
+      }
+      try {
+        const d = new Date(dateVal);
+        if (isNaN(d.getTime())) return String(dateVal);
+        return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+      } catch (e) {
+        return String(dateVal);
+      }
+    };
+
+    // Signature date (Tanggal Pengajuan / Surat / Hari ini)
+    const sigDateRaw = lksData.tanggalSurat || lksData.tanggalPengajuan || lksData.createdAt || new Date();
+    const dateFormatted = `Bekasi, ${formatIndonesianDate(sigDateRaw)}`;
+    const tglKejadianFormatted = formatIndonesianDate(lksData.tanggalKejadian);
 
     // All fields — use empty string fallback so no {placeholder} remains in output
     doc.render({
@@ -77,7 +102,7 @@ export const exportToDocx = async (lksData) => {
       tahunOperasi:       lksData.dataPeralatan?.tahunOperasi       || '',
       tahunBuat:          lksData.dataPeralatan?.tahunBuat          || '',
       penempatanPeralatan: lksData.penempatanPeralatan              || '',
-      tanggalKejadian:    lksData.tanggalKejadian                   || '',
+      tanggalKejadian:    tglKejadianFormatted                      || '',
       jenisKerusakan:     lksData.jenisKerusakan                    || '',
       penyebabKerusakan:  lksData.penyebabKerusakan                 || '',
       akibatKerusakan:    lksData.akibatKerusakan                   || '',
