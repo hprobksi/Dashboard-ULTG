@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import lksService from '../../services/lksService';
 import DigitalSignatureModal from './DigitalSignatureModal';
+import OfficialPlnDocView from './OfficialPlnDocView';
 
 export default function LksMonitoring({ onAddNew }) {
   const [lksList, setLksList] = useState([]);
@@ -292,78 +293,12 @@ export default function LksMonitoring({ onAddNew }) {
         </table>
       </div>
 
-      {/* Modal View 1:1 Docx Output */}
+      {/* Modal View 1:1 Official PLN Doc Output */}
       {viewItem && (
-        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(15,23,42,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
-          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '16px', padding: '32px', width: '800px', maxWidth: '95vw', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', fontFamily: 'serif' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #000', paddingBottom: '12px', marginBottom: '20px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <img src="/ULTG.png" alt="PLN" style={{ height: '40px' }} onError={(e) => e.target.style.display = 'none'} />
-                <div>
-                  <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 900 }}>PT PLN (PERSERO) ULTG BEKASI</h3>
-                  <p style={{ margin: 0, fontSize: '0.75rem', fontWeight: 700, color: '#475569' }}>LEMBAR KERJA PEMELIHARAAN (LKP)</p>
-                </div>
-              </div>
-              <button type="button" onClick={() => setViewItem(null)} style={{ border: 'none', background: 'none', fontSize: '1.2rem', fontWeight: 900, cursor: 'pointer', fontFamily: 'sans-serif' }}>✕</button>
-            </div>
-
-            <div style={{ fontSize: '0.9rem', lineHeight: '1.6', color: '#000' }}>
-              <h3 style={{ textAlign: 'center', textDecoration: 'underline', marginBottom: '20px' }}>LEMBAR KERJA PEMELIHARAAN (LKP)</h3>
-              
-              <p style={{ fontWeight: 'bold', margin: '12px 0 4px 0' }}>DATA PERALATAN</p>
-              <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '16px' }}>
-                <tbody>
-                  <tr><td style={{ width: '160px' }}>Nama Peralatan</td><td>: {viewItem.dataPeralatan?.namaPeralatan || '-'}</td></tr>
-                  <tr><td>Merk</td><td>: {viewItem.dataPeralatan?.merk || '-'}</td></tr>
-                  <tr><td>Type</td><td>: {viewItem.dataPeralatan?.type || '-'}</td></tr>
-                  <tr><td>No Seri</td><td>: {viewItem.dataPeralatan?.noSeri || '-'}</td></tr>
-                  <tr><td>Harga</td><td>: {viewItem.dataPeralatan?.harga || '-'}</td></tr>
-                  <tr><td>Kode Asset</td><td>: {viewItem.dataPeralatan?.kodeAsset || '-'}</td></tr>
-                  <tr><td>Tahun Operasi</td><td>: {viewItem.dataPeralatan?.tahunOperasi || '-'}</td></tr>
-                  <tr><td>Tahun Buat</td><td>: {viewItem.dataPeralatan?.tahunBuat || '-'}</td></tr>
-                </tbody>
-              </table>
-
-              <p style={{ margin: '8px 0' }}><b>PENEMPATAN PERALATAN:</b> {viewItem.penempatanPeralatan || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>TANGGAL KEJADIAN:</b> {viewItem.tanggalKejadian || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>JENIS KERUSAKAN:</b> {viewItem.jenisKerusakan || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>PENYEBAB KERUSAKAN:</b> {viewItem.penyebabKerusakan || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>AKIBAT KERUSAKAN:</b> {viewItem.akibatKerusakan || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>USUL DAN SARAN:</b> {viewItem.usulDanSaran || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>LAMPIRAN:</b> {viewItem.lampiranText || '-'}</p>
-
-              <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'space-between', textAlign: 'center' }}>
-                <div>
-                  <p style={{ margin: '0 0 10px 0' }}><b>Mengetahui,<br />{viewItem.approval.tlJabatan || 'TL TERKAIT'}</b></p>
-                  {viewItem.approval.tlSignature ? (
-                    <img src={viewItem.approval.tlSignature} alt="TTD TL" style={{ height: '60px', marginBottom: '8px' }} />
-                  ) : (
-                    <div style={{ height: '60px' }} />
-                  )}
-                  <p style={{ margin: 0, fontWeight: 'bold', textDecoration: 'underline' }}>{viewItem.approval.tlNama || viewItem.pengaju.nama}</p>
-                  <p style={{ margin: 0, fontSize: '0.8rem' }}>NIP. {viewItem.approval.tlNip || '-'}</p>
-                </div>
-
-                <div>
-                  <p style={{ margin: '0 0 10px 0' }}>Bekasi, {viewItem.tanggalKejadian}<br /><b>Mengetahui,<br />MANAGER ULTG BEKASI</b></p>
-                  {viewItem.approval.managerSignature ? (
-                    <img src={viewItem.approval.managerSignature} alt="TTD Mgr" style={{ height: '60px', marginBottom: '8px' }} />
-                  ) : (
-                    <div style={{ height: '60px' }} />
-                  )}
-                  <p style={{ margin: 0, fontWeight: 'bold', textDecoration: 'underline' }}>{viewItem.approval.managerNama || 'TRIAWAN AZHARY P. N.'}</p>
-                  <p style={{ margin: 0, fontSize: '0.8rem' }}>MANAGER ULTG BEKASI</p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ marginTop: '30px', textAlign: 'right', fontFamily: 'sans-serif' }}>
-              <button type="button" onClick={() => window.print()} style={{ padding: '8px 16px', borderRadius: '8px', backgroundColor: '#00A2E9', color: '#FFF', border: 'none', fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <Printer size={16} /> Print Dokumen Ini
-              </button>
-            </div>
-          </div>
-        </div>
+        <OfficialPlnDocView
+          lksData={viewItem}
+          onClose={() => setViewItem(null)}
+        />
       )}
 
       {/* Modal Approval */}

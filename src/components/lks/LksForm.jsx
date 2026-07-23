@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { FileText, Send, Printer, Upload, CheckCircle2, PenTool, Eye } from 'lucide-react';
+import { FileText, Send, Printer, Download, CheckCircle2, PenTool, Eye } from 'lucide-react';
 import DigitalSignatureModal from './DigitalSignatureModal';
+import OfficialPlnDocView from './OfficialPlnDocView';
 import { lksService } from '../../services/lksService';
+import { exportToDocx } from '../../services/lksExportService';
 
 export default function LksForm({ onSuccessSubmitted }) {
   const [formData, setFormData] = useState({
@@ -72,17 +74,46 @@ export default function LksForm({ onSuccessSubmitted }) {
         <div style={{ display: 'flex', gap: '8px' }}>
           <button
             type="button"
+            onClick={() => exportToDocx({
+              nomorLks: formData.nomorLks,
+              tanggalKejadian: formData.tanggalKejadian,
+              bidang: formData.bidang,
+              dataPeralatan: {
+                namaPeralatan: formData.namaPeralatan,
+                merk: formData.merk,
+                type: formData.type,
+                noSeri: formData.noSeri,
+                harga: formData.harga,
+                kodeAsset: formData.kodeAsset,
+                tahunOperasi: formData.tahunOperasi,
+                tahunBuat: formData.tahunBuat
+              },
+              penempatanPeralatan: formData.penempatanPeralatan,
+              jenisKerusakan: formData.jenisKerusakan,
+              penyebabKerusakan: formData.penyebabKerusakan,
+              akibatKerusakan: formData.akibatKerusakan,
+              usulDanSaran: formData.usulDanSaran,
+              lampiranText: formData.lampiranText,
+              pengaju: { nama: formData.pengajuNama, nip: formData.pengajuNip, jabatan: formData.pengajuJabatan, signatureDataUrl: formData.pengajuSignature },
+              approval: { tlNama: formData.tlNama, tlJabatan: formData.tlJabatan, managerNama: 'TRIAWAN AZHARY P. N.', managerJabatan: 'MANAGER ULTG BEKASI' }
+            })}
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 14px', borderRadius: '10px', backgroundColor: '#00A2E9', border: 'none', color: '#FFFFFF', fontWeight: 700, fontSize: '0.82rem', cursor: 'pointer' }}
+          >
+            <Download size={16} /> Export Word (.docx)
+          </button>
+          <button
+            type="button"
             onClick={() => setShowPreviewModal(true)}
             style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 14px', borderRadius: '10px', backgroundColor: '#EFF6FF', border: '1px solid #93C5FD', color: '#1D4ED8', fontWeight: 700, fontSize: '0.82rem', cursor: 'pointer' }}
           >
-            <Eye size={16} /> Pratinjau Draf
+            <Eye size={16} /> Pratinjau Draf Official
           </button>
           <button
             type="button"
             onClick={handlePrint}
             style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 14px', borderRadius: '10px', backgroundColor: '#F8FAFC', border: '1px solid #CBD5E1', color: '#334155', fontWeight: 700, fontSize: '0.82rem', cursor: 'pointer' }}
           >
-            <Printer size={16} /> Print / Cetak PDF
+            <Printer size={16} /> Cetak / Save PDF
           </button>
         </div>
       </div>
@@ -328,68 +359,46 @@ export default function LksForm({ onSuccessSubmitted }) {
         title="Tanda Tangan Digital Pengaju"
       />
 
-      {/* Modal Draft Preview 1:1 format PLN */}
+      {/* Official PLN Document Modal View */}
       {showPreviewModal && (
-        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(15,23,42,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
-          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '16px', padding: '32px', width: '800px', maxWidth: '95vw', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', fontFamily: 'serif' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #000', paddingBottom: '12px', marginBottom: '20px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <img src="/ULTG.png" alt="PLN" style={{ height: '40px' }} onError={(e) => e.target.style.display = 'none'} />
-                <div>
-                  <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 900 }}>PT PLN (PERSERO) ULTG BEKASI</h3>
-                  <p style={{ margin: 0, fontSize: '0.75rem', fontWeight: 700, color: '#475569' }}>LEMBAR KERJA PEMELIHARAAN (LKP)</p>
-                </div>
-              </div>
-              <button type="button" onClick={() => setShowPreviewModal(false)} style={{ border: 'none', background: 'none', fontSize: '1.2rem', fontWeight: 900, cursor: 'pointer', fontFamily: 'sans-serif' }}>✕</button>
-            </div>
-
-            {/* Content Preview 1:1 like docx */}
-            <div style={{ fontSize: '0.9rem', lineHeight: '1.6', color: '#000' }}>
-              <h3 style={{ textAlign: 'center', textDecoration: 'underline', marginBottom: '20px' }}>LEMBAR KERJA PEMELIHARAAN (LKP)</h3>
-              
-              <p style={{ fontWeight: 'bold', margin: '12px 0 4px 0' }}>DATA PERALATAN</p>
-              <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '16px' }}>
-                <tbody>
-                  <tr><td style={{ width: '160px' }}>Nama Peralatan</td><td>: {formData.namaPeralatan || '-'}</td></tr>
-                  <tr><td>Merk</td><td>: {formData.merk || '-'}</td></tr>
-                  <tr><td>Type</td><td>: {formData.type || '-'}</td></tr>
-                  <tr><td>No Seri</td><td>: {formData.noSeri || '-'}</td></tr>
-                  <tr><td>Harga</td><td>: {formData.harga || '-'}</td></tr>
-                  <tr><td>Kode Asset</td><td>: {formData.kodeAsset || '-'}</td></tr>
-                  <tr><td>Tahun Operasi</td><td>: {formData.tahunOperasi || '-'}</td></tr>
-                  <tr><td>Tahun Buat</td><td>: {formData.tahunBuat || '-'}</td></tr>
-                </tbody>
-              </table>
-
-              <p style={{ margin: '8px 0' }}><b>PENEMPATAN PERALATAN:</b> {formData.penempatanPeralatan || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>TANGGAL KEJADIAN:</b> {formData.tanggalKejadian || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>JENIS KERUSAKAN:</b> {formData.jenisKerusakan || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>PENYEBAB KERUSAKAN:</b> {formData.penyebabKerusakan || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>AKIBAT KERUSAKAN:</b> {formData.akibatKerusakan || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>USUL DAN SARAN:</b> {formData.usulDanSaran || '-'}</p>
-              <p style={{ margin: '8px 0' }}><b>LAMPIRAN:</b> {formData.lampiranText || '-'}</p>
-
-              <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'space-between', textAlign: 'center' }}>
-                <div>
-                  <p style={{ margin: '0 0 60px 0' }}><b>Mengetahui,<br />{formData.tlJabatan || 'TL TERKAIT'}</b></p>
-                  <p style={{ margin: 0, fontWeight: 'bold', textDecoration: 'underline' }}>{formData.pengajuNama || 'FAJAR KURNIAWAN'}</p>
-                  <p style={{ margin: 0, fontSize: '0.8rem' }}>NIP. {formData.pengajuNip || '-'}</p>
-                </div>
-                <div>
-                  <p style={{ margin: '0 0 60px 0' }}>Bekasi, {formData.tanggalKejadian}<br /><b>Mengetahui,<br />MANAGER ULTG BEKASI</b></p>
-                  <p style={{ margin: 0, fontWeight: 'bold', textDecoration: 'underline' }}>TRIAWAN AZHARY P. N.</p>
-                  <p style={{ margin: 0, fontSize: '0.8rem' }}>MANAGER ULTG BEKASI</p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ marginTop: '30px', textAlign: 'right', fontFamily: 'sans-serif' }}>
-              <button type="button" onClick={handlePrint} style={{ padding: '8px 16px', borderRadius: '8px', backgroundColor: '#00A2E9', color: '#FFF', border: 'none', fontWeight: 700, cursor: 'pointer' }}>
-                Print Draf Ini
-              </button>
-            </div>
-          </div>
-        </div>
+        <OfficialPlnDocView
+          onClose={() => setShowPreviewModal(false)}
+          lksData={{
+            nomorLks: formData.nomorLks || 'DRAF',
+            tanggalKejadian: formData.tanggalKejadian,
+            bidang: formData.bidang,
+            dataPeralatan: {
+              namaPeralatan: formData.namaPeralatan,
+              merk: formData.merk,
+              type: formData.type,
+              noSeri: formData.noSeri,
+              harga: formData.harga,
+              kodeAsset: formData.kodeAsset,
+              tahunOperasi: formData.tahunOperasi,
+              tahunBuat: formData.tahunBuat
+            },
+            penempatanPeralatan: formData.penempatanPeralatan,
+            jenisKerusakan: formData.jenisKerusakan,
+            penyebabKerusakan: formData.penyebabKerusakan,
+            akibatKerusakan: formData.akibatKerusakan,
+            usulDanSaran: formData.usulDanSaran,
+            lampiranText: formData.lampiranText,
+            pengaju: {
+              nama: formData.pengajuNama,
+              nip: formData.pengajuNip,
+              jabatan: formData.pengajuJabatan,
+              signatureDataUrl: formData.pengajuSignature
+            },
+            approval: {
+              tlNama: formData.tlNama,
+              tlNip: formData.pengajuNip,
+              tlJabatan: formData.tlJabatan,
+              tlSignature: formData.pengajuSignature,
+              managerNama: 'TRIAWAN AZHARY P. N.',
+              managerJabatan: 'MANAGER ULTG BEKASI'
+            }
+          }}
+        />
       )}
     </div>
   );
