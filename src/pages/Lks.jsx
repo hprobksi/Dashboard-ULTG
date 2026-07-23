@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, PlusCircle, Activity, UploadCloud } from 'lucide-react';
-import LksForm from '../components/lks/LksForm';
+import { FileText, Activity, UploadCloud } from 'lucide-react';
 import LksMonitoring from '../components/lks/LksMonitoring';
 import LksUpload from '../components/lks/LksUpload';
 
-export default function Lks({ initialTab = 'pengajuan' }) {
-  const [activeSubTab, setActiveSubTab] = useState(initialTab);
+export default function Lks({ initialTab = 'upload' }) {
+  const [activeSubTab, setActiveSubTab] = useState('upload');
 
   useEffect(() => {
     if (initialTab) {
-      if (initialTab === 'lks-upload') setActiveSubTab('upload');
-      else if (initialTab === 'lks-monitoring') setActiveSubTab('monitoring');
-      else if (initialTab === 'lks-pengajuan') setActiveSubTab('pengajuan');
+      if (initialTab === 'lks-monitoring') setActiveSubTab('monitoring');
+      else setActiveSubTab('upload');
     }
   }, [initialTab]);
 
@@ -49,7 +47,7 @@ export default function Lks({ initialTab = 'pengajuan' }) {
               Modul LKS (Lembar Kerja Selesai) - ULTG Bekasi
             </h1>
             <p style={{ margin: '4px 0 0 0', color: '#64748B', fontSize: '0.92rem', fontWeight: 600 }}>
-              Pencatatan, Pengajuan Form Resmi, Upload File Scan PDF, & Monitoring Status LKS (Open / Close)
+              Upload Dokumen Berkas Scan PDF/Word & Monitoring Status LKS (Open / Close)
             </p>
           </div>
         </div>
@@ -65,7 +63,7 @@ export default function Lks({ initialTab = 'pengajuan' }) {
       }}>
         <button
           type="button"
-          onClick={() => setActiveSubTab('pengajuan')}
+          onClick={() => setActiveSubTab('upload')}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -73,18 +71,18 @@ export default function Lks({ initialTab = 'pengajuan' }) {
             padding: '12px 22px',
             borderRadius: '10px 10px 0 0',
             border: 'none',
-            borderBottom: activeSubTab === 'pengajuan' ? '3px solid #00A2E9' : '3px solid transparent',
-            backgroundColor: activeSubTab === 'pengajuan' ? '#EFF6FF' : 'transparent',
-            color: activeSubTab === 'pengajuan' ? '#00A2E9' : '#64748B',
-            fontWeight: activeSubTab === 'pengajuan' ? 800 : 600,
+            borderBottom: activeSubTab === 'upload' ? '3px solid #00A2E9' : '3px solid transparent',
+            backgroundColor: activeSubTab === 'upload' ? '#EFF6FF' : 'transparent',
+            color: activeSubTab === 'upload' ? '#00A2E9' : '#64748B',
+            fontWeight: activeSubTab === 'upload' ? 800 : 600,
             fontSize: '0.92rem',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
             marginBottom: '-2px'
           }}
         >
-          <PlusCircle size={17} color={activeSubTab === 'pengajuan' ? '#00A2E9' : '#64748B'} />
-          1. Pengajuan LKS
+          <UploadCloud size={17} color={activeSubTab === 'upload' ? '#00A2E9' : '#64748B'} />
+          1. Upload LKS
         </button>
 
         <button
@@ -110,42 +108,15 @@ export default function Lks({ initialTab = 'pengajuan' }) {
           <Activity size={17} color={activeSubTab === 'monitoring' ? '#00A2E9' : '#64748B'} />
           2. Monitoring LKS
         </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveSubTab('upload')}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '12px 22px',
-            borderRadius: '10px 10px 0 0',
-            border: 'none',
-            borderBottom: activeSubTab === 'upload' ? '3px solid #00A2E9' : '3px solid transparent',
-            backgroundColor: activeSubTab === 'upload' ? '#EFF6FF' : 'transparent',
-            color: activeSubTab === 'upload' ? '#00A2E9' : '#64748B',
-            fontWeight: activeSubTab === 'upload' ? 800 : 600,
-            fontSize: '0.92rem',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            marginBottom: '-2px'
-          }}
-        >
-          <UploadCloud size={17} color={activeSubTab === 'upload' ? '#00A2E9' : '#64748B'} />
-          3. Upload LKS
-        </button>
       </div>
 
       {/* Tab Content */}
       <div style={{ marginTop: '8px' }}>
-        {activeSubTab === 'pengajuan' && (
-          <LksForm onSuccessSubmitted={() => setActiveSubTab('monitoring')} />
-        )}
-        {activeSubTab === 'monitoring' && (
-          <LksMonitoring onAddNew={() => setActiveSubTab('pengajuan')} />
-        )}
         {activeSubTab === 'upload' && (
           <LksUpload onUploadSuccess={() => setActiveSubTab('monitoring')} />
+        )}
+        {activeSubTab === 'monitoring' && (
+          <LksMonitoring onAddNew={() => setActiveSubTab('upload')} />
         )}
       </div>
 

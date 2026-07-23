@@ -34,7 +34,7 @@ export const domainsList = [
         label: 'LKS',
         desc: 'Lembar Kerja Selesai',
         icon: FileCheck,
-        defaultTab: 'lks-overview'
+        defaultTab: 'lks-upload'
       },
       {
         id: 'ba-dom',

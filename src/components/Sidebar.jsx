@@ -25,9 +25,8 @@ export default function Sidebar({ activeDomain, activeTab, setActiveTab }) {
         ];
       case 'lks-dom':
         return [
-          { id: 'lks-pengajuan', label: 'Pengajuan LKS', icon: PlusCircle, desc: 'Input Form LKS Resmi' },
-          { id: 'lks-monitoring', label: 'Monitoring LKS', icon: Activity, desc: 'Dashboard Status Open / Close' },
           { id: 'lks-upload', label: 'Upload LKS', icon: UploadCloud, desc: 'Upload File Scan PDF / Word LKS' },
+          { id: 'lks-monitoring', label: 'Monitoring LKS', icon: Activity, desc: 'Dashboard Status Open / Close' },
         ];
       case 'harpro':
         return [
