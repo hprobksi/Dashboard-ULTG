@@ -205,6 +205,49 @@ Langkah Kerja Persiapan:
   }
 ];
 
+const INITIAL_BA = [
+  {
+    id: 'ba-1',
+    noBA: '29042026_BA AKTIVASI TRIPPING 1 DAN 2 BAY JATIWARINGIN #1 GIS NEW TAMBUN',
+    judul: 'Aktivasi Tripping 1 dan 2 Bay Jatiwaringin #1 GIS New Tambun',
+    bidang: 'HARPRO',
+    tanggal: '2026-04-29',
+    garduInduk: 'GIS New Tambun',
+    bay: 'Bay Jatiwaringin #1',
+    deskripsi: 'Aktivasi tripping 1 dan 2 setelah penyempurnaan pengujian proteksi.',
+    penandatangan: 'Tim Harpro ULTG Bekasi',
+    fileName: '29042026_BA AKTIVASI TRIPPING 1 DAN 2 BAY JATIWARINGIN #1 GIS NEW TAMBUN.pdf',
+    fileUrl: '/BA/29042026_BA AKTIVASI TRIPPING 1 DAN 2 BAY JATIWARINGIN #1 GIS NEW TAMBUN.pdf',
+    uploadedAt: new Date().toISOString()
+  },
+  {
+    id: 'ba-2',
+    noBA: '012/BA-HARGI/ULTG-BKS/2026',
+    judul: 'Berita Acara Pemeliharaan Bay Trafo #2 150kV GI Bekasi',
+    bidang: 'HARGI',
+    tanggal: '2026-05-10',
+    garduInduk: 'GI 150kV Bekasi',
+    bay: 'Trafo Daya 2',
+    deskripsi: 'Pengujian tahanan isolasi & kontak PMT Trafo 2 GI Bekasi.',
+    penandatangan: 'Tim Hargi ULTG Bekasi',
+    fileName: 'BA_Pemeliharaan_Trafo2_GI_Bekasi.pdf',
+    uploadedAt: new Date().toISOString()
+  },
+  {
+    id: 'ba-3',
+    noBA: '005/BA-HARJAR/ULTG-BKS/2026',
+    judul: 'Berita Acara Perbaikan SUTT 150kV Tambun - Cikarang #1',
+    bidang: 'HARJAR',
+    tanggal: '2026-06-15',
+    garduInduk: 'GI 150kV Tambun',
+    bay: 'Penghantar Tambun - Cikarang #1',
+    deskripsi: 'Pengantian isolator pecah pada Tower T.24 SUTT 150kV.',
+    penandatangan: 'Tim Harjar ULTG Bekasi',
+    fileName: 'BA_Perbaikan_SUTT_Tambun.pdf',
+    uploadedAt: new Date().toISOString()
+  }
+];
+
 export const storageService = {
   async init() {
     const initialized = await localforage.getItem('is_initialized');
@@ -214,6 +257,7 @@ export const storageService = {
       await localforage.setItem('relays', INITIAL_RELAYS);
       await localforage.setItem('anomalies', INITIAL_ANOMALIES);
       await localforage.setItem('documents', INITIAL_DOCUMENTS);
+      await localforage.setItem('ba_list', INITIAL_BA);
       await localforage.setItem('settings', {
         apiKey: '',
         engineModel: 'gemini-2.5-pro',
@@ -233,6 +277,55 @@ export const storageService = {
     return await localforage.setItem(key, value);
   },
 
+  getBaListSync() {
+    try {
+      const data = localStorage.getItem('ultg_ba_list');
+      if (data) return JSON.parse(data);
+    } catch (e) {
+      console.error(e);
+    }
+    return INITIAL_BA;
+  },
+
+  async getBaList() {
+    await this.init();
+    const stored = await localforage.getItem('ba_list');
+    if (stored && stored.length > 0) return stored;
+    return this.getBaListSync();
+  },
+
+  async saveBaItem(item) {
+    const list = await this.getBaList();
+    const existingIndex = list.findIndex(b => b.id === item.id);
+    let updatedList = [];
+    if (existingIndex >= 0) {
+      updatedList = [...list];
+      updatedList[existingIndex] = { ...updatedList[existingIndex], ...item, updatedAt: new Date().toISOString() };
+    } else {
+      const newItem = { ...item, id: item.id || `ba_${Date.now()}`, uploadedAt: new Date().toISOString() };
+      updatedList = [newItem, ...list];
+    }
+    await localforage.setItem('ba_list', updatedList);
+    try {
+      localStorage.setItem('ultg_ba_list', JSON.stringify(updatedList));
+    } catch (e) {
+      console.error(e);
+    }
+    return updatedList;
+  },
+
+  async deleteBaItem(id) {
+    const list = await this.getBaList();
+    const updatedList = list.filter(b => b.id !== id);
+    await localforage.setItem('ba_list', updatedList);
+    try {
+      localStorage.setItem('ultg_ba_list', JSON.stringify(updatedList));
+    } catch (e) {
+      console.error(e);
+    }
+    return updatedList;
+  },
+
   async getSettings() {
     await this.init();
     return await localforage.getItem('settings');
@@ -249,6 +342,7 @@ export const storageService = {
       relays: await this.get('relays'),
       anomalies: await this.get('anomalies'),
       documents: await this.get('documents'),
+      ba_list: await this.getBaList(),
       settings: await this.getSettings(),
       exportedAt: new Date().toISOString()
     };
@@ -262,6 +356,7 @@ export const storageService = {
     if (data.relays) await this.set('relays', data.relays);
     if (data.anomalies) await this.set('anomalies', data.anomalies);
     if (data.documents) await this.set('documents', data.documents);
+    if (data.ba_list) await this.set('ba_list', data.ba_list);
     if (data.settings) await this.saveSettings(data.settings);
     return true;
   }

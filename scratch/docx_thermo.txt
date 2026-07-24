@@ -1,0 +1,35 @@
+[P1] DATA PERALATAN
+[P2] Nama Peralatan: KLEM JUMPER Tower No. T.4 arah T.5 SUTT CKRNG-JBBKA Penghantar 1 Fasa S
+[P3] Merk: -
+[P4] Type : -
+[P5] No Seri: -
+[P6] Harga: -
+[P7] Kode Asset: -
+[P8] Tahun Operasi: -
+[P9] Tahun Buat: -
+[P10] PENEMPATAN PERALATAN: SUTT CKRNG-JBBKA T.4 ARAH T.5 Penghantar 1 Fasa S
+[P11] TANGGAL KEJADIAN: 08-07-2026
+[P12] JENIS KERUSAKAN: Temuan Thermovisi ( Hotspot )
+[P13] PENYEBAB KERUSAKAN: Kemungkinan klem kendor atau kotor
+[P14] AKIBAT KERUSAKAN: Dapat menyebabkan kerusakan pada klem
+[P15] USUL DAN SARAN: Segera di Lakukan Perbaikan
+[P16] LAMPIRAN:   - Foto Kerusakan (Terlampir)
+[P18] Bekasi, 8 Juli 2026
+[P19] Mengetahui,
+[P28] TRIAWAN AZHARY P. N.
+[P29] MANAGER ULTG BEKASI
+[P32] 44767564135
+[P37] FAJAR KURNIAWAN
+[P38] TL JARGI CIKARANG
+[P39] -1143018224500
+[P45] AHMAD Y. AL BASTOMY
+[P46] TL HARJAR ULTG BEKASI
+[P47] LAMPIRAN
+[P49] REKAP HASIL TEMUAN THERMOVISI SUTT 150 KV CIKARANG - JABABEKA
+[P50] Tower 4 arah Tower 5 Fasa S Penghantar 1 ( Sisi Luar )
+[P51] 00
+[P52] 4455160113030Suhu Objek : 45.9oC
+[P54] Suhu Konduktor : 35.4oC
+[P55] Suhu Objek : 45.9oC
+[P57] Suhu Konduktor : 35.4oC
+[P58] 00

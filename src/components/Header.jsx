@@ -41,7 +41,7 @@ export const domainsList = [
         label: 'BA',
         desc: 'Berita Acara',
         icon: FileText,
-        defaultTab: 'lks-upload'
+        defaultTab: 'ba-upload'
       }
     ]
   },

@@ -22,6 +22,7 @@ import K3Dashboard from './pages/K3Dashboard';
 import PeralatanK3 from './pages/PeralatanK3';
 import AuthPage from './pages/AuthPage';
 import Lks from './pages/Lks';
+import Ba from './pages/Ba';
 
 import { storageService } from './services/storage';
 
@@ -232,6 +233,11 @@ export default function App() {
           <div style={{ display: activeTab.startsWith('lks-') ? 'block' : 'none' }}>
             {(visitedTabs['lks-overview'] || visitedTabs['lks-pengajuan'] || visitedTabs['lks-monitoring'] || visitedTabs['lks-upload'] || visitedTabs['lks-archive']) && (
               <Lks initialTab={activeTab} />
+            )}
+          </div>
+          <div style={{ display: activeTab.startsWith('ba-') ? 'block' : 'none' }}>
+            {(visitedTabs['ba-upload'] || visitedTabs['ba-monitoring'] || visitedTabs['ba-archive']) && (
+              <Ba initialTab={activeTab} />
             )}
           </div>
 

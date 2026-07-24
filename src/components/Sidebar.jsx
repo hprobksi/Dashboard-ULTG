@@ -29,6 +29,12 @@ export default function Sidebar({ activeDomain, activeTab, setActiveTab }) {
           { id: 'lks-monitoring', label: 'Monitoring LKS', icon: Activity, desc: 'Dashboard Status Open / Close' },
           { id: 'lks-archive', label: 'Arsip LKS', icon: Archive, desc: 'Tabel Arsip Berkas Scan LKS' },
         ];
+      case 'ba-dom':
+        return [
+          { id: 'ba-upload', label: 'Upload BA', icon: UploadCloud, desc: 'Upload File Scan PDF / Word BA' },
+          { id: 'ba-monitoring', label: 'Monitoring BA', icon: Activity, desc: 'Dashboard & Rekap HARGI, HARJAR & HARPRO' },
+          { id: 'ba-archive', label: 'Arsip BA', icon: Archive, desc: 'Tabel Arsip Berkas Berita Acara' },
+        ];
       case 'harpro':
         return [
           { id: 'overview', label: 'Overview Proteksi', icon: LayoutDashboard, desc: 'Ringkasan & Statistik Proteksi' },
