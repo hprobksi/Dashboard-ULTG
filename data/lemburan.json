@@ -1,5 +1,56 @@
 [
   {
+    "id": "LBR-1784799093690-0",
+    "nomorSpl": "0956.SPL/SDM.06.01/UPTBKSI/2026",
+    "tanggalSurat": "2026-07-23",
+    "tanggalLembur": "2026-07-23",
+    "mulai": "08:00",
+    "selesai": "10:00",
+    "durasi": 2,
+    "pegawai": {
+      "nama": "SAEPUL ROHMAT",
+      "nip": "9413040P3Y",
+      "pog": "11",
+      "peg": "11",
+      "jabatan": "TL HAR GI",
+      "bidang": "SIE HAR GI"
+    },
+    "unitInduk": "UIT JBT",
+    "unitPelaksana": "UPT BEKASI",
+    "namaPekerjaan": "Perbaikan Rembesan Minyak pada Trafo 1",
+    "jenisPekerjaan": "Pekerjaan di luar jam kerja yang tidak meninggalkan tugas pokok",
+    "subKategori": "Pekerjaan Keandalan",
+    "kategori": "Pekerjaan terencana yang dilakukan di luar hari kerja berdasarkan justifikasi pengelola sistem/pemilik aset",
+    "jenisAction": "Preventive Action",
+    "jenisHari": "Hari Libur / Libur Nasional",
+    "sppd": "Tanpa SPPD",
+    "lokasi": "GI Cikarang",
+    "koordinator": "Saepul Rohmat",
+    "rincian": "Perbaikan Rembesan Minyak pada Trafo 1",
+    "evaluasi": "",
+    "kejadianPenting": "Pekerjaan Berjalan Aman dan Lancar.",
+    "kegiatan": [
+      "Safety Briefing",
+      "Investigasi Titik Kebocoran",
+      "Penambalan Titik Kebocoran dengan Prolong",
+      "Closing Briefing"
+    ],
+    "docs": {
+      "perencanaan": "Ada",
+      "perintah": "Ada",
+      "persetujuan": "Ada",
+      "laporan": "Ada"
+    },
+    "signers": {
+      "mupt": "INDRA KURNIAWAN",
+      "muptJabatan": "MUPT BEKASI",
+      "multg": "TRIAWAN AZHARY P. N.",
+      "multgJabatan": "MULTG BEKASI"
+    },
+    "createdAt": "2026-07-23T09:31:32.594Z",
+    "updatedAt": "2026-07-23T09:35:36.104Z"
+  },
+  {
     "id": "LBR-1784383068934-1",
     "nomorSpl": "0973.SPL/SDM.06.01/UPTBKSI/2026",
     "tanggalSurat": "2026-07-18",
@@ -47,7 +98,7 @@
       "multgJabatan": "MULTG BEKASI"
     },
     "createdAt": "2026-07-18T13:57:48.939Z",
-    "updatedAt": "2026-07-20T09:41:24.093Z"
+    "updatedAt": "2026-07-23T09:35:36.106Z"
   },
   {
     "id": "LBR-1784383068934-2",
@@ -97,6 +148,108 @@
       "multgJabatan": "MULTG BEKASI"
     },
     "createdAt": "2026-07-18T13:57:48.939Z",
-    "updatedAt": "2026-07-20T09:41:24.093Z"
+    "updatedAt": "2026-07-23T09:35:36.106Z"
+  },
+  {
+    "id": "LBR-1784799093690-1",
+    "nomorSpl": "0976.SPL/SDM.06.01/UPTBKSI/2026",
+    "tanggalSurat": "2026-07-23",
+    "tanggalLembur": "2026-07-23",
+    "mulai": "08:00",
+    "selesai": "10:00",
+    "durasi": 2,
+    "pegawai": {
+      "nama": "ENDAR SUTAWIJAYA",
+      "nip": "9414009P3Y",
+      "pog": "11",
+      "peg": "11",
+      "jabatan": "JTC JAR TRANS GITET",
+      "bidang": "SIE JAR TRANS GITET (MUARA TAWAR)"
+    },
+    "unitInduk": "UIT JBT",
+    "unitPelaksana": "UPT BEKASI",
+    "namaPekerjaan": "Perbaikan Rembesan Minyak pada Trafo 1",
+    "jenisPekerjaan": "Pekerjaan di luar jam kerja yang tidak meninggalkan tugas pokok",
+    "subKategori": "Pekerjaan Keandalan",
+    "kategori": "Pekerjaan terencana yang dilakukan di luar hari kerja berdasarkan justifikasi pengelola sistem/pemilik aset",
+    "jenisAction": "Preventive Action",
+    "jenisHari": "Hari Libur / Libur Nasional",
+    "sppd": "Tanpa SPPD",
+    "lokasi": "GI Cikarang",
+    "koordinator": "Saepul Rohmat",
+    "rincian": "Perbaikan Rembesan Minyak pada Trafo 1",
+    "evaluasi": "",
+    "kejadianPenting": "Pekerjaan Berjalan Aman dan Lancar.",
+    "kegiatan": [
+      "Safety Briefing",
+      "Investigasi Titik Kebocoran",
+      "Penambalan Titik Kebocoran dengan Prolong",
+      "Closing Briefing"
+    ],
+    "docs": {
+      "perencanaan": "Ada",
+      "perintah": "Ada",
+      "persetujuan": "Ada",
+      "laporan": "Ada"
+    },
+    "signers": {
+      "mupt": "INDRA KURNIAWAN",
+      "muptJabatan": "MUPT BEKASI",
+      "multg": "TRIAWAN AZHARY P. N.",
+      "multgJabatan": "MULTG BEKASI"
+    },
+    "createdAt": "2026-07-23T09:31:32.594Z",
+    "updatedAt": "2026-07-23T09:35:36.106Z"
+  },
+  {
+    "id": "LBR-1784799093690-2",
+    "nomorSpl": "0977.SPL/SDM.06.01/UPTBKSI/2026",
+    "tanggalSurat": "2026-07-23",
+    "tanggalLembur": "2026-07-23",
+    "mulai": "08:00",
+    "selesai": "10:00",
+    "durasi": 2,
+    "pegawai": {
+      "nama": "DJUNAEDI DJUGUR",
+      "nip": "7089064K3",
+      "pog": "11",
+      "peg": "11",
+      "jabatan": "TC HAR JAR TRANS",
+      "bidang": "ULTG BEKASI"
+    },
+    "unitInduk": "UIT JBT",
+    "unitPelaksana": "UPT BEKASI",
+    "namaPekerjaan": "Perbaikan Rembesan Minyak pada Trafo 1",
+    "jenisPekerjaan": "Pekerjaan di luar jam kerja yang tidak meninggalkan tugas pokok",
+    "subKategori": "Pekerjaan Keandalan",
+    "kategori": "Pekerjaan terencana yang dilakukan di luar hari kerja berdasarkan justifikasi pengelola sistem/pemilik aset",
+    "jenisAction": "Preventive Action",
+    "jenisHari": "Hari Libur / Libur Nasional",
+    "sppd": "Tanpa SPPD",
+    "lokasi": "GI Cikarang",
+    "koordinator": "Saepul Rohmat",
+    "rincian": "Perbaikan Rembesan Minyak pada Trafo 1",
+    "evaluasi": "",
+    "kejadianPenting": "Pekerjaan Berjalan Aman dan Lancar.",
+    "kegiatan": [
+      "Safety Briefing",
+      "Investigasi Titik Kebocoran",
+      "Penambalan Titik Kebocoran dengan Prolong",
+      "Closing Briefing"
+    ],
+    "docs": {
+      "perencanaan": "Ada",
+      "perintah": "Ada",
+      "persetujuan": "Ada",
+      "laporan": "Ada"
+    },
+    "signers": {
+      "mupt": "INDRA KURNIAWAN",
+      "muptJabatan": "MUPT BEKASI",
+      "multg": "TRIAWAN AZHARY P. N.",
+      "multgJabatan": "MULTG BEKASI"
+    },
+    "createdAt": "2026-07-23T09:31:32.594Z",
+    "updatedAt": "2026-07-23T09:35:36.106Z"
   }
 ]

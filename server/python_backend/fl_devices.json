@@ -4,7 +4,7 @@
       "id": "fl-gandamekar-172-20-20-30",
       "ultg": "BEKASI",
       "nama_gi": "GI GANDAMEKAR",
-      "nama_bay": "BAY GANDAMEKAR",
+      "nama_bay": "CKRLP12,TMBN12,RJPKSI12",
       "merk_tipe": "IDM+18",
       "kondisi_peralatan": "OPERASI",
       "ip": "172.20.20.30",
@@ -49,6 +49,27 @@
       "kondisi_peralatan": "OPERASI",
       "ip": "172.20.122.3",
       "enabled": true
+    },
+    {
+      "id": "c75a010e-dd79-402b-92a4-074cfff49720",
+      "nama_gi": "GIS MARGAHAYU",
+      "nama_bay": "TAMBUN",
+      "ip": "172.20.123.83",
+      "type": "fl"
+    },
+    {
+      "id": "375354d5-6458-4f72-91b2-0e9c8f0d935f",
+      "nama_gi": "GIS MARGAHAYU",
+      "nama_bay": "TAMBUN 1,2",
+      "ip": "172.20.123.83",
+      "type": "fl"
+    },
+    {
+      "id": "a6a94e88-125d-49c5-804f-5590c649bfaa",
+      "nama_gi": "GI JABABEKA",
+      "nama_bay": "JABABEKA",
+      "ip": "172.20.21.158",
+      "type": "fl"
     }
   ]
 }

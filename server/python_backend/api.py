@@ -1080,6 +1080,11 @@ WAHA_SEND_TEXT_PATH = env_any(("WAHA_SEND_TEXT_PATH", "VoltKraf_WAHA_SEND_TEXT_P
 WAHA_SEND_FILE_PATH = env_any(("WAHA_SEND_FILE_PATH", "VoltKraf_WAHA_SEND_FILE_PATH", "VOLTCRAFT_WAHA_SEND_FILE_PATH"), "/api/sendFile") or "/api/sendFile"
 TELEGRAM_ENABLED = env_bool_any(("TELEGRAM_ENABLED", "VoltKraf_TELEGRAM_ENABLED", "VOLTCRAFT_TELEGRAM_ENABLED"), True)
 TELEGRAM_BOT_TOKEN = config_value(("TELEGRAM_BOT_TOKEN", "VoltKraf_TELEGRAM_BOT_TOKEN", "VOLTCRAFT_TELEGRAM_BOT_TOKEN"), os.path.join(BASE_DIR, "telegram_token.txt"))
+TELEGRAM_LAST_STATUS_FILE = os.path.join(BASE_DIR, "telegram_last_status.json")
+DFR_DEVICES_FILE = os.path.join(BASE_DIR, "dfr_devices.json")
+FL_DEVICES_FILE = os.path.join(BASE_DIR, "fl_devices.json")
+RELAY_SETTINGS_FILE = os.path.join(BASE_DIR, "relay_settings.json")
+RELAY_TESTS_FILE = os.path.join(BASE_DIR, "relay_tests.json")
 TELEGRAM_CHAT_ID = config_value(("TELEGRAM_CHAT_ID", "VoltKraf_TELEGRAM_CHAT_ID", "VOLTCRAFT_TELEGRAM_CHAT_ID"), os.path.join(BASE_DIR, "telegram_chat_id.txt"))
 TELEGRAM_API_BASE_URL = env_any(("TELEGRAM_API_BASE_URL", "VoltKraf_TELEGRAM_API_BASE_URL", "VOLTCRAFT_TELEGRAM_API_BASE_URL"), "https://api.telegram.org") or "https://api.telegram.org"
 TELEGRAM_TIMEOUT_DETIK = env_float_any(("TELEGRAM_TIMEOUT_SECONDS", "VoltKraf_TELEGRAM_TIMEOUT_SECONDS", "VOLTCRAFT_TELEGRAM_TIMEOUT_SECONDS"), 10.0, 1.0)
@@ -13073,4 +13078,59 @@ else:
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
+
+
+
+# ==========================================
+# HEALTHY INDEX RELAY API ENDPOINTS
+# ===========================================
+
+RELAY_SETTINGS_FILE = os.path.join(BASE_DIR, "relay_settings.json")
+RELAY_TESTS_FILE = os.path.join(BASE_DIR, "relay_tests.json")
+
+def load_relay_data(file_path):
+    if not os.path.exists(file_path):
+        return []
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except:
+        return []
+
+def save_relay_data(file_path, data):
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
+
+@app.get("/api/relay/settings")
+def get_relay_settings():
+    return load_relay_data(RELAY_SETTINGS_FILE)
+
+@app.post("/api/relay/settings")
+def save_relay_settings(request: Request, data: list = Body(...)):
+    save_relay_data(RELAY_SETTINGS_FILE, data)
+    return {"message": "Data setting relay berhasil disimpan"}
+
+@app.get("/api/relay/tests")
+def get_relay_tests():
+    return load_relay_data(RELAY_TESTS_FILE)
+
+@app.post("/api/relay/tests")
+def add_relay_test(request: Request, data: dict = Body(...)):
+    tests = load_relay_data(RELAY_TESTS_FILE)
+    import uuid
+    if "id" not in data:
+        data["id"] = str(uuid.uuid4())
+    data["created_at"] = datetime.now().isoformat()
+    tests.append(data)
+    save_relay_data(RELAY_TESTS_FILE, tests)
+    return {"message": "Hasil uji relay berhasil disimpan", "test": data}
+
+@app.delete("/api/relay/tests/{test_id}")
+def delete_relay_test(test_id: str):
+    tests = load_relay_data(RELAY_TESTS_FILE)
+    new_tests = [t for t in tests if t.get("id") != test_id]
+    if len(new_tests) < len(tests):
+        save_relay_data(RELAY_TESTS_FILE, new_tests)
+        return {"message": "Hasil uji berhasil dihapus"}
+    raise HTTPException(status_code=404, detail="Data tidak ditemukan")
 

@@ -18,6 +18,9 @@ import Lemburan from './pages/Lemburan';
 import K3Kam from './pages/K3Kam';
 import K3Lingkungan from './pages/K3Lingkungan';
 import Monitoring from './pages/Monitoring';
+import HealthyIndexDashboard from './pages/HealthyIndexDashboard';
+import HealthyIndexSettings from './pages/HealthyIndexSettings';
+import HealthyIndexUji from './pages/HealthyIndexUji';
 import K3Dashboard from './pages/K3Dashboard';
 import PeralatanK3 from './pages/PeralatanK3';
 import AuthPage from './pages/AuthPage';
@@ -177,6 +180,15 @@ export default function App() {
           </div>
           <div style={{ display: activeTab === 'program-kerja' ? 'block' : 'none' }}>
             {visitedTabs['program-kerja'] && <ProgramKerja />}
+          </div>
+          <div style={{ display: activeTab === 'healthy-index-dashboard' ? 'block' : 'none' }}>
+            {visitedTabs['healthy-index-dashboard'] && <HealthyIndexDashboard />}
+          </div>
+          <div style={{ display: activeTab === 'healthy-index-setting' ? 'block' : 'none' }}>
+            {visitedTabs['healthy-index-setting'] && <HealthyIndexSettings />}
+          </div>
+          <div style={{ display: activeTab === 'healthy-index-uji' ? 'block' : 'none' }}>
+            {visitedTabs['healthy-index-uji'] && <HealthyIndexUji />}
           </div>
           <div style={{ display: activeTab === 'jadwal-pekerjaan' ? 'block' : 'none' }}>
             {visitedTabs['jadwal-pekerjaan'] && <JadwalPekerjaan />}
